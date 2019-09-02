@@ -1,0 +1,20 @@
+achievements:
+  last_wayshrine: '""'
+quests:
+  completedquests: '0'
+flags:
+  list: '""'
+reputation:
+  faction1: '""'
+  faction2: '""'
+  faction3: '""'
+title:
+  earned: '""'
+  current_title: '"Newcomer"'
+script:
+  version: 0.0.1
+info:
+  character_name: AKittehNamedSky
+  description: '""'
+  uuid: 2c5b2275-6840-4b1c-9f18-437ec6e9ee32
+  username: AKittehNamedSky

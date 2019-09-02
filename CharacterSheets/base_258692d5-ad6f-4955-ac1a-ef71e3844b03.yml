@@ -1,0 +1,22 @@
+achievements:
+  last_wayshrine: '""'
+quests:
+  completedquests: '0'
+flags:
+  list: '""'
+reputation:
+  faction1: '""'
+  faction2: '""'
+  faction3: '""'
+permission:
+  characters: '1'
+title:
+  earned: '""'
+  current_title: '"Newcomer"'
+script:
+  version: 0.0.1
+info:
+  description: '""'
+  characterList: '""'
+  uuid: 258692d5-ad6f-4955-ac1a-ef71e3844b03
+  username: Unknown_Sword

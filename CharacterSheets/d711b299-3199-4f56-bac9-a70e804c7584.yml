@@ -1,0 +1,18 @@
+achievements:
+  last_wayshrine: '""'
+quests:
+  completedquests: '0'
+flags:
+  list: '""'
+reputation:
+  faction1: '""'
+  faction2: '""'
+  faction3: '""'
+title:
+  earned: '""'
+  current_title: '"Newcomer"'
+info:
+  character_name: §4Naigus§r
+  description: '""'
+  uuid: d711b299-3199-4f56-bac9-a70e804c7584
+  username: Naigus

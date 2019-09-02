@@ -1,0 +1,18 @@
+achievements:
+  last_wayshrine: '""'
+quests:
+  completedquests: '0'
+flags:
+  list: '""'
+reputation:
+  faction1: '""'
+  faction2: '""'
+  faction3: '""'
+title:
+  earned: '""'
+  current_title: '"Newcomer"'
+info:
+  character_name: §4~TheCoolAdmin§r
+  description: '""'
+  uuid: 16a3c30a-326c-4042-a067-befb5a1bdb29
+  username: TheCoroner

@@ -1,0 +1,18 @@
+achievements:
+  last_wayshrine: '""'
+quests:
+  completedquests: '0'
+flags:
+  list: '""'
+reputation:
+  faction1: '""'
+  faction2: '""'
+  faction3: '""'
+title:
+  earned: '""'
+  current_title: '"Newcomer"'
+info:
+  character_name: §4~*LowDick*§r
+  description: '""'
+  uuid: a60d747e-6677-4cd8-ba78-bd01f8705204
+  username: SirInferno

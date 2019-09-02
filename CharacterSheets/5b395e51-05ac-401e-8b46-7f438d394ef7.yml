@@ -1,0 +1,18 @@
+achievements:
+  last_wayshrine: '""'
+quests:
+  completedquests: '0'
+flags:
+  list: '""'
+reputation:
+  faction1: '""'
+  faction2: '""'
+  faction3: '""'
+title:
+  earned: '""'
+  current_title: '"Newcomer"'
+info:
+  character_name: §4Lord_Pita§r
+  description: '""'
+  uuid: 5b395e51-05ac-401e-8b46-7f438d394ef7
+  username: Lord_Pita
