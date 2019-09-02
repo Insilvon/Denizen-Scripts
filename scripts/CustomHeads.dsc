@@ -1,37 +1,34 @@
+# Helper script which will identify a cuboid and remove it from the Chunk File
 CustomBlockControllerHelper:
   type: task
-  definitions: triggerText
+  definitions: triggerText|cuboids
   script:
-    - if <context.location.cuboids.contains_text[triggerText]>:
-      - narrate "<&c>[Machines]<&co> You have broken your Alchemy Station..."
-      - define theThing <context.location.cuboids.filter[notable_name.starts_with[alchemystation]].get[1]||null>
-      - note remove as:<[theThing].notable_name>
-      - execute as_server "denizen save"
+    - narrate "Looking for <[triggerText]>"
+    - narrate <[cuboids].filter[notable_name.starts_with[<[triggerText]>]].get[1]||null>
+    - define theThing:<[cuboids].filter[notable_name.starts_with[<[triggerText]>]].get[1]||null>
+    - note remove as:<[theThing].notable_name>
+    - execute as_server "denizen save"
+
+# Controller Script which manages Custom Item block breaks and plaing.
 CustomBlocksController:
   type: world
   events:
     on player breaks block:
+      # Check if it has a custom region
+      - define cuboids:<context.location.cuboids>
       - if <context.location.cuboids.contains_text[AlchemyStation]>:
-        # - narrate "Removing <context.location.cuboids.filter[notable_name.starts_with[alchemystation]].get[1]>"
         - narrate "<&c>[Machines]<&co> You have broken your Alchemy Station..."
-        - define theThing <context.location.cuboids.filter[notable_name.starts_with[alchemystation]].get[1]||null>
-        - note remove as:<[theThing].notable_name>
-        - execute as_server "denizen save"
+        - run CustomBlockControllerHelper def:AlchemyStation
       - if <context.location.cuboids.contains_text[TransmutationCircle]>:
         - narrate "<&4>Dark Alchemy<&co> Your circle has faded."
-        - define theThing <context.location.cuboids.filter[notable_name.starts_with[TransmutationCircle]].get[1]||null>
-        - note remove as:<[theThing].notable_name>
-        - execute as_server "denizen save"
-      - if <context.location.cuboids.contains_text[SweetCandle]>:
+        - run CustomBlockControllerHelper def:TransmutationCircle
+      - if <context.location.cuboids.contains_text[sweetcandle]>:
         - narrate "Your candle has been removed."
-        - define theThing <context.location.cuboids.filter[notable_name.starts_with[SweetCandle]].get[1]||null>
-        - note remove as:<[theThing].notable_name>
-        - execute as_server "denizen save"
+        - run CustomBlockControllerHelper def:SweetCandle|<[cuboids]>
       - if <context.location.cuboids.contains_text[FoulCandle]>:
         - narrate "Your candle has been removed."
-        - define theThing <context.location.cuboids.filter[notable_name.starts_with[FoulCandle]].get[1]||null>
-        - note remove as:<[theThing].notable_name>
-        - execute as_server "denizen save"
+        - run CustomBlockControllerHelper def:FoulCandle
+
       # Check to see if it's a custom item
       - define chunkID:<context.location.chunk>
       - define locale:<context.location.block>
@@ -42,28 +39,28 @@ CustomBlocksController:
       - define theCuboid <context.location.cuboids.filter[notable_name.starts_with[testmachine]].get[1]||null>
       - run MachineCheck def:<[cubes]>|<[theCuboid]>
 
+      # Determine Drops
       - if <[itemDrop]> != null:
         - determine <[itemDrop]>
 
     # Custom Head Retention
     on player places CyanLootbag|BrownLootbag|PinkLootbag|PurpleLootbag|EggLootbag|GoldenLootbag|BlueLootbag|OrangeLootbag|RedLootbag|WhiteLootbag|LimestoneDinosaurSkullFossil|LimestoneDinosaurTrackFossil|LimestonePalmLeafFossil|LimestoneTrilobyteFossil|LimestoneShellFossil|LimestoneFishFossil|ShaleFishFossil|ShaleShellFossil|ShaleTrilobyteFossil|ShalePalmLeafFossil|ShaleDinosaurTrackFossil|ShaleDinosaurSkullFossil|SandstoneFishFossil|SandstoneShellFossil|SandstoneTrilobyteFossil|SandstonePalmLeafFossil|SandstoneDinosaurTrackFossil|SandstoneDinosaurSkullFossil|PoisonOil|LavenderOil|LemongrassOil|OrangeOil|PeppermintOil|PufferfishPoisonOil|EucalyptusOil|LightGreenStar|YellowStar|RedStar|PurpleStar|LightBlueStar|WhiteStar|PinkStar|OrangeStar|MagentaStar|LimeStar|LightGrayStar|SkyBlueStar|GreenStar|GrayStar|CyanStar|BrownStar|BlackStar|SapphireGeode|RoseQuartzGeode|NetherQuartzGeode|EmeraldGeode|AmethystGeode|QuartzGeode|RopeCoilAnchor|YellowCore|DumbCobblestone|DumbStone:
-      - define theItem:<player.item_in_hand.scriptname>
-      - define chunkID:<context.location.chunk>
-      - define locale:<context.location.block>
-      - if <server.has_file[/ChunkData/<[chunkID]>.yml]>:
-        - run AddToChunkFile def:<[chunkID]>|<[locale]>|<[theItem]>
-      - else:
-        - run CreateChunkFile def:<[chunkID]>|<[locale]>|<[theItem]>
+      - inject CustomItemPlaced
     on player places SweetCandle|FoulCandle:
-      - define theItem:<player.item_in_hand.scriptname>
-      - flag server <[theItem]>_<context.location.simple>:snuffed
-      - define chunkID:<context.location.chunk>
-      - define locale:<context.location.block>
-      - if <server.has_file[/ChunkData/<[chunkID]>.yml]>:
-        - run AddToChunkFile def:<[chunkID]>|<[locale]>|<[theItem]>
-      - else:
-        - run CreateChunkFile def:<[chunkID]>|<[locale]>|<[theItem]>
+      - inject CustomItemPlaced
 
+# Helper script - used for injection only
+CustomItemPlaced:
+  type: task
+  script:
+    - define theItem:<player.item_in_hand.scriptname>
+    - flag server <[theItem]>_<context.location.simple>:snuffed
+    - define chunkID:<context.location.chunk>
+    - define locale:<context.location.block>
+    - if <server.has_file[/ChunkData/<[chunkID]>.yml]>:
+      - run AddToChunkFile def:<[chunkID]>|<[locale]>|<[theItem]>
+    - else:
+      - run CreateChunkFile def:<[chunkID]>|<[locale]>|<[theItem]>
 MachineCheck:
   type: task
   definitions: cubes|theCuboid
@@ -75,30 +72,28 @@ MachineCheck:
       - note remove as:<[theCuboid].notable_name>
       - narrate "<&c>[Machines]<&co> Removing cuboid!"
       - execute as_server "denizen save"
-
+#TODO:// Rename this to Custom Item Return
+# Script which will return AND REMOVE the custom item from the chunk file
 CustomItemCheck:
   type: procedure
   definitions: chunkID|locale
   script:
-    #- narrate "<&5>DEBUG<&co> chunk - <[chunkID]>    block - <[locale]>"
     - if <server.has_file[/ChunkData/<[chunkID]>.yml]>:
       - yaml "load:/ChunkData/<[chunkID]>.yml" id:<[chunkID]>
       - define newItem:<yaml[<[chunkID]>].read[info.<[locale]>]>
-      #- narrate "<&5>DEBUG<&co> ITEM - <[newItem]>"
       - yaml id:<[chunkID]> set info.<[locale]>:!
       - yaml "savefile:/ChunkData/<[chunkID]>.yml" id:<[chunkID]>
       - yaml unload id:<context.entity.uuid>
       - determine <[newItem]>
     - determine null
+# Script which will return AND NOT REMOVE the custom item from the chunk file
 CustomItemRead:
   type: procedure
   definitions: chunkID|locale
   script:
-    #- narrate "<&5>DEBUG<&co> chunk - <[chunkID]>    block - <[locale]>"
     - if <server.has_file[/ChunkData/<[chunkID]>.yml]>:
       - yaml "load:/ChunkData/<[chunkID]>.yml" id:<[chunkID]>
       - define newItem:<yaml[<[chunkID]>].read[info.<[locale]>]>
-      #- narrate "<&5>DEBUG<&co> ITEM - <[newItem]>"
       - determine <[newItem]>
     - determine null
 # 914e68b0-4550-4c2c-bbee-dc903e8485f5|eyJ0aW1lc3RhbXAiOjE1NjM2MzE3NTA0ODksInByb2ZpbGVJZCI6ImIwZDRiMjhiYzFkNzQ4ODlhZjBlODY2MWNlZTk2YWFiIiwicHJvZmlsZU5hbWUiOiJ4RmFpaUxlUiIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzYwYTA4ZGE4ZDNlNzNjNWFkZGNjMTAzODk1NjU2YWM0MDRmZjQyZjJkNWI1Yjc0NmNjZGU2MDdjZTkwNDQzYyJ9fX0=
