@@ -1,3 +1,9 @@
+# Radiant Quests
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Proof of Concept for Radiant/Dynamic Quests
+
 # All things Radiant Quests
 # TYPES: Fetch, Investigate, Deliver, Kill, Capture
 #

@@ -1,3 +1,9 @@
+# Player Character Controller Proof of Concept
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Allows players to create and save data between multiple "characters" on one account
+
 # Current Flags: Character (# of Chars), Character List, Equipment flags (e_id)
 # Character GUI
 

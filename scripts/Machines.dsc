@@ -1,3 +1,9 @@
+# Machines Proof of Concept
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Placeable Schematics which serve a purpose, similar to popular Spigot Plugins which exist
+
 # All machines
 
 MachineController:

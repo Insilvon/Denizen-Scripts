@@ -1,3 +1,11 @@
+# Disease Proof of Concept
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Creates, manages, and enacts custom diseases to use on Aetheria.
+# Internal system will inflict players with diseases, then run "symptoms" of increasing severity
+# Custom cures must be made and used to cure the diseases
+
 WorldTest:
   type: world
   events:

@@ -1,36 +1,17 @@
+# Region Controller
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# All scripts which manage Custom Regions, as well as events relating to
+# Aetheria notable cuboids/locations
+
 RegionController:
   type: world
   events:
-    # Replace stone with player head I guess
-    on player right clicks player_head:
-      # What type of player head is it
-      - define chunkID:<context.location.chunk>
-      - define locale:<context.location.block>
-      - define customItem:<proc[CustomItemRead].context[<[chunkID]>|<[locale]>]>
-      # Is it a candle?
-      - if <[customItem].contains_text[Candle]>:
-        # Do we have a flag for this candle?
-        - if <server.has_flag[<[customItem]>_<context.location.simple>]>:
-          # Yes? Okay, activate it.
-          - if <server.flag[<[customItem]>_<context.location.simple>]> == lit:
-            # Remove the thing
-            - flag server <[customItem]>_<context.location.simple>:snuffed
-            - narrate "Your candle has flickered out."
-            - define theThing <context.location.cuboids.filter[notable_name.starts_with[<[customItem]>]].get[1]||null>
-            - note remove as:<[theThing].notable_name>
-            - execute as_server "denizen save"
-          - else:
-            - flag server <[customItem]>_<context.location.simple>:lit
-            - define origin:<context.location.add[0,-1,0]>
-            - define pos1:<[origin].add[4,-1,4]>
-            - define pos2:<[origin].add[-4,1,-4]>
-            - note cu@<[pos1]>|<[pos2]> as:<[customItem]>_<[origin].simple>
-            - execute as_server "denizen save"
-            - narrate "*You light the candle. Its aroma fills the air.*"
     # Watch for a player entering a candle-lit area
     on player enters notable cuboid:
       - if <context.cuboids.contains_text[Candle]>:
-        - run CandleHandler def:<context.cuboids>
+        - run CandleScentText def:<context.cuboids>
     on player enters ColdRegion:
       - if !<player.has_flag[Cold]>:
         - flag player Cold
@@ -51,16 +32,6 @@ RegionController:
       - flag player SnowRes:-:1
 
 # Redirect Script which determines which flavortext to narrate
-CandleHandler:
-  type: task
-  definitions: cuboid
-  script:
-    - if <[cuboid].contains_text[sweet]>:
-      - narrate "<&a>*A satisfying sweet smell fills the air*"
-      - stop
-    - if <[cuboid].contains[foul]>:
-      - narrate "<&c>*Your nostrils are also appalled with the scent of guck*"
-      - stop
 
 # Individual Controller Scripts
 # Template:

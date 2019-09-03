@@ -1,3 +1,9 @@
+# Player Descriptions
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Allows players to create and save descriptions of their character for others to view
+
 YAMLScript:
   type: world
   events:

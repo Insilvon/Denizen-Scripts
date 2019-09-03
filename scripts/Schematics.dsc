@@ -1,3 +1,9 @@
+# Schematics
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Allows players to create, save, and load custom schematics.
+
 TBCController:
   type: world
   events:

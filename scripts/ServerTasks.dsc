@@ -1,3 +1,9 @@
+# Server Tasks
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Core Scripts which apply to either a large number of scripts, or run on launch/closure
+
 # =================================================================================
 # ==========================="Kernal Core Setup Script"============================
 # =================================================================================

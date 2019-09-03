@@ -1,3 +1,9 @@
+# Lootbag Proof of Concept
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.1
+# Allows players to place custom items to summon randomized loot, identified rarity via glass color
+
 # Lootbox controller script - listens for the events and runs the tasks
 test:
   type: world

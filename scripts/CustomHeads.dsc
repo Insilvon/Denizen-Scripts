@@ -1,101 +1,9 @@
-# Helper script which will identify a cuboid and remove it from the Chunk File
-CustomBlockControllerHelper:
-  type: task
-  definitions: triggerText|cuboids
-  script:
-    - narrate "Looking for <[triggerText]>"
-    - narrate <[cuboids].filter[notable_name.starts_with[<[triggerText]>]].get[1]||null>
-    - define theThing:<[cuboids].filter[notable_name.starts_with[<[triggerText]>]].get[1]||null>
-    - note remove as:<[theThing].notable_name>
-    - execute as_server "denizen save"
+# Custom Heads
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.2.1
+# All custom heads (with skins) to use in Aetheria
 
-# Controller Script which manages Custom Item block breaks and plaing.
-CustomBlocksController:
-  type: world
-  events:
-    on player breaks block:
-      # Check if it has a custom region
-      - define cuboids:<context.location.cuboids>
-      - if <context.location.cuboids.contains_text[AlchemyStation]>:
-        - narrate "<&c>[Machines]<&co> You have broken your Alchemy Station..."
-        - run CustomBlockControllerHelper def:AlchemyStation
-      - if <context.location.cuboids.contains_text[TransmutationCircle]>:
-        - narrate "<&4>Dark Alchemy<&co> Your circle has faded."
-        - run CustomBlockControllerHelper def:TransmutationCircle
-      - if <context.location.cuboids.contains_text[sweetcandle]>:
-        - narrate "Your candle has been removed."
-        - run CustomBlockControllerHelper def:SweetCandle|<[cuboids]>
-      - if <context.location.cuboids.contains_text[FoulCandle]>:
-        - narrate "Your candle has been removed."
-        - run CustomBlockControllerHelper def:FoulCandle
-
-      # Check to see if it's a custom item
-      - define chunkID:<context.location.chunk>
-      - define locale:<context.location.block>
-      - define itemDrop:<proc[CustomItemCheck].context[<[chunkID]>|<[locale]>]>
-
-      # Check to see if it's in a Machine
-      - define cubes:<context.location.cuboids>
-      - define theCuboid <context.location.cuboids.filter[notable_name.starts_with[testmachine]].get[1]||null>
-      - run MachineCheck def:<[cubes]>|<[theCuboid]>
-
-      # Determine Drops
-      - if <[itemDrop]> != null:
-        - determine <[itemDrop]>
-
-    # Custom Head Retention
-    on player places CyanLootbag|BrownLootbag|PinkLootbag|PurpleLootbag|EggLootbag|GoldenLootbag|BlueLootbag|OrangeLootbag|RedLootbag|WhiteLootbag|LimestoneDinosaurSkullFossil|LimestoneDinosaurTrackFossil|LimestonePalmLeafFossil|LimestoneTrilobyteFossil|LimestoneShellFossil|LimestoneFishFossil|ShaleFishFossil|ShaleShellFossil|ShaleTrilobyteFossil|ShalePalmLeafFossil|ShaleDinosaurTrackFossil|ShaleDinosaurSkullFossil|SandstoneFishFossil|SandstoneShellFossil|SandstoneTrilobyteFossil|SandstonePalmLeafFossil|SandstoneDinosaurTrackFossil|SandstoneDinosaurSkullFossil|PoisonOil|LavenderOil|LemongrassOil|OrangeOil|PeppermintOil|PufferfishPoisonOil|EucalyptusOil|LightGreenStar|YellowStar|RedStar|PurpleStar|LightBlueStar|WhiteStar|PinkStar|OrangeStar|MagentaStar|LimeStar|LightGrayStar|SkyBlueStar|GreenStar|GrayStar|CyanStar|BrownStar|BlackStar|SapphireGeode|RoseQuartzGeode|NetherQuartzGeode|EmeraldGeode|AmethystGeode|QuartzGeode|RopeCoilAnchor|YellowCore|DumbCobblestone|DumbStone:
-      - inject CustomItemPlaced
-    on player places SweetCandle|FoulCandle:
-      - inject CustomItemPlaced
-
-# Helper script - used for injection only
-CustomItemPlaced:
-  type: task
-  script:
-    - define theItem:<player.item_in_hand.scriptname>
-    - flag server <[theItem]>_<context.location.simple>:snuffed
-    - define chunkID:<context.location.chunk>
-    - define locale:<context.location.block>
-    - if <server.has_file[/ChunkData/<[chunkID]>.yml]>:
-      - run AddToChunkFile def:<[chunkID]>|<[locale]>|<[theItem]>
-    - else:
-      - run CreateChunkFile def:<[chunkID]>|<[locale]>|<[theItem]>
-MachineCheck:
-  type: task
-  definitions: cubes|theCuboid
-  script:
-    # - narrate "<&c>[Machines]<&co> Current Cuboids include <[cubes]>"
-    - if <[cubes].contains_text[testmachine]>:
-      # - narrate "<&c>[Machines]<&co> Found Cuboid - <[theCuboid]>"
-      # - narrate "<&c>[Machines]<&co> Cuboid Name - <[theCuboid].notable_name>"
-      - note remove as:<[theCuboid].notable_name>
-      - narrate "<&c>[Machines]<&co> Removing cuboid!"
-      - execute as_server "denizen save"
-#TODO:// Rename this to Custom Item Return
-# Script which will return AND REMOVE the custom item from the chunk file
-CustomItemCheck:
-  type: procedure
-  definitions: chunkID|locale
-  script:
-    - if <server.has_file[/ChunkData/<[chunkID]>.yml]>:
-      - yaml "load:/ChunkData/<[chunkID]>.yml" id:<[chunkID]>
-      - define newItem:<yaml[<[chunkID]>].read[info.<[locale]>]>
-      - yaml id:<[chunkID]> set info.<[locale]>:!
-      - yaml "savefile:/ChunkData/<[chunkID]>.yml" id:<[chunkID]>
-      - yaml unload id:<context.entity.uuid>
-      - determine <[newItem]>
-    - determine null
-# Script which will return AND NOT REMOVE the custom item from the chunk file
-CustomItemRead:
-  type: procedure
-  definitions: chunkID|locale
-  script:
-    - if <server.has_file[/ChunkData/<[chunkID]>.yml]>:
-      - yaml "load:/ChunkData/<[chunkID]>.yml" id:<[chunkID]>
-      - define newItem:<yaml[<[chunkID]>].read[info.<[locale]>]>
-      - determine <[newItem]>
-    - determine null
 # 914e68b0-4550-4c2c-bbee-dc903e8485f5|eyJ0aW1lc3RhbXAiOjE1NjM2MzE3NTA0ODksInByb2ZpbGVJZCI6ImIwZDRiMjhiYzFkNzQ4ODlhZjBlODY2MWNlZTk2YWFiIiwicHJvZmlsZU5hbWUiOiJ4RmFpaUxlUiIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzYwYTA4ZGE4ZDNlNzNjNWFkZGNjMTAzODk1NjU2YWM0MDRmZjQyZjJkNWI1Yjc0NmNjZGU2MDdjZTkwNDQzYyJ9fX0=
 SweetCandle:
   type: Item
@@ -649,77 +557,160 @@ FoulCandle:
   material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
   display name: <&c>Foul Smelling Candle
 
+GetAllCandles:
+  type: task
+  script:
+    - foreach FreshLinenCandle|CherryBlossomCandle|BonfireCandle|OceanBreezeCandle|VanillaCandle|GingerbreadCandle|PumpkinSpiceCandle|PineCandle|AppleCinnamonCandle|ChocolateChipCookieCandle|LavenderCandle|LemongrassCandle|HoneydewCandle|GardeniaCandle|SugarCookieCandle|RedwoodCandle|PeachCandle|HoneysuckleCandle as:candle:
+      - give <[candle]>
+
 FreshLinenCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=edd6c805-f813-4ef6-b3b0-569c8b444242|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzgxMjI2NjU2ZDgyNTI5MWIxZDdlNDU2Yjc0ZWNkY2UyODY3MjE2OTY0MWU2YzM1YjFlMjNiOWI0MDI3NGUifX19]
   display name: Fresh Linen Candle
-
+  lore:
+    - A refined soy candle which
+    - smells like freshly laundered
+    - linens.
 CherryBlossomCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=9e85ea38-c411-447b-b89c-d6f4ed5c3e91|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmYxYjNmNTgwZDJkYWU4NjMzZWFkYzdmNTNlNzUzODc2MjFlMDhiMzM1Mjg0OWIwYjlmOWRlODI0ZTNhNDM4OCJ9fX0=]
   display name: Cherry Blossom Candle
-
+  lore:
+    - A well crafted candle
+    - which smells of Cherry Blossoms.
+    - There are soft engravings of the petals
+    - on the side.
+PeachCandle:
+  type: item
+  material: player_head[skull_skin=9e85ea38-c411-447b-b89c-d6f4ed5c3e91|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmYxYjNmNTgwZDJkYWU4NjMzZWFkYzdmNTNlNzUzODc2MjFlMDhiMzM1Mjg0OWIwYjlmOWRlODI0ZTNhNDM4OCJ9fX0=]
+  display name: Peach Candle
+  lore:
+    - The perfect gift
+    - to give away.
 BonfireCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=739b4ac6-1609-47d8-ae8c-10813d69e259|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzA2YzdmMzFiNDI5M2U5ZGI2NzU1NTc4ODcwMjExMzgxYjFhNjM2MDc4NGQ4NGRjY2E1ODhjMDM4NmY1MjE2OSJ9fX0=]
   display name: Fresh Bonfire Candle
-
-BOCandle:
-  type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
-  display name: BO Candle
-
+  lore:
+    - A seasonal candle which
+    - smells like an autumnal campfire,
+    - wood burned with a faunt alcoholic
+    - background.
 OceanBreezeCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=c1762238-f5cc-489a-9285-664fd4365453|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjVhZmJjYzc0ZjRmMzk5YTJlYWJlNWY1ZjBkNDc2MjMwYmMwZDU0MGZlNWY3ZjMxOTViNGJhNWY2MGVmOTlhOSJ9fX0=]
   display name: Ocean Breeze Candle
-
+  lore:
+    - A springtime candle scented
+    - with ocean and salty odors.
+    - The glass encasing reveals a
+    - decorative layer of sand on the bottom.
 VanillaCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=edd6c805-f813-4ef6-b3b0-569c8b444242|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzgxMjI2NjU2ZDgyNTI5MWIxZDdlNDU2Yjc0ZWNkY2UyODY3MjE2OTY0MWU2YzM1YjFlMjNiOWI0MDI3NGUifX19]
   display name: Vanilla Candle
-
+  lore:
+    - A simple french vanilla candle,
+    - a staple in modern homes.
 GingerbreadCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=fa6e5a60-12b8-4551-869b-8cb298d27b2a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDU2OWRiYTI2NTRiYzFjN2MyNGZhNmNhZDQ2NTE0NWNlZWY3NWYxMzA5YjMxMTdiYWQ1ZjY5ODk3M2IwNTE3MSJ9fX0=]
   display name: Gingerbread Candle
-
+  lore:
+    - A seasonal candle,
+    - evoking winter feelings of
+    - baking and family. Unfortunately,
+    - there are no gumdrop buttons.
 PumpkinSpiceCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=739b4ac6-1609-47d8-ae8c-10813d69e259|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzA2YzdmMzFiNDI5M2U5ZGI2NzU1NTc4ODcwMjExMzgxYjFhNjM2MDc4NGQ4NGRjY2E1ODhjMDM4NmY1MjE2OSJ9fX0=]
   display name: Pumpkin Spice Candle
-
+  lore:
+    - A BASIC candle which
+    - emits a fall-seasoned
+    - scent of pumpkin and caramel
+    - macchiato.
 PineCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=fc41a1dc-06bc-4229-a619-59db044f385c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjgzNzgyYzliN2RjZjgyYmJkZDg1MGRmMmZiZTY4ZTc2ZjYzNmU0YTY1Y2IzYTQxYTRhNDY3ZjJmMzc5N2ZlNSJ9fX0=]
   display name: Pine Candle
-
+  lore:
+    - A foresty candle which
+    - radiates a soft white pine
+    - scent when burned.
 AppleCinnamonCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=bc3be6e6-5a2a-4553-bc53-00041f627396|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjhjYTM2MTBiZjFlZDJkY2NlNWNhN2Y3ZjI5MTRhMWMyNWZiZmFiZDc0ZGNlNTFiM2Y1MTI2YmE0NGJhMWEyMCJ9fX0=]
   display name: Apple Cinnamon Candle
-
+  lore:
+    - A powerful candle which eminates
+    - Apple Cinnamon scents. A hand-painted
+    - image of an apple is on the glass.
 ChocolateChipCookieCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=fa6e5a60-12b8-4551-869b-8cb298d27b2a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDU2OWRiYTI2NTRiYzFjN2MyNGZhNmNhZDQ2NTE0NWNlZWY3NWYxMzA5YjMxMTdiYWQ1ZjY5ODk3M2IwNTE3MSJ9fX0=]
   display name: Chocolate Chip Cookie Candle
-
+  lore:
+    - The perfect cookie candle, with
+    - absolutely no hints of raisins,
+    - as it is and always should be.
 LavenderCandle:
   type: item
   material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
   display name: Lavender Candle
-
+  lore:
+    - A faint candle which fills the room
+    - with a tinge of lavender, evoking
+    - feelings of calm and serenity.
 LemongrassCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=18a1195e-d865-4d46-81bc-078843606e02|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjZkMmM3NzdmZGYwNTdkMzY1NzUzZmZiNGQ3NGYzMGI4YzRlOGVkZTdiYzY4ZWFkMWYyMWY2MmE5OThhYTI0ZCJ9fX0=]
   display name: Lemongrass Candle
-
+  lore:
+    - A crisp scent with a citrusy aftertaste,
+    - this candle is known for its energizing
+    - properties.
+HoneysuckleCandle:
+  type: item
+  material: player_head[skull_skin=18a1195e-d865-4d46-81bc-078843606e02|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjZkMmM3NzdmZGYwNTdkMzY1NzUzZmZiNGQ3NGYzMGI4YzRlOGVkZTdiYzY4ZWFkMWYyMWY2MmE5OThhYTI0ZCJ9fX0=]
+  display name: Honeysuckle Candle
+  lore:
+    - A sweet smelling and sugar-laden
+    - candle, the honeysuckle foreground
+    - makes you wish you could grow these
+    - bushes.
 HoneydewCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=18a1195e-d865-4d46-81bc-078843606e02|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjZkMmM3NzdmZGYwNTdkMzY1NzUzZmZiNGQ3NGYzMGI4YzRlOGVkZTdiYzY4ZWFkMWYyMWY2MmE5OThhYTI0ZCJ9fX0=]
   display name: Honeydew Candle
-
+  lore:
+    - A small and cute candle,
+    - it smells similar to other melons.
+    - Fresh, juicy, and makes the mouth water.
 GardeniaCandle:
   type: item
-  material: player_head[skull_skin=d6e2c590-d5d0-25c6-8c5c-0a2f3552c28a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjOTQ0OGU5MGUxZmZhMjhmYTcyNDM0YTAyNTUxZjI1NzRjNjhmZTZhN2FhOGE5OTVjZDE2OTcxYWE4YTMyMyJ9fX0=]
+  material: player_head[skull_skin=095d9cf4-6b93-48de-a2fb-dde012a60fa6|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2E2OTdjYjcxNWNjMDM4OTlmM2ZkN2UzYTM3ZWRlZWM2YjAyZGEyZGE0MTM0ZTgxMDBjZDU5OWU5YmFhMmM2YiJ9fX0=]
   display name: Gardenia Candle
+  lore:
+    - Sultry as a summer evening,
+    - intoxicating as an exotic perfume,
+    - the scent settles like a memory onto your soul.
+SugarCookieCandle:
+  type: item
+  material: player_head[skull_skin=18a1195e-d865-4d46-81bc-078843606e02|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjZkMmM3NzdmZGYwNTdkMzY1NzUzZmZiNGQ3NGYzMGI4YzRlOGVkZTdiYzY4ZWFkMWYyMWY2MmE5OThhYTI0ZCJ9fX0=]
+  display name: Sugar Cookie Candle
+  lore:
+    - A simplistic seasonal candle,
+    - but you can<&sq>t help but wish
+    - it was a snickerdoodle.
+RedwoodCandle:
+  type: item
+  material: player_head[skull_skin=fa6e5a60-12b8-4551-869b-8cb298d27b2a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDU2OWRiYTI2NTRiYzFjN2MyNGZhNmNhZDQ2NTE0NWNlZWY3NWYxMzA5YjMxMTdiYWQ1ZjY5ODk3M2IwNTE3MSJ9fX0=]
+  display name: Redwood Candle
+  lore:
+    - A natural and soothing odor,
+    - the hint of redwood in this candle
+    - makes one long for adventure, particularly
+    - in incredibly tall trees.
+# Telegraph/Radio Items are in Telegraph.dsc
+

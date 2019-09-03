@@ -1,3 +1,9 @@
+# NPC Vouchers
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Proof of Concept to show "hirable" npcs to bring to your town
+
 NPCVoucher:
   type: item
   material: emerald
