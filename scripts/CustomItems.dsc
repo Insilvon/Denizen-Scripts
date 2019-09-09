@@ -1,10 +1,12 @@
 # Custom Items
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.2.0
+# @version 1.2.1
 # All Scripts relating to handling Custom Items, Saving Custom Blocks, and the individual Item Scripts
 
 # Helper script which will identify a cuboid and remove it from the Chunk File
+# Last Change: Separated General World Tasks by the system calling them
+# TODO:// Move general tasks to their respective Files instead, make this only handle general events
 CustomBlockControllerHelper:
   type: task
   definitions: triggerText|cuboids
@@ -26,29 +28,14 @@ CustomBlocksController:
       - define itemDrop:<proc[CustomItemCheck].context[<[chunkID]>|<[locale]>]>
 
       # Check if it has a custom region
-      - define cuboids:<context.location.cuboids>
-      - if <context.location.cuboids.contains_text[AlchemyStation]>:
-        - narrate "<&c>[Machines]<&co> You have broken your Alchemy Station..."
-        - run CustomBlockControllerHelper def:AlchemyStation
-      - if <context.location.cuboids.contains_text[TransmutationCircle]>:
-        - narrate "<&4>Dark Alchemy<&co> Your circle has faded."
-        - run CustomBlockControllerHelper def:TransmutationCircle
-      - if <context.location.cuboids.contains_text[Candle]>:
-        - narrate "Your candle has been removed."
-        - run CustomBlockControllerHelper def:<[itemDrop]>|<[cuboids]>
-      - if <context.location.cuboids.contains_text[FoulCandle]>:
-        - narrate "Your candle has been removed."
-        - run CustomBlockControllerHelper def:FoulCandle
+      - inject CustomRegionOnPlayerBreaksBlock
 
       # Check to see if it's in a Machine
-      - define cubes:<context.location.cuboids>
-      - define theCuboid <context.location.cuboids.filter[notable_name.starts_with[testmachine]].get[1]||null>
-      - run MachineCheck def:<[cubes]>|<[theCuboid]>
+      - inject MachineOnPlayerBreaksBlock
 
       # Check to see if it is a telegraph
-      - if <[itemDrop].contains_text[Telegraph]>:
-        - flag server Telegraph_<context.location.simple>:!
-        - flag server 
+      - inject TelegraphOnPlayerBreaksBlock
+
       # Determine Drops
       - if <[itemDrop]> != null:
         - determine <[itemDrop]>
@@ -57,20 +44,17 @@ CustomBlocksController:
       - define chunkID:<context.location.chunk>
       - define locale:<context.location.block>
       - define customItem:<proc[CustomItemRead].context[<[chunkID]>|<[locale]>]>
-      - if <[customItem].contains_text[Telegraph]>:
-        - define click:left
-        - inject TelegraphHandler
+      # Telegraph Check
+      - inject TelegraphOnPlayerLeftClicksPlayer_Head
     on player right clicks player_head:
       # What type of player head is it
       - define chunkID:<context.location.chunk>
       - define locale:<context.location.block>
       - define customItem:<proc[CustomItemRead].context[<[chunkID]>|<[locale]>]>
       # Is it a candle?
-      - if <[customItem].contains_text[Candle]>:
-        - inject CandleHandler
-      - if <[customItem].contains_text[Telegraph]>:
-        - define click:right
-        - inject TelegraphHandler
+      - inject CandleOnPlayerRightClicksPlayer_Head
+      # Is it a telegraph?
+      - inject TelegraphOnPlayerRightClicksPlayer_Head
     # Custom Head Retention
     # Lootbags
     on player places CyanLootbag|BrownLootbag|PinkLootbag|PurpleLootbag|EggLootbag|GoldenLootbag|BlueLootbag|OrangeLootbag|RedLootbag|WhiteLootbag|LimestoneDinosaurSkullFossil|LimestoneDinosaurTrackFossil|LimestonePalmLeafFossil|LimestoneTrilobyteFossil|LimestoneShellFossil|LimestoneFishFossil|ShaleFishFossil|ShaleShellFossil|ShaleTrilobyteFossil|ShalePalmLeafFossil|ShaleDinosaurTrackFossil|ShaleDinosaurSkullFossil|SandstoneFishFossil|SandstoneShellFossil|SandstoneTrilobyteFossil|SandstonePalmLeafFossil|SandstoneDinosaurTrackFossil|SandstoneDinosaurSkullFossil|PoisonOil|LavenderOil|LemongrassOil|OrangeOil|PeppermintOil|PufferfishPoisonOil|EucalyptusOil|LightGreenStar|YellowStar|RedStar|PurpleStar|LightBlueStar|WhiteStar|PinkStar|OrangeStar|MagentaStar|LimeStar|LightGrayStar|SkyBlueStar|GreenStar|GrayStar|CyanStar|BrownStar|BlackStar|SapphireGeode|RoseQuartzGeode|NetherQuartzGeode|EmeraldGeode|AmethystGeode|QuartzGeode|RopeCoilAnchor|YellowCore|DumbCobblestone|DumbStone:
@@ -164,3 +148,53 @@ ScrapMetal:
 #   type: item
 #   material: heart_of_the_sea
 #     display name:
+
+
+CustomRegionOnPlayerBreaksBlock:
+  type: task
+  script:
+      - define cuboids:<context.location.cuboids>
+      - if <context.location.cuboids.contains_text[AlchemyStation]>:
+          - narrate "<&c>[Machines]<&co> You have broken your Alchemy Station..."
+          - run CustomBlockControllerHelper def:AlchemyStation
+      - if <context.location.cuboids.contains_text[TransmutationCircle]>:
+          - narrate "<&4>Dark Alchemy<&co> Your circle has faded."
+          - run CustomBlockControllerHelper def:TransmutationCircle
+      - if <context.location.cuboids.contains_text[Candle]>:
+          - narrate "Your candle has been removed."
+          - run CustomBlockControllerHelper def:<[itemDrop]>|<[cuboids]>
+      - if <context.location.cuboids.contains_text[FoulCandle]>:
+          - narrate "Your candle has been removed."
+          - run CustomBlockControllerHelper def:FoulCandle
+MachineOnPlayerBreaksBlock:
+  type: task
+  script:
+      - define cubes:<context.location.cuboids>
+      - define theCuboid <context.location.cuboids.filter[notable_name.starts_with[testmachine]].get[1]||null>
+      - run MachineCheck def:<[cubes]>|<[theCuboid]>
+
+TelegraphOnPlayerBreaksBlock:
+  type: task
+  script:
+      - if <[itemDrop].contains_text[Telegraph]>:
+          - flag server Telegraph_<context.location.simple>:!
+
+# Left Click Player_Head
+TelegraphOnPlayerLeftClicksPlayer_Head:
+  type: task
+  script:
+      - if <[customItem].contains_text[Telegraph]>:
+          - define click:left
+          - inject TelegraphHandler
+# Right Click Player Head
+CandleOnPlayerRightClicksPlayer_Head:
+  type: task
+  script:
+    - if <[customItem].contains_text[Candle]>:
+      - inject CandleHandler
+TelegraphOnPlayerRightClicksPlayer_Head:
+  type: task
+  script:
+    - if <[customItem].contains_text[Telegraph]>:
+      - define click:right
+      - inject TelegraphHandler

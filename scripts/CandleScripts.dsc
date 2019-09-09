@@ -21,14 +21,15 @@ CandleHandler:
           - note remove as:<[theThing].notable_name>
           - execute as_server "denizen save"
         - else:
-          - flag server <[customItem]>_<context.location.simple>:lit
-          - define origin:<context.location.add[0,-1,0]>
-          - define pos1:<[origin].add[4,-3,4]>
-          - define pos2:<[origin].add[-4,3,-4]>
-          - note cu@<[pos1]>|<[pos2]> as:<[customItem]>_<[origin].simple>
-          - execute as_server "denizen save"
-          - narrate "*You light the candle. Its aroma fills the air.*"
-          - run CandleScentText def:<[customItem]>
+          - if <player.item_in_hand.simple> == i@flint_and_steel:
+            - flag server <[customItem]>_<context.location.simple>:lit
+            - define origin:<context.location.add[0,-1,0]>
+            - define pos1:<[origin].add[4,-3,4]>
+            - define pos2:<[origin].add[-4,3,-4]>
+            - note cu@<[pos1]>|<[pos2]> as:<[customItem]>_<[origin].simple>
+            - execute as_server "denizen save"
+            - narrate "*You light the candle. Its aroma fills the air.*"
+            - run CandleScentText def:<[customItem]>
 CandleScentText:
     type: task
     definitions: cuboid
