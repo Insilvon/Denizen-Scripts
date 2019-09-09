@@ -1,10 +1,10 @@
 # Assemble (Party System) Proof of Concept
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.5.0
+# @version 1.5.1
 # Allows players to form groups and participate in Quests together
 # Functions: Party creation, invitation, listing members, leaving, disbanding, and handling disconnects. (2m wait before removing character from party.)
-
+# Last Change: Implemented a sample proof of concept solo/party quest
 AvengersAssemble:
     type: world
     events:
@@ -47,7 +47,7 @@ Assemble:
                 - inject AssembleLeave
             # assemble disband
             - if <[firstArg]> == disband:
-                - inject AssembleDisband
+                - inject AssembleDisbandHelper
             # assemble list
             - if <[firstArg]> == list:
                 - inject AssembleList
@@ -119,26 +119,26 @@ AssembleDecline:
             - narrate "<&c>[Assemble] - You have declined <&a><[host]><&c><&sq>s invitation."
             - narrate "<&c>[Assemble] - <&a><player.name><&c> has declined your invitation." targets:<server.match_player[<[host]>]||null>
             - flag server <player.name>_assembleInvite:!
-            AssembleDisbandHelper:
-                type: task
-                script:
-                    - if !<player.has_flag[assemble]>:
-                        - narrate "<&c>[Assemble] - You are not in a group!"
-                        - stop
-                    - if <player.flag[assemble]> != <player.name>:
-                        - narrate "<&c>[Assemble] - You cannot disband someone else<&sq>s group!"
-                        - stop
-                    - if <player.flag[assemble]> == <player.name>:
-                        - narrate "<&c>[Assemble] - You have disbanded your group."
-                        - inject AssembleDisband
-            AssembleDisband:
-                type: task
-                script:
-                    - define host:<player.flag[assemble]>
-                    - define group:<[host]>_assembleGroup
-                    - foreach <server.flag[<[group]>].as_list> as:character:
-                        - flag <server.match_player[<[character]>]> assemble:!
-                    - flag server <[host]>_assembleGroup:!
+AssembleDisbandHelper:
+    type: task
+    script:
+        - if !<player.has_flag[assemble]>:
+            - narrate "<&c>[Assemble] - You are not in a group!"
+            - stop
+        - if <player.flag[assemble]> != <player.name>:
+            - narrate "<&c>[Assemble] - You cannot disband someone else<&sq>s group!"
+            - stop
+        - if <player.flag[assemble]> == <player.name>:
+            - narrate "<&c>[Assemble] - You have disbanded your group."
+            - inject AssembleDisband
+AssembleDisband:
+    type: task
+    script:
+        - define host:<player.flag[assemble]>
+        - define group:<[host]>_assembleGroup
+        - foreach <server.flag[<[group]>].as_list> as:character:
+            - flag <server.match_player[<[character]>]> assemble:!
+        - flag server <[host]>_assembleGroup:!
 AssembleList:
     type: task
     script:
@@ -178,3 +178,58 @@ AssembleOnFlagExpires:
             # If not, just remove them from the party
             - else:
                 - flag server <[host]>_assembleGroup:<server.flag[<[host_assembleGroup]>].as_list.exclude[<player.name>]>
+
+#=====================================================================#
+#============================Sample Quests============================#
+#=====================================================================#
+
+
+AssembleAssignment:
+    type: assignment
+    actions:
+        on assignment:
+            - narrate "Assignment set"
+    interact scripts:
+    - 1 AssembleInteract
+
+AssembleInteract:
+    type: interact
+    steps:
+        1:
+          chat trigger:
+            1:
+                trigger: /Hello/
+                script:
+                    - chat "Want to do this solo or as a party"
+            2:
+                trigger: /solo/
+                script:
+                    - chat "Alright! YEET"
+                    - flag player AssembleTestQuest
+            3:
+                trigger: /party/
+                script:
+                    - if <player.has_flag[assemble]> && <player.flag[assemble]> == <player.name>:
+                        - chat "Begin! Say <&dq>done<&dq> to complete"
+                        - flag server <player.name>_assembleQuestID:AssembleTestQuest
+                        - flag player AssembleTestQuest
+                    - else:
+                        - chat "You don't have a group though! Come back when you have one."
+            4:
+                trigger: /done/
+                script:
+                    # If you're on this stage
+                    - if <player.has_flag[AssembleTestQuest]>:
+                        # If you're in a group
+                        - if <player.has_flag[assemble]> && <player.flag[assemble]> == <player.name>:
+                            - chat "Group complete!"
+                            - define host:<player.flag[assemble]>
+                            - define group:<[host]>_assembleGroup
+                            - foreach <server.flag[<[group]>].as_list> as:character:
+                                - give diamond to:<server.match_player[<[character]>].inventory>
+                            - flag server <player.name>_assembleQuestID:!
+                        # If you're on your own
+                        - else:
+                            - chat "Solo completed!"
+                            - give diamond
+                        - flag player AssembleTestQuest:!
