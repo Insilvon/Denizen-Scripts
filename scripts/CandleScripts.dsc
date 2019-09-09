@@ -1,10 +1,10 @@
 # Candles
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 2.1.1
+# @version 2.1.2
 # Allows players to place custom candle items which can be lit and snuffed
 # When lit, the candles will narrate a lore description to the surrounding area.
-# Last Change: Added general world task subscripts
+# Last Change: Prevented Flint and Steel from starting fires when lighting candles
 # TODO:// Allow Candles to be Craftable
 
 CandleHandler:
@@ -23,6 +23,7 @@ CandleHandler:
           - execute as_server "denizen save"
         - else:
           - if <player.item_in_hand.simple> == i@flint_and_steel:
+            - determine passively cancelled
             - flag server <[customItem]>_<context.location.simple>:lit
             - define origin:<context.location.add[0,-1,0]>
             - define pos1:<[origin].add[4,-3,4]>
