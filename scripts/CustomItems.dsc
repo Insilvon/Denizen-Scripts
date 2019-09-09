@@ -64,11 +64,6 @@ CustomBlocksController:
       - inject CustomItemPlaced
     on player places SweetCandle|FoulCandle:
       - inject CustomItemPlaced
-    # Telegraph
-    on player places Telegraph:
-      - inject CustomItemPlaced
-      - narrate "Telegraph Placed! Tune into a channel by punching the box!"
-      - inject TelegraphSetup
 
 # Helper script - used for injection only
 CustomItemPlaced:
@@ -130,8 +125,6 @@ ScrapMetal:
 
 # Skyforged Items
 
-
-
 # Eldergleam:
 #   type: item
 #   material: prisamarine_crystals
@@ -149,7 +142,6 @@ ScrapMetal:
 #   material: heart_of_the_sea
 #     display name:
 
-
 CustomRegionOnPlayerBreaksBlock:
   type: task
   script:
@@ -166,20 +158,3 @@ CustomRegionOnPlayerBreaksBlock:
       - if <context.location.cuboids.contains_text[FoulCandle]>:
           - narrate "Your candle has been removed."
           - run CustomBlockControllerHelper def:FoulCandle
-MachineOnPlayerBreaksBlock:
-  type: task
-  script:
-      - define cubes:<context.location.cuboids>
-      - define theCuboid <context.location.cuboids.filter[notable_name.starts_with[testmachine]].get[1]||null>
-      - run MachineCheck def:<[cubes]>|<[theCuboid]>
-
-
-
-# Left Click Player_Head
-
-# Right Click Player Head
-CandleOnPlayerRightClicksPlayer_Head:
-  type: task
-  script:
-    - if <[customItem].contains_text[Candle]>:
-      - inject CandleHandler

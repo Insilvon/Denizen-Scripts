@@ -111,6 +111,13 @@ Telegraph:
 # =================================================================================
 # ====================================World========================================
 # =================================================================================
+TelegraphWorld:
+  type: world
+  events:
+    on player places Telegraph:
+      - inject CustomItemPlaced
+      - narrate "Telegraph Placed! Tune into a channel by punching the box!"
+      - inject TelegraphSetup
 TelegraphOnPlayerRightClicksPlayer_Head:
   type: task
   script:

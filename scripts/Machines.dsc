@@ -1,10 +1,10 @@
 # Machines Proof of Concept
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.0.0
+# @version 1.0.1
 # Placeable Schematics which serve a purpose, similar to popular Spigot Plugins which exist
-
-# All machines
+# Last Change: added general world subscripts
+# TODO://
 
 MachineController:
   type: world
@@ -78,3 +78,9 @@ TransmutationAxe:
     - An Axe which proves that through
     - faith and pseudoscience,
     - all things are possible.
+MachineOnPlayerBreaksBlock:
+  type: task
+  script:
+      - define cubes:<context.location.cuboids>
+      - define theCuboid <context.location.cuboids.filter[notable_name.starts_with[testmachine]].get[1]||null>
+      - run MachineCheck def:<[cubes]>|<[theCuboid]>

@@ -1,9 +1,10 @@
 # Candles
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 2.1.0
+# @version 2.1.1
 # Allows players to place custom candle items which can be lit and snuffed
 # When lit, the candles will narrate a lore description to the surrounding area.
+# Last Change: Added general world task subscripts
 # TODO:// Allow Candles to be Craftable
 
 CandleHandler:
@@ -95,3 +96,10 @@ CandleScentText:
         - if <[cuboid].contains[honeysuckle]>:
             - narrate "<&e>*The sweet smell of sugar and honeysuckle fills the air*"
             - stop
+
+CandleOnPlayerRightClicksPlayer_Head:
+    type: task
+    script:
+        - if <[customItem].contains_text[Candle]>:
+        - inject CandleHandler
+    
