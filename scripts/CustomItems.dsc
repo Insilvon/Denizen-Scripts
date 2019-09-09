@@ -1,11 +1,11 @@
 # Custom Items
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.2.1
+# @version 1.2.2
 # All Scripts relating to handling Custom Items, Saving Custom Blocks, and the individual Item Scripts
 
 # Helper script which will identify a cuboid and remove it from the Chunk File
-# Last Change: Separated General World Tasks by the system calling them
+# Last Change: Moved Telegraph Scripts to file
 # TODO:// Move general tasks to their respective Files instead, make this only handle general events
 CustomBlockControllerHelper:
   type: task
@@ -173,28 +173,13 @@ MachineOnPlayerBreaksBlock:
       - define theCuboid <context.location.cuboids.filter[notable_name.starts_with[testmachine]].get[1]||null>
       - run MachineCheck def:<[cubes]>|<[theCuboid]>
 
-TelegraphOnPlayerBreaksBlock:
-  type: task
-  script:
-      - if <[itemDrop].contains_text[Telegraph]>:
-          - flag server Telegraph_<context.location.simple>:!
+
 
 # Left Click Player_Head
-TelegraphOnPlayerLeftClicksPlayer_Head:
-  type: task
-  script:
-      - if <[customItem].contains_text[Telegraph]>:
-          - define click:left
-          - inject TelegraphHandler
+
 # Right Click Player Head
 CandleOnPlayerRightClicksPlayer_Head:
   type: task
   script:
     - if <[customItem].contains_text[Candle]>:
       - inject CandleHandler
-TelegraphOnPlayerRightClicksPlayer_Head:
-  type: task
-  script:
-    - if <[customItem].contains_text[Telegraph]>:
-      - define click:right
-      - inject TelegraphHandler
