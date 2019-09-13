@@ -46,37 +46,10 @@ YAMLScript:
         - note in@QuestJournalMenu as:<player.uuid>questjournal
         - note in@QuestCompleteMenu as:<player.uuid>completedquests
         - flag player questjournal
-    # on player joins:
-    #   - wait 0.1s
-    #   - execute as_server "broadcast <player.name.display>"
-    #   - if !<server.has_file[/CharacterSheets/<player.uuid>.yml]>:
-    #     - yaml create id:<player.uuid>
-    #     - yaml "savefile:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-    #     - yaml "load:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-    #     - yaml id:<player.uuid> set script.version:0.0.1
-    #     - yaml id:<player.uuid> set info.username:<player.name>
-    #     - yaml id:<player.uuid> set info.uuid:<player.uuid>
-    #     - yaml id:<player.uuid> set info.character_name:<player.name.display>
-    #     - yaml id:<player.uuid> set info.description:""
-    #     - yaml id:<player.uuid> set title.current_title:"Newcomer"
-    #     - yaml id:<player.uuid> set title.earned:""
-    #     - yaml id:<player.uuid> set reputation.faction1:""
-    #     - yaml id:<player.uuid> set reputation.faction2:""
-    #     - yaml id:<player.uuid> set reputation.faction3:""
-    #     - yaml id:<player.uuid> set flags.list:""
-    #     - yaml id:<player.uuid> set achievements.last_wayshrine:""
-    #     - yaml id:<player.uuid> set quests.completedquests:0
-    #     - yaml "savefile:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-    #     - yaml unload id:<player.uuid>
-    #   - else:
-    #     - yaml "load:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-    #     - flag player faction1:
-    #     - flag player faction2:
-    #     - flag player faction3:
     on player right clicks player:
-    - yaml "load:/CharacterSheets/<context.entity.uuid>.yml" id:<context.entity.uuid>
-    - narrate "<yaml[<context.entity.uuid>].read[description.text]>"
-    - yaml unload id:<context.entity.uuid>
+    - yaml "load:/CharacterSheets/<context.entity.uuid>/<context.entity.name.display>.yml" id:<context.entity.name.display>
+    - narrate "<yaml[<context.entity.name.display>].read[Description.Text]>"
+    - yaml unload id:<context.entity.name.display>
 
 # When a player saves their game at a wayshrine, Denizen will save the location in the event that
 # Regular Respawning doesn't work
@@ -89,58 +62,40 @@ WayshrineSave:
     - yaml unload id:<player.uuid>
 
 # Description Related Commands
-DescHelp:
+Description:
   type: command
-  name: deschelp
-  description: How to use Descriptions.
-  usage: /deschelp
-  aliases:
-  - dhelp
-  - DescHelp
+  name: description
+  description: Set and manage your character<&sq>s description.
+  usage: /description set|add <&lt>Your Description<&gt>
+  aliases: /d
   script:
-  - narrate "<&a>Use /dset <Your Description Here> to set your description."
-  - narrate "<&a>Use /dread to see your current description."
-  - narrate "<&a>Right click another player to see their description."
-DescriptionSet:
-  type: command
-  name: descset
-  description: Sets your description.
-  usage: /descset <&lt>myArg1<&gt>
-  aliases:
-  - dset
-  - DescSet
-  - descset
-  script:
-    - define id:<player.name.display>
-    - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-    - yaml id:<[id]> set Description.Text:<context.raw_args>
-    - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-    - yaml unload id:<[id]>
-# CHECK THIS WORKS
-DescriptionAdd:
-  type: command
-  name: descadd
-  description: Adds string to your description.
-  usage: /descadd <&lt>myArg1<&gt>
-  aliases:
-    - dadd
-  script:
-    - define id:<player.name.display>
-    - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-    - define old:<yaml[<[id]>].read[Description.Text]>
-    - yaml id:<[id]> set "Description.Text:<[old]> <context.raw_args>"
-
-DescriptionRead:
-  type: command
-  name: descread
-  description: Reads your current description.
-  usage: /descread
-  aliases:
-  - dread
-  - descread
-  - DescRead
-  script:
-    - define id:<player.name.display>
-    - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-    - narrate "<yaml[<[id]>].read[Description.Text]>"
-    - yaml unload id:<[id]>
+    - define rawArgs:<context.args>
+    - if <[rawArgs].size> == 1:
+      - define command:<[rawArgs].get[1]>
+      - if <[command]> == read:
+        - define id:<player.name.display>
+        - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+        - narrate "<yaml[<[id]>].read[Description.Text]>"
+        - yaml unload id:<[id]>
+      - else:
+        - narrate "Descriptions<&co> Use <&a>/description set<&f> or <&a>/description add."
+        - narrate "Descriptions<&co> To view another player<&sq>s description, right click them!"
+      - stop
+    - if <[rawArgs].size> == 3:
+      - define command:<[rawArgs].get[1]>
+      - define text:<[rawArgs].get[2]>
+      - if <[command]> == set:
+        - define id:<player.name.display>
+        - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+        - yaml id:<[id]> set Description.Text:<[text]>
+        - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+        - yaml unload id:<[id]>
+        - stop
+      - if <[command]> == add:
+        - define id:<player.name.display>
+        - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+        - define "newText:<yaml[<[id]>].read[Description.Text]> <[text]>"
+        - yaml id:<[id]> set "Description.Text:<[old]> <[newText]>"
+        - stop
+    - narrate "Descriptions<&co> Use <&a>/description set<&f> or <&a>/description add."
+    - narrate "Descriptions<&co> To view another player<&sq>s description, right click them!"
