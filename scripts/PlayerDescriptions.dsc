@@ -70,10 +70,10 @@ Description:
   aliases: /d
   script:
     - define rawArgs:<context.args>
+    - define id:<player.name.display>
     - if <[rawArgs].size> == 1:
       - define command:<[rawArgs].get[1]>
       - if <[command]> == read:
-        - define id:<player.name.display>
         - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
         - narrate "<yaml[<[id]>].read[Description.Text]>"
         - yaml unload id:<[id]>
@@ -84,18 +84,13 @@ Description:
     - if <[rawArgs].size> == 3:
       - define command:<[rawArgs].get[1]>
       - define text:<[rawArgs].get[2]>
+      - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
       - if <[command]> == set:
-        - define id:<player.name.display>
-        - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
         - yaml id:<[id]> set Description.Text:<[text]>
-        - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-        - yaml unload id:<[id]>
-        - stop
       - if <[command]> == add:
-        - define id:<player.name.display>
-        - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-        - define "newText:<yaml[<[id]>].read[Description.Text]> <[text]>"
-        - yaml id:<[id]> set "Description.Text:<[old]> <[newText]>"
-        - stop
+        - yaml id:<[id]> set "Description.Text:<yaml[<[id]>].read[Description.Text]> <[text]>"
+      - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+      - yaml unload id:<[id]>
+      - stop
     - narrate "Descriptions<&co> Use <&a>/description set<&f> or <&a>/description add."
     - narrate "Descriptions<&co> To view another player<&sq>s description, right click them!"
