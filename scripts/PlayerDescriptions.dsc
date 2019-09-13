@@ -27,6 +27,8 @@ CharacterSheetFolderSetup:
       - yaml id:<[id]> set Renown.Skyborne:0
       - yaml id:<[id]> set Renown.Outsiders:0
       # Flags
+      - foreach <player.list_flags> as:flag:
+        - yaml id:<[id]> set Flags.<[flag]>:<player.flag[<[flag]>]>
       # Bounties ?
       # Town
       # Wayshrine ?
