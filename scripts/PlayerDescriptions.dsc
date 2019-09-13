@@ -1,7 +1,7 @@
 # Player Descriptions
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.0.1
+# @version 1.0.3
 # Allows players to create and save descriptions of their character for others to view
 
 # You should only run this when the player creates a new character
@@ -36,6 +36,7 @@ CharacterSheetFolderSetup:
       # Achievements ?
       - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
       - yaml unload id:<[id]>
+
 YAMLScript:
   type: world
   events:

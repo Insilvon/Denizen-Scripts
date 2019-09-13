@@ -1,7 +1,7 @@
 # Radiant Quests
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.0.0
+# @version 1.0.1
 # Proof of Concept for Radiant/Dynamic Quests
 
 # All things Radiant Quests
@@ -33,24 +33,24 @@ QuestController:
     on player left clicks queststatsi in inventory:
       - inventory close
       - wait 3
-      - inventory open d:in@<player>completedquests
+      - inventory open d:in@<player.name.display>completedquests
       - queue clear
     on player left clicks completedquestsi in inventory:
       - inventory close
-      - inventory open d:in@<player>completedquests
+      - inventory open d:in@<player.name.display>completedquests
     on player left clicks completedquestsi2 in inventory:
       - inventory close
-      - inventory open d:in@<player>completedquests2
+      - inventory open d:in@<player.name.display>completedquests2
     on player left clicks completedquestsi3 in inventory:
       - inventory close
-      - inventory open d:in@<player>completedquests3
+      - inventory open d:in@<player.name.display>completedquests3
     on player left clicks activequestsi in inventory:
       - inventory close
-      - inventory open d:in@<player>questjournal
+      - inventory open d:in@<player.name.display>questjournal
     on player logs in:
       - if !<player.has_flag[questjournal]>:
-        - note in@QuestJournalMenu as:<player>questjournal0
-        - note in@QuestCompleteMenu2 as:<player>completedquests0
+        - note in@QuestJournalMenu as:<player.name.display>questjournal0
+        - note in@QuestCompleteMenu2 as:<player.name.display>completedquests0
         - flag player QuestCompletedMenus:0
         - flag player QuestActiveMenus:0
         - flag player questjournal
@@ -62,12 +62,12 @@ questlog:
   usage: /questlog
   script:
     - if !<player.has_flag[questjournal]>:
-        - note in@QuestJournalMenu as:<player>questjournal
-        - note in@QuestCompleteMenu2 as:<player>completedquests2
-        - note in@QuestCompleteMenu3 as:<player>completedquests3
-        - note in@QuestCompleteMenu as:<player>completedquests
+        - note in@QuestJournalMenu as:<player.name.display>questjournal
+        - note in@QuestCompleteMenu2 as:<player.name.display>>completedquests2
+        - note in@QuestCompleteMenu3 as:<player.name.display>completedquests3
+        - note in@QuestCompleteMenu as:<player.name.display>completedquests
         - flag player questjournal
-    - inventory open d:in@<player>questjournal
+    - inventory open d:in@<player.name.display>questjournal
 
 # Inventory Which displays the first round of completed quests
 
@@ -168,6 +168,7 @@ completedquestsi3:
 
 # Script Which Increments the Character Sheet Statistics for Completed Quests
 
+# TODO: Revise this to use the new character sheet
 IncCompletedQuest:
   type: task
   script:
@@ -205,26 +206,26 @@ QuestsExInteract:
           trigger: /Regex:Start/
           script:
             - chat "Quest Started!"
-            - inventory add d:in@<player>questjournal o:QuestsExampleMenuItem
+            - inventory add d:in@<player.name.display>questjournal o:QuestsExampleMenuItem
         2:
           trigger: /Regex:Stop/
           script:
             - chat "You finished my quest!"
-            - if !<in@<player>completedquests.can_fit[QuestsExampleMenuItem]>:
-              - if !<in@<player>completedquests2.can_fit[QuestsExampleMenuItem]>:
-                - if !<in@<player>completedquests3.can_fit[QuestsExampleMenuItem]>:
+            - if !<in@<player.name.display>completedquests.can_fit[QuestsExampleMenuItem]>:
+              - if !<in@<player.name.display>completedquests2.can_fit[QuestsExampleMenuItem]>:
+                - if !<in@<player.name.display>completedquests3.can_fit[QuestsExampleMenuItem]>:
                   - narrate "[OOC:] Out of capacity! Please inform an admin that the QuestLog limit needs to be increased."
                 - else:
-                  - inventory add d:in@<player>completedquests3 o:QuestsExampleMenuItem
-                  - inventory remove d:in@<player>questjournal o:QuestsExampleMenuItem
+                  - inventory add d:in@<player.name.display>completedquests3 o:QuestsExampleMenuItem
+                  - inventory remove d:in@<player.name.display>questjournal o:QuestsExampleMenuItem
                   - run IncCompletedQuest
               - else:
-                - inventory add d:in@<player>completedquests2 o:QuestsExampleMenuItem
-                - inventory remove d:in@<player>questjournal o:QuestsExampleMenuItem
+                - inventory add d:in@<player.name.display>completedquests2 o:QuestsExampleMenuItem
+                - inventory remove d:in@<player.name.display>questjournal o:QuestsExampleMenuItem
                 - run IncCompletedQuest
             - else:
-              - inventory add d:in@<player>completedquests o:QuestsExampleMenuItem
-              - inventory remove d:in@<player>questjournal o:QuestsExampleMenuItem
+              - inventory add d:in@<player.name.display>completedquests o:QuestsExampleMenuItem
+              - inventory remove d:in@<player.name.display>questjournal o:QuestsExampleMenuItem
               - run IncCompletedQuest
 
 QuestsExampleBook:
