@@ -1,13 +1,45 @@
 # Player Descriptions
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.0.0
+# @version 1.0.1
 # Allows players to create and save descriptions of their character for others to view
 
+# You should only run this when the player creates a new character
+CharacterSheetFolderSetup:
+  type: task
+  script:
+    - if !<server.has_file[/CharacterSheets/<player.uuid>/<player.name.display>.yml]>:
+      - define id:<player.name.display>
+      - yaml create id:<[id]>
+      - yaml "savefile:/CharacterSheets/<[id]>.yml" id:<[id]>
+      - yaml "load:/CharacterSheets/<[id]>.yml" id:<[id]>
+      # Script Info
+      - yaml id:<[id]> set Script.Version:0.0.2
+      # Info
+      - yaml id:<[id]> set Info.Name:<[id]>
+      # SkillAPI
+      # Description
+      - yaml id:<[id]> set Description.text:""
+      # Faction
+      - yaml id:<[id]> set Faction.Name
+      # Renown
+      - yaml id:<[id]> set Renown.ChildrenOfTheSun:0
+      - yaml id:<[id]> set Renown.Skyborne:0
+      - yaml id:<[id]> set Renown.Outsiders:0
+      # Flags
+      # Bounties ?
+      # Town
+      # Wayshrine ?
+      # Titles ?
+      # Achievements ?
+      - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+      - yaml unload id:<[id]>
 YAMLScript:
   type: world
   events:
     on player logs in:
+      - wait 1s
+      - inject CharacterSheetFolderSetup
       - if !<player.has_flag[questjournal]>:
         - note in@QuestJournalMenu as:<player.uuid>questjournal
         - note in@QuestCompleteMenu as:<player.uuid>completedquests

@@ -7,6 +7,26 @@
 # All things Radiant Quests
 # TYPES: Fetch, Investigate, Deliver, Kill, Capture
 #
+AddQuest:
+  type: task
+  definitions: player|MenuItem|type
+  script:
+    - if <[type]> != Completed && <[type]> != Active:
+      - narrate "Error in AddQuest script - invalid type!"
+      - narrate "Please notify your admin."
+      - stop
+    - define inventoryName: <[player]><[type]>Quest
+    - define totalMenus:<<[player]>.flag[Quest<[type]>Menus]>
+    - define currentMenu:0
+    # Check every menu, trying to add
+    - while <[currentMenu]> <= <[totalMenu]>:
+      - if <in@<[player]>completedquests<[currentMenu]>.first_empty> != -1:
+        - inventory add d:in@<[player]><[type]>quests<[currentMenu]> o:<[MenuItem]>
+        - stop
+    # If you've gotten here, you've had no luck and now need to add one.
+    - define currentMenu:++
+    - note in@QuestCompleteMenu as:<[player]>completedquests<[currentMenu]>
+
 QuestController:
   type: world
   events:
@@ -29,10 +49,10 @@ QuestController:
       - inventory open d:in@<player>questjournal
     on player logs in:
       - if !<player.has_flag[questjournal]>:
-        - note in@QuestJournalMenu as:<player>questjournal
-        - note in@QuestCompleteMenu2 as:<player>completedquests2
-        - note in@QuestCompleteMenu3 as:<player>completedquests3
-        - note in@QuestCompleteMenu as:<player>completedquests
+        - note in@QuestJournalMenu as:<player>questjournal0
+        - note in@QuestCompleteMenu2 as:<player>completedquests0
+        - flag player QuestCompletedMenus:0
+        - flag player QuestActiveMenus:0
         - flag player questjournal
 # Command Script to show the Quest Journal
 
