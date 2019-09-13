@@ -19,7 +19,7 @@ CharacterSheetFolderSetup:
       - yaml id:<[id]> set Info.Name:<[id]>
       # SkillAPI
       # Description
-      - yaml id:<[id]> set Description.text:""
+      - yaml id:<[id]> set Description.Text:""
       # Faction
       - yaml id:<[id]> set Faction.Name
       # Renown
@@ -111,10 +111,25 @@ DescriptionSet:
   - DescSet
   - descset
   script:
-  - yaml "load:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-  - yaml id:<player.uuid> set description.text:<context.raw_args>
-  - yaml "savefile:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-  - yaml unload id:<player.uuid>
+    - define id:<player.name.display>
+    - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+    - yaml id:<[id]> set Description.Text:<context.raw_args>
+    - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+    - yaml unload id:<[id]>
+# CHECK THIS WORKS
+DescriptionAdd:
+  type: command
+  name: descadd
+  description: Adds string to your description.
+  usage: /descadd <&lt>myArg1<&gt>
+  aliases:
+    - dadd
+  script:
+    - define id:<player.name.display>
+    - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+    - define old:<yaml[<[id]>].read[Description.Text]>
+    - yaml id:<[id]> set "Description.Text:<[old]> <context.raw_args>"
+
 DescriptionRead:
   type: command
   name: descread
@@ -125,6 +140,7 @@ DescriptionRead:
   - descread
   - DescRead
   script:
-  - yaml "load:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-  - narrate "<yaml[<player.uuid>].read[description.text]>"
-  - yaml unload id:<player.uuid>
+    - define id:<player.name.display>
+    - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+    - narrate "<yaml[<[id]>].read[Description.Text]>"
+    - yaml unload id:<[id]>
