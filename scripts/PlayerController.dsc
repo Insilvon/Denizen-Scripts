@@ -15,7 +15,7 @@ PlayerController:
       - if !<player.has_flag[Character]>:
         - flag player Character:0
         - narrate "<&b>[Characters] - Setting your total number of characters."
-      - if !<player.as_flag[CharacterGUI]>:
+      - if !<player.has_flag[CharacterGUI]>:
         - flag player CharacterGUI
         - note in@CharacterGUIMenu as:<player.uuid>_GUI
       - define path:/PlayerData/<player.uuid>/

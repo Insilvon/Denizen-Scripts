@@ -21,7 +21,7 @@ CharacterSheetFolderSetup:
       # Description
       - yaml id:<[id]> set Description.Text:""
       # Faction
-      - yaml id:<[id]> set Faction.Name
+      - yaml id:<[id]> set Faction.Name:""
       # Renown
       - yaml id:<[id]> set Renown.ChildrenOfTheSun:0
       - yaml id:<[id]> set Renown.Skyborne:0
