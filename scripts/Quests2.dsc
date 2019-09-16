@@ -1,7 +1,7 @@
 # Radiant Quests REWRITE
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 2.0.1
+# @version 2.0.2
 # Proof of Concept for Radiant/Dynamic Quests
 
 # All things Radiant Quests
@@ -41,18 +41,12 @@ QuestController:
     type: world
     events:
         on player left clicks ActiveQuestItem in inventory:
-            - determine cancelled passively
-            - inventory close
-            - flag player <player.name.display>_QuestJournalMenu:1
             - define questType:ActiveQuest
-            - inject LoadInventory
+            - inject QuestMenuHandler
             #- inventory open d:in@<player.name.display>_ActiveQuestMenu
         on player left clicks CompletedQuestItem in inventory:
-            - determine cancelled passively
-            - inventory close
-            - flag player <player.name.display>_QuestJournalMenu:1
             - define questType:CompletedQuest
-            - inject LoadInventory
+            - inject QuestMenuHandler
             #- inventory open d:in@<player.name.display>_CompletedQuestMenu
         on player left clicks NextPageActiveQuestItem in inventory:
             - determine cancelled passively
@@ -76,6 +70,18 @@ QuestController:
         on player logs in:
             - wait 1s
             - inject QuestLoginScript
+QuestMenuHandler:
+    type: task
+    script:
+        - determine cancelled passively
+        - inventory close
+        - flag player <player.name.display>_QuestJournalMenu:1
+        - inject LoadInventory
+QuestPageHandler:
+    type: task
+    script:
+        - determine cancelled passively
+        - define direction:next
 # General script to run when player clicks "next page or back"
 # Will change display items based on the current set of items to display
 QuestChangePage:
@@ -92,24 +98,26 @@ LoadInventory:
         - define character:<player.name.display>
         - define itemlist:<player.flag[<[character]>_<[questType]>Items].as_list>
         - define menu:<player.flag[<[character]>_QuestJournalMenu]>
-        - define end:<[menu].as_int.mul_int[43]>
-        - define start:<[end].as_int.sub_int[42]>
-        - narrate "<[itemlist].size> vs <[start]> to <[end]>"
+        - define end:<[menu].as_int.mul_int[42]>
+        - define start:<[end].as_int.sub_int[41]>
+        #- narrate "<[itemlist].size> vs <[start]> to <[end]>"
         - if <[itemlist].size> < <[start]>:
-            - narrate "list less than start"
+           # - narrate "list less than start"
             - flag player <player.name.display>_QuestJournalMenu:--
             - stop
-        - narrate "list greater than start"
+        #- narrate "list greater than start"
         - define display:<[itemlist].get[<[start]>].to[<[end]>]||null>
-        - narrate "<[display]>"
+        #- narrate "<[display]>"
         - inventory clear d:in@<[character]>_<[questType]>Menu
-        - narrate "inventory cleared"
+        #- narrate "inventory cleared"
         - foreach <[display]> as:item:
             - inventory add d:in@<[character]>_<[questType]>Menu o:<[item]>
         - if <[questType]> == ActiveQuest:
-            - inventory set d:in@<[character]>_<[questType]>Menu o:CompletedQuestItem slot:44
+            - inventory set d:in@<[character]>_<[questType]>Menu o:CompletedQuestItem slot:43
+            - inventory set d:in@<[character]>_<[questType]>Menu o:LastPageActiveQuestItem slot:44
         - else:
-            - inventory set d:in@<[character]>_<[questType]>Menu o:ActiveQuestItem slot:44
+            - inventory set d:in@<[character]>_<[questType]>Menu o:ActiveQuestItem slot:43
+            - inventory set d:in@<[character]>_<[questType]>Menu o:LastPageCompletedQuestItem slot:44
         - inventory set d:in@<[character]>_<[questType]>Menu o:NextPage<[questType]>Item slot:45
         - inventory close
         - inventory open d:in@<[character]>_<[questType]>Menu
@@ -136,20 +144,20 @@ ActiveQuestItem:
 # Item to show next Active Quest page
 NextPageActiveQuestItem:
     type: item
-    material: book
+    material: player_head[skull_skin=23b3f9dc-f02c-4ea8-a949-dbd56b03602c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVmMzU2YWQyYWE3YjE2NzhhZWNiODgyOTBlNWZhNWEzNDI3ZTVlNDU2ZmY0MmZiNTE1NjkwYzY3NTE3YjgifX19]
     display name: Next Page
 LastPageActiveQuestItem:
     type: item
-    material: book
+    material: player_head[skull_skin=1226610a-b7f8-47e5-a15d-126c4ef18635|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=]
     display name: Back
 # Item to show next Completed Quest page
 NextPageCompletedQuestItem:
     type: item
-    material: book
+    material: player_head[skull_skin=23b3f9dc-f02c-4ea8-a949-dbd56b03602c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVmMzU2YWQyYWE3YjE2NzhhZWNiODgyOTBlNWZhNWEzNDI3ZTVlNDU2ZmY0MmZiNTE1NjkwYzY3NTE3YjgifX19]
     display name: Next Page
 LastPageCompletedQuestItem:
     type: item
-    material: book
+    material: player_head[skull_skin=1226610a-b7f8-47e5-a15d-126c4ef18635|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=]
     display name: Back
 # Item in inventory to load Completed Quest Menu
 CompletedQuestItem:
@@ -168,7 +176,7 @@ QuestJournalActiveQuests:
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
-    - "[] [] [] [] [] [] [] [i@CompletedQuestItem] [i@NextPageActiveQuestItem]"
+    - "[] [] [] [] [] [] [i@CompletedQuestItem] [i@LastPageActiveQuestItem] [i@NextPageActiveQuestItem]"
 # Menu template which shows compelted quests
 QuestJournalCompletedQuests:
     type: inventory
@@ -179,4 +187,4 @@ QuestJournalCompletedQuests:
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
-    - "[] [] [] [] [] [] [] [i@ActiveQuestItem] [i@NextPageCompletedQuestItem]"
+    - "[] [] [] [] [] [] [i@ActiveQuestItem] [i@LastPageCompletedQuestItem] [i@NextPageCompletedQuestItem]"
