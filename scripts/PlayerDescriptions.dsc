@@ -11,8 +11,8 @@ CharacterSheetFolderSetup:
     - if !<server.has_file[/CharacterSheets/<player.uuid>/<player.name.display>.yml]>:
       - define id:<player.name.display>
       - yaml create id:<[id]>
-      - yaml "savefile:/CharacterSheets/<[id]>.yml" id:<[id]>
-      - yaml "load:/CharacterSheets/<[id]>.yml" id:<[id]>
+      - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+      - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
       # Script Info
       - yaml id:<[id]> set Script.Version:0.0.2
       # Info

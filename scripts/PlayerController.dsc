@@ -18,7 +18,7 @@ PlayerController:
       - if !<player.has_flag[CharacterGUI]>:
         - flag player CharacterGUI
         - note in@CharacterGUIMenu as:<player.uuid>_GUI
-      - define path:/PlayerData/<player.uuid>/
+      - define path:/CharacterSheets/<player.uuid>/
       - if !<server.has_file[<[path]>base.yml]>:
         - narrate "Creating Base File"
         - yaml create id:base
@@ -35,14 +35,14 @@ PlayerController:
       - if <context.item.lore.contains[$*@*$]>:
         - determine passively cancelled
         - define arg:<context.raw_slot>
-        - define path:/PlayerData/<player.uuid>/<[arg]>.yml
+        - define path:/CharacterSheets/<player.uuid>/<[arg]>.yml
         - if <player.flag[Character]> >= 1:
-          - if <server.has_file[/PlayerData/<player.uuid>/<context.raw_slot>.yml]>:
+          - if <server.has_file[/CharacterSheets/<player.uuid>/<context.raw_slot>.yml]>:
             # TODO: Fix the proc
             - if <player.has_flag[CurrentCharacter]>:
-              - yaml load:/PlayerData/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
+              - yaml load:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
               - yaml id:<player.flag[CurrentCharacter]> set info.character_location:<player.location>
-              - yaml savefile:/PlayerData/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
+              - yaml savefile:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
               - yaml unload id:<player.flag[CurrentCharacter]>
               - note <player.inventory> as:<player.uuid>_<player.flag[CurrentCharacter]>
               - narrate "<&b>[Characters] - Inventory Saved!"
@@ -51,7 +51,7 @@ PlayerController:
             - execute as_server "nickname <player.name> <[character_name]>"
             - narrate "<&b>[Characters] - You are now <[character_name]>"
             - flag player CurrentCharacter:<context.raw_slot>
-            - yaml load:/PlayerData/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
+            - yaml load:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
             - teleport <player> <yaml[<player.flag[CurrentCharacter]>].read[<info.character_location>]>
             - yaml unload id:<player.flag[CurrentCharacter]>
             - inventory clear d:<player.inventory>
@@ -106,8 +106,8 @@ CreateCharacter:
   aliases:
     - ccreate
   script:
-    - define path:/PlayerData/<player.uuid>/
-    - if !<server.has_file[/PlayerData/<player.uuid>/base.yml]>:
+    - define path:/CharacterSheets/<player.uuid>/
+    - if !<server.has_file[/CharacterSheets/<player.uuid>/base.yml]>:
       - narrate "You are lacking crucial backend files. Please message an admin."
     - else:
       - yaml load:<[path]>base.yml id:base
@@ -116,7 +116,7 @@ CreateCharacter:
         - narrate "<&b>[Characters] - You have successfully created a new character with the name <context.args.get[0]>"
         - narrate "<&b>[Characters] - Swap to your character with /sc number"
         - flag player Character:+:1
-        - define newFile:/PlayerData/<player.uuid>/<player.flag[Character]>.yml
+        - define newFile:/CharacterSheets/<player.uuid>/<player.flag[Character]>.yml
         - define newID:<player.flag[Character]>
         - yaml create id:<[newID]>
         - yaml savefile:<[newFile]> id:<[newID]>
@@ -146,14 +146,14 @@ SwapCharacter:
     - cswap
   script:
     - define arg:<context.args.get[0]>
-    - define path:/PlayerData/<player.uuid>/<[arg]>.yml
+    - define path:/CharacterSheets/<player.uuid>/<[arg]>.yml
     - if <player.flag[Character]> >= 1:
-      - if <server.has_file[/PlayerData/<player.uuid>/<context.args.get[0]>.yml]>:
+      - if <server.has_file[/CharacterSheets/<player.uuid>/<context.args.get[0]>.yml]>:
         # TODO: Fix the proc
         - if <player.has_flag[CurrentCharacter]>:
-          - yaml load:/PlayerData/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
+          - yaml load:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
           - yaml id:<player.flag[CurrentCharacter]> set info.character_location:<player.location>
-          - yaml savefile:/PlayerData/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
+          - yaml savefile:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
           - yaml unload id:<player.flag[CurrentCharacter]>
           - note <player.inventory> as:<player.uuid>_<player.flag[CurrentCharacter]>
           - narrate "<&b>[Characters] - Inventory Saved!"
@@ -162,7 +162,7 @@ SwapCharacter:
         - execute as_server "nickname <player.name> <[character_name]>"
         - narrate "<&b>[Characters] - You are now <[character_name]>"
         - flag player CurrentCharacter:<context.args.get[0]>
-        - yaml load:/PlayerData/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
+        - yaml load:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
         - teleport <player> <yaml[<player.flag[CurrentCharacter]>].read[<info.character_location>]>
         - yaml unload id:<player.flag[CurrentCharacter]>
         - inventory clear d:<player.inventory>
