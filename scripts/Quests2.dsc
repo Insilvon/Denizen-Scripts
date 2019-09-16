@@ -6,7 +6,11 @@
 
 # All things Radiant Quests
 # TYPES: Fetch, Investigate, Deliver, Kill, Capture
-#
+
+# =================================================================================
+# ================================= Test Scripts ==================================
+# =================================================================================
+
 SampleBook:
     type: item
     material: book_and_quill
@@ -27,6 +31,10 @@ AddTestQuest2:
     script:
         - flag player <player.name.display>_CompletedQuestItems:<player.item_in_hand>
 
+# =================================================================================
+# ================================= Main Command ==================================
+# =================================================================================
+
 QuestLog:
     type: command
     name: questlog
@@ -35,53 +43,72 @@ QuestLog:
         - inject QuestLoginScript
         - define questType:ActiveQuest
         - inject LoadInventory
-        #- inventory open d:in@<player.name.display>_ActiveQuestMenu
+
+# =================================================================================
+# ================================ Helper Scripts =================================
+# =================================================================================
+
 # Quest Controller script - manages item clicks
 QuestController:
     type: world
     events:
+        on player clicks in inventory priority:1:
+            - if <context.inventory> == in@<player.name.display>_ActiveQuestMenu || <context.inventory> == in@<player.name.display>_CompletedQuestMenu:
+                - determine cancelled
+        on player drop clicks in inventory priority:1:
+            - if <context.inventory> == in@<player.name.display>_ActiveQuestMenu || <context.inventory> == in@<player.name.display>_CompletedQuestMenu:
+                - determine cancelled
+        on player control_drop clicks in inventory priority:1:
+            - if <context.inventory> == in@<player.name.display>_ActiveQuestMenu || <context.inventory> == in@<player.name.display>_CompletedQuestMenu:
+                - determine cancelled
         on player left clicks ActiveQuestItem in inventory:
-            - define questType:ActiveQuest
-            - inject QuestMenuHandler
+            - run QuestMenuHandler def:ActiveQuest instantly
+            # - define questType:ActiveQuest
+            # - inject QuestMenuHandler
             #- inventory open d:in@<player.name.display>_ActiveQuestMenu
         on player left clicks CompletedQuestItem in inventory:
-            - define questType:CompletedQuest
-            - inject QuestMenuHandler
+            - run QuestMenuHandler def:CompletedQuest instantly
+            # - define questType:CompletedQuest
+            # - inject QuestMenuHandler
             #- inventory open d:in@<player.name.display>_CompletedQuestMenu
         on player left clicks NextPageActiveQuestItem in inventory:
-            - determine cancelled passively
-            - define questType:ActiveQuest
-            - define direction:next
-            - inject QuestChangePage
+            - run QuestPageHandler def:ActiveQuest|next instantly
+            # - inject QuestPageHandler
+            # - define questType:ActiveQuest
+            # - inject QuestChangePage
         on player left clicks NextPageCompletedQuestItem in inventory:
-            - determine cancelled passively
-            - define questType:CompletedQuest
-            - define direction:next
-            - inject QuestChangePage
+            - run QuestPageHandler def:CompletedQuest|next instantly
         on player left clicks LastPageActiveQuestItem in inventory:
-            - determine cancelled passively
-            - define questType:ActiveQuest
-            - inject QuestChangePage
+            - run QuestPageHandler def:ActiveQuest|back instantly
         on player left clicks LastPageCompletedQuestItem in inventory:
-            - determine cancelled passively
-            - define questType:CompletedQuest
-            - inject QuestChangePage
+            - run QuestPageHandler def:CompletedQuest|back instantly
         #TODO: ADD THIS TO SERVERTASKS
         on player logs in:
             - wait 1s
             - inject QuestLoginScript
+        on player drops item:
+            - define character:<player.name.display>
+            - narrate <context.inventory>
+            - if <context.inventory> == <[character]>_ActiveQuestMenu || <context.inventory> == <[character]>_CompletedQuestMenu:
+                - determine cancelled
+    
+# Helper script - sets up menu switching
 QuestMenuHandler:
     type: task
+    definitions: questType
     script:
         - determine cancelled passively
         - inventory close
         - flag player <player.name.display>_QuestJournalMenu:1
         - inject LoadInventory
+
+# Helper script - sets up next page
 QuestPageHandler:
     type: task
+    definitions: questType|direction
     script:
         - determine cancelled passively
-        - define direction:next
+        - inject QuestChangePage
 # General script to run when player clicks "next page or back"
 # Will change display items based on the current set of items to display
 QuestChangePage:
@@ -133,7 +160,9 @@ QuestLoginScript:
             - flag player <[character]>_ActiveQuestItems:null
             - flag player <[character]>_CompletedQuestItems:null
         - flag player <[character]>_QuestJournalMenu:1
-
+# =================================================================================
+# =============================== Items/Inventories ===============================
+# =================================================================================
 # Item in inventory to load Active Quest Menu
 ActiveQuestItem:
     type: item
