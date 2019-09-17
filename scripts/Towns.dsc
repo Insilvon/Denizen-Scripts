@@ -7,7 +7,7 @@ TownCommand:
     script:
         - define pos1:<player.flag[pos1]>
         - define pos2:<player.flag[pos2]>
-        - define args:<context.raw_args>
+        - define args:<context.args>
         - if <[args].size> == 1:
             - define command:<[args].get[1]>
             - if <[command]> == info:
@@ -43,10 +43,36 @@ TownHelp:
 TownInfo:
     type: task
     script:
-        - stop
+        - define name:SilTown
+        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
+        - narrate "[Town] - Showing info for <[name]>"
+        - narrate "<&b>[<[name]>] - RESOURCES"
+        - narrate "<&b>[<[name]>] -    Building Materials: <&f><yaml[<[name]>].read[Resources.BuildingMaterials]>"
+        - narrate "<&b>[<[name]>] -    Crafting Materials: <&f><yaml[<[name]>].read[Resources.CraftingMaterials]>"
+        - narrate "<&b>[<[name]>] -    Food: <&f><yaml[<[name]>].read[Resources.Food]>"
+        - narrate "<&b>[<[name]>] -    Minerals: <&f><yaml[<[name]>].read[Resources.Minerals]>"
+        - narrate "<&b>[<[name]>] -    Weapons: <&f><yaml[<[name]>].read[Resources.Weapons]>"
+        - narrate "<&a>[<[name]>] - MILITIA"
+        - narrate "<&a>[<[name]>] -    Infantry: <&f><yaml[<[name]>].read[Militia.Infantry]>"
+        - narrate "<&a>[<[name]>] -    Sentry: <&f><yaml[<[name]>].read[Militia.Sentry]>"
+        - narrate "<&a>[<[name]>] -    Archer: <&f><yaml[<[name]>].read[Militia.Archer]>"
+        - narrate "<&a>[<[name]>] -    Mage: <&f><yaml[<[name]>].read[Militia.Mage]>"
+        - narrate "<&a>[<[name]>] -    Miniboss: <&f><yaml[<[name]>].read[Militia.Miniboss]>"
+        - narrate "<&a>[<[name]>] -    Boss: <&f><yaml[<[name]>].read[Militia.Boss]>"
+        - ~yaml unload id:<[name]>
+        - ~stop
 TownClaim:
     type: task
     script:
+        - define name:<[args].get[2]>
+        - yaml "load:/Towns/<[name]>.yml" id:<[name]>
+        - define owner:<yaml[<[name]>].read[Town.Owner]>
+        - if <[owner]> == none:
+            - yaml id:<[name]> set Town.Owner:<player.uuid>
+            - yaml id:<[name]> set Town.OwnerName:<player.name.display>
+            - yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+            - yaml unload id:<[name]>
+            - execute as_server "denizen save"
         - stop
 # Command which lets players invite other players to their town
 # TODO: Prevent players from inviting themselves
@@ -72,6 +98,7 @@ TownCreate:
         - yaml id:<[name]> set Town.Name:<[name]>
         - yaml id:<[name]> set Town.Level:0
         - yaml id:<[name]> set Town.Owner:none
+        - yaml id:<[name]> set Town.Ownername:none
 
         - yaml id:<[name]> set Inhabitants.list:null
         - yaml id:<[name]> set Militia.Infantry:0
@@ -86,3 +113,17 @@ TownCreate:
         - yaml id:<[name]> set Resources.Weapons:0
         - yaml id:<[name]> set Resources.Minerals:0
         - yaml id:<[name]> set Resources.CraftingMaterials:0
+
+        - yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+        - yaml unload id:<[name]>
+
+
+TownModifyResource:
+    type: task
+    definitions: name|resource|amount
+    script:
+        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
+        - define resourceValue:<yaml[<[name]>].read[Resources.<[resource]>]>
+        - ~yaml id:<[name]> set Resources.<[resource]>:<[resourceValue].add_int[<[amount].as_int>]>
+        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+        - ~yaml unload id:<[name]>

@@ -6,11 +6,6 @@
 # Internal system will inflict players with diseases, then run "symptoms" of increasing severity
 # Custom cures must be made and used to cure the diseases
 
-WorldTest:
-  type: world
-  events:
-    on player places sand|stone:
-      - narrate <player.item_in_hand>
 DiseaseController:
   type: world
   events:
