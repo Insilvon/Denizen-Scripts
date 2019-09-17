@@ -49,6 +49,18 @@ QuestLog:
         # =================================================================================
         
 # Quest Controller script - manages item clicks
+QuestReset:
+    type: task
+    script:
+        - define character:<player.uuid>_<[number]>
+        - narrate "<&e>[Quests] - Removing data for character in slot <[number]>"
+        - flag player <[character]>_QuestJournal:!
+        - note remove as:<[character]>_ActiveQuestMenu
+        - note remove as:<[character]>_CompletedQuestMenu
+        - flag player <[character]>_QuestJournal:!
+        - flag player <[character]>_ActiveQuestItems:!
+        - flag player <[character]>_CompletedQuestItems:!
+        - flag player <[character]>_QuestJournalMenu:!
 QuestController:
     type: world
     events:
@@ -88,9 +100,10 @@ QuestController:
             - inject QuestLoginScript
         on player drops item:
             - define character:<player.uuid>_<player.flag[CurrentCharacter]>
-            - narrate <context.inventory>
-            - if <context.inventory> == <[character]>_ActiveQuestMenu || <context.inventory> == <[character]>_CompletedQuestMenu:
-                - determine cancelled
+            - define inv:<context.inventory||null>
+            - if <[inv]> != null:
+                - if <[inv]> == <[character]>_ActiveQuestMenu || <[inv]> == <[character]>_CompletedQuestMenu:
+                    - determine cancelled
 # Helper script - sets up menu switching
 QuestMenuHandler:
     type: task
