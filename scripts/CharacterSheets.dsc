@@ -1,7 +1,7 @@
-# Player Descriptions
+# Character Sheets
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.0.3
+# @version 1.0.4
 # Allows players to create and save descriptions of their character for others to view
 
 # You should only run this when the player creates a new character
@@ -11,21 +11,21 @@ CharacterSheetFolderSetup:
     - if !<server.has_file[/CharacterSheets/<player.uuid>/<player.name.display>.yml]>:
       - define id:<player.name.display>
       - yaml create id:<[id]>
-      - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-      - yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+      - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+      - ~yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
       # Script Info
-      - yaml id:<[id]> set Script.Version:0.0.2
+      - ~yaml id:<[id]> set Script.Version:0.0.2
       # Info
-      - yaml id:<[id]> set Info.Name:<[id]>
+      - ~yaml id:<[id]> set Info.Name:<[id]>
       # SkillAPI
       # Description
-      - yaml id:<[id]> set Description.Text:""
+      - ~yaml id:<[id]> set Description.Text:""
       # Faction
-      - yaml id:<[id]> set Faction.Name:""
+      - ~yaml id:<[id]> set Faction.Name:""
       # Renown
-      - yaml id:<[id]> set Renown.ChildrenOfTheSun:0
-      - yaml id:<[id]> set Renown.Skyborne:0
-      - yaml id:<[id]> set Renown.Outsiders:0
+      - ~yaml id:<[id]> set Renown.ChildrenOfTheSun:0
+      - ~yaml id:<[id]> set Renown.Skyborne:0
+      - ~yaml id:<[id]> set Renown.Outsiders:0
       # Flags
       - foreach <player.list_flags> as:flag:
         - yaml id:<[id]> set Flags.<[flag]>:<player.flag[<[flag]>]>
@@ -34,7 +34,7 @@ CharacterSheetFolderSetup:
       # Wayshrine ?
       # Titles ?
       # Achievements ?
-      - yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+      - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
       - yaml unload id:<[id]>
 
 YAMLScript:
