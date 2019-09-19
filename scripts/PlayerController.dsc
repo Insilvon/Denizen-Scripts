@@ -40,35 +40,6 @@ PlayerController:
     on player clicks player_head in inventory:
       - define arg:<context.raw_slot>
       - inject CharacterSwap
-      # - if <context.item.lore.contains[$*@*$]>:
-      #   - determine passively cancelled
-      #   - define arg:<context.raw_slot>
-      #   - define path:/CharacterSheets/<player.uuid>/<[arg]>.yml
-      #   - if <player.flag[Character]> >= 1:
-      #     - if <server.has_file[/CharacterSheets/<player.uuid>/<context.raw_slot>.yml]>:
-      #       # TODO: Fix the proc
-      #       - if <player.has_flag[CurrentCharacter]>:
-      #         - define id:<player.flag[CurrentCharacter]>
-      #         - yaml load:/CharacterSheets/<player.uuid>/<[id]>.yml id:<[id]>
-      #         - yaml id:<[id]> set info.character_location:<player.location>
-      #         - yaml savefile:/CharacterSheets/<player.uuid>/<[id]>.yml id:<[id]>
-      #         - yaml unload id:<[id]>
-      #         - note <player.inventory> as:<player.uuid>_<[id]>
-      #         - flag <player> e_<[id]>:<player.equipment>
-      #       - define character_name:<proc[CharacterFetch].context[<[path]>|<context.raw_slot>]>
-      #       - execute as_server "nickname <player.name> <[character_name]>"
-      #       - narrate "<&b>[Characters] - You are now <player.name.display>"
-      #       - flag player CurrentCharacter:<context.raw_slot>
-      #       - yaml load:/CharacterSheets/<player.uuid>/<[id]>.yml id:<[id]>
-      #       - define location:<yaml[<[id]>].read[info.character_location]>
-      #       - narrate "<[location]>"
-      #       - narrate "<player> <[location]>"
-      #       - teleport <player> <[location]>
-      #       - yaml unload id:<[id]>
-      #       - inventory clear d:<player.inventory>
-      #       - inventory set d:<player.inventory> o:in@<player.uuid>_<[id]>
-      #       - adjust <player> 'equipment:<player.flag[e_<[id]>]>'
-              
 
 CharacterGUIMenu:
   type: inventory
@@ -88,20 +59,13 @@ CharacterCommand:
   script:
     - define args:<context.args>
     - if <[args].size> == 1:
-      - define command:<[args].get[1]>
-      - if <[command]> == select:
-        - inject CharacterSelect
-      - if <[command]> == reset:
-        - inject CharacterReset
-      
+      - foreach select|reset as:switch:
+        - if <[args].get[1]> == <[switch]>:
+          - inject Character<[switch]>
     - if <[args].size> == 2:
-      - define command:<[args].get[1]>
-      - if <[command]> == create:
-        - inject CharacterCreate
-      - if <[command]> == swap:
-        - narrate "WE SEE YOU!"
-        - define arg:<context.args.get[2]>
-        - inject CharacterSwap
+      - foreach create|swap as:switch:
+        - if <[args].get[1]> == <[switch]>:
+          - inject Character<[switch]>
     - inject CharacterSelect
 
 
@@ -177,16 +141,12 @@ CharacterCreate:
 CharacterSwap:
   type: task
   script:
-    - narrate "STILL SEE YOU"
+    - define arg:<context.args.get[2]>
     - define path:/CharacterSheets/<player.uuid>/<[arg]>.yml
-    - narrate "<[arg]> and <[path]>"
     - if <player.flag[Character]> >= 1:
-      - narrate "Number of chars >= 1"
       - if <server.has_file[/CharacterSheets/<player.uuid>/<[arg]>.yml]>:
-        - narrate "Server has your file!"
         # TODO: Fix the proc
         - if <player.has_flag[CurrentCharacter]>:
-          - narrate "Do you have a current character?"
           - yaml load:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
           - yaml id:<player.flag[CurrentCharacter]> set info.character_location:<player.location>
           - yaml savefile:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
