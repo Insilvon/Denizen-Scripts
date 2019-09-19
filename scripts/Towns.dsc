@@ -14,19 +14,9 @@ TownCommand:
                 - inject TownInfo
             - run TownHelp
         - if <[args].size> == 2:
-            - define command:<[args].get[1]>
-            - if <[command]> == claim:
-                - inject TownClaim
-            - if <[command]> == raid:
-                - inject TownRaid
-            - if <[command]> == invite:
-                - inject TownInvite
-            - if <[command]> == create:
-                - define name:<[args].get[2]>
-                - if !<server.has_file[/Towns/<[name]>.yml]>:
-                    - inject TownCreate
-                - else:
-                    - narrate "Town - Town already exists!"
+            - foreach claim|raid|invite|create as:switch:
+                - if <[args].get[1]> == <[switch]>:
+                    - inject Town<[switch]>
         - if <[args].size> == 3:
             - define command:<[args].get[1]>
             - if <[command]> == promote:
@@ -60,7 +50,7 @@ TownInfo:
         - narrate "<&a>[<[name]>] -    Miniboss: <&f><yaml[<[name]>].read[Militia.Miniboss]>"
         - narrate "<&a>[<[name]>] -    Boss: <&f><yaml[<[name]>].read[Militia.Boss]>"
         - ~yaml unload id:<[name]>
-        - ~stop
+        - stop
 TownClaim:
     type: task
     script:
@@ -89,6 +79,14 @@ TownPromote:
 # Developer Command which creates a new town at the given location. Uses Denizen
 # pos1/pos2 flags to identify the cuboid.
 TownCreate:
+    type: task
+    script:
+        - define name:<[args].get[2]>
+        - if !<server.has_file[/Towns/<[name]>.yml]>:
+            - inject TownCreateHelper
+        - else:
+            - narrate "Town - Town already exists!"
+TownCreateHelper:
     type: task
     script:
         - yaml create id:<[name]>
