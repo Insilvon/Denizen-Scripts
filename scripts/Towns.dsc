@@ -54,14 +54,22 @@ TownInfo:
 TownClaim:
     type: task
     script:
+        - if !<player.has_flag[CurrentCharacter]>:
+            - narrate "You need to have a character to perform this!"
+            - stop
+        - define id:<player.flag[CurrentCharacter]>
+        - yaml "load:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml" id:<[id]>
+        - define town:<yaml[<[id]>].read[Town.Name]>
+        - if <[town]> != "":
+            - narrate "You are already a part of a town! You cannot claim this town."
+            - narrate "Leave your town with /town leave."
+            - stop
         - define name:<[args].get[2]>
-        - yaml "load:/Towns/<[name]>.yml" id:<[name]>
-        - define owner:<yaml[<[name]>].read[Town.Owner]>
         - if <[owner]> == none:
-            - yaml id:<[name]> set Town.Owner:<player.uuid>
-            - yaml id:<[name]> set Town.OwnerName:<player.name.display>
-            - yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-            - yaml unload id:<[name]>
+            - yaml id:<[id]> set Town.Owner:<player.uuid>
+            - yaml id:<[id]> set Town.OwnerName:<player.name.display>
+            - yaml "savefile:/Towns/<[id]>.yml" id:<[id]>
+            - yaml unload id:<[id]>
             - execute as_server "denizen save"
         - stop
 # Command which lets players invite other players to their town
