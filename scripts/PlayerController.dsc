@@ -1,7 +1,7 @@
 # Player Character Controller Proof of Concept
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 2.0.1
+# @version 2.0.2
 # Allows players to create and save data between multiple "characters" on one account
 
 # Current Flags: Character (# of Chars), Character List, Equipment flags (e_id)
@@ -30,6 +30,7 @@ PlayerControllerOnJoin:
       - yaml unload id:base
     - else:
       - narrate "<&b>[Characters] - Missing base file!"
+
 PlayerController:
   type: world
   events:
@@ -117,15 +118,35 @@ CharacterCreate:
         - narrate "<&b>[Characters] - Swap to your character with /sc number"
         - flag player Character:+:1
         - define newFile:/CharacterSheets/<player.uuid>/<player.flag[Character]>.yml
-        - define newID:<player.flag[Character]>
-        - yaml create id:<[newID]>
-        - yaml savefile:<[newFile]> id:<[newID]>
-        - yaml load:<[newFile]> id:<[newID]>
-        - yaml id:<[newID]> set info.username:<player.name>
-        - yaml id:<[newID]> set info.character_name:<[args].get[2]>
-        - yaml id:<[newID]> set info.character_location:<player.location>
-        - yaml savefile:<[newFile]> id:<[newID]>
-        - yaml unload id:<[newID]>
+        - define id:<player.flag[Character]>
+        - yaml create id:<[id]>
+        - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+        - ~yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+        # Script Info
+        - ~yaml id:<[id]> set Script.Version:0.0.2
+        # Info
+        - ~yaml id:<[id]> set Info.Name:<[id]>
+        # SkillAPI
+        # Description
+        - ~yaml id:<[id]> set Description.Text:""
+        # Faction
+        - ~yaml id:<[id]> set Faction.Name:""
+        # Town
+        - ~yaml id:<[id]> set Town.Name:""
+        # Renown
+        - ~yaml id:<[id]> set Renown.ChildrenOfTheSun:0
+        - ~yaml id:<[id]> set Renown.Skyborne:0
+        - ~yaml id:<[id]> set Renown.Outsiders:0
+        # Flags
+        - foreach <player.list_flags> as:flag:
+          - yaml id:<[id]> set Flags.<[flag]>:<player.flag[<[flag]>]>
+        # Bounties ?
+        # Town
+        # Wayshrine ?
+        # Titles ?
+        # Achievements ?
+        - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+        - yaml unload id:<[id]>
         - if !<player.has_flag[Character_List]>:
           - flag player Character_List:<[args].get[2]>
         - else:

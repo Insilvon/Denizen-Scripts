@@ -5,42 +5,42 @@
 # Allows players to create and save descriptions of their character for others to view
 
 # You should only run this when the player creates a new character
-CharacterSheetFolderSetup:
-  type: task
-  script:
-    - if !<player.has_flag[CurrentCharacter]>:
-      - narrate "You are not currently playing a character! Is this an issue?"
-      - stop
-    - if !<server.has_file[/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml]>:
-      - define id:<player.flag[CurrentCharacter]>
-      - yaml create id:<[id]>
-      - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-      - ~yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-      # Script Info
-      - ~yaml id:<[id]> set Script.Version:0.0.2
-      # Info
-      - ~yaml id:<[id]> set Info.Name:<[id]>
-      # SkillAPI
-      # Description
-      - ~yaml id:<[id]> set Description.Text:""
-      # Faction
-      - ~yaml id:<[id]> set Faction.Name:""
-      # Town
-      - ~yaml id:<[id]> set Town.Name:""
-      # Renown
-      - ~yaml id:<[id]> set Renown.ChildrenOfTheSun:0
-      - ~yaml id:<[id]> set Renown.Skyborne:0
-      - ~yaml id:<[id]> set Renown.Outsiders:0
-      # Flags
-      - foreach <player.list_flags> as:flag:
-        - yaml id:<[id]> set Flags.<[flag]>:<player.flag[<[flag]>]>
-      # Bounties ?
-      # Town
-      # Wayshrine ?
-      # Titles ?
-      # Achievements ?
-      - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
-      - yaml unload id:<[id]>
+# CharacterSheetFolderSetup:
+#   type: task
+#   script:
+#     - if !<player.has_flag[CurrentCharacter]>:
+#       - narrate "You are not currently playing a character! Is this an issue?"
+#       - stop
+#     - if !<server.has_file[/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml]>:
+#       - define id:<player.flag[CurrentCharacter]>
+#       - yaml create id:<[id]>
+#       - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+#       - ~yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+#       # Script Info
+#       - ~yaml id:<[id]> set Script.Version:0.0.2
+#       # Info
+#       - ~yaml id:<[id]> set Info.Name:<[id]>
+#       # SkillAPI
+#       # Description
+#       - ~yaml id:<[id]> set Description.Text:""
+#       # Faction
+#       - ~yaml id:<[id]> set Faction.Name:""
+#       # Town
+#       - ~yaml id:<[id]> set Town.Name:""
+#       # Renown
+#       - ~yaml id:<[id]> set Renown.ChildrenOfTheSun:0
+#       - ~yaml id:<[id]> set Renown.Skyborne:0
+#       - ~yaml id:<[id]> set Renown.Outsiders:0
+#       # Flags
+#       - foreach <player.list_flags> as:flag:
+#         - yaml id:<[id]> set Flags.<[flag]>:<player.flag[<[flag]>]>
+#       # Bounties ?
+#       # Town
+#       # Wayshrine ?
+#       # Titles ?
+#       # Achievements ?
+#       - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
+#       - yaml unload id:<[id]>
 
 YAMLScript:
   type: world
