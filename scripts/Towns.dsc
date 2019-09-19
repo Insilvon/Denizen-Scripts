@@ -42,6 +42,13 @@ TownInfo:
         - narrate "<&b>[<[name]>] -    Food: <&f><yaml[<[name]>].read[Resources.Food]>"
         - narrate "<&b>[<[name]>] -    Minerals: <&f><yaml[<[name]>].read[Resources.Minerals]>"
         - narrate "<&b>[<[name]>] -    Weapons: <&f><yaml[<[name]>].read[Resources.Weapons]>"
+        - narrate "<&b>[<[name]>] - VILLAGERS"
+        - narrate "<&b>[<[name]>] -    Farmers: <&f><yaml[<[name]>].read[NPC.Farmers]>"
+        - narrate "<&b>[<[name]>] -    Blacksmiths: <&f><yaml[<[name]>].read[NPC.Blacksmiths]>"
+        - narrate "<&b>[<[name]>] -    Miners: <&f><yaml[<[name]>].read[NPC.Miners]>"
+        - narrate "<&b>[<[name]>] -    Woodcutters: <&f><yaml[<[name]>].read[NPC.Woodcutters]>"
+        - narrate "<&b>[<[name]>] -    Trainers <&f><yaml[<[name]>].read[NPC.Trainers]>"
+        - narrate "<&b>[<[name]>] -    Alchemists: <&f><yaml[<[name]>].read[NPC.Alchemists]>"
         - narrate "<&a>[<[name]>] - MILITIA"
         - narrate "<&a>[<[name]>] -    Infantry: <&f><yaml[<[name]>].read[Militia.Infantry]>"
         - narrate "<&a>[<[name]>] -    Sentry: <&f><yaml[<[name]>].read[Militia.Sentry]>"
@@ -98,29 +105,37 @@ TownCreateHelper:
     type: task
     script:
         - yaml create id:<[name]>
-        - yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - yaml "load:/Towns/<[name]>.yml" id:<[name]>
+        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
 
-        - yaml id:<[name]> set Town.Name:<[name]>
-        - yaml id:<[name]> set Town.Level:0
-        - yaml id:<[name]> set Town.Owner:none
-        - yaml id:<[name]> set Town.Ownername:none
+        - ~yaml id:<[name]> set Town.Name:<[name]>
+        - ~yaml id:<[name]> set Town.Level:0
+        - ~yaml id:<[name]> set Town.Owner:none
+        - ~yaml id:<[name]> set Town.Ownername:none
 
-        - yaml id:<[name]> set Inhabitants.list:null
-        - yaml id:<[name]> set Militia.Infantry:0
-        - yaml id:<[name]> set Militia.Sentry:0
-        - yaml id:<[name]> set Militia.Archer:0
-        - yaml id:<[name]> set Militia.Mage:0
-        - yaml id:<[name]> set Militia.Miniboss:0
-        - yaml id:<[name]> set Militia.Boss:0
+        - ~yaml id:<[name]> set Inhabitants.list:null
 
-        - yaml id:<[name]> set Resources.BuildingMaterials:0
-        - yaml id:<[name]> set Resources.Food:0
-        - yaml id:<[name]> set Resources.Weapons:0
-        - yaml id:<[name]> set Resources.Minerals:0
-        - yaml id:<[name]> set Resources.CraftingMaterials:0
+        - ~yaml id:<[name]> set NPC.Farmers:0
+        - ~yaml id:<[name]> set NPC.Blacksmiths:0
+        - ~yaml id:<[name]> set NPC.Trainers:0
+        - ~yaml id:<[name]> set NPC.Alchemists:0
+        - ~yaml id:<[name]> set NPC.Woodcutters:0
+        - ~yaml id:<[name]> set NPC.Miners:0
 
-        - yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+        - ~yaml id:<[name]> set Militia.Infantry:0
+        - ~yaml id:<[name]> set Militia.Sentry:0
+        - ~yaml id:<[name]> set Militia.Archer:0
+        - ~yaml id:<[name]> set Militia.Mage:0
+        - ~yaml id:<[name]> set Militia.Miniboss:0
+        - ~yaml id:<[name]> set Militia.Boss:0
+
+        - ~yaml id:<[name]> set Resources.BuildingMaterials:0
+        - ~yaml id:<[name]> set Resources.Food:0
+        - ~yaml id:<[name]> set Resources.Weapons:0
+        - ~yaml id:<[name]> set Resources.Minerals:0
+        - ~yaml id:<[name]> set Resources.CraftingMaterials:0
+
+        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - yaml unload id:<[name]>
 
 
