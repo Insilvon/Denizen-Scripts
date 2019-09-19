@@ -1,15 +1,18 @@
 # Character Sheets
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.0.4
+# @version 1.0.5
 # Allows players to create and save descriptions of their character for others to view
 
 # You should only run this when the player creates a new character
 CharacterSheetFolderSetup:
   type: task
   script:
-    - if !<server.has_file[/CharacterSheets/<player.uuid>/<player.name.display>.yml]>:
-      - define id:<player.name.display>
+    - if !<player.has_flag[CurrentCharacter]>:
+      - narrate "You are not currently playing a character! Is this an issue?"
+      - stop
+    - if !<server.has_file[/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml]>:
+      - define id:<player.flag[CurrentCharacter]>
       - yaml create id:<[id]>
       - ~yaml "savefile:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
       - ~yaml "load:/CharacterSheets/<player.uuid>/<[id]>.yml" id:<[id]>
@@ -22,6 +25,8 @@ CharacterSheetFolderSetup:
       - ~yaml id:<[id]> set Description.Text:""
       # Faction
       - ~yaml id:<[id]> set Faction.Name:""
+      # Town
+      - ~yaml id:<[id]> set Town.Name:""
       # Renown
       - ~yaml id:<[id]> set Renown.ChildrenOfTheSun:0
       - ~yaml id:<[id]> set Renown.Skyborne:0
@@ -48,19 +53,20 @@ YAMLScript:
         - note in@QuestCompleteMenu as:<player.uuid>completedquests
         - flag player questjournal
     on player right clicks player:
-    - yaml "load:/CharacterSheets/<context.entity.uuid>/<context.entity.name.display>.yml" id:<context.entity.name.display>
-    - narrate "<yaml[<context.entity.name.display>].read[Description.Text]>"
-    - yaml unload id:<context.entity.name.display>
+    - yaml "load:/CharacterSheets/<context.entity.uuid>/<context.entity.flag[CurrentCharacter]>.yml" id:<context.entity.flag[CurrentCharacter]>
+    - narrate "<yaml[<context.entity.flag[CurrentCharacter]>].read[Description.Text]>"
+    - yaml unload id:<context.entity.flag[CurrentCharacter]>
 
 # When a player saves their game at a wayshrine, Denizen will save the location in the event that
 # Regular Respawning doesn't work
-WayshrineSave:
-  type: task
-  script:
-    - yaml "load:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-    - yaml id:<player.uuid> set achievements.last_wayshrine:<player.location>
-    - yaml "savefile:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
-    - yaml unload id:<player.uuid>
+#TODO:// UPDATE WAYSHRINE SYSTEM
+# WayshrineSave:
+#   type: task
+#   script:
+#     - yaml "load:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
+#     - yaml id:<player.uuid> set achievements.last_wayshrine:<player.location>
+#     - yaml "savefile:/CharacterSheets/<player.uuid>.yml" id:<player.uuid>
+#     - yaml unload id:<player.uuid>
 
 # Description Related Commands
 Description:
@@ -70,8 +76,10 @@ Description:
   usage: /description set|add <&lt>Your Description<&gt>
   aliases: /d
   script:
+    - if !<player.has_flag[CurrentCharacter]>:
+      - narrate "You do not have a current character! Set this up first!"
     - define rawArgs:<context.args>
-    - define id:<player.name.display>
+    - define id:<player.flag[CurrentCharacter]>
     - if <[rawArgs].size> == 1:
       - define command:<[rawArgs].get[1]>
       - if <[command]> == read:
