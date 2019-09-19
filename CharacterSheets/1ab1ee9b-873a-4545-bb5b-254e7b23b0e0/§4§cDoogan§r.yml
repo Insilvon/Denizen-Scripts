@@ -1,0 +1,34 @@
+Script:
+  Version: 0.0.2
+Description:
+  Text: '""'
+Renown:
+  Skyborne: '0'
+  ChildrenOfTheSun: '0'
+  Outsiders: '0'
+Flags:
+  QUESTJOURNAL: 'true'
+  FACTION2: 'true'
+  FACTION3: 'true'
+  CHARACTERGUI: 'true'
+  FACTION1: 'true'
+  CHARACTERS: '0'
+  PLAYER:
+    NAME:
+      DISPLAY_QUESTJOURNALMENU: '1'
+      DISPLAY_QUESTJOURNAL: 'true'
+  E_CONTEXT:
+    ARGS:
+      GET: li@i@air|i@air|i@air|i@air
+  DEV: 'true'
+  §4GEORGE§R_QUESTJOURNAL: 'true'
+  ASSEMBLE: Insilvon
+  CURRENTCHARACTER: '1'
+  POS1: l@1507,6,-1209,buildworld
+  CHARACTER: '0'
+  POS2: l@1497,4,-1219,buildworld
+  SNOWRES: '2'
+  TOTALCHARACTERS: '0'
+  §4GEORGE§R_QUESTJOURNALMENU: '1'
+Info:
+  Name: §4§cDoogan§r

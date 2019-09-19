@@ -1,0 +1,50 @@
+Script:
+  Version: 0.0.2
+Description:
+  Text: '""'
+Renown:
+  Skyborne: '0'
+  ChildrenOfTheSun: '0'
+  Outsiders: '0'
+Flags:
+  §4RERERE§R_QUESTJOURNAL: 'true'
+  §4GEORGEIII§R_QUESTJOURNALMENU: '2'
+  CHARACTERS: '0'
+  E_CONTEXT:
+    ARGS:
+      GET: li@i@air|i@air|i@air|i@air
+  §4RERERE§R_QUESTJOURNALMENU: '2'
+  §4§BREE§R_QUESTJOURNALMENU: '1'
+  CURRENTCHARACTER: '1'
+  §4GEORGEII§R_QUESTJOURNAL: 'true'
+  POS1: l@1507,6,-1209,buildworld
+  §4GEORGEIII§R_QUESTJOURNAL: 'true'
+  CHARACTER: '0'
+  POS2: l@1497,4,-1219,buildworld
+  SNOWRES: '2'
+  TOTALCHARACTERS: '0'
+  §4GEORGE§R_QUESTJOURNALMENU: '1'
+  §4§BREE§R_QUESTJOURNAL: 'true'
+  §4REEREE§R_QUESTJOURNAL: 'true'
+  §4§CDOOGAN§R_QUESTJOURNALMENU: '1'
+  QUESTJOURNAL: 'true'
+  §4GEORGEI§R_QUESTJOURNALMENU: '1'
+  FACTION2: 'true'
+  §4GEORGEII§R_QUESTJOURNALMENU: '1'
+  §4REEREE§R_QUESTJOURNALMENU: '1'
+  FACTION3: 'true'
+  CHARACTERGUI: 'true'
+  FACTION1: 'true'
+  §4§CDOOGAN§R_QUESTJOURNAL: 'true'
+  §4GEORGEI§R_QUESTJOURNAL: 'true'
+  PLAYER:
+    NAME:
+      DISPLAY_QUESTJOURNALMENU: '1'
+      DISPLAY_QUESTJOURNAL: 'true'
+  DEV: 'true'
+  §4GEORGE§R_QUESTJOURNAL: 'true'
+  ASSEMBLE: Insilvon
+Info:
+  Name: §4GeorgeIV§r
+Faction:
+  Name: '""'

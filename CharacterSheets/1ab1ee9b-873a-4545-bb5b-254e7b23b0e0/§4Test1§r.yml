@@ -1,0 +1,75 @@
+Script:
+  Version: 0.0.2
+Description:
+  Text: '""'
+Renown:
+  Skyborne: '0'
+  ChildrenOfTheSun: '0'
+  Outsiders: '0'
+Flags:
+  §4GEORGEIV§R_QUESTJOURNALMENU: '1'
+  §4GEORGEIII§R_QUESTJOURNALMENU: '2'
+  §4GEORGE8§R_QUESTJOURNAL: 'true'
+  E_CONTEXT:
+    ARGS:
+      GET: li@i@air|i@air|i@air|i@air
+  §4GEORGE7§R_QUESTJOURNALMENU: '3'
+  §4RERERE§R_QUESTJOURNALMENU: '2'
+  §4GEORGEV§R_QUESTJOURNAL: 'true'
+  §4§BREE§R_QUESTJOURNALMENU: '1'
+  §4GEORGEIII§R_QUESTJOURNAL: 'true'
+  §4GEORGE§R_QUESTJOURNALMENU: '1'
+  §4§BREE§R_QUESTJOURNAL: 'true'
+  TOTALCHARACTERS: '0'
+  §4§CDOOGAN§R_QUESTJOURNALMENU: '1'
+  §4GEORGE8§R_COMPLETEDQUESTITEMS: 'null'
+  QUESTJOURNAL: 'true'
+  §4GEORGEI§R_QUESTJOURNALMENU: '1'
+  FACTION2: 'true'
+  FACTION3: 'true'
+  FACTION1: 'true'
+  §4GEORGEI§R_QUESTJOURNAL: 'true'
+  PLAYER:
+    NAME:
+      DISPLAY_QUESTJOURNALMENU: '1'
+      DISPLAY_QUESTJOURNAL: 'true'
+  §4GEORGE7§R_COMPLETEDQUESTITEMS: 'null'
+  §4GEORGEVII§R_COMPLETEDQUESTITEMS: 'null'
+  ASSEMBLE: Insilvon
+  §4GEORGEVI§R_ACTIVEQUESTITEMS: null|i@writable_book[lore=Quest1 ]|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook
+  §4GEORGEV§R_QUESTJOURNALMENU: '2'
+  §4GEORGE7§R_QUESTJOURNAL: 'true'
+  §4RERERE§R_QUESTJOURNAL: 'true'
+  §4GEORGEVII§R_QUESTJOURNALMENU: '2'
+  §4GEORGEVI§R_QUESTJOURNAL: 'true'
+  CHARACTERS: '0'
+  §4GEORGE8§R_QUESTJOURNALMENU: '1'
+  §4GEORGEVI§R_QUESTJOURNALMENU: '5'
+  CURRENTCHARACTER: '1'
+  §4GEORGEII§R_QUESTJOURNAL: 'true'
+  POS1: l@1507,6,-1209,buildworld
+  CHARACTER: '0'
+  <PLAYER:
+    NAME:
+      DISPLAY>_ACTIVEQUESTITEMS: i@writable_book[lore=Quest1 ]|i@writable_book[lore=Quest1
+        ]|i@writable_book[lore=Quest1 ]|i@writable_book[lore=Quest2 ]|i@writable_book[lore=Quest3
+        ]|i@writable_book[lore=Quest4 ]|i@writable_book[lore=Quest5 ]
+  POS2: l@1497,4,-1219,buildworld
+  SNOWRES: '2'
+  §4GEORGEIV§R_QUESTJOURNAL: 'true'
+  §4GEORGEVI§R_COMPLETEDQUESTITEMS: i@writable_book[lore=Quest1 ]
+  §4REEREE§R_QUESTJOURNAL: 'true'
+  §4GEORGEVII§R_QUESTJOURNAL: 'true'
+  §4GEORGEII§R_QUESTJOURNALMENU: '1'
+  §4REEREE§R_QUESTJOURNALMENU: '1'
+  CHARACTERGUI: 'true'
+  §4§CDOOGAN§R_QUESTJOURNAL: 'true'
+  DEV: 'true'
+  §4GEORGEVII§R_ACTIVEQUESTITEMS: null|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook
+  §4GEORGE§R_QUESTJOURNAL: 'true'
+  §4GEORGE7§R_ACTIVEQUESTITEMS: null|i@writable_book[lore=Quest1 ]|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook
+  §4GEORGE8§R_ACTIVEQUESTITEMS: null|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook|SampleBook
+Info:
+  Name: §4Test1§r
+Faction:
+  Name: '""'

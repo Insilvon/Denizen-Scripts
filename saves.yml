@@ -1,0 +1,866 @@
+a_saves:
+  version: '2'
+Players:
+  1A:
+    1AB1EE9B873A4545BB5B254E7B23B0E0:
+      Flags:
+        QUESTJOURNAL: 'true'
+        FACTION1: 'true'
+        FACTION2: 'true'
+        FACTION3: 'true'
+        POS2: l@1769,4,-1479,buildworld
+        POS1: l@1759,3,-1486,buildworld
+        TOTALCHARACTERS: '0'
+        CHARACTER: '0'
+        CHARACTERS: '0'
+        CHARACTERGUI: 'true'
+        E_CONTEXT:
+          ARGS:
+            GET: li@i@air|i@air|i@air|i@air
+        SNOWRES: '2'
+        DEV: 'true'
+        ASSEMBLE: Insilvon
+        PLAYER:
+          NAME:
+            DISPLAY_QUESTJOURNAL: 'true'
+            DISPLAY_QUESTJOURNALMENU: '1'
+        §4GEORGE§R_QUESTJOURNAL: 'true'
+        §4GEORGE§R_QUESTJOURNALMENU: '1'
+        §4§CDOOGAN§R_QUESTJOURNAL: 'true'
+        §4§CDOOGAN§R_QUESTJOURNALMENU: '1'
+        §4§BREE§R_QUESTJOURNAL: 'true'
+        §4§BREE§R_QUESTJOURNALMENU: '1'
+        §4REEREE§R_QUESTJOURNAL: 'true'
+        §4REEREE§R_QUESTJOURNALMENU: '1'
+        §4RERERE§R_QUESTJOURNAL: 'true'
+        §4RERERE§R_QUESTJOURNALMENU: '2'
+        §4GEORGEI§R_QUESTJOURNAL: 'true'
+        §4GEORGEI§R_QUESTJOURNALMENU: '1'
+        §4GEORGEII§R_QUESTJOURNAL: 'true'
+        §4GEORGEII§R_QUESTJOURNALMENU: '1'
+        §4GEORGEIII§R_QUESTJOURNAL: 'true'
+        §4GEORGEIII§R_QUESTJOURNALMENU: '2'
+        §4GEORGEIV§R_QUESTJOURNAL: 'true'
+        §4GEORGEIV§R_QUESTJOURNALMENU: '1'
+        <PLAYER:
+          NAME:
+            DISPLAY>_ACTIVEQUESTITEMS:
+            - i@writable_book[lore=Quest1 ]
+            - i@writable_book[lore=Quest1 ]
+            - i@writable_book[lore=Quest1 ]
+            - i@writable_book[lore=Quest2 ]
+            - i@writable_book[lore=Quest3 ]
+            - i@writable_book[lore=Quest4 ]
+            - i@writable_book[lore=Quest5 ]
+        §4GEORGEV§R_QUESTJOURNAL: 'true'
+        §4GEORGEV§R_QUESTJOURNALMENU: '2'
+        §4GEORGEVI§R_QUESTJOURNAL: 'true'
+        §4GEORGEVI§R_ACTIVEQUESTITEMS:
+        - 'null'
+        - i@writable_book[lore=Quest1 ]
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        §4GEORGEVI§R_COMPLETEDQUESTITEMS: i@writable_book[lore=Quest1 ]
+        §4GEORGEVI§R_QUESTJOURNALMENU: '5'
+        §4GEORGEVII§R_QUESTJOURNAL: 'true'
+        §4GEORGEVII§R_ACTIVEQUESTITEMS:
+        - 'null'
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        §4GEORGEVII§R_COMPLETEDQUESTITEMS: 'null'
+        §4GEORGEVII§R_QUESTJOURNALMENU: '2'
+        §4GEORGE7§R_QUESTJOURNAL: 'true'
+        §4GEORGE7§R_ACTIVEQUESTITEMS:
+        - 'null'
+        - i@writable_book[lore=Quest1 ]
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        §4GEORGE7§R_COMPLETEDQUESTITEMS: 'null'
+        §4GEORGE7§R_QUESTJOURNALMENU: '3'
+        §4GEORGE8§R_QUESTJOURNAL: 'true'
+        §4GEORGE8§R_ACTIVEQUESTITEMS:
+        - 'null'
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        - SampleBook
+        §4GEORGE8§R_COMPLETEDQUESTITEMS: 'null'
+        §4GEORGE8§R_QUESTJOURNALMENU: '1'
+        §4TEST1§R_QUESTJOURNAL: 'true'
+        §4TEST1§R_ACTIVEQUESTITEMS: 'null'
+        §4TEST1§R_COMPLETEDQUESTITEMS: 'null'
+        §4TEST1§R_QUESTJOURNALMENU: '1'
+        §4TEST2§R_QUESTJOURNAL: 'true'
+        §4TEST2§R_ACTIVEQUESTITEMS: 'null'
+        §4TEST2§R_COMPLETEDQUESTITEMS: 'null'
+        §4TEST2§R_QUESTJOURNALMENU: '1'
+        E_SWAP: li@i@air|i@air|i@air|i@air
+        1AB1EE9B-873A-4545-BB5B-254E7B23B0E0_PLAYER:
+          FLAG: '1'
+  F1:
+    F19C0F1FFE014ED49237259544932DC5:
+      Flags:
+        QUESTJOURNAL: 'true'
+        FACTION1: 'true'
+        FACTION2: 'true'
+        FACTION3: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+        §4§CKITKAT§R_QUESTJOURNAL: 'true'
+        §4§CKITKAT§R_QUESTJOURNALMENU: '1'
+  '25':
+    258692D5AD6F4955AC1AEF71E3844B03:
+      Flags:
+        QUESTJOURNAL: 'true'
+        FACTION1: 'true'
+        FACTION2: 'true'
+        FACTION3: 'true'
+        TOTALCHARACTERS: '0'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+        §4§5UNKNOWN§R_QUESTJOURNAL: 'true'
+        §4§5UNKNOWN§R_QUESTJOURNALMENU: '1'
+        258692D5-AD6F-4955-AC1A-EF71E3844B03_PLAYER:
+          FLAG: '1'
+  '16':
+    16A3C30A326C4042A067BEFB5A1BDB29:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+  A6:
+    A60D747E66774CD8BA78BD01F8705204:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '2'
+        CHARACTERGUI: 'true'
+        CHARACTER_LIST:
+        - Riperoni
+        - doperoni
+        CURRENTCHARACTER: '2'
+        E_2: li@i@air|i@air|i@air|i@air
+        E_1: li@i@air|i@air|i@air|i@air
+  5B:
+    5B395E5105AC401E8B467F438D394EF7:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '2'
+        CHARACTERGUI: 'true'
+        5B395E51-05AC-401E-8B46-7F438D394EF7_PLAYER:
+          FLAG: '1'
+        CHARACTER_LIST:
+        - LRDPITA
+        - LRDPIB
+        CURRENTCHARACTER: '1'
+        E_1: li@i@air|i@air|i@air|i@air
+        E_2: li@i@air|i@air|i@air|i@air
+  D7:
+    D711B29931994F56BAC9A70E804C7584:
+      Flags:
+        QUESTJOURNAL: 'true'
+  C2:
+    C217A64AB2834A6387DF816CB9AF850C:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+        ASSEMBLE: Insilvon
+  4F:
+    4FADC5DE90F848ADA6BCB20B185775D6:
+      Flags:
+        QUESTJOURNAL: 'true'
+        FACTION1: 'true'
+        FACTION2: 'true'
+        FACTION3: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+        4FADC5DE-90F8-48AD-A6BC-B20B185775D6_PLAYER:
+          FLAG: '1'
+  2C:
+    2C5B227568404B1C9F18437EC6E9EE32:
+      Flags:
+        QUESTJOURNAL: 'true'
+  '59':
+    590565465673420A9E8750CCDF048BFE:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+  '78':
+    78F5F7BA24884CAAA752068F5F56E908:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+  '51':
+    51BB7D2BCE394676838621C9672EC45E:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+  7B:
+    7BA0326B99314401B7FC1C29D8D74B33:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+  F8:
+    F8087A0D0052473EB850CE260BE52885:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '2'
+        CHARACTERGUI: 'true'
+        CHARACTER_LIST:
+        - Spaard
+        - Vaargel
+        CURRENTCHARACTER: '2'
+        E_1: li@i@air|i@air|i@air|i@air
+        E_2: li@i@air|i@air|i@air|i@air
+  DA:
+    DADA987B8EC5498294134360FE384AEE:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+  '76':
+    768490157844471C916E2F6BDCB71510:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+  EE:
+    EE555BFF281741288C5D65D9AD79F0B2:
+      Flags:
+        QUESTJOURNAL: 'true'
+        CHARACTER: '0'
+        CHARACTERGUI: 'true'
+Global:
+  Flags:
+    MCL:
+      VERSION: {}
+    L@1677,4,-1609,BUILDWORLD: DumbStone
+    L@1683,4,-1608,BUILDWORLD: DumbStone
+    L@1690,4,-1610,BUILDWORLD: DumbStone
+    L@1693,5,-1605,BUILDWORLD: DumbStone
+    L@1695,5,-1602,BUILDWORLD: LimestoneDinosaurSkullFossil
+    L@1701,5,-1602,BUILDWORLD: ShaleDinosaurTrackFossil
+    TEST: 914e68b0-4550-4c2c-bbee-dc903e8485f5|eyJ0aW1lc3RhbXAiOjE1NjM2MzE3NTA0ODksInByb2ZpbGVJZCI6ImIwZDRiMjhiYzFkNzQ4ODlhZjBlODY2MWNlZTk2YWFiIiwicHJvZmlsZU5hbWUiOiJ4RmFpaUxlUiIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzYwYTA4ZGE4ZDNlNzNjNWFkZGNjMTAzODk1NjU2YWM0MDRmZjQyZjJkNWI1Yjc0NmNjZGU2MDdjZTkwNDQzYyJ9fX0=
+    L@1659,4,-1362,BUILDWORLD: CyanLootbag
+    L@1659,4,-1361,BUILDWORLD: PinkLootbag
+    L@1659,4,-1359,BUILDWORLD: PurpleLootbag
+    L@1659,4,-1358,BUILDWORLD: EggLootbag
+    L@1659,4,-1357,BUILDWORLD: GoldenLootbag
+    L@1659,4,-1356,BUILDWORLD: BlueLootbag
+    L@1659,4,-1355,BUILDWORLD: OrangeLootbag
+    L@1659,4,-1354,BUILDWORLD: RedLootbag
+    L@1659,4,-1353,BUILDWORLD: WhiteLootbag
+    TRANSMUTATIONCIRCLE_1536,3,-1278,BUILDWORLD_IRON_BLOCK_: 'true'
+    TRANSMUTATIONCIRCLE_1539,3,-1281,BUILDWORLD_LAPIS_BLOCK_: 'true'
+    TRANSMUTATIONCIRCLE_1536,3,-1284,BUILDWORLD_GOLD_BLOCK_: 'true'
+    TRANSMUTATIONCIRCLE_1533,3,-1281,BUILDWORLD_EMERALD_BLOCK_: 'true'
+    TRANSMUTATIONCIRCLE_1536,3,-1278,BUILDWORLD_IRON_BLOCK: '[theItem.scriptname]'
+    TRANSMUTATIONCIRCLE_1533,3,-1281,BUILDWORLD_EMERALD_BLOCK: '[theItem.scriptname]'
+    TRANSMUTATIONCIRCLE_1536,3,-1284,BUILDWORLD_GOLD_BLOCK: '[theItem.scriptname]'
+    TRANSMUTATIONCIRCLE_1539,3,-1281,BUILDWORLD_LAPIS_BLOCK: '[theItem.scriptname]'
+    CU@TRANSMUTATIONCIRCLE_1536,3,-1281,BUILDWORLD_GOLD_BLOCK: '[theItem.scriptname]'
+    TRANSMUTATIONCIRCLE_1516,3,-1270,BUILDWORLD_EMERALD_BLOCK_QUANTITY: '1'
+    TRANSMUTATIONCIRCLE_1516,3,-1270,BUILDWORLD_LAPIS_BLOCK_QUANTITY: '1'
+    TRANSMUTATIONCIRCLE_1516,3,-1270,BUILDWORLD_IRON_BLOCK_QUANTITY: '1'
+    TRANSMUTATIONCIRCLE_1518,3,-1331,BUILDWORLD_LAPIS_BLOCK_QUANTITY: '2'
+    TRANSMUTATIONCIRCLE_1518,3,-1331,BUILDWORLD_IRON_BLOCK_QUANTITY: '2'
+    TRANSMUTATIONCIRCLE_1518,3,-1331,BUILDWORLD_EMERALD_BLOCK_QUANTITY: '3'
+    TRANSMUTATIONCIRCLE_1505,3,-1320,BUILDWORLD_: '1'
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_BLAZE_ROD: blaze_rod
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_BLAZE_ROD_QUANTITY: '1'
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_AIR: air
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_AIR_QUANTITY: '1'
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_DIAMOND: diamond
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_DIAMOND_QUANTITY: '1'
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_GRASS_BLOCK: grass_block
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_GRASS_BLOCK_QUANTITY: '1'
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_DIAMOND_SWORD: TRANSMUTATIONSWORD
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_DIAMOND_SWORD_QUANTITY: '1'
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_LAPIS_LAZULI: lapis_lazuli
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_LAPIS_LAZULI_QUANTITY: '3'
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_IRON_INGOT: iron_ingot
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_IRON_INGOT_QUANTITY: '3'
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_EMERALD: emerald
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_EMERALD_QUANTITY: '4'
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_GOLD_INGOT: gold_ingot
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_GOLD_INGOT_QUANTITY: '5'
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_AIR: air
+    TRANSMUTATIONCIRCLE_1457,3,-1321,BUILDWORLD_AIR_QUANTITY: '10'
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_GOLD_BLOCK: air
+    TRANSMUTATIONCIRCLE_1468,3,-1322,BUILDWORLD_GOLD_BLOCK_QUANTITY: '1'
+    SWEETCANDLE_1608,4,-1325,BUILDWORLD: snuffed
+    SWEETCANDLE_1607,4,-1325,BUILDWORLD: snuffed
+    SWEETCANDLE_1606,4,-1325,BUILDWORLD: snuffed
+    SWEETCANDLE_1595,4,-1332,BUILDWORLD: snuffed
+    SWEETCANDLE_1590,4,-1335,BUILDWORLD: snuffed
+    SWEETCANDLE_1576,4,-1336,BUILDWORLD: snuffed
+    SWEETCANDLE_1572,4,-1337,BUILDWORLD: lit
+    SWEETCANDLE_1562,4,-1319,BUILDWORLD: lit
+    SWEETCANDLE_1563,4,-1309,BUILDWORLD: lit
+    SWEETCANDLE_1478,4,-1293,BUILDWORLD: lit
+    SWEETCANDLE_1399,4,-1274,BUILDWORLD: snuffed
+    SWEETCANDLE_1388,4,-1275,BUILDWORLD: snuffed
+    FOUL_CANDLE_1387,4,-1272,BUILDWORLD: snuffed
+    FOUL_CANDLE_1569,4,-1301,BUILDWORLD: snuffed
+    FOULCANDLE_1571,4,-1299,BUILDWORLD: snuffed
+    FOULCANDLE_1572,4,-1298,BUILDWORLD: snuffed
+    SWEETCANDLE_1572,4,-1297,BUILDWORLD: snuffed
+    SWEETCANDLE_1573,4,-1295,BUILDWORLD: snuffed
+    SWEETCANDLE_1585,4,-1288,BUILDWORLD: snuffed
+    FOULCANDLE_1589,4,-1294,BUILDWORLD: snuffed
+    SWEETCANDLE_1587,4,-1283,BUILDWORLD: lit
+    SWEETCANDLE_1587,4,-1284,BUILDWORLD: snuffed
+    SWEETCANDLE_1592,4,-1283,BUILDWORLD: snuffed
+    SWEETCANDLE_1604,4,-1282,BUILDWORLD: snuffed
+    SWEETCANDLE_1614,4,-1284,BUILDWORLD: snuffed
+    SWEETCANDLE_1628,4,-1283,BUILDWORLD: snuffed
+    SWEETCANDLE_1630,4,-1283,BUILDWORLD: lit
+    SWEETCANDLE_1629,4,-1283,BUILDWORLD: snuffed
+    SWEETCANDLE_1630,5,-1283,BUILDWORLD: lit
+    SWEETCANDLE_1631,4,-1283,BUILDWORLD: lit
+    FOULCANDLE_1634,4,-1283,BUILDWORLD: lit
+    SWEETCANDLE_1625,4,-1305,BUILDWORLD: snuffed
+    SWEETCANDLE_1625,4,-1306,BUILDWORLD: lit
+    SWEETCANDLE_1634,4,-1312,BUILDWORLD: snuffed
+    SWEETCANDLE_1637,4,-1314,BUILDWORLD: snuffed
+    SWEETCANDLE_1639,4,-1315,BUILDWORLD: lit
+    SWEETCANDLE_1640,4,-1315,BUILDWORLD: lit
+    TELEGRAPH_1602,4,-1329,BUILDWORLD: snuffed
+    TELEGRAPH_CONTEXT:
+      BLOCK:
+        LOCATION:
+          SIMPLE: Telegraph_context.block.location.simple-
+          SIMPLE_CHANNEL: '8'
+    TELEGRAPH_1596,4,-1326,BUILDWORLD: Telegraph_1596,4,-1326,buildworld..-..-......
+    TELEGRAPH_1596,4,-1326,BUILDWORLD_CHANNEL: '6'
+    TELEGRAPH_1576,4,-1326,BUILDWORLD: 'true'
+    TELEGRAPH_1576,4,-1326,BUILDWORLD_CHANNEL: '1'
+    TELEGRAPH_1615,4,-1321,BUILDWORLD: true....--..-..--.-..--.---
+    TELEGRAPH_1615,4,-1321,BUILDWORLD_CHANNEL: '2'
+    TELEGRAPH_1619,4,-1340,BUILDWORLD: '>'
+    TELEGRAPH_1619,4,-1340,BUILDWORLD_CHANNEL: '1'
+    TELEGRAPH_1643,4,-1357,BUILDWORLD: '>'
+    TELEGRAPH_1643,4,-1357,BUILDWORLD_CHANNEL: '6'
+    TELEGRAPH_1656,6,-1370,BUILDWORLD: '>'
+    TELEGRAPH_1656,6,-1370,BUILDWORLD_CHANNEL: '7'
+    TELEGRAPH_LIST:
+    - 'true'
+    - 1674,5,-1377,buildworld
+    - 1641,5,-1382,buildworld
+    - 1641,5,-1382,buildworld
+    - 1655,5,-1399,buildworld
+    - 1633,5,-1412,buildworld
+    - 1772,4,-1573,buildworld
+    - 1744,4,-1579,buildworld
+    - 1772,4,-1581,buildworld
+    - 1744,4,-1579,buildworld
+    - 1744,4,-1579,buildworld
+    - 1763,4,-1588,buildworld
+    - 1758,4,-1589,buildworld
+    - 1744,4,-1579,buildworld
+    - -762,4,-28,new_buildworld
+    - -762,4,-28,new_buildworld
+    - 1745,4,-1619,buildworld
+    - 1750,4,-1634,buildworld
+    - 1745,4,-1619,buildworld
+    - 1750,4,-1634,buildworld
+    - 1750,4,-1634,buildworld
+    - 1744,4,-1618,buildworld
+    - 1604,4,-1333,buildworld
+    - 1641,4,-1341,buildworld
+    - -1129,70,-113,aetheria
+    - -1129,70,-113,aetheria
+    - -1141,66,-193,aetheria
+    - -1513,74,-34,aetheria
+    - -1513,74,-34,aetheria
+    - -1513,74,-34,aetheria
+    - -1513,74,-34,aetheria
+    - -1512,74,-32,aetheria
+    - -1512,74,-37,aetheria
+    - -388,114,-671,aetheria
+    - 1659,4,-1355,buildworld
+    TELEGRAPH_1674,5,-1377,BUILDWORLD: '>'
+    TELEGRAPH_1674,5,-1377,BUILDWORLD_CHANNEL: '2'
+    TELEGRAPH_1641,5,-1382,BUILDWORLD: '>'
+    TELEGRAPH_1641,5,-1382,BUILDWORLD_CHANNEL: '2'
+    TELEGRAPH_1655,5,-1399,BUILDWORLD: '>'
+    TELEGRAPH_1655,5,-1399,BUILDWORLD_CHANNEL: '1'
+    TELEGRAPH_1633,5,-1412,BUILDWORLD: '>'
+    TELEGRAPH_1633,5,-1412,BUILDWORLD_CHANNEL: '1'
+    TELEGRAPH_1772,4,-1573,BUILDWORLD: '>'
+    TELEGRAPH_1772,4,-1573,BUILDWORLD_CHANNEL: '2'
+    TELEGRAPH_1744,4,-1579,BUILDWORLD: '>'
+    TELEGRAPH_1744,4,-1579,BUILDWORLD_CHANNEL: '1'
+    TELEGRAPH_1772,4,-1581,BUILDWORLD: '>'
+    TELEGRAPH_1772,4,-1581,BUILDWORLD_CHANNEL: '5'
+    TELEGRAPH_1763,4,-1588,BUILDWORLD: '>.'
+    TELEGRAPH_1763,4,-1588,BUILDWORLD_CHANNEL: '1'
+    TELEGRAPH_1758,4,-1589,BUILDWORLD: '>'
+    TELEGRAPH_1758,4,-1589,BUILDWORLD_CHANNEL: '1'
+    SWEETCANDLE_1525,4,-1247,BUILDWORLD: snuffed
+    FRESHLINENCANDLE_1688,5,-1595,BUILDWORLD: snuffed
+    CHERRYBLOSSOMCANDLE_1687,5,-1595,BUILDWORLD: snuffed
+    BONFIRECANDLE_1686,5,-1595,BUILDWORLD: snuffed
+    OCEANBREEZECANDLE_1685,5,-1595,BUILDWORLD: snuffed
+    VANILLACANDLE_1684,5,-1595,BUILDWORLD: snuffed
+    GINGERBREADCANDLE_1683,5,-1595,BUILDWORLD: snuffed
+    PUMPKINSPICECANDLE_1682,5,-1595,BUILDWORLD: snuffed
+    PINECANDLE_1681,5,-1595,BUILDWORLD: snuffed
+    APPLECINNAMONCANDLE_1680,5,-1595,BUILDWORLD: snuffed
+    CHOCOLATECHIPCOOKIECANDLE_1679,5,-1595,BUILDWORLD: snuffed
+    LAVENDERCANDLE_1688,4,-1596,BUILDWORLD: snuffed
+    LEMONGRASSCANDLE_1687,4,-1596,BUILDWORLD: snuffed
+    HONEYDEWCANDLE_1686,4,-1596,BUILDWORLD: snuffed
+    GARDENIACANDLE_1685,4,-1596,BUILDWORLD: snuffed
+    SUGARCOOKIECANDLE_1684,4,-1596,BUILDWORLD: snuffed
+    REDWOODCANDLE_1683,4,-1596,BUILDWORLD: snuffed
+    PEACHCANDLE_1682,4,-1596,BUILDWORLD: snuffed
+    HONEYSUCKLECANDLE_1681,4,-1596,BUILDWORLD: snuffed
+    TELEGRAPH_-762,4,-28,NEW_BUILDWORLD: '>-- ..-.-..-.-......-.-.-...'
+    TELEGRAPH_-762,4,-28,NEW_BUILDWORLD_CHANNEL: '1'
+    TELEGRAPH_1745,4,-1619,BUILDWORLD: '>'
+    TELEGRAPH_1745,4,-1619,BUILDWORLD_CHANNEL: '1'
+    TELEGRAPH_1750,4,-1634,BUILDWORLD: '>'
+    TELEGRAPH_1750,4,-1634,BUILDWORLD_CHANNEL: '7'
+    TELEGRAPH_1744,4,-1618,BUILDWORLD: '>...-..--...'
+    TELEGRAPH_1744,4,-1618,BUILDWORLD_CHANNEL: '7'
+    SWEETCANDLE_1745,4,-1620,BUILDWORLD: snuffed
+    PEACHCANDLE_1749,4,-1618,BUILDWORLD: lit
+    SWEETCANDLE_1752,4,-1603,BUILDWORLD: snuffed
+    SWEETCANDLE_1753,4,-1601,BUILDWORLD: lit
+    OCEANBREEZECANDLE_1668,4,-1580,BUILDWORLD: lit
+    OCEANBREEZECANDLE_1658,4,-1562,BUILDWORLD: snuffed
+    OCEANBREEZECANDLE_1643,4,-1562,BUILDWORLD: snuffed
+    VANILLACANDLE_1620,4,-1556,BUILDWORLD: snuffed
+    VANILLACANDLE_1623,4,-1540,BUILDWORLD: snuffed
+    PUMPKINSPICECANDLE_1596,4,-1535,BUILDWORLD: lit
+    PUMPKINSPICECANDLE_1586,4,-1543,BUILDWORLD: snuffed
+    PUMPKINSPICECANDLE_1583,4,-1549,BUILDWORLD: lit
+    APPLECINNAMONCANDLE_1593,4,-1557,BUILDWORLD: lit
+    PINECANDLE_1605,4,-1557,BUILDWORLD: lit
+    TELEGRAPH_1604,4,-1333,BUILDWORLD_CHANNEL: '2'
+    TELEGRAPH_1641,4,-1341,BUILDWORLD_CHANNEL: '2'
+    GINGERBREADCANDLE_-1148,67,-43,AETHERIA: lit
+    CHERRYBLOSSOMCANDLE_-1138,67,-46,AETHERIA: lit
+    FRESHLINENCANDLE_-1136,67,-54,AETHERIA: lit
+    PINECANDLE_-1144,67,-58,AETHERIA: lit
+    CHOCOLATECHIPCOOKIECANDLE_-1153,67,-50,AETHERIA: snuffed
+    HONEYDEWCANDLE_-1154,67,-57,AETHERIA: lit
+    OCEANBREEZECANDLE_-1147,67,-52,AETHERIA: snuffed
+    OCEANBREEZECANDLE_1625,4,-1339,BUILDWORLD: lit
+    OCEANBREEZECANDLE_-1146,68,-52,AETHERIA: lit
+    CHERRYBLOSSOMCANDLE_1626,4,-1333,BUILDWORLD: lit
+    APPLECINNAMONCANDLE_-1149,67,-62,AETHERIA: lit
+    LAVENDERCANDLE_-1159,67,-61,AETHERIA: lit
+    LEMONGRASSCANDLE_-1157,67,-67,AETHERIA: snuffed
+    REDWOODCANDLE_-1153,67,-70,AETHERIA: snuffed
+    PEACHCANDLE_-1152,67,-75,AETHERIA: lit
+    PUMPKINSPICECANDLE_-1148,67,-72,AETHERIA: snuffed
+    VANILLACANDLE_-1147,67,-77,AETHERIA: lit
+    GARDENIACANDLE_-1142,68,-74,AETHERIA: lit
+    BONFIRECANDLE_-1141,68,-69,AETHERIA: lit
+    SUGARCOOKIECANDLE_-1137,68,-65,AETHERIA: lit
+    HONEYSUCKLECANDLE_-1133,68,-63,AETHERIA: lit
+    PUMPKINSPICECANDLE_-1132,68,-65,AETHERIA: snuffed
+    PUMPKINSPICECANDLE_-1133,68,-64,AETHERIA: snuffed
+    CHOCOLATECHIPCOOKIECANDLE_-1136,68,-60,AETHERIA: snuffed
+    LAVENDERCANDLE_-1136,68,-60,AETHERIA: lit
+    CHOCOLATECHIPCOOKIECANDLE_-1136,68,-63,AETHERIA: lit
+    CHOCOLATECHIPCOOKIECANDLE_-1134,68,-64,AETHERIA: lit
+    PUMPKINSPICECANDLE_-1132,68,-63,AETHERIA: lit
+    TELEGRAPH_-1129,70,-113,AETHERIA_CHANNEL: '2'
+    TELEGRAPH_-1141,66,-193,AETHERIA: '>'
+    TELEGRAPH_-1141,66,-193,AETHERIA_CHANNEL: '2'
+    TELEGRAPH_-1513,74,-34,AETHERIA_CHANNEL: '2'
+    TELEGRAPH_-1512,74,-32,AETHERIA_CHANNEL: '1'
+    TELEGRAPH_-1512,74,-37,AETHERIA_CHANNEL: '2'
+    TELEGRAPH_-388,114,-671,AETHERIA_CHANNEL: '1'
+    APPLECINNAMONCANDLE_1624,4,-1342,BUILDWORLD: snuffed
+    APPLECINNAMONCANDLE_1617,4,-1349,BUILDWORLD: snuffed
+    MYSTIC_FENNEC_ASSEMBLEGROUP: Mystic_Fennec_assembleGroup_temp
+    INSILVON_ASSEMBLEGROUP>: li@Insilvon
+    INSILVON: li@Insilvon
+    MYSTIC_FENNEC_ASSEMBLEINVITE: Insilvon
+    MYSTIC_FENNEC_ASSEMBLEINVITE-expiration: 1568001548737
+    TELEGRAPH_1659,4,-1355,BUILDWORLD: '>.--.'
+    TELEGRAPH_1659,4,-1355,BUILDWORLD_CHANNEL: '1'
+    PEACHCANDLE_1659,4,-1358,BUILDWORLD: lit
+    TWISTED_FRACTAL_ASSEMBLEINVITE: Insilvon
+    TWISTED_FRACTAL_ASSEMBLEINVITE-expiration: 1568043545487
+    INSILVON_ASSEMBLEGROUP:
+    - Insilvon
+    - Twisted_Fractal
+    TWISTED_FRACTAL_ASSEMBLETIMEOUT: 'true'
+    TWISTED_FRACTAL_ASSEMBLETIMEOUT-expiration: 1568384871187
+    INSILVON_ASSEMBLETIMEOUT: 'true'
+    INSILVON_ASSEMBLETIMEOUT-expiration: 1568693385190
