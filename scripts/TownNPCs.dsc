@@ -29,18 +29,20 @@ TownNPCController:
     type: world
     events:
         on player right clicks with TownFarmerVoucher:
-            - if <player.has_flag[CurrentCharacter]>:
+            - if !<player.has_flag[CurrentCharacter]>:
                 - narrate "You do not have an active character. Please fix this first!"
                 - stop
             # inc town file
             - define id:<player.flag[CurrentCharacter]>
             - yaml load:CharacterSheets/<player.uuid>/<[id]>.yml id:<[id]>
-            - define townID: <yaml[<[id]>].read[Town.Name]>
-            - yaml load:Towns/<[townID]>.yml id:<[townID]>
-            - yaml id:<[townID]> set NPC.Farmers:++
-            - yaml "savefile:/Towns/<[id]>.yml" id:<[townID]>
-            - yaml unload id:<[townID]>
-            - yaml unload id:<[id]>
+            - define townID:<yaml[<[id]>].read[Town.Name]>
+            - ~yaml unload id:<[id]>
+
+            - ~yaml load:Towns/<[townID]>.yml id:<[townID]>
+            - define value:<yaml[<[townID]>].read[NPC.Farmers].add_int[1]>
+            - ~yaml id:<[townID]> set NPC.Farmers:<[value]>
+            - ~yaml "savefile:/Towns/<[townID]>.yml" id:<[townID]>
+            - ~yaml unload id:<[townID]>
             # create DNPC
             - define name:<proc[GetRandomName]>
             - create player <[name]> <player.location> save:temp
