@@ -60,15 +60,19 @@ CharacterCommand:
   script:
     - define args:<context.args>
     - if <[args].size> == 1:
-      - foreach select|reset as:switch:
-        - if <[args].get[1]> == <[switch]>:
-          - inject Character<[switch]>
+      - define command:<[args].get[1]>
+      - if <[command]> == select:
+        - inject CharacterSelect
+      - if <[command]> == reset:
+        - inject CharacterReset
     - if <[args].size> == 2:
-      - foreach create|swap as:switch:
-        - if <[args].get[1]> == <[switch]>:
-          - inject Character<[switch]>
+      - define command:<[args].get[1]>
+      - if <[command]> == create:
+        - inject CharacterCreate
+      - if <[command]> == swap:
+        - define arg:<context.args.get[2]>
+        - inject CharacterSwap
     - inject CharacterSelect
-
 
 # Script to open the character select screen
 CharacterSelect:
@@ -115,7 +119,7 @@ CharacterCreate:
       - define limit:<yaml[base].read[permissions.character_limit]>
       - if <player.flag[Character]> < <[limit]>:
         - narrate "<&b>[Characters] - You have successfully created a new character with the name <context.args.get[2]>"
-        - narrate "<&b>[Characters] - Swap to your character with /sc number"
+        - narrate "<&b>[Characters] - Swap to your character with /character"
         - flag player Character:+:1
         - define newFile:/CharacterSheets/<player.uuid>/<player.flag[Character]>.yml
         - define id:<player.flag[Character]>
@@ -125,7 +129,8 @@ CharacterCreate:
         # Script Info
         - ~yaml id:<[id]> set Script.Version:0.0.2
         # Info
-        - ~yaml id:<[id]> set Info.Name:<[id]>
+        - ~yaml id:<[id]> set Info.Character_Name:<context.args.get[2]>
+        - ~yaml id:<[id]> set Info.Character_Location:<player.location>
         # SkillAPI
         # Description
         - ~yaml id:<[id]> set Description.Text:""
@@ -162,7 +167,6 @@ CharacterCreate:
 CharacterSwap:
   type: task
   script:
-    - define arg:<context.args.get[2]>
     - define path:/CharacterSheets/<player.uuid>/<[arg]>.yml
     - if <player.flag[Character]> >= 1:
       - if <server.has_file[/CharacterSheets/<player.uuid>/<[arg]>.yml]>:
@@ -180,11 +184,12 @@ CharacterSwap:
         - execute as_server "nickname <player.name> <[character_name]>"
         - narrate "<&b>[Characters] - You are now <[character_name]>"
         - flag player CurrentCharacter:<[arg]>
-        - yaml load:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml id:<player.flag[CurrentCharacter]>
-        - teleport <player> <yaml[<player.flag[CurrentCharacter]>].read[<info.character_location>]>
-        - yaml unload id:<player.flag[CurrentCharacter]>
+        - yaml load:/CharacterSheets/<player.uuid>/<[arg]>.yml id:<[arg]>
+        - teleport <player> <yaml[<[arg]>].read[info.character_location]>
+        - yaml unload id:<[arg]>
         - inventory clear d:<player.inventory>
-        - inventory set d:<player.inventory> o:in@<player.uuid>_<player.flag[CurrentCharacter]>
+        - define origin:in@<player.uuid>_<player.flag[CurrentCharacter]>
+        - inventory set d:<player.inventory> o:<[origin]>
         - adjust <player> 'equipment:<player.flag[e_<player.flag[CurrentCharacter]>]>'
     - stop
 
@@ -194,4 +199,6 @@ CharacterFetch:
   definitions: path|target
   script:
     - yaml load:<[path]> id:<[target]>
-    - determine <yaml[<[target]>].read[info.character_name]>
+    - define result:<yaml[<[target]>].read[info.character_name]>
+    - yaml unload id:<[target]>
+    - determine <[result]>

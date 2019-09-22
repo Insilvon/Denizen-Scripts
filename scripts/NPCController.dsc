@@ -29,9 +29,8 @@ GetRandomName:
 DynamicNPC:
     type: command
     name: dnpc
-    usage: /dnpc create <name>
+    usage: /dnpc create
     script:
-        - define arg:<context.args.get[2]>
         - define name:<proc[GetRandomName]>
         - execute as_op "npc create <[name]>"
 DNPCAssignment:
