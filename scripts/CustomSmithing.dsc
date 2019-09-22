@@ -33,6 +33,6 @@
 
 
 SharpeningTool:
-  type: item
-  material: iron_nugget
-  display name: Sharpen
+    type: item
+    material: iron_nugget
+    display name: Sharpen
