@@ -1,3 +1,8 @@
+# Towns Proof of Concept
+# Made and designed for AETHERIA
+# @author Insilvon
+# @version 1.0.0
+# Allows players to claim towns, manage their resources, and dominate their enemies
 # /town raid|claim|invite|promote|info|
 TownCommand:
     type: command
@@ -43,12 +48,12 @@ TownInfo:
         - narrate "<&b>[<[name]>] -    Minerals: <&f><yaml[<[name]>].read[Resources.Minerals]>"
         - narrate "<&b>[<[name]>] -    Weapons: <&f><yaml[<[name]>].read[Resources.Weapons]>"
         - narrate "<&e>[<[name]>] - VILLAGERS"
-        - narrate "<&e>[<[name]>] -    Farmers: <&f><yaml[<[name]>].read[NPCs.Farmers]>"
-        - narrate "<&e>[<[name]>] -    Blacksmiths: <&f><yaml[<[name]>].read[NPCs.Blacksmiths]>"
-        - narrate "<&e>[<[name]>] -    Miners: <&f><yaml[<[name]>].read[NPCs.Miners]>"
-        - narrate "<&e>[<[name]>] -    Woodcutters: <&f><yaml[<[name]>].read[NPCs.Woodcutters]>"
-        - narrate "<&e>[<[name]>] -    Trainers <&f><yaml[<[name]>].read[NPCs.Trainers]>"
-        - narrate "<&e>[<[name]>] -    Alchemists: <&f><yaml[<[name]>].read[NPCs.Alchemists]>"
+        - narrate "<&e>[<[name]>] -    Farmers: <&f><yaml[<[name]>].read[NPCs.Farmer]>"
+        - narrate "<&e>[<[name]>] -    Blacksmiths: <&f><yaml[<[name]>].read[NPCs.Blacksmith]>"
+        - narrate "<&e>[<[name]>] -    Miners: <&f><yaml[<[name]>].read[NPCs.Miner]>"
+        - narrate "<&e>[<[name]>] -    Woodcutters: <&f><yaml[<[name]>].read[NPCs.Woodcutter]>"
+        - narrate "<&e>[<[name]>] -    Trainers <&f><yaml[<[name]>].read[NPCs.Trainer]>"
+        - narrate "<&e>[<[name]>] -    Alchemists: <&f><yaml[<[name]>].read[NPCs.Alchemist]>"
         - narrate "<&a>[<[name]>] - MILITIA"
         - narrate "<&a>[<[name]>] -    Infantry: <&f><yaml[<[name]>].read[Militia.Infantry]>"
         - narrate "<&a>[<[name]>] -    Sentry: <&f><yaml[<[name]>].read[Militia.Sentry]>"
@@ -115,12 +120,12 @@ TownCreateHelper:
 
         - ~yaml id:<[name]> set Inhabitants.list:null
 
-        - ~yaml id:<[name]> set NPCs.Farmers:0
-        - ~yaml id:<[name]> set NPCs.Blacksmiths:0
-        - ~yaml id:<[name]> set NPCs.Trainers:0
-        - ~yaml id:<[name]> set NPCs.Alchemists:0
-        - ~yaml id:<[name]> set NPCs.Woodcutters:0
-        - ~yaml id:<[name]> set NPCs.Miners:0
+        - ~yaml id:<[name]> set NPCs.Farmer:0
+        - ~yaml id:<[name]> set NPCs.Blacksmith:0
+        - ~yaml id:<[name]> set NPCs.Trainer:0
+        - ~yaml id:<[name]> set NPCs.Alchemist:0
+        - ~yaml id:<[name]> set NPCs.Woodcutter:0
+        - ~yaml id:<[name]> set NPCs.Miner:0
 
         - ~yaml id:<[name]> set Militia.Infantry:0
         - ~yaml id:<[name]> set Militia.Sentry:0
