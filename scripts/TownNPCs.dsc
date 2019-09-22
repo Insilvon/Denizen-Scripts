@@ -13,6 +13,7 @@ FarmerNPCAssignment:
             - narrate "Assignment Set!"
     interact scripts:
         - 1 FarmerNPCInteract
+
 FarmerNPCInteract:
     type: interact
     steps:
@@ -30,21 +31,13 @@ FarmerNPCInteract:
                         - chat "Take this voucher. Place it where you want me to work."
                         - give TownFarmerVoucher
 
-TownFarmerVoucher:
-    type: item
-    material: paper
-    display name: Town Farmer Voucher
-TownBlacksmithVoucher:
-    type: item
-    material: paper
-    display name: Town Blacksmith Voucher
-
 TownNPCController:
     type: world
     events:
-        on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher:
+        on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher|TownAlchemistVoucher|TownWoodcutterVoucher|TownMinerVoucher|TownTrainerVoucher:
             # permission check
             # TODO: IMPLEMENT OWNER CHECK
+            - define locale:<player.location.cursor_on.relative[0,1,0]>
             - define scriptname:<context.item.script>
             - define npcType:<proc[GetNPCType].context[<[scriptname]>]>
             - if !<player.has_flag[CurrentCharacter]>:
@@ -56,7 +49,7 @@ TownNPCController:
             - run TownModifyYAML instantly def:<[townID]>|NPCs.<[npcType]>|1
             # create DNPC
             - define name:<proc[GetRandomName]>
-            - create player <[name]> <player.location> save:temp
+            - create player <[name]> <[locale]> save:temp
             - adjust <entry[temp].created_npc> lookclose:TRUE
             - adjust <entry[temp].created_npc> set_sneaking:TRUE
             #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
@@ -99,7 +92,26 @@ GetTownNPCSkin:
                 - determine https://i.imgur.com/6xVVUEZ.png
                 - determine https://i.imgur.com/Tpj5ZYR.png
                 - determine https://i.imgur.com/DcHXhoD.png
-
+        - if <[type]> == woodcutter:
+            - random:
+                - determine https://i.imgur.com/nwLYKhd.png
+                - determine https://i.imgur.com/eWP6rOu.png
+                - determine https://i.imgur.com/lWBukOp.png
+        - if <[type]> == alchemist:
+            - random:
+                - determine https://i.imgur.com/lyYfGkS.png
+                - determine https://i.imgur.com/4P1o5Tj.png
+                - determine https://i.imgur.com/SuC8B29.png
+        - if <[type]> == trainer:
+            - random:
+                - determine https://i.imgur.com/t0LvBI6.png
+                - determine https://i.imgur.com/zNPkKhp.png
+                - determine https://i.imgur.com/LombOzu.png
+        - if <[type]> == miner:
+            - random:
+                - determine https://i.imgur.com/BjpGsf6.png
+                - determine https://i.imgur.com/nO1AsGv.png
+                - determine https://i.imgur.com/K61pPMU.png
 SetNPCURLSKin:
     type: task
     script:
