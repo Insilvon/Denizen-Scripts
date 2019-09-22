@@ -10,8 +10,6 @@ TownCommand:
     description: (DEV) Creates a town using active flags
     usage: /town create name
     script:
-        - define pos1:<player.flag[pos1]>
-        - define pos2:<player.flag[pos2]>
         - define args:<context.args>
         - if <[args].size> == 1:
             - define command:<[args].get[1]>
@@ -19,7 +17,8 @@ TownCommand:
                 - inject TownInfo
             - run TownHelp
         - if <[args].size> == 2:
-            - foreach claim|raid|invite|create as:switch:
+            - define command:<[args].get[1]>
+            - foreach claim|raid|invite|create|join as:switch:
                 - if <[args].get[1]> == <[switch]>:
                     - inject Town<[switch]>
         - if <[args].size> == 3:
@@ -89,6 +88,37 @@ TownClaim:
 TownInvite:
     type: task
     script:
+        - define town:<proc[GetTownID].context[<player>]>
+        - if <[town]> == "":
+            - narrate "You are not a member of a town!"
+            - stop
+        - if <player> != <proc[GetTownOwner].context[<[town]>]>:
+            - narrate "You are not the owner of that town!"
+            - stop
+        - define target:<server.match_player[<[args].get[2]>]||null>
+        - if <[target]> == null:
+            - narrate "That player is not online!"
+            - stop
+        
+        - narrate "You have invited <[target].name> to your town."
+        - narrate "You have been invited to join the town of <[town]>." targets:<[target]||null>
+        - narrate "Use /town join <[town]> to accept." targets:<[target]||null>
+        - flag server <[target].name>_townInvite:<[town]> duration:5m
+        - stop
+TownJoin:
+    type: task
+    script:
+        - if !<player.has_flag[CurrentCharacter]>:
+            - narrate "You do not have a character selected!"
+            - stop
+        - define target:<[args].get[2]>
+        - if <server.has_flag[<player.name>_townInvite]>:
+            - if <server.flag[<player.name>_townInvite]> == <[target]>:
+                - narrate "You have joined the town of <[target]>."
+                - run CharacterSheetsModifyYAML def:<player>|Town.Name|<[target]>
+                - run TownAddMember def:<[target]>|<player.name>
+                - stop
+        - narrate "You have not been invited to <[target]>."
         - stop
 # /town promote name rank
 # Command which lets players promote other members of the town to specific titles
@@ -101,6 +131,8 @@ TownPromote:
 TownCreate:
     type: task
     script:
+        - define pos1:<player.flag[pos1]>
+        - define pos2:<player.flag[pos2]>
         - define name:<[args].get[2]>
         - if !<server.has_file[/Towns/<[name]>.yml]>:
             - inject TownCreateHelper
@@ -155,6 +187,16 @@ TownModifyYAML:
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - ~yaml unload id:<[name]>
 
+TownAddMember:
+    type: task
+    definitions: name|member
+    script:
+        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
+        - define currentMembers:<yaml[<[name]>].read[Inhabitants.List].as_list>
+        - define currentMembers:<[currentMembers].insert[<[member]>].at[0]>
+        - ~yaml id:<[name]> set Inhabitants.List:<[currentMembers]>
+        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+        - ~yaml unload id:<[name]>
 # Procedure which gets the name of the town the player is currently a member of
 GetTownID:
     type: procedure
@@ -165,3 +207,13 @@ GetTownID:
         - define townID:<yaml[<[id]>].read[Town.Name]>
         - yaml unload id:<[id]>
         - determine <[townID]>
+
+GetTownOwner:
+    type: procedure
+    definitions: name
+    script:
+        - if <server.has_file[Towns/<[name]>.yml]>:
+            - yaml load:Towns/<[name]>.yml id:<[name]>
+            - define result:p@<yaml[<[name]>].read[Town.Owner]>
+            - yaml unload id:<[name]>
+            - determine <[result]>

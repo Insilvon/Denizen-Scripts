@@ -21,15 +21,15 @@ RegionController:
                 - if !<player.has_flag[SnowRes]>:
                     - flag player SnowRes:0
                 - run ColdController
-      on player exits ColdRegion:
-          - narrate "You feel the warmth of the sun hit you as you exit the cold."
-          - wait 5s
-          - flag player Cold:!
+        on player exits ColdRegion:
+            - narrate "You feel the warmth of the sun hit you as you exit the cold."
+            - wait 5s
+            - flag player Cold:!
     # Item Events
-      on player equips SnowBoots:
-          - flag player SnowRes:+:1
-      on player unequips SnowBoots:
-          - flag player SnowRes:-:1
+        on player equips SnowBoots:
+            - flag player SnowRes:+:1
+        on player unequips SnowBoots:
+            - flag player SnowRes:-:1
 
 # Redirect Script which determines which flavortext to narrate
 

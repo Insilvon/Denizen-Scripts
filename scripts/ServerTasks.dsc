@@ -94,10 +94,10 @@ ReadAlchemyFile:
                 - if <[<[Node]>_loaded]> != <[<[Node]>]>:
                     - define status:false
                     - foreach stop
-              - if <[status]>:
-                  - narrate "True! Matched <[recipe]>"
-                  - give <[recipe]>
-                  - stop
+                - if <[status]>:
+                    - narrate "True! Matched <[recipe]>"
+                    - give <[recipe]>
+                    - stop
         - narrate "Failed! No matches found"
 TestRecipe1:
     type: item

@@ -103,3 +103,12 @@ Description:
             - stop
         - narrate "Descriptions<&co> Use <&a>/description set<&f> or <&a>/description add."
         - narrate "Descriptions<&co> To view another player<&sq>s description, right click them!"
+CharacterSheetsModifyYAML:
+    type: task
+    definitions: player|key|value
+    script:
+        - define id:<[player].flag[CurrentCharacter]>
+        - ~yaml "load:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
+        - ~yaml id:<[player]> set <[key]>:<[value]>
+        - ~yaml "savefile:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
+        - ~yaml unload id:<[player]>

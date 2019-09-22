@@ -110,10 +110,10 @@ CharacterReset:
 CharacterCreate:
     type: task
     script:
-      - define path:/CharacterSheets/<player.uuid>/
-      - if !<server.has_file[/CharacterSheets/<player.uuid>/base.yml]>:
-          - narrate "You are lacking crucial backend files. Please message an admin."
-      - else:
+        - define path:/CharacterSheets/<player.uuid>/
+        - if !<server.has_file[/CharacterSheets/<player.uuid>/base.yml]>:
+            - narrate "You are lacking crucial backend files. Please message an admin."
+        - else:
             - yaml load:<[path]>base.yml id:base
             - define limit:<yaml[base].read[permissions.character_limit]>
             - if <player.flag[Character]> < <[limit]>:
