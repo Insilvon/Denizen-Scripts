@@ -43,12 +43,12 @@ TownInfo:
         - narrate "<&b>[<[name]>] -    Minerals: <&f><yaml[<[name]>].read[Resources.Minerals]>"
         - narrate "<&b>[<[name]>] -    Weapons: <&f><yaml[<[name]>].read[Resources.Weapons]>"
         - narrate "<&e>[<[name]>] - VILLAGERS"
-        - narrate "<&e>[<[name]>] -    Farmers: <&f><yaml[<[name]>].read[NPC.Farmers]>"
-        - narrate "<&e>[<[name]>] -    Blacksmiths: <&f><yaml[<[name]>].read[NPC.Blacksmiths]>"
-        - narrate "<&e>[<[name]>] -    Miners: <&f><yaml[<[name]>].read[NPC.Miners]>"
-        - narrate "<&e>[<[name]>] -    Woodcutters: <&f><yaml[<[name]>].read[NPC.Woodcutters]>"
-        - narrate "<&e>[<[name]>] -    Trainers <&f><yaml[<[name]>].read[NPC.Trainers]>"
-        - narrate "<&e>[<[name]>] -    Alchemists: <&f><yaml[<[name]>].read[NPC.Alchemists]>"
+        - narrate "<&e>[<[name]>] -    Farmers: <&f><yaml[<[name]>].read[NPCs.Farmers]>"
+        - narrate "<&e>[<[name]>] -    Blacksmiths: <&f><yaml[<[name]>].read[NPCs.Blacksmiths]>"
+        - narrate "<&e>[<[name]>] -    Miners: <&f><yaml[<[name]>].read[NPCs.Miners]>"
+        - narrate "<&e>[<[name]>] -    Woodcutters: <&f><yaml[<[name]>].read[NPCs.Woodcutters]>"
+        - narrate "<&e>[<[name]>] -    Trainers <&f><yaml[<[name]>].read[NPCs.Trainers]>"
+        - narrate "<&e>[<[name]>] -    Alchemists: <&f><yaml[<[name]>].read[NPCs.Alchemists]>"
         - narrate "<&a>[<[name]>] - MILITIA"
         - narrate "<&a>[<[name]>] -    Infantry: <&f><yaml[<[name]>].read[Militia.Infantry]>"
         - narrate "<&a>[<[name]>] -    Sentry: <&f><yaml[<[name]>].read[Militia.Sentry]>"
@@ -115,12 +115,12 @@ TownCreateHelper:
 
         - ~yaml id:<[name]> set Inhabitants.list:null
 
-        - ~yaml id:<[name]> set NPC.Farmers:0
-        - ~yaml id:<[name]> set NPC.Blacksmiths:0
-        - ~yaml id:<[name]> set NPC.Trainers:0
-        - ~yaml id:<[name]> set NPC.Alchemists:0
-        - ~yaml id:<[name]> set NPC.Woodcutters:0
-        - ~yaml id:<[name]> set NPC.Miners:0
+        - ~yaml id:<[name]> set NPCs.Farmers:0
+        - ~yaml id:<[name]> set NPCs.Blacksmiths:0
+        - ~yaml id:<[name]> set NPCs.Trainers:0
+        - ~yaml id:<[name]> set NPCs.Alchemists:0
+        - ~yaml id:<[name]> set NPCs.Woodcutters:0
+        - ~yaml id:<[name]> set NPCs.Miners:0
 
         - ~yaml id:<[name]> set Militia.Infantry:0
         - ~yaml id:<[name]> set Militia.Sentry:0
@@ -138,13 +138,25 @@ TownCreateHelper:
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - yaml unload id:<[name]>
 
-
-TownModifyResource:
+# Ex use: - run TownModifyYAML def:SilTown|NPC.Farmers|1
+# Ex use: - run TownModifyYAML def:SilTown|Resources.Wood|1
+TownModifyYAML:
     type: task
-    definitions: name|resource|amount
+    definitions: name|key|amount
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
-        - define resourceValue:<yaml[<[name]>].read[Resources.<[resource]>]>
-        - ~yaml id:<[name]> set Resources.<[resource]>:<[resourceValue].add_int[<[amount].as_int>]>
+        - define currentValue:<yaml[<[name]>].read[<[key]>]>
+        - ~yaml id:<[name]> set <[key]>:<[currentValue].add_int[<[amount]>]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - ~yaml unload id:<[name]>
+
+# Procedure which gets the name of the town the player is currently a member of
+GetTownID:
+    type: procedure
+    definitions: player
+    script:
+        - define id:<[player].flag[CurrentCharacter]>
+        - yaml load:CharacterSheets/<[player].uuid>/<[id]>.yml id:<[id]>
+        - define townID:<yaml[<[id]>].read[Town.Name]>
+        - yaml unload id:<[id]>
+        - determine <[townID]>

@@ -21,34 +21,32 @@ FarmerNPCInteract:
                         - chat "Excellent, I am now yours."
                         - chat "Take this voucher. Place it where you want me to work."
                         - give TownFarmerVoucher
+
 TownFarmerVoucher:
     type: item
     material: paper
     display name: Town Farmer Voucher
+
 TownNPCController:
     type: world
     events:
         on player right clicks with TownFarmerVoucher:
+            # permission check
+            # TODO: IMPLEMENT OWNER CHECK
+            - narrate <context.item.script>
             - if !<player.has_flag[CurrentCharacter]>:
                 - narrate "You do not have an active character. Please fix this first!"
                 - stop
-            # inc town file
-            - define id:<player.flag[CurrentCharacter]>
-            - yaml load:CharacterSheets/<player.uuid>/<[id]>.yml id:<[id]>
-            - define townID:<yaml[<[id]>].read[Town.Name]>
-            - ~yaml unload id:<[id]>
-
-            - ~yaml load:Towns/<[townID]>.yml id:<[townID]>
-            - define value:<yaml[<[townID]>].read[NPC.Farmers].add_int[1]>
-            - ~yaml id:<[townID]> set NPC.Farmers:<[value]>
-            - ~yaml "savefile:/Towns/<[townID]>.yml" id:<[townID]>
-            - ~yaml unload id:<[townID]>
+            # get Town Name
+            - ~define townID:<proc[GetTownID].context[<player>]>
+            - narrate <[townID]>
+            # Modify NPC Value
+            - run TownModifyYAML instantly def:<[townID]>|NPCs.Farmers|1
             # create DNPC
             - define name:<proc[GetRandomName]>
             - create player <[name]> <player.location> save:temp
             - adjust <entry[temp].created_npc> lookclose:TRUE
             - adjust <entry[temp].created_npc> set_sneaking:TRUE
-            - adjust <entry[temp].created_npc> vulnerable:TRUE
             #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
             - adjust <entry[temp].created_npc> set_assignment:PlacedTownFarmerAssignment
 
@@ -56,6 +54,7 @@ PlacedTownFarmerAssignment:
     type: assignment
     interact scripts:
         - 1 PlacedTownFarmerInteract
+
 PlacedTownFarmerInteract:
     type: interact
     steps:
