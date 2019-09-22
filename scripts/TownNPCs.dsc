@@ -34,11 +34,15 @@ TownFarmerVoucher:
     type: item
     material: paper
     display name: Town Farmer Voucher
+TownBlacksmithVoucher:
+    type: item
+    material: paper
+    display name: Town Blacksmith Voucher
 
 TownNPCController:
     type: world
     events:
-        on player right clicks with TownFarmerVoucher:
+        on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher:
             # permission check
             # TODO: IMPLEMENT OWNER CHECK
             - define scriptname:<context.item.script>
@@ -49,18 +53,24 @@ TownNPCController:
             # get Town Name
             - define townID:<proc[GetTownID].context[<player>]>
             # Modify NPC Value
-            - run TownModifyYAML instantly def:<[townID]>|NPCs.Farmer|1
+            - run TownModifyYAML instantly def:<[townID]>|NPCs.<[npcType]>|1
             # create DNPC
             - define name:<proc[GetRandomName]>
             - create player <[name]> <player.location> save:temp
             - adjust <entry[temp].created_npc> lookclose:TRUE
             - adjust <entry[temp].created_npc> set_sneaking:TRUE
             #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
-            # TODO - change this to be general!
-            - define url:<proc[GetFarmerSkin].context[<[npcType]>]>
-            - inject SetNPCURLSkin
+            - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
+            - define counter:0
+            - define success:false
+            - while <[success].matches[false]> && <[counter].as_int> <= 10:
+                - define counter:<[counter].add_int[1]>
+                - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
+                - inject SetNPCURLSkin
+            - if <[success]> == false:
+                - narrate "<&a>Failed to retrieve the skin from the provided link of <[url]>. Please notify your admin!"
 
-            - adjust <entry[temp].created_npc> set_assignment:PlacedTownFarmerAssignment
+            - adjust <entry[temp].created_npc> set_assignment:PlacedTown<[npcType]>Assignment
 
 # Based on the provided script voucher name, returns the keyword to use when
 # referencing this npc type later
@@ -98,27 +108,17 @@ SetNPCURLSKin:
         - while <queue.exists[<def[key]>]>:
             - if <def[loop_index]> > 20:
                 - queue q@<def[key]> clear
-                - narrate "<&a>The request timed out. Is the url valid?"
                 - queue clear
             - wait 5t
-
         # Quick sanity check - ideally this should never be true
         - if !<server.has_flag[<def[key]>]>:
             - queue clear
-
         - if <server.flag[<def[key]>]> == null:
-            - narrate "<&a>Failed to retrieve the skin from the provided link. Please notify your admin!"
             - flag server <def[key]>:!
-            - queue clear
-
         - yaml loadtext:<server.flag[<def[key]>]> id:response
-
-        - if !<yaml[response].contains[data.texture]>:
-            - narrate "<&a>An unexpected error occurred while retrieving the skin data. Please try again."
-        - else:
-            #- narrate "<&e><def[npc].name><&a>'s skin set to <&e><def[url]><&a>."
+        - if <yaml[response].contains[data.texture]>:
             - adjust <entry[temp].created_npc> skin_blob:<yaml[response].read[data.texture.value]>;<yaml[response].read[data.texture.signature]>
-
+            - define success:true
         - flag server <def[key]>:!
         - yaml unload id:response
 
@@ -128,6 +128,21 @@ PlacedTownFarmerAssignment:
         - 1 PlacedTownFarmerInteract
 
 PlacedTownFarmerInteract:
+    type: interact
+    steps:
+        1:
+            chat trigger:
+                1:
+                    trigger: /Regex:Hello/
+                    script:
+                        - chat "Hello!"
+
+PlacedTownBlacksmithAssignment:
+    type: assignment
+    interact scripts:
+        - 1 PlacedTownBlacksmithInteract
+
+PlacedTownBlacksmithInteract:
     type: interact
     steps:
         1:
