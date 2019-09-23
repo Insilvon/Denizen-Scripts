@@ -182,14 +182,17 @@ CharacterSwap:
                     - note <player.inventory> as:<player.uuid>_<player.flag[CurrentCharacter]>
                     - narrate "<&b>[Characters] - Inventory Saved!"
                     - flag <player> e_<player.flag[CurrentCharacter]>:<player.equipment>
-                - narrate "End of IF statement! Running through nick changes!"
-                - define character_name:<proc[CharacterFetch].context[<[path]>|<[arg]>]>
+                # Set character
+                - flag player CurrentCharacter:<[arg]>
+                - define character_name:<proc[GetCharacterName].context[<player>]>
+                # Set nick
                 - execute as_server "nickname <player.name> <[character_name]>"
                 - narrate "<&b>[Characters] - You are now <[character_name]>"
-                - flag player CurrentCharacter:<[arg]>
-                - yaml load:/CharacterSheets/<player.uuid>/<[arg]>.yml id:<[arg]>
-                - teleport <player> <yaml[<[arg]>].read[info.character_location]>
-                - yaml unload id:<[arg]>
+                # move them to their last location
+                # CHECK THIS
+                - define location:<proc[GetCharacterLocation].context[<player>]>
+                - teleport <player> <[location]>
+                # set their inventory/equipment
                 - inventory clear d:<player.inventory>
                 - define origin:in@<player.uuid>_<player.flag[CurrentCharacter]>
                 - inventory set d:<player.inventory> o:<[origin]>
@@ -207,12 +210,12 @@ CharacterNick:
         - ~yaml unload id:<[character]>
         - execute as_server "nickname <player.name> <[arg]>"
 
-# Helper script for Character Swap
-CharacterFetch:
-    type: procedure
-    definitions: path|target
-    script:
-        - yaml load:<[path]> id:<[target]>
-        - define result:<yaml[<[target]>].read[info.character_name]>
-        - yaml unload id:<[target]>
-        - determine <[result]>
+# # Helper script for Character Swap
+# CharacterFetch:
+#     type: procedure
+#     definitions: path|target
+#     script:
+#         - yaml load:<[path]> id:<[target]>
+#         - define result:<yaml[<[target]>].read[info.character_name]>
+#         - yaml unload id:<[target]>
+#         - determine <[result]>

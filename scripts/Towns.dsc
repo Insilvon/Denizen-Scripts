@@ -78,28 +78,29 @@ TownClaim:
         - define name:<[args].get[2]>
         - if <[owner]> == none:
             - yaml id:<[id]> set Town.Owner:<player.uuid>
-            - yaml id:<[id]> set Town.OwnerName:<player.name.display>
+            - yaml id:<[id]> set Town.OwnerName:<proc[GetCharacterName].context[<player>]>
             - yaml "savefile:/Towns/<[id]>.yml" id:<[id]>
             - yaml unload id:<[id]>
             - execute as_server "denizen save"
         - stop
 # Command which lets players invite other players to their town
-# TODO: Prevent players from inviting themselves
 TownInvite:
     type: task
     script:
         - define town:<proc[GetTownID].context[<player>]>
+        - define target:<server.match_player[<[args].get[2]>]||null>
         - if <[town]> == "":
             - narrate "You are not a member of a town!"
             - stop
         - if <player> != <proc[GetTownOwner].context[<[town]>]>:
             - narrate "You are not the owner of that town!"
             - stop
-        - define target:<server.match_player[<[args].get[2]>]||null>
         - if <[target]> == null:
             - narrate "That player is not online!"
             - stop
-        
+        - if <[target]> == <player.name>:
+            - narrate "You cannot invite yourself!"
+            - stop
         - narrate "You have invited <[target].name> to your town."
         - narrate "You have been invited to join the town of <[town]>." targets:<[target]||null>
         - narrate "Use /town join <[town]> to accept." targets:<[target]||null>
@@ -116,7 +117,8 @@ TownJoin:
             - if <server.flag[<player.name>_townInvite]> == <[target]>:
                 - narrate "You have joined the town of <[target]>."
                 - run CharacterSheetsModifyYAML def:<player>|Town.Name|<[target]>
-                - run TownAddMember def:<[target]>|<player.name>
+                # Add the BASE NAME of this person, not the current display name
+                - run TownAddMember def:<[target]>|<proc[GetCharacterName].context[<player>]>
                 - stop
         - narrate "You have not been invited to <[target]>."
         - stop
@@ -125,6 +127,22 @@ TownJoin:
 TownPromote:
     type: task
     script:
+        - define target:<server.match_player[<[args].get[2]>]||null>
+        # Are you even the owner?
+        - define town:<proc[GetTownID].context[<player>]>
+        - if <proc[GetTownOwner]>.context[<[town]>]> != <player.name>:
+            - narrate "You are not the owner of your town - you can<&sq>t promote people."
+            - stop
+        # Are they online?
+        - if <[target]> == null:
+            - narrate "That player is not online!"
+            - stop
+        
+        - define target_town:<proc[GetTownID].context[<[target]>]>
+        # Are they in the town?
+        - if town != target_town:
+            - narrate "That player is not a member of your town!"
+        
         - stop
 # Developer Command which creates a new town at the given location. Uses Denizen
 # pos1/pos2 flags to identify the cuboid.
@@ -207,6 +225,16 @@ GetTownID:
         - define townID:<yaml[<[id]>].read[Town.Name]>
         - yaml unload id:<[id]>
         - determine <[townID]>
+
+GetTownYAML:
+    type: procedure
+    definitions: name|key
+    script:
+        - if <server.has_file[Towns/<[name]>.yml]>:
+            - yaml load:Towns/<[name]>.yml id:<[name]>
+            - define result:<yaml[<[id]>].read[<[key]>]>
+            - yaml unload:<[id]>
+            - determine <[result]>
 
 GetTownOwner:
     type: procedure
