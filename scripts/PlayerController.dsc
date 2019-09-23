@@ -56,7 +56,7 @@ CharacterCommand:
     aliases:
     - c
     description: Manage your characters
-    usage: /character select|reset|swap
+    usage: /character select|reset|swap|nick
     script:
         - define args:<context.args>
         - if <[args].size> == 1:
@@ -72,6 +72,9 @@ CharacterCommand:
             - if <[command]> == swap:
                 - define arg:<context.args.get[2]>
                 - inject CharacterSwap
+            - if <[command]> == nick:
+                - define arg:<context.args.get[2]>
+                - inject CharacterNick
         - inject CharacterSelect
 
 # Script to open the character select screen
@@ -129,6 +132,7 @@ CharacterCreate:
                 - ~yaml id:<[id]> set Script.Version:0.0.2
                 # Info
                 - ~yaml id:<[id]> set Info.Character_Name:<context.args.get[2]>
+                - ~yaml id:<[id]> set Info.Character_Display_Name:<context.args.get[2]>
                 - ~yaml id:<[id]> set Info.Character_Location:<player.location>
                 # SkillAPI
                 # Description
@@ -191,6 +195,17 @@ CharacterSwap:
                 - inventory set d:<player.inventory> o:<[origin]>
                 - adjust <player> 'equipment:<player.flag[e_<player.flag[CurrentCharacter]>]>'
         - stop
+# Changes the display name for the current character
+CharacterNick:
+    type: task
+    script:
+        - define character:<player.flag[CurrentCharacter]>
+        # TODO: Check permissions to change display name/implement cooldown
+        - ~yaml load:/CharacterSheets/<player.uuid>/<[character]>.yml id:<[character]>
+        - ~yaml id: <[character]> set Info.Character_Display_Name:<[arg]>
+        - ~yaml savefile:/CharacterSheets/<player.uuid>/<[character]>.yml id:<[character]>
+        - ~yaml unload id:<[character]>
+        - execute as_server "nickname <player.name> <[arg]>"
 
 # Helper script for Character Swap
 CharacterFetch:

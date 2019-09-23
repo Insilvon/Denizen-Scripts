@@ -112,3 +112,13 @@ CharacterSheetsModifyYAML:
         - ~yaml id:<[player]> set <[key]>:<[value]>
         - ~yaml "savefile:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
         - ~yaml unload id:<[player]>
+
+GetCharacterName:
+    type: task
+    definitions: player
+    script:
+        - define character:<player.flag[CurrentCharacter]>
+        - ~yaml load:/CharacterSheets/<player.uuid>/<[character]>.yml id:<[character]>
+        - define name:<yaml[<[character]>].read[Info.Character_Display_Name]>
+        - ~yaml unload id:<[character]>
+        - determine <[name]>
