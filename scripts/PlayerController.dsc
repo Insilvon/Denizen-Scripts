@@ -1,7 +1,7 @@
 # Player Character Controller Proof of Concept
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 2.0.3
+# @version 2.0.4
 # Allows players to create and save data between multiple "characters" on one account
 
 # Current Flags: Character (# of Chars), Character List, Equipment flags (e_id)
@@ -13,23 +13,25 @@ PlayerControllerOnJoin:
         - wait 0.1s
         - if !<player.has_flag[Character]>:
             - flag player Character:0
-        - narrate "<&b>[Characters] - Setting your total number of characters."
+            - narrate "<&b>[Characters] - Setting your total number of characters."
         - if !<player.has_flag[CharacterGUI]>:
             - flag player CharacterGUI
             - note in@CharacterGUIMenu as:<player.uuid>_GUI
-        - define path:/CharacterSheets/<player.uuid>/
-        - if !<server.has_file[<[path]>base.yml]>:
+        - if !<server.has_file[CharacterSheets/<player.uuid>/base.yml]>:
             - narrate "Creating Base File"
             - yaml create id:base
-            - yaml "savefile:<[path]>base.yml" id:base
-            - yaml "load:<[path]>base.yml" id:base
+            - yaml "savefile:/CharacterSheets/<player.uuid>/base.yml" id:base
+            - yaml "load:/CharacterSheets/<player.uuid>/base.yml" id:base
             # Set data here
             - yaml id:base set info.username:<player.name>
             - yaml id:base set permissions.character_limit:2
-            - yaml "savefile:<[path]>base.yml" id:base
+            - yaml "savefile:/CharacterSheets/<player.uuid>/base.yml" id:base
             - yaml unload id:base
         - else:
-            - narrate "<&b>[Characters] - Missing base file!"
+            - narrate "<&b>[Characters] - All loaded!"
+            - if !<player.has_flag[CurrentCharacter]>:
+                - narrate "<&b>[Characters] - Create your first character with /character create <&lt>YourCharacter'sName<&gt>!"
+
 
 PlayerController:
     type: world
@@ -194,6 +196,7 @@ CharacterSwap:
                 - teleport <player> <[location]>
                 # set their inventory/equipment
                 - inventory clear d:<player.inventory>
+                # TODO: Edit this so it only runs when the player has 2+ characters
                 - define origin:in@<player.uuid>_<player.flag[CurrentCharacter]>
                 - inventory set d:<player.inventory> o:<[origin]>
                 - adjust <player> 'equipment:<player.flag[e_<player.flag[CurrentCharacter]>]>'

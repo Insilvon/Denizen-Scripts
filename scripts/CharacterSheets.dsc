@@ -73,7 +73,7 @@ GetCharacterYAML:
     type: procedure
     definitions: player|key
     script:
-        - define character:<[player]>.flag[CurrentCharacter]>
+        - define character:<[player].flag[CurrentCharacter]>
         - yaml load:/CharacterSheets/<[player].uuid>/<[character]>.yml id:<[character]>
         - define result:<yaml[<[character]>].read[<[key]>]>
         - yaml unload id:<[character]>
