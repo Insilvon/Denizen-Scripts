@@ -1,9 +1,15 @@
 # Towns Proof of Concept
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 1.0.0
+# @version 1.1.0
 # Allows players to claim towns, manage their resources, and dominate their enemies
 # /town raid|claim|invite|promote|info|
+
+# =================================================================================
+# ==================================Core Command===================================
+# =================================================================================
+
+# Core Town Command
 TownCommand:
     type: command
     name: town
@@ -26,6 +32,13 @@ TownCommand:
             - if <[command]> == promote:
                 - inject TownPromote
         - run TownHelp
+
+# =================================================================================
+# ===========================Core Command Task Scripts=============================
+# =================================================================================
+
+# Narrates to display when /town help is run or command is invalid
+# TODO - add formatting
 TownHelp:
     type: task
     script:
@@ -34,10 +47,15 @@ TownHelp:
         - narrate "/town invite <username>"
         - narrate "/town promote <username>"
         - narrate "/town info"
+
+# /Town Info - displays current statistics about the player town.
 TownInfo:
     type: task
     script:
-        - define name:SilTown
+        - define name:<proc[GetCharacterTown].context[<player>]||null>
+        - if <[name]> == null:
+            - narrate "You are not a member of a town!"
+            - stop
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - narrate "[Town] - Showing info for <[name]>"
         - narrate "<&b>[<[name]>] - RESOURCES"
@@ -62,6 +80,9 @@ TownInfo:
         - narrate "<&a>[<[name]>] -    Boss: <&f><yaml[<[name]>].read[Militia.Boss]>"
         - ~yaml unload id:<[name]>
         - stop
+
+# /town claim
+# TODO - change this to a 3-arger and allow for /town claim name
 TownClaim:
     type: task
     script:
@@ -83,11 +104,12 @@ TownClaim:
             - yaml unload id:<[id]>
             - execute as_server "denizen save"
         - stop
-# Command which lets players invite other players to their town
+
+# /town invite <playername> - allows players to invite others to their town
 TownInvite:
     type: task
     script:
-        - define town:<proc[GetTownID].context[<player>]>
+        - define town:<proc[GetCharacterTown].context[<player>]>
         - define target:<server.match_player[<[args].get[2]>]||null>
         - if <[town]> == "":
             - narrate "You are not a member of a town!"
@@ -106,6 +128,8 @@ TownInvite:
         - narrate "Use /town join <[town]> to accept." targets:<[target]||null>
         - flag server <[target].name>_townInvite:<[town]> duration:5m
         - stop
+
+# /town join <name> - allows players to join towns they are actively invited to
 TownJoin:
     type: task
     script:
@@ -122,14 +146,14 @@ TownJoin:
                 - stop
         - narrate "You have not been invited to <[target]>."
         - stop
-# /town promote name rank
-# Command which lets players promote other members of the town to specific titles
+
+# /town promote name rank - lets players promote other members of the town to specific titles
 TownPromote:
     type: task
     script:
         - define target:<server.match_player[<[args].get[2]>]||null>
         # Are you even the owner?
-        - define town:<proc[GetTownID].context[<player>]>
+        - define town:<proc[GetCharacterTown].context[<player>]>
         - if <proc[GetTownOwner]>.context[<[town]>]> != <player.name>:
             - narrate "You are not the owner of your town - you can<&sq>t promote people."
             - stop
@@ -138,14 +162,14 @@ TownPromote:
             - narrate "That player is not online!"
             - stop
         
-        - define target_town:<proc[GetTownID].context[<[target]>]>
+        - define target_town:<proc[GetCharacterTown].context[<[target]>]>
         # Are they in the town?
         - if town != target_town:
             - narrate "That player is not a member of your town!"
         
         - stop
-# Developer Command which creates a new town at the given location. Uses Denizen
-# pos1/pos2 flags to identify the cuboid.
+
+# Developer Command which creates a new town at the given location. Uses Denizen pos1/pos2 flags to identify the cuboid.
 TownCreate:
     type: task
     script:
@@ -156,6 +180,9 @@ TownCreate:
             - inject TownCreateHelper
         - else:
             - narrate "Town - Town already exists!"
+
+# Helper for TownCreate
+# TODO: Generalize this and fit it into /town claim
 TownCreateHelper:
     type: task
     script:
@@ -193,39 +220,38 @@ TownCreateHelper:
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - yaml unload id:<[name]>
 
-# Ex use: - run TownModifyYAML def:SilTown|NPC.Farmers|1
-# Ex use: - run TownModifyYAML def:SilTown|Resources.Wood|1
-TownModifyYAML:
-    type: task
-    definitions: name|key|amount
-    script:
-        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
-        - define currentValue:<yaml[<[name]>].read[<[key]>]>
-        - ~yaml id:<[name]> set <[key]>:<[currentValue].add_int[<[amount]>]>
-        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
+# =================================================================================
+# ================================== Functions ====================================
+# =================================================================================
 
+# Function which adds the specified CHARACTER, not player
+# DEFINE YOUR CHARACTER BEFORE ADDING THEM
 TownAddMember:
     type: task
-    definitions: name|member
+    definitions: name|character
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - define currentMembers:<yaml[<[name]>].read[Inhabitants.List].as_list>
-        - define currentMembers:<[currentMembers].insert[<[member]>].at[0]>
+        - define currentMembers:<[currentMembers].insert[<[character]>].at[0]>
         - ~yaml id:<[name]> set Inhabitants.List:<[currentMembers]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - ~yaml unload id:<[name]>
-# Procedure which gets the name of the town the player is currently a member of
-GetTownID:
-    type: procedure
-    definitions: player
-    script:
-        - define id:<[player].flag[CurrentCharacter]>
-        - yaml load:CharacterSheets/<[player].uuid>/<[id]>.yml id:<[id]>
-        - define townID:<yaml[<[id]>].read[Town.Name]>
-        - yaml unload id:<[id]>
-        - determine <[townID]>
 
+# =================================================================================
+# =============================== Get/Set Methods =================================
+# =================================================================================
+
+# CHECK THIS WORKS
+# Retrieves the owner UUID of the given town
+# TODO: replace with character name so multiple characters one one account can have town control
+GetTownOwner:
+    type: procedure
+    definitions: name
+    script:
+        - define result:p@<proc[GetTownYAML].context[<[name]>|Town.Owner]>
+        - determine <[result]>
+
+# General YAML getter to fetch the value at a given key
 GetTownYAML:
     type: procedure
     definitions: name|key
@@ -236,12 +262,15 @@ GetTownYAML:
             - yaml unload:<[id]>
             - determine <[result]>
 
-GetTownOwner:
-    type: procedure
-    definitions: name
+# Ex use: - run TownModifyYAML def:SilTown|NPC.Farmers|1
+# Ex use: - run TownModifyYAML def:SilTown|Resources.Wood|1
+# General Setter Method to modify values (add/sub) in the town
+TownModifyYAML:
+    type: task
+    definitions: name|key|amount
     script:
-        - if <server.has_file[Towns/<[name]>.yml]>:
-            - yaml load:Towns/<[name]>.yml id:<[name]>
-            - define result:p@<yaml[<[name]>].read[Town.Owner]>
-            - yaml unload id:<[name]>
-            - determine <[result]>
+        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
+        - define currentValue:<yaml[<[name]>].read[<[key]>]>
+        - ~yaml id:<[name]> set <[key]>:<[currentValue].add_int[<[amount]>]>
+        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+        - ~yaml unload id:<[name]>

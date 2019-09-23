@@ -56,11 +56,18 @@ GetCharacterName:
     definitions: player
     script:
         - determine <proc[GetCharacterYAML].context[<player>|Info.Character_Name]>
+# Gets the last known location of this player
 GetCharacterLocation:
     type: procedure
     definitions: player
     script:
         - determine <proc[GetCharacterYAML].context[<player>|Info.Character_Location]>
+# Gets the name of the town the player is currently a member of
+GetCharacterTown:
+    type: procedure
+    definitions: player
+    script:
+        - determine <proc[GetCharacterYAML].context[<player>|Town.Name]>
 # General utility to access character sheet info
 GetCharacterYAML:
     type: procedure
