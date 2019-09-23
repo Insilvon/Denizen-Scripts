@@ -237,6 +237,19 @@ TownAddMember:
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - ~yaml unload id:<[name]>
 
+CheckTownOwner:
+    type: procedure
+    definitions: player|town
+    script:
+        - define character:<proc[GetCharacterName].context[<[player]>]>
+        - define townCharacter:<proc[GetTownOwner].context[<[town]>]>
+        - define townUUID:<proc[GetTownOwnerUUID].context[<[town]>]>
+        - if <[character]> == <[townCharacter]> && <[townUUID]> == <[player]>:
+            - determine true
+        - else:
+            - determine false
+        
+
 # =================================================================================
 # =============================== Get/Set Methods =================================
 # =================================================================================
@@ -244,13 +257,21 @@ TownAddMember:
 # CHECK THIS WORKS
 # Retrieves the owner UUID of the given town
 # TODO: replace with character name so multiple characters one one account can have town control
-GetTownOwner:
+GetTownOwnerUUID:
     type: procedure
     definitions: name
     script:
         - define result:p@<proc[GetTownYAML].context[<[name]>|Town.Owner]>
         - determine <[result]>
-
+# CHECK THIS WORKS
+# Retrieves the owner UUID of the given town
+# TODO: replace with character name so multiple characters one one account can have town control
+GetTownOwner:
+    type: procedure
+    definitions: name
+    script:
+        - define result:<proc[GetTownYAML].context[<[name]>|Town.OwnerName]>
+        - determine <[result]>
 # General YAML getter to fetch the value at a given key
 GetTownYAML:
     type: procedure
@@ -258,9 +279,19 @@ GetTownYAML:
     script:
         - if <server.has_file[Towns/<[name]>.yml]>:
             - yaml load:Towns/<[name]>.yml id:<[name]>
-            - define result:<yaml[<[id]>].read[<[key]>]>
-            - yaml unload:<[id]>
+            - define result:<yaml[<[name]>].read[<[key]>]>
+            - yaml unload:<[name]>
             - determine <[result]>
+
+# ex run SetTownYaml def:SilTown|Town.OwnerName|<proc[GetCharacterName].context[<player>]>
+SetTownYAML:
+    type: task
+    definitions: name|key|value
+    script:
+        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
+        - ~yaml id:<[name]> set <[key]>:<[value]>
+        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+        - ~yaml unload id:<[name]>
 
 # Ex use: - run TownModifyYAML def:SilTown|NPC.Farmers|1
 # Ex use: - run TownModifyYAML def:SilTown|Resources.Wood|1
