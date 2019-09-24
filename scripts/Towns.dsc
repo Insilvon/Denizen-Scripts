@@ -21,10 +21,12 @@ TownCommand:
             - define command:<[args].get[1]>
             - if <[command]> == info:
                 - inject TownInfo
+            - if <[command]> == leave:
+                - inject TownLeave
             - run TownHelp
         - if <[args].size> == 2:
             - define command:<[args].get[1]>
-            - foreach claim|raid|invite|create|join as:switch:
+            - foreach claim|raid|invite|create|join|surrender as:switch:
                 - if <[args].get[1]> == <[switch]>:
                     - inject Town<[switch]>
         - if <[args].size> == 3:
@@ -53,7 +55,7 @@ TownInfo:
     type: task
     script:
         - define name:<proc[GetCharacterTown].context[<player>]||null>
-        - if <[name]> == null:
+        - if <[name]> == null || <[name]> == none:
             - narrate "You are not a member of a town!"
             - stop
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
@@ -89,20 +91,34 @@ TownClaim:
         - if !<player.has_flag[CurrentCharacter]>:
             - narrate "You need to have a character to perform this!"
             - stop
-        - define id:<player.flag[CurrentCharacter]>
-        - yaml "load:/CharacterSheets/<player.uuid>/<player.flag[CurrentCharacter]>.yml" id:<[id]>
-        - define town:<yaml[<[id]>].read[Town.Name]>
-        - if <[town]> != "":
+        - define town:<proc[GetCharacterTown].context[<player>]>
+        - if <[town]> != none:
             - narrate "You are already a part of a town! You cannot claim this town."
             - narrate "Leave your town with /town leave."
             - stop
         - define name:<[args].get[2]>
+        - define owner:<proc[GetTownOwnerUUID].context[<[name]>]>
         - if <[owner]> == none:
-            - yaml id:<[id]> set Town.Owner:<player.uuid>
-            - yaml id:<[id]> set Town.OwnerName:<proc[GetCharacterName].context[<player>]>
-            - yaml "savefile:/Towns/<[id]>.yml" id:<[id]>
-            - yaml unload id:<[id]>
-            - execute as_server "denizen save"
+            - narrate "You have assumed control over <[name]>."
+            - run SetTownYAML def:<[name]>|Town.Owner|<player.uuid>
+            - run SetTownYAML def:<[name]>|Town.OwnerName|<proc[GetCharacterName].context[<player>]>
+            - flag server <player.name>_townClaimInvite:!
+            # set the name in the new owner's file
+            - run SetCharacterYAML def:<player>|Town.Name|<[name]>
+            - stop
+        - else:
+            - if <server.has_flag[<player.name>_townClaimInvite]>:
+                - if <server.flag[<player.name>_townClaimInvite]> == <[name]>:
+                    - narrate "You have assumed control over <[name]>."
+                    - run SetTownYAML def:<[name]>|Town.Owner|<player.uuid>
+                    - run SetTownYAML def:<[name]>|Town.OwnerName|<proc[GetCharacterName].context[<player>]>
+                    - flag server <player.name>_townClaimInvite:!
+                    # remove the old owner from the town
+                    - run SetCharacterYAML def:<[owner]>|Town.Name|none
+                    # set the name in the new owner's file
+                    - run SetCharacterYAML def:<player>|Town.Name|<[name]>
+                    - stop
+            - narrate "Nobody has surrendered their town to you."
         - stop
 
 # /town invite <playername> - allows players to invite others to their town
@@ -114,7 +130,8 @@ TownInvite:
         - if <[town]> == "":
             - narrate "You are not a member of a town!"
             - stop
-        - if <player> != <proc[GetTownOwner].context[<[town]>]>:
+        - define owner:<proc[CheckTownOwner].context[<player>]>
+        - if !<[owner]>:
             - narrate "You are not the owner of that town!"
             - stop
         - if <[target]> == null:
@@ -140,13 +157,47 @@ TownJoin:
         - if <server.has_flag[<player.name>_townInvite]>:
             - if <server.flag[<player.name>_townInvite]> == <[target]>:
                 - narrate "You have joined the town of <[target]>."
-                - run CharacterSheetsModifyYAML def:<player>|Town.Name|<[target]>
+                - run SetCharacterYAML def:<player>|Town.Name|<[target]>
                 # Add the BASE NAME of this person, not the current display name
                 - run TownAddMember def:<[target]>|<proc[GetCharacterName].context[<player>]>
                 - stop
         - narrate "You have not been invited to <[target]>."
         - stop
 
+TownLeave:
+    type: task
+    script:
+        - if !<proc[CharacterHasTown].context[<player>]>:
+            - narrate "You are not a member of a town!"
+            - stop
+        - define owner:<proc[CheckTownOwner].context[<player>]>
+        - narrate "<[owner]>"
+        - if <[owner]>:
+            - narrate "You are the owner. Are you sure? Run /town disband"
+            - stop
+        - else:
+            - narrate "You have left your town"
+            - run SetCharacterYAML def:<player>|Town.Name|none
+            - stop
+TownSurrender:
+    type: task
+    script:
+        - if <[proc[CharacterHasTown].context[<player>]> == false:
+            - narrate "You are not a member of a town!"
+            - stop
+        - if !<proc[CheckTownOwner].context[<player>]>:
+            - narrate "You are not the owner of this town!"
+            - stop
+        - define target:<server.match_player[<[args].get[2]>]||null>
+        - if <[target]> == null:
+            - narrate "That player is not online!"
+            - stop
+        - define town:<proc[GetCharacterTown].context[<player>]>
+        - narrate "You have offered ownership of your town to <proc[GetCharacterName].context[<[target]>]>."
+        - narrate "You have been invited to command the town of <[town]>." targets:<[target]||null>
+        - narrate "Use /town claim <[town]> to accept." targets:<[target]||null>
+        - flag server <[target].name>_townClaimInvite:<[town]> duration:5m
+        - stop
 # /town promote name rank - lets players promote other members of the town to specific titles
 TownPromote:
     type: task
@@ -161,12 +212,10 @@ TownPromote:
         - if <[target]> == null:
             - narrate "That player is not online!"
             - stop
-        
         - define target_town:<proc[GetCharacterTown].context[<[target]>]>
         # Are they in the town?
         - if town != target_town:
             - narrate "That player is not a member of your town!"
-        
         - stop
 
 # Developer Command which creates a new town at the given location. Uses Denizen pos1/pos2 flags to identify the cuboid.
@@ -239,13 +288,15 @@ TownAddMember:
 
 CheckTownOwner:
     type: procedure
-    definitions: player|town
+    definitions: player
     script:
+        - define town:<proc[GetCharacterTown].context[<[player]>]>
         - define character:<proc[GetCharacterName].context[<[player]>]>
         - define townCharacter:<proc[GetTownOwner].context[<[town]>]>
         - define townUUID:<proc[GetTownOwnerUUID].context[<[town]>]>
-        - if <[character]> == <[townCharacter]> && <[townUUID]> == <[player]>:
-            - determine true
+        - if <[character]> == <[townCharacter]>:
+            - if <[townUUID]> == <[player]>:
+                - determine true
         - else:
             - determine false
         
@@ -280,7 +331,7 @@ GetTownYAML:
         - if <server.has_file[Towns/<[name]>.yml]>:
             - yaml load:Towns/<[name]>.yml id:<[name]>
             - define result:<yaml[<[name]>].read[<[key]>]>
-            - yaml unload:<[name]>
+            - yaml unload id:<[name]>
             - determine <[result]>
 
 # ex run SetTownYaml def:SilTown|Town.OwnerName|<proc[GetCharacterName].context[<player>]>

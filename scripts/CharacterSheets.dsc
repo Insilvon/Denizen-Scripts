@@ -39,7 +39,8 @@ Description:
             - stop
         - narrate "Descriptions<&co> Use <&a>/description set<&f> or <&a>/description add."
         - narrate "Descriptions<&co> To view another player<&sq>s description, right click them!"
-CharacterSheetsModifyYAML:
+
+SetCharacterYAML:
     type: task
     definitions: player|key|value
     script:
@@ -78,3 +79,13 @@ GetCharacterYAML:
         - define result:<yaml[<[character]>].read[<[key]>]>
         - yaml unload id:<[character]>
         - determine <[result]>
+
+CharacterHasTown:
+    type: procedure
+    definitions: player
+    script:
+        - define town:<proc[GetCharacterTown].context[<player>]>
+        - if <[town]> == none:
+            - determine false
+        - else:
+            - determine true
