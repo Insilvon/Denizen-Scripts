@@ -292,8 +292,10 @@ TownAddNPC:
     definitions: name|keypair
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
-        - define currentMembers:<yaml[<[name]>].read[Inhabitants.List].as_list||li@>
+        - define currentMembers:<yaml[<[name]>].read[Inhabitants.NPCS].as_list||li@>
+        - narrate "TownAddNPC - current members <[currentMembers]>" targets:<server.match_player[Insilvon]>
         - define currentMembers:<[currentMembers].insert[<[keypair]>].at[0]>
+        - narrate "TownAddNPC - after addition <[currentMembers]>" targets:<server.match_player[Insilvon]>
         - ~yaml id:<[name]> set Inhabitants.NPCS:<[currentMembers]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - ~yaml unload id:<[name]>
@@ -316,7 +318,9 @@ TownFindNPC:
     script:
         - foreach <server.flag[TownList].as_list> as:town:
             - define list:<proc[GetTownYAML].context[<[town]>|Inhabitants.NPCS]>
+            - narrate "TownFindNPC - looking at <[town]> and found <[list]>" targets:<server.match_player[Insilvon]>
             - if <[list].map_get[<[npcID]>]> != null:
+                - narrate "TownFindNPC - not null, found <[list].map_get[<[npcID]>]>" targets:<server.match_player[Insilvon]>
                 - determine <[list].map_get[<[npcID]>]>
         - determine null
 
@@ -352,7 +356,6 @@ GetTownYAML:
             - define result:<yaml[<[name]>].read[<[key]>]>
             - yaml unload id:<[name]>
             - determine <[result]>
-
 # ex run SetTownYaml def:SilTown|Town.OwnerName|<proc[GetCharacterName].context[<player>]>
 SetTownYAML:
     type: task

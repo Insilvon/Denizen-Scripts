@@ -37,17 +37,20 @@ TownNPCController:
         on entity death:
             - define entity:<context.entity>
             - if <[entity].contains_text[n@]>:
-                - narrate "You killed an NPC name <contex.entity>" targets:<server.match_player[Insilvon]>
+                - narrate "You killed an NPC named <[entity]>" targets:<server.match_player[Insilvon]>
                 - define town:<proc[TownFindNPC].context[<[entity]>]||null>
                 - if <[town]> == null:
                     - narrate "No town found for npc <[entity]>" targets:<server.match_player[Insilvon]>
+                - else:
+                    - narrate "Town found - <[town]>" targets:<server.match_player[Insilvon]>
+
         on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher|TownAlchemistVoucher|TownWoodcutterVoucher|TownMinerVoucher|TownTrainerVoucher:
             # permission check
             # TODO: IMPLEMENT OWNER CHECK
             - define locale:<player.location.cursor_on.relative[0,1,0]>
             - define scriptname:<context.item.script>
             - define npcType:<proc[GetNPCType].context[<[scriptname]>]>
-            - define townID:<proc[GetTownID].context[<player>]>
+            - define townID:<proc[GetCharacterTown].context[<player>]>
             - define name:<proc[GetRandomName]>
 
             - if !<player.has_flag[CurrentCharacter]>:
@@ -61,6 +64,7 @@ TownNPCController:
             - define keypair:<entry[temp].created_npc>/<[npcType]>
             - adjust <entry[temp].created_npc> lookclose:TRUE
             - adjust <entry[temp].created_npc> set_assignment:PlacedTown<[npcType]>Assignment
+            - run SetVulnerable npc:<entry[temp].created_npc>
             #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
             
             # set skin of DNPC
@@ -73,9 +77,14 @@ TownNPCController:
                 - inject SetNPCURLSkin
             - if <[success]> == false:
                 - narrate "<&a>Failed to retrieve the skin from the provided link of <[url]>. Please notify your admin!"
+            - narrate "Controller - adding <[keypair]> to <[townID]>" targets:<server.match_player[Insilvon]>
 
             - run TownAddNPC instantly def:<[townID]>|<[keypair]>
 
+SetVulnerable:
+    type: task
+    script:
+        - vulnerable state:true
 # Based on the provided script voucher name, returns the keyword to use when
 # referencing this npc type later
 GetNPCType:
