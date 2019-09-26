@@ -226,6 +226,7 @@ TownCreate:
         - define pos2:<player.flag[pos2]>
         - define name:<[args].get[2]>
         - if !<server.has_file[/Towns/<[name]>.yml]>:
+            - flag server TownList:->:<[name]>
             - inject TownCreateHelper
         - else:
             - narrate "Town - Town already exists!"
@@ -239,32 +240,33 @@ TownCreateHelper:
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
 
-        - ~yaml id:<[name]> set Town.Name:<[name]>
-        - ~yaml id:<[name]> set Town.Level:0
-        - ~yaml id:<[name]> set Town.Owner:none
-        - ~yaml id:<[name]> set Town.Ownername:none
+        - yaml id:<[name]> set Town.Name:<[name]>
+        - yaml id:<[name]> set Town.Level:0
+        - yaml id:<[name]> set Town.Owner:none
+        - yaml id:<[name]> set Town.Ownername:none
 
-        - ~yaml id:<[name]> set Inhabitants.list:null
+        - yaml id:<[name]> set Inhabitants.list:null
+        - yaml id:<[name]> set Inhabitants.npcs:none
 
-        - ~yaml id:<[name]> set NPCs.Farmer:0
-        - ~yaml id:<[name]> set NPCs.Blacksmith:0
-        - ~yaml id:<[name]> set NPCs.Trainer:0
-        - ~yaml id:<[name]> set NPCs.Alchemist:0
-        - ~yaml id:<[name]> set NPCs.Woodcutter:0
-        - ~yaml id:<[name]> set NPCs.Miner:0
+        - yaml id:<[name]> set NPCs.Farmer:0
+        - yaml id:<[name]> set NPCs.Blacksmith:0
+        - yaml id:<[name]> set NPCs.Trainer:0
+        - yaml id:<[name]> set NPCs.Alchemist:0
+        - yaml id:<[name]> set NPCs.Woodcutter:0
+        - yaml id:<[name]> set NPCs.Miner:0
 
-        - ~yaml id:<[name]> set Militia.Infantry:0
-        - ~yaml id:<[name]> set Militia.Sentry:0
-        - ~yaml id:<[name]> set Militia.Archer:0
-        - ~yaml id:<[name]> set Militia.Mage:0
-        - ~yaml id:<[name]> set Militia.Miniboss:0
-        - ~yaml id:<[name]> set Militia.Boss:0
+        - yaml id:<[name]> set Militia.Infantry:0
+        - yaml id:<[name]> set Militia.Sentry:0
+        - yaml id:<[name]> set Militia.Archer:0
+        - yaml id:<[name]> set Militia.Mage:0
+        - yaml id:<[name]> set Militia.Miniboss:0
+        - yaml id:<[name]> set Militia.Boss:0
 
-        - ~yaml id:<[name]> set Resources.BuildingMaterials:0
-        - ~yaml id:<[name]> set Resources.Food:0
-        - ~yaml id:<[name]> set Resources.Weapons:0
-        - ~yaml id:<[name]> set Resources.Minerals:0
-        - ~yaml id:<[name]> set Resources.CraftingMaterials:0
+        - yaml id:<[name]> set Resources.BuildingMaterials:0
+        - yaml id:<[name]> set Resources.Food:0
+        - yaml id:<[name]> set Resources.Weapons:0
+        - yaml id:<[name]> set Resources.Minerals:0
+        - yaml id:<[name]> set Resources.CraftingMaterials:0
 
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - yaml unload id:<[name]>
@@ -282,21 +284,9 @@ TownAddMember:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - define currentMembers:<yaml[<[name]>].read[Inhabitants.List].as_list>
         - define currentMembers:<[currentMembers].insert[<[character]>].at[0]>
-        - ~yaml id:<[name]> set Inhabitants.List:<[currentMembers]>
+        - yaml id:<[name]> set Inhabitants.List:<[currentMembers]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
-# Function which adds the specified CHARACTER, not player
-# TownName|<npcID>/Type
-TownAddNPC:
-    type: task
-    definitions: name|keypair
-    script:
-        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
-        - define currentMembers:<yaml[<[name]>].read[Inhabitants.List].as_list||li@>
-        - define currentMembers:<[currentMembers].insert[<[keypair]>].at[0]>
-        - ~yaml id:<[name]> set Inhabitants.NPCS:<[currentMembers]>
-        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
+        - yaml unload id:<[name]>
 CheckTownOwner:
     type: procedure
     definitions: player
@@ -310,20 +300,33 @@ CheckTownOwner:
                 - determine true
         - else:
             - determine false
-TownFindNPC:
-    type: procedure
-    definitions: npcID
+
+TownAddNPC:
+    type: task
+    definitions: town|keypair
     script:
-        - foreach <server.flag[TownList].as_list> as:town:
-            - define list:<proc[GetTownYAML].context[<[town]>|Inhabitants.NPCS]>
-            - if <[list].map_get[<[npcID]>]> != null:
-                - determine <[list].map_get[<[npcID]>]>
-        - determine null
+        - define currentList:<proc[GetTownYAML].context[<[town]>|Inhabitants.NPCs].as_list||li@>
+        - narrate "got list <[currentList]>" targets:<server.match_player[Insilvon]>
+        - define currentList:<[currentList].insert[<[keypair]>].at[0]>
+        - run SetTownYAML def:<[town]>|Inhabitants.NPCs|<[currentList]>
 
 # =================================================================================
 # =============================== Get/Set Methods =================================
 # =================================================================================
-
+# Returns the NPC Type of the specified ID in this town
+GetTownNPCType:
+    type: procedure
+    definitions: npcID|town
+    script:
+        - define list:<proc[GetTownYAML].context[<[town]>|Inhabitants.npcs].as_list>
+        - determine <[list].map_get[<[npcID]>].split_by[/]>
+# Returns the NPC keypair of the specified ID in this town
+GetTownNPCKeypair:
+    type: procedure
+    definitions: npcID|town
+    script:
+        - define list:<proc[GetTownYAML].context[<[town]>|Inhabitants.npcs].as_list>
+        - determine <[list].map_get[<[npcID]>]>
 # CHECK THIS WORKS
 # Retrieves the owner UUID of the given town
 # TODO: replace with character name so multiple characters one one account can have town control
@@ -348,20 +351,19 @@ GetTownYAML:
     definitions: name|key
     script:
         - if <server.has_file[Towns/<[name]>.yml]>:
-            - yaml load:Towns/<[name]>.yml id:<[name]>
+            - ~yaml load:Towns/<[name]>.yml id:<[name]>
             - define result:<yaml[<[name]>].read[<[key]>]>
-            - yaml unload id:<[name]>
             - determine <[result]>
-
+            - yaml unload id:<[name]>
 # ex run SetTownYaml def:SilTown|Town.OwnerName|<proc[GetCharacterName].context[<player>]>
 SetTownYAML:
     type: task
     definitions: name|key|value
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml id:<[name]> set <[key]>:<[value]>
+        - yaml id:<[name]> set <[key]>:<[value]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
+        - yaml unload id:<[name]>
 
 # Ex use: - run TownModifyYAML def:SilTown|NPC.Farmers|1
 # Ex use: - run TownModifyYAML def:SilTown|Resources.Wood|1
@@ -372,6 +374,7 @@ TownModifyYAML:
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - define currentValue:<yaml[<[name]>].read[<[key]>]>
-        - ~yaml id:<[name]> set <[key]>:<[currentValue].add_int[<[amount]>]>
+        - yaml id:<[name]> set <[key]>:<[currentValue].add_int[<[amount]>]>
+        - narrate "Old Value <[currentValue]> new value <[currentValue].add_int[<[amount]>]>" targets:<server.match_player[Insilvon]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
+        - yaml unload id:<[name]>

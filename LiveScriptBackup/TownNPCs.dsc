@@ -35,35 +35,55 @@ TownNPCController:
     type: world
     events:
         on entity death:
-            - define entity:<context.entity>
-            - if <[entity].contains_text[n@]>:
-                - narrate "You killed an NPC name <contex.entity>" targets:<server.match_player[Insilvon]>
-                - define town:<proc[TownFindNPC].context[<[entity]>]||null>
-                - if <[town]> == null:
-                    - narrate "No town found for npc <[entity]>" targets:<server.match_player[Insilvon]>
+            - define npcID:<context.entity>
+            - narrate "<context.entity> | <[npcID]>" targets:<server.match_player[Insilvon]>
+            - if <[npcID].contains[n@]>:
+                - define town:<proc[FindNPCTown].context[<[npcID]>]>
+                - define type:<proc[GetTownNPCType].context[<[npcID]>|<[town]>]>
+                - define keypair:<proc[GetTownNPCKeypair].context[<[npcID]>|<[town]>]>
+                - define currentList:<proc[GetTownYAML].context[<[town]>|Inhabitants.NPCs].as_list>
+                - define currentList:<[currentList].exclude[<[keypair]>]>
+                - narrate "Ready to go with <[town]>|<[type]>|<[keypair]>|<[currentList]>" targets:<server.match_player[Insilvon]>
+
+                # - ~yaml "load:/Towns/<[town]>.yml" id:<[town]>
+                # - yaml id:<[town]> set Inhabitants.NPCs:<[currentList]>
+                # - ~yaml "savefile:/Towns/<[town]>.yml" id:<[town]>
+                
+                # - ~yaml "load:/Towns/<[town]>.yml" id:<[town]>
+                # - define currentValue:<yaml[<[town]>].read[NPCs.<[type]>]>
+                # - yaml id:<[town]> set NPCs.<[type]>:<[currentValue].sub_int[1]>
+                # - ~yaml "savefile:/Towns/<[town]>.yml" id:<[town]>
+
+                # - narrate "Changed from <[currentValue]> to <[currentValue].sub_int[1]>" targets:<server.match_player[Insilvon]>
+
         on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher|TownAlchemistVoucher|TownWoodcutterVoucher|TownMinerVoucher|TownTrainerVoucher:
+            - if !<player.has_flag[CurrentCharacter]>:
+                - narrate "You do not have an active character. Please fix this first!"
+                - stop
             # permission check
             # TODO: IMPLEMENT OWNER CHECK
             - define locale:<player.location.cursor_on.relative[0,1,0]>
             - define scriptname:<context.item.script>
             - define npcType:<proc[GetNPCType].context[<[scriptname]>]>
-            - define townID:<proc[GetTownID].context[<player>]>
-            - define name:<proc[GetRandomName]>
-
-            - if !<player.has_flag[CurrentCharacter]>:
-                - narrate "You do not have an active character. Please fix this first!"
-                - stop
+                        # get Town Name
+            - define town:<proc[GetCharacterTown].context[<player>]>
             # Modify NPC Value
-            - run TownModifyYAML instantly def:<[townID]>|NPCs.<[npcType]>|1
             
+            - run TownModifyYAML instantly def:<[town]>|NPCs.<[npcType]>|1
             # create DNPC
+            - define name:<proc[GetRandomName]>
             - create player <[name]> <[locale]> save:temp
-            - define keypair:<entry[temp].created_npc>/<[npcType]>
-            - adjust <entry[temp].created_npc> lookclose:TRUE
-            - adjust <entry[temp].created_npc> set_assignment:PlacedTown<[npcType]>Assignment
-            #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
+            - define npcID:<entry[temp].created_npc>
+
+            # add the newly created NPC to the town list
+            - define keypair:<[npcID]>/<[npcType]>
             
-            # set skin of DNPC
+            - run TownAddNPC def:<[town]>|<[keypair]>
+            # set stuff on that npc
+            - adjust <entry[temp].created_npc> lookclose:TRUE
+            
+            - run SetVulnerable npc:<[npcID]>
+            #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
             - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
             - define counter:0
             - define success:false
@@ -74,8 +94,11 @@ TownNPCController:
             - if <[success]> == false:
                 - narrate "<&a>Failed to retrieve the skin from the provided link of <[url]>. Please notify your admin!"
 
-            - run TownAddNPC instantly def:<[townID]>|<[keypair]>
-
+            - adjust <entry[temp].created_npc> set_assignment:PlacedTown<[npcType]>Assignment
+SetVulnerable:
+    type: task
+    script:
+        - vulnerable state:true
 # Based on the provided script voucher name, returns the keyword to use when
 # referencing this npc type later
 GetNPCType:
@@ -85,6 +108,17 @@ GetNPCType:
         - foreach Farmer|Blacksmith|Alchemist|Woodcutter|Trainer|Miner as:type:
             - if <[name].contains_text[<[type]>]>:
                 - determine <[type]>
+
+FindNPCTown:
+    type: procedure
+    script:
+        - define npcID:n@342
+        - foreach <server.flag[TownList]> as:town:
+            - define list:<proc[GetTownYAML].context[<[town]>|Inhabitants.npcs].as_list>
+            - if <[list].map_get[<[npcID]>]||null> != null:
+                - determine <[town]>
+        - determine failed
+
 
 # Using the provided keyword, returns a random URL for a skin
 # To use for that NPC
