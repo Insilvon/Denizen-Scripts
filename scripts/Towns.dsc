@@ -308,9 +308,9 @@ TownAddMember:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - define currentMembers:<yaml[<[name]>].read[Inhabitants.List].as_list>
         - define currentMembers:<[currentMembers].insert[<[character]>].at[0]>
-        - ~yaml id:<[name]> set Inhabitants.List:<[currentMembers]>
+        - yaml id:<[name]> set Inhabitants.List:<[currentMembers]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
+        - yaml unload id:<[name]>
 # Function which adds the specified CHARACTER, not player
 # TownName|<npcID>/Type
 TownAddNPC:
@@ -401,9 +401,9 @@ SetTownYAML:
     definitions: name|key|value
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml id:<[name]> set <[key]>:<[value]>
+        - yaml id:<[name]> set <[key]>:<[value]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
+        - yaml unload id:<[name]>
 
 # Ex use: - run TownModifyYAML def:SilTown|NPC.Farmers|1
 # Ex use: - run TownModifyYAML def:SilTown|Resources.Wood|1
@@ -414,6 +414,6 @@ TownModifyYAML:
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - define currentValue:<yaml[<[name]>].read[<[key]>]>
-        - ~yaml id:<[name]> set <[key]>:<[currentValue].add_int[<[amount]>]>
+        - yaml id:<[name]> set <[key]>:<[currentValue].add_int[<[amount]>]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
+        - yaml unload id:<[name]>
