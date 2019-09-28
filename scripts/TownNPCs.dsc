@@ -47,21 +47,19 @@ TownNPCController:
             - define scriptname:<context.item.script>
             - define npcType:<proc[GetNPCType].context[<[scriptname]>]>
             - define townID:<proc[GetCharacterTown].context[<player>]>
-            - define name:<proc[GetRandomName]>
 
             - if !<player.has_flag[CurrentCharacter]>:
                 - narrate "You do not have an active character. Please fix this first!"
-                - stop
-            # Modify NPC Value
-            #- run TownModifyYAML instantly def:<[townID]>|NPCs.<[npcType]>|1
-            
+                - determine cancelled
+            - if <[townID]> == none:
+                - narrate "You are not a member of a town!"
+                - determine cancelled
+
             # create DNPC
-            - create player <[name]> <[locale]> save:temp
-            - define keypair:<entry[temp].created_npc>/<[npcType]>
+            - create player <proc[GetRandomName]> <[locale]> save:temp
             - adjust <entry[temp].created_npc> lookclose:TRUE
             - adjust <entry[temp].created_npc> set_assignment:PlacedTown<[npcType]>Assignment
             - run SetVulnerable npc:<entry[temp].created_npc>
-            #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
             
             # set skin of DNPC
             - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
@@ -71,11 +69,8 @@ TownNPCController:
                 - define counter:<[counter].add_int[1]>
                 - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
                 - inject SetNPCURLSkin
-            # - if <[success]> == false:
-            #     - narrate "<&a>Failed to retrieve the skin from the provided link of <[url]>. Please notify your admin!"
-            # - narrate "Controller - adding <[keypair]> to <[townID]>" targets:<server.match_player[Insilvon]>
 
-            - run TownAddNPC instantly def:<[townID]>|<[keypair]>|<[npcType]>
+            - run TownAddNPC instantly def:<[townID]>|<entry[temp].created_npc>/<[npcType]>|<[npcType]>
 
 SetVulnerable:
     type: task
