@@ -293,12 +293,10 @@ TownAddNPC:
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - define currentMembers:<yaml[<[name]>].read[Inhabitants.NPCS].as_list||li@>
-        - narrate "TownAddNPC - current members <[currentMembers]>" targets:<server.match_player[Insilvon]>
         - define currentMembers:<[currentMembers].insert[<[keypair]>].at[0]>
-        - narrate "TownAddNPC - after addition <[currentMembers]>" targets:<server.match_player[Insilvon]>
-        - ~yaml id:<[name]> set Inhabitants.NPCS:<[currentMembers]>
+        - yaml id:<[name]> set Inhabitants.NPCS:<[currentMembers]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - ~yaml unload id:<[name]>
+        - yaml unload id:<[name]>
 CheckTownOwner:
     type: procedure
     definitions: player
@@ -318,9 +316,7 @@ TownFindNPC:
     script:
         - foreach <server.flag[TownList].as_list> as:town:
             - define list:<proc[GetTownYAML].context[<[town]>|Inhabitants.NPCS]>
-            - narrate "TownFindNPC - looking at <[town]> and found <[list]>" targets:<server.match_player[Insilvon]>
             - if <[list].map_get[<[npcID]>]> != null:
-                - narrate "TownFindNPC - not null, found <[list].map_get[<[npcID]>]>" targets:<server.match_player[Insilvon]>
                 # - determine <[list].map_get[<[npcID]>]>
                 - determine <[town]>
         - determine null
@@ -331,13 +327,9 @@ TownRemoveNPC:
         - if <server.has_file[Towns/<[name]>.yml]>:
             - yaml load:Towns/<[name]>.yml id:<[name]>
             - define result:<yaml[<[name]>].read[Inhabitants.NPCS].as_list>
-            - narrate "TRN - Found list <[result]>" targets:<server.match_player[Insilvon]> 
             - define npcType:<[result].map_get[<[npcID]>]>
-            - narrate "TRN - found type <[npcType]>" targets:<server.match_player[Insilvon]> 
             - define keypair:<[npcID]>/<[npcType]>
-            - narrate "TRN - found keypair <[keypair]>" targets:<server.match_player[Insilvon]> 
             - define result:<[result].exclude[<[keypair]>]>
-            - narrate "TRN - Found new list <[result]>" targets:<server.match_player[Insilvon]>
             - yaml id:<[name]> set Inhabitants.NPCS:<[result]>
             - yaml id:<[name]> set NPCs.<[npcType]>:-:1
             - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>

@@ -37,13 +37,8 @@ TownNPCController:
         on entity death:
             - define entity:<context.entity>
             - if <[entity].contains_text[n@]>:
-                - narrate "You killed an NPC named <[entity]>" targets:<server.match_player[Insilvon]>
                 - define town:<proc[TownFindNPC].context[<[entity]>]||null>
-                - if <[town]> == null:
-                    - narrate "No town found for npc <[entity]>" targets:<server.match_player[Insilvon]>
-                - else:
-                    - narrate "Town found - <[town]>" targets:<server.match_player[Insilvon]>
-                    - narrate "Running removal" targets:<server.match_player[Insilvon]>
+                - if <[town]> != null:
                     - run TownRemoveNPC instantly def:<[entity]>|<[town]>
         on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher|TownAlchemistVoucher|TownWoodcutterVoucher|TownMinerVoucher|TownTrainerVoucher:
             # permission check
@@ -76,9 +71,9 @@ TownNPCController:
                 - define counter:<[counter].add_int[1]>
                 - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
                 - inject SetNPCURLSkin
-            - if <[success]> == false:
-                - narrate "<&a>Failed to retrieve the skin from the provided link of <[url]>. Please notify your admin!"
-            - narrate "Controller - adding <[keypair]> to <[townID]>" targets:<server.match_player[Insilvon]>
+            # - if <[success]> == false:
+            #     - narrate "<&a>Failed to retrieve the skin from the provided link of <[url]>. Please notify your admin!"
+            # - narrate "Controller - adding <[keypair]> to <[townID]>" targets:<server.match_player[Insilvon]>
 
             - run TownAddNPC instantly def:<[townID]>|<[keypair]>
 
