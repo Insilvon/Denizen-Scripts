@@ -53,7 +53,7 @@ TownNPCController:
                 - narrate "You do not have an active character. Please fix this first!"
                 - stop
             # Modify NPC Value
-            - run TownModifyYAML instantly def:<[townID]>|NPCs.<[npcType]>|1
+            #- run TownModifyYAML instantly def:<[townID]>|NPCs.<[npcType]>|1
             
             # create DNPC
             - create player <[name]> <[locale]> save:temp
@@ -75,7 +75,7 @@ TownNPCController:
             #     - narrate "<&a>Failed to retrieve the skin from the provided link of <[url]>. Please notify your admin!"
             # - narrate "Controller - adding <[keypair]> to <[townID]>" targets:<server.match_player[Insilvon]>
 
-            - run TownAddNPC instantly def:<[townID]>|<[keypair]>
+            - run TownAddNPC instantly def:<[townID]>|<[keypair]>|<[npcType]>
 
 SetVulnerable:
     type: task

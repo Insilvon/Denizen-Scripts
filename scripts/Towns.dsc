@@ -8,7 +8,31 @@
 # =================================================================================
 # ==================================Core Command===================================
 # =================================================================================
-
+# TownController:
+#     type: world
+#     events:
+#         on system time hourly:
+            
+TownFoodCheck:
+    type: task
+    script:
+        - foreach <server.flag[TownList].as_list> as:town:
+            - ~yaml load:Towns/<[town]>.yml id:<[town]>
+            - define townFarmers:<yaml[<[town]>].read[NPCs.Farmer]>
+            - define addition:<[townFarmers].mul_int[3]>
+            - define townFood:<yaml[<[town]>].read[Resources.Food].add_int[<[addition]>]>
+            - define totalNPCs:<yaml[<[town]>].read[NPCs.Total]>
+            - define hunger:<[totalNPCs]>
+            - define townFood:<[townFood].sub_int[<[hunger]>]>
+            - if <[townFood]> < 0:
+                - narrate "Your town is hungry!"
+                - yaml id:<[town]> set Town.Satisfaction:-:1
+            - else:
+                - narrate "Your town is doing okay."
+                - yaml id:<[town]> set Town.Satisfaction:+:1
+            - yaml id:<[town]> set Resources.Food:<[townFood]>
+            - ~yaml "savefile:/Towns/<[town]>.yml" id:<[town]>
+            - yaml unload id:<[town]>
 # Core Town Command
 TownCommand:
     type: command
@@ -59,7 +83,7 @@ TownInfo:
             - narrate "You are not a member of a town!"
             - stop
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
-        - narrate "[Town] - Showing info for <[name]>"
+        - narrate "[Town] - Showing info for <[name]><&co> Satisfaction - <yaml[<[name]>].read[Town.Satisfaction]>"
         - narrate "<&b>[<[name]>] - RESOURCES"
         - narrate "<&b>[<[name]>] -    Building Materials: <&f><yaml[<[name]>].read[Resources.BuildingMaterials]>"
         - narrate "<&b>[<[name]>] -    Crafting Materials: <&f><yaml[<[name]>].read[Resources.CraftingMaterials]>"
@@ -243,6 +267,7 @@ TownCreateHelper:
         - ~yaml id:<[name]> set Town.Level:0
         - ~yaml id:<[name]> set Town.Owner:none
         - ~yaml id:<[name]> set Town.Ownername:none
+        - ~yaml id:<[name]> set Town.Satisfaction:none
 
         - ~yaml id:<[name]> set Inhabitants.list:null
 
@@ -252,6 +277,7 @@ TownCreateHelper:
         - ~yaml id:<[name]> set NPCs.Alchemist:0
         - ~yaml id:<[name]> set NPCs.Woodcutter:0
         - ~yaml id:<[name]> set NPCs.Miner:0
+        - ~yaml id:<[name]> set NPCs.Total:0
 
         - ~yaml id:<[name]> set Militia.Infantry:0
         - ~yaml id:<[name]> set Militia.Sentry:0
@@ -289,12 +315,14 @@ TownAddMember:
 # TownName|<npcID>/Type
 TownAddNPC:
     type: task
-    definitions: name|keypair
+    definitions: name|keypair|npcType
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - define currentMembers:<yaml[<[name]>].read[Inhabitants.NPCS].as_list||li@>
         - define currentMembers:<[currentMembers].insert[<[keypair]>].at[0]>
         - yaml id:<[name]> set Inhabitants.NPCS:<[currentMembers]>
+        - yaml id:<[name]> set NPCs.Total:+:1
+        - yaml id:<[name]> set NPCs.<[npcType]>:+:1
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
         - yaml unload id:<[name]>
 CheckTownOwner:
@@ -332,6 +360,7 @@ TownRemoveNPC:
             - define result:<[result].exclude[<[keypair]>]>
             - yaml id:<[name]> set Inhabitants.NPCS:<[result]>
             - yaml id:<[name]> set NPCs.<[npcType]>:-:1
+            - yaml id:<[name]> set NPCs.Total:-:1
             - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
             - yaml unload id:<[name]>
 # =================================================================================
