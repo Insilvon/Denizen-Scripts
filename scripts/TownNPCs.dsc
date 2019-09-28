@@ -43,7 +43,8 @@ TownNPCController:
                     - narrate "No town found for npc <[entity]>" targets:<server.match_player[Insilvon]>
                 - else:
                     - narrate "Town found - <[town]>" targets:<server.match_player[Insilvon]>
-
+                    - narrate "Running removal" targets:<server.match_player[Insilvon]>
+                    - run TownRemoveNPC instantly def:<[entity]>|<[town]>
         on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher|TownAlchemistVoucher|TownWoodcutterVoucher|TownMinerVoucher|TownTrainerVoucher:
             # permission check
             # TODO: IMPLEMENT OWNER CHECK

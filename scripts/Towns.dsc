@@ -321,9 +321,27 @@ TownFindNPC:
             - narrate "TownFindNPC - looking at <[town]> and found <[list]>" targets:<server.match_player[Insilvon]>
             - if <[list].map_get[<[npcID]>]> != null:
                 - narrate "TownFindNPC - not null, found <[list].map_get[<[npcID]>]>" targets:<server.match_player[Insilvon]>
-                - determine <[list].map_get[<[npcID]>]>
+                # - determine <[list].map_get[<[npcID]>]>
+                - determine <[town]>
         - determine null
-
+TownRemoveNPC:
+    type: task
+    definitions: npcID|name
+    script:
+        - if <server.has_file[Towns/<[name]>.yml]>:
+            - yaml load:Towns/<[name]>.yml id:<[name]>
+            - define result:<yaml[<[name]>].read[Inhabitants.NPCS].as_list>
+            - narrate "TRN - Found list <[result]>" targets:<server.match_player[Insilvon]> 
+            - define npcType:<[result].map_get[<[npcID]>]>
+            - narrate "TRN - found type <[npcType]>" targets:<server.match_player[Insilvon]> 
+            - define keypair:<[npcID]>/<[npcType]>
+            - narrate "TRN - found keypair <[keypair]>" targets:<server.match_player[Insilvon]> 
+            - define result:<[result].exclude[<[keypair]>]>
+            - narrate "TRN - Found new list <[result]>" targets:<server.match_player[Insilvon]>
+            - yaml id:<[name]> set Inhabitants.NPCS:<[result]>
+            - yaml id:<[name]> set NPCs.<[npcType]>:-:1
+            - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+            - yaml unload id:<[name]>
 # =================================================================================
 # =============================== Get/Set Methods =================================
 # =================================================================================
