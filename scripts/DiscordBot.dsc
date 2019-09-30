@@ -1,3 +1,16 @@
+DiscordBot:
+    type: world
+    events:
+        on discord message received channel:256968732511830017:
+            - define message:<context.message>
+            - narrate "Message: <context.message>" targets:<server.match_player[Insilvon]>
+            - narrate "<context.author.nickname>" targets:<server.match_player[Insilvon]>
+            - narrate "<context.author.id>" targets:<server.match_player[Insilvon]>
+            - narrate "<context.author.name>" targets:<server.match_player[Insilvon]>
+            - narrate "<[message]>" targets:<server.match_player[Insilvon]>
+            - narrate "<[message].starts_with[~]>" targets:<server.match_player[Insilvon]>
+            - if <[message].starts_with[~]>:
+                - narrate "Command received!" targets:<server.match_player[Insilvon]>
 AetheriaDiscordBot:
     type: command
     name: dDiscord
@@ -8,11 +21,16 @@ AetheriaDiscordBot:
             - if <context.args.get[1]> == connect:
                 - yaml "load:Utilities/DiscordBot.yml" id:DiscordBot
                 - ~discord id:mybot connect code:<yaml[DiscordBot].read[info.code]>
+                - narrate "Connected!"
             - if <context.args.get[1]> == disconnect:
                 - ~discord id:mybot disconnect
+                - narrate "Disconnected!"
         - if <context.args.size> == 2:
-            - if <context.args.get[1]> == message:
+            - if <context.args.get[1]> == message || <context.args.get[1]> == m:
+                # - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[⚙clockworks⚙]> "<context.args.get[2]>"
                 - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[admin-chat]> "<context.args.get[2]>"
+                - narrate "Message sent!"
+        # - narrate "Unknown Command"
         
 
         # tag_parser_bot:
@@ -30,7 +48,7 @@ AetheriaDiscordBot:
         #         - if !<yaml.list.contains_text[tag_parser_temp]> {
         #           - debug error "Load failed."
         #           - queue clear
-        #           }
+        #           }''
         #         - flag server tag_parser_logpath:<yaml[tag_parser_temp].read[bot.discord.log_path]>
         #         - flag server tag_parser_validchannels:!
         #         - flag server tag_parser_validchannels:|:<yaml[tag_parser_temp].read[bot.discord.valid_channels]>

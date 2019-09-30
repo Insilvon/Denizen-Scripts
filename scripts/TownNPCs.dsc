@@ -54,7 +54,9 @@ TownNPCController:
             - if <[townID]> == none:
                 - narrate "You are not a member of a town!"
                 - determine cancelled
-
+            - if !<player.location.cuboids.contains_text[<[townID]>]>:
+                - narrate "You are not in your town, your NPC cannot help you!"
+                - determine cancelled
             # create DNPC
             - create player <proc[GetRandomName]> <[locale]> save:temp
             - adjust <entry[temp].created_npc> lookclose:TRUE
@@ -174,3 +176,29 @@ PlacedTownBlacksmithInteract:
                     trigger: /Regex:Hello/
                     script:
                         - chat "Hello!"
+
+PlacedTownTrainerAssignment:
+    type: assignment
+    actions:
+        on assignment:
+            - narrate "Assignment Set!"
+    interact scripts:
+        - 1 PlacedTownTrainerInteract
+PlacedTownTrainerInteract:
+    type: interact
+    steps:
+        1:
+            chat trigger:
+                1:
+                    trigger: /Regex:Hello/
+                    script:
+                        - chat "Hello! Want to train some militia?"
+                2:
+                    trigger: /Regex:Yes/
+                    script:
+                        - chat "Excellent. What do you want to train?"
+                3:
+                    trigger: /Regex:Infantry/
+                    script:
+                        - if <player.inventory.contains[InfantryVoucher]>:
+                            - chat "Alright! I'll take that voucher and... bam! You've acquired new militia."
