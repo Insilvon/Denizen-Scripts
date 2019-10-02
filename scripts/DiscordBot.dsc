@@ -27,8 +27,8 @@ AetheriaDiscordBot:
                 - narrate "Disconnected!"
         - if <context.args.size> == 2:
             - if <context.args.get[1]> == message || <context.args.get[1]> == m:
-                # - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[⚙clockworks⚙]> "<context.args.get[2]>"
-                - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[admin-chat]> "<context.args.get[2]>"
+                - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[⚙clockworks⚙]> "<context.args.get[2]>"
+                # - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[admin-chat]> "<context.args.get[2]>"
                 - narrate "Message sent!"
         # - narrate "Unknown Command"
         
