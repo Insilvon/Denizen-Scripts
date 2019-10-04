@@ -1,0 +1,107 @@
+ShifterAddonQuest:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment Set!"
+  interact scripts:
+  - 1 ShifterAddonI
+ShifterAddonI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hi|Hey|Greetings|Good day/.
+          script:
+            - chat "*The Native looks at you strangely, eyeing you.*"
+            - wait 2
+            - chat "Tanuk con snethu..."
+            - if <player.has_flag[Translator]> {
+              - narrate "The effects of the potion clear your head..."
+              - chat "<You... have you come to learn?>"
+              - narrate "Yes|No|Goodbye"
+              - zap 2
+              }
+              else {
+              - narrate "The speech is lost on you... if only you had a tool to understand."
+              }
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Yeah|Okay/.
+          script:
+            - chat "<I can teach you how to be anything you desire... but you must bring me tools first.>"
+            - wait 1
+            - narrate "*The Native speaks a list of items needed. You, frantically, jot them down as quickly as you can.*"
+            - wait 1
+            - chat "<Bring me them... and I will teach you.>"
+            - give i@ShifterList
+        2:
+          trigger: /Regex:Hello|Hi|Hey|Greetings|Good day/.
+          script:
+            - foreach i@BONE|i@RAW_FISH|i@APPLE|i@RAW_PORKCHOP|i@SPIDER_EYE|i@EGG|i@LEATHER|i@RABBIT_HIDE {
+              - if !<player.inventory.contains[<def[value]>]> {
+              - foreach stop
+              - narrate "You're missing <def[value]>."
+              }
+            }
+            - narrate "You have them!"
+            - take bone
+            - take raw_fish
+            - take apple
+            - take raw_porkchop
+            - take spider_eye
+            - take egg
+            - take leather
+            - take rabbit_hide
+            - chat "<You've done it... I will teach you many... many things....>"
+            - execute as_op "pex user <player.name> group add Shifter"
+            - narrate "((Type: /class profess Shifter))"
+            - chat "<En.... joy.....>"
+
+ShifterList:
+  type: book
+  title: The Shifter's List
+  author: Unknown
+  signed: true
+  text:
+  - One Bone
+  - One Raw Fish
+  - One Fresh Apple
+  - One Porkchop
+  - One Spider Eye
+  - One Egg
+  - One Piece of Leather
+  - One Rabbit Hide
+
+
+GunslingerAddon:
+  type: task
+  script:
+  - execute as_op "pex user <player.name> add skillapi.class.Gunslinger"
+MerchantAddon:
+  type: task
+  script:
+  - execute as_op "pex user <player.name> group add Shop"
+ShipwrightAddon:
+  type: task
+  script:
+  - execute as_op "pex user <player.name> group add Pilot"
+CannoneerAddon:
+  type: task
+  script:
+  - execute as_op "pex user <player.name> group add Cannoneer"
+CookAddon:
+  type: task
+  script:
+  - flag player Cook
+BrewerAddon:
+  type: task
+  script:
+  - execute as_op "pex user <player.name> add skillapi.class.Brewer"
+  - narrate "/class profess Brewer"
+ShifterAddon:
+  type: task
+  script:
+  - execute as_op "pex user <player.name> add skillapi.class.Shifter"
+  - narrate "/class profess Shifter"

@@ -1,0 +1,261 @@
+#----------Moneta----------#
+MonetaWelcome:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment Set!"
+  interact scripts:
+  - 1 MonetaWelcomeI
+MonetaWelcomeI:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+          - if <player.has_flag[Moneta]>
+            {
+            - chat "Welcome back!"
+            }
+            else
+            {
+            - chat "Hey you! Come here!"
+            }
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hey|Hi|Greetings|Good day/.
+          script:
+          - if <player.has_flag[Moneta]>
+            {
+            - random
+              {
+              - chat "Welcome back, friend. Doing some shopping again?"
+              - chat "Good to see you again."
+              - chat "Merchants abound! What will you purchase today?"
+              }
+            }
+            else
+            {
+            - chat "Hello there! New to Moneta?"
+            - wait 1
+            - chat "Come here, let me give you the run-down."
+            - wait 1
+            - chat "Moneta is home to numerous specialty merchants who do not operate under traditional currency laws. Most of the merchants here prefer payment in Knowledge Stones, however some might be more old-fashioned."
+            - wait 2
+            - chat "We've got Colonist Traders, Native Traders, and every in-between. As such, you're apt to find something good here."
+            - wait 2
+            - chat "Since you're new, take these. We're trying to encourage more strangers to peacefully engage here..."
+            - give KnowledgeStone quantity:10
+            - wait 2
+            - chat "Well, that's it for me. Go look around and enjoy yourself!"
+            - flag player Moneta
+            }
+MonetaSwords:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment Set!"
+  interact scripts:
+  - 1 MonetaSwordsI
+MonetaSwordsI:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+          - chat "Swords here! Get your swords here!"
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hey|Hi|Greetings|Good day/.
+          script:
+          - chat "Greetings stranger! Here for some custom-smithed goodies?"
+          - wait 1
+          - chat "You're in luck, I've got some swords in today - Astral Silver, Darksteel, and Meteor!"
+          - wait 1
+          - chat "Any of those grab you?"
+          - narrate "Astral Silver|Darksteel|Meteor|Goodbye"
+        2:
+          trigger: /Regex:No|Goodbye/.
+          script:
+          - chat "See you around, stranger!"
+        3:
+          trigger: /Regex:Astral Silver/.
+          script:
+          - chat "Ah, the Astral Silver Blade. A personal favorite of mine. Rumor has it these puppies are used to slay mythical beasts!"
+          - wait 2
+          - chat "Although, haven't really seen any mythical beasts lately..."
+          - wait 1
+          - chat "Anyway - I sell that blade for 20 Knowledge Stones. Sound good?"
+          - narrate "Yes|No|Goodbye"
+          - zap step:Silver
+        4:
+          trigger: /Regex:Darksteel/.
+          script:
+          - chat "Hmmm. The Darksteel Blade. It's a very common weapon due to Darksteel's ease-of-acess. Don't get me wrong, it's still very strong!"
+          - wait 2
+          - chat "I sell that blade for 16 Knowledge Stones. Sound good?"
+          - narrate "Yes|No|Goodbye"
+          - zap step:Darksteel
+        5:
+          trigger: /Regex:Meteor/.
+          script:
+          - chat "Ah... the meteor blade. It's named "Meteor" since several parts are made from an unknown ore taken from, you guessed it, a meteor."
+          - wait 2
+          - chat "It's incredibly strong and durable, but due to the rarity of the meteorite it's also very pricey."
+          - wait 1
+          - chat "I sell that blade for 70 Knowledge Stones. Sound good?"
+          - narrate "Yes|No|Goodbye"
+          - zap step:Meteor
+    Silver:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Yeah|Okay|Sure/.
+          script:
+          - if <player.inventory.contains[KnowledgeStone].quantity[20]>
+            {
+            - take KnowledgeStone quantity:20
+            - chat "Take care of it now... it's very precious."
+            - chat "*He would wrap a shimmering blade in a blue cloth, passing it over the counter to you.*"
+            - give AstralSilverBlade
+            - chat "Take care now!"
+            - zap 1
+            }
+            else
+            {
+            - chat "It doesn't appear you've got the stones, kid."
+            - chat "Go check your wallet and come back! This baby will be waiting!"
+            - zap 1
+            }
+        2:
+          trigger: /Regex:No|Nah|Nope|Goodbye/.
+          script:
+          - chat "No worries kid. Maybe another time?"
+          - zap 1
+    Darksteel:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Yeah|Okay|Sure/.
+          script:
+          - if <player.inventory.contains[KnowledgeStone].quantity[16]>
+            {
+            - take KnowledgeStone quantity:16
+            - chat "Take care of it now... it's very precious."
+            - chat "*He would wrap a shimmering blade in a blue cloth, passing it over the counter to you.*"
+            - give DarksteelBlade
+            - chat "Take care now!"
+            - zap 1
+            }
+            else
+            {
+            - chat "It doesn't appear you've got the stones, kid."
+            - chat "Go check your wallet and come back! This baby will be waiting!"
+            - zap 1
+            }
+        2:
+          trigger: /Regex:No|Nah|Nope|Goodbye/.
+          script:
+          - chat "No worries kid. Maybe another time?"
+          - zap 1
+    Meteor:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Yeah|Okay|Sure/.
+          script:
+          - if <player.inventory.contains[KnowledgeStone].quantity[70]>
+            {
+            - take KnowledgeStone quantity:70
+            - chat "Take care of it now... it's very precious."
+            - chat "*He would wrap a shimmering blade in a blue cloth, passing it over the counter to you.*"
+            - give MeteorBlade
+            - chat "Take care now!"
+            - zap 1
+            }
+            else
+            {
+            - chat "It doesn't appear you've got the stones, kid."
+            - chat "Go check your wallet and come back! This baby will be waiting!"
+            - zap 1
+            }
+        2:
+          trigger: /Regex:No|Nah|Nope|Goodbye/.
+          script:
+          - chat "No worries kid. Maybe another time?"
+          - zap 1
+MeteorBlade:
+  type: item
+  material: IRON_SWORD[flags=HIDE_ENCHANTS]
+  display name: <&e>Meteor Blade
+  lore: 
+  - An ornate and darkened weapon.
+  - The blade is purified Silver, likely Astral.
+  - The hilt is a covered and polished unknown black
+  - material, seemingly collecting sunlight and
+  - reflecting it back at night. Purple
+  - gems sit on either side and on the
+  - pommel.
+  enchantments:
+  - damage_all:2
+  - unbreaking:2
+  - knockback:2
+  - loot_bonus_mobs:2
+  - damage_undead:5
+  - damage_arthropods:4
+MonetaCards:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment Set!"
+  interact scripts:
+  - 1 MonetaCardsI
+MonetaCardsI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hey|Hi|Greetings|Good day/.
+          script:
+          - chat "Good afternoon. I sell Cards from the card game, but perhaps not the ones you know..."
+          - wait 2
+          - chat "I sell these packs for Knowledge Stones specifically... 5, to be exact."
+          - wait 2
+          - chat "Would you like one?"
+          - narrate "Yes|No|Goodbye"
+        2:
+          trigger: /Regex:Yes|Yeah|Okay|Sure/.
+          script:
+          - if <player.inventory.contains[KnowledgeStone].quantity[5]>
+            {
+            - chat "Enjoy your cards... you'll be stronger now."
+            - execute as_op "cards giveboosterpack <player.name> AdeptPack"
+            - chat "Oh... if you require another deck..."
+            - narrate "You can use /cards getdeck (1-3) to get a maximum of three extra decks."
+            }
+            else
+            {
+            - chat "You don't have enough Knowledge Stones..."
+            }
+
+#<l@location.find.players.within[<#.#>]>
+#<player.location>
+NightmareWorld:
+  type: world
+  events:
+    on player consumes RedNightmare:
+    - give RedNightmare
+    - teleport <player.location.find.players.within[5.5]> l@652,90,753,waterworld
+    on player consumes BlueNightmare:
+    - give BlueNightmare
+    - teleport <player.location.find.players.withing[5.5]> l@652,90,753,waterworld
+RedNightmare:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS;potion_effects=SPEED,false,false|SPEED,0,0,false,red]
+  display name: <&4>Nightmare
+  lore:
+  - A mysterious red drink. It is
+  - unwise to drink, and even more
+  - unwise to drink with other
+  - people immediately within
+  - a radius of 5 blocks.
+  - Definitely.

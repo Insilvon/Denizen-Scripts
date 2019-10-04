@@ -1,0 +1,900 @@
+MasterStone:
+  type: item
+  material: i@DIAMOND[flags=HIDE_ENCHANTS]
+  display name: <&b>Mastery Stone
+  lore:
+  - A stone treasured by natives and
+  - colonists alike. Many people feel
+  - compelled to share more than 
+  - normal to those who offer these stones...
+  - However this particular gem seems even
+  - more saught after...
+  enchantments:
+  - lure:1
+AshOfLife:
+  type: item
+  material: i@SULPHUR[flags=HIDE_ENCHANTS]
+  display name: <&8>Ash of Life
+  lore:
+  - A vial of ashes. From what
+  - these ashes came from, you<&sq>re
+  - unsure, however they have a
+  - peculiar glow.
+  enchantments:
+  - lure:1
+boiledwater:
+  type: item
+  material: POTION
+  display name: <&b>Boiled Water
+  furnace_recipe: i@POTION
+purewater:
+  type: item
+  material: POTION
+  display name: <&b>Purified Water
+  recipe:
+  - i@SNOW_BALL|i@SNOW_BALL|i@SNOW_BALL
+  - i@SNOW_BALL|i@GLASS_BOTTLE|i@SNOW_BALL
+  - i@SNOW_BALL|i@SNOW_BALL|i@SNOW_BALL
+GuardForm:
+  type: item
+  material: paper
+  display name: <red>Guard Form
+  lore:
+  - A voucher to go speak with
+  - Tyler Finch.
+SymforaGoo:
+  type: item
+  material: i@potion[flags=HIDE_ENCHANTS;potion_effects=SPEED,false,false|SPEED,0,0,false,purple]
+  display name: <&k>Symfora Pus
+  lore:
+  - A bizzare, snot like pustule of
+  - foreign guk. It smells bad, it
+  - looks worse, and you have zero
+  - idea where it even came from.
+Saddle:
+  type: item
+  material: SADDLE
+  recipe:
+  - i@LEATHER|i@LEATHER|i@LEATHER
+  - i@STRING|i@IRON_INGOT|i@STRING
+  - i@air|i@air|i@air
+IronHorseArmor:
+  type: item
+  material: i@IRON_HORSE_ARMOR
+  recipe:
+  - i@air|i@air|i@IRON_INGOT
+  - i@IRON_INGOT|i@LEATHER|i@IRON_INGOT
+  - i@IRON_INGOT|i@STRING|i@IRON_INGOT
+GoldHorseArmor:
+  type: item
+  material: i@GOLDEN_HORSE_ARMOR
+  recipe:
+  - i@air|i@air|i@GOLD_INGOT
+  - i@GOLD_INGOT|i@LEATHER|i@GOLD_INGOT
+  - i@GOLD_INGOT|i@STRING|i@GOLD_INGOT
+DiamondHorseArmor:
+  type: item
+  material: i@DIAMOND_HORSE_ARMOR
+NameTag:
+  type: item
+  material: NAME_TAG
+  recipe:
+  - i@air|i@IRON_INGOT|i@STRING
+  - i@air|i@PAPER|i@IRON_INGOT
+  - i@PAPER|i@air|i@air
+SlimeBall:
+  type: item
+  material: SLIME_BALL
+  shapeless_recipe: i@MILK_BUCKET|i@VINES|i@CACTUS_GREEN
+BetterIce:
+  type: item
+  material: PACKED_ICE
+  recipe:
+  - i@SNOW_BALL|i@SNOW_BALL|i@SNOW_BALL
+  - i@SNOW_BALL|i@WATER_BUCKET|i@SNOW_BALL
+  - i@SNOW_BALL|i@SNOW_BALL|i@SNOW_BALL
+FactionToken:
+  type: item
+  material: POPPED_CHORUS_FRUIT[flags=HIDE_ENCHANTS]
+  display name: <&b>Supply Token
+  enchantments:
+  - lure:1
+  lore:
+  - The Currency of The War.
+  - Can be exchanged for numerous
+  - advantages.
+VesperPhylactery:
+  type: item
+  material: i@potion[flags=HIDE_ENCHANTS;potion_effects=SPEED,false,false|SPEED,0,0,false,red]
+  display name: <&5>Vesper<&sq>s Phylactery
+  lore:
+  - A small, runic bottle.
+  - Inside is a floating dark purple wisp
+  - which seems to attack the glass walls.
+WendigoClaw:
+  type: item
+  material: i@IRON_NUGGET[flags=HIDE_ENCHANTS]
+  display name: <&b>Wendigo Claw
+  lore:
+  - A claw torn from the decaying
+  - flesh of a roaming Wendigo
+  - from the Glaciers of the North.
+  enchantments:
+  - sharpness:9
+DirtyWendigoPelt:
+  type: item
+  material: i@ROTTEN_FLESH[flags=HIDE_ENCHANTS]
+  display name: <&4>Stained Wendigo Pelt
+  lore:
+  - The outer layer of patchy
+  - fur ripped from the shriveling
+  - husk of wild Wendigo.
+  - It could use a good wash.
+WendigoPelt:
+  type: item
+  material: i@RABBIT_HIDE[flags=HIDE_ENCHANTS]
+  display name: <&4>Cleaned Wendigo Pelt
+  lore:
+  - The outer layer of fur
+  - ripped from the husk of
+  - a wild Wendigo.
+  - Carefully, this pelt has been
+  - stitched and knitted in order
+  - to be usable.
+  shapeless_recipe: i@potion|i@DirtyWendigoPelt
+WendigoChest:
+  type: item
+  material: i@LEATHER_CHESTPLATE[flags=HIDE_ENCHANTS]
+  display name: <&4>Wild Tunic
+  lore:
+  - A leather and fur based tunic
+  - made from the treated skin
+  - of a Wendigo.
+  - It is said that when worn with
+  - its brothers, it will bestow
+  - strengthened speed.
+  recipe:
+  - i@WendigoPelt|i@CraftingGem|i@WendigoPelt
+  - i@WendigoPelt|i@WendigoPelt|i@WendigoPelt
+  - i@WendigoPelt|i@WendigoPelt|i@WendigoPelt
+WendigoLegs:
+  type: item
+  material: i@LEATHER_LEGGINGS[flags=HIDE_ENCHANTS]
+  display name: <&4>Wild Pants
+  lore:
+  - A leather and fur based pant
+  - made from the treated skin
+  - of a Wendigo.
+  - It is said that when worn with
+  - its brothers, it will bestow
+  - strengthened speed.
+  recipe:
+  - i@WendigoPelt|i@WendigoPelt|i@WendigoPelt
+  - i@WendigoPelt|i@air|i@WendigoPelt
+  - i@WendigoPelt|i@air|i@WendigoPelt
+WendigoHelm:
+  type: item
+  material: i@LEATHER_HELMET[flags=HIDE_ENCHANTS]
+  display name: <&4>Wild Hood
+  lore:
+  - A leather and fur based hood
+  - made from the treated skin
+  - of a Wendigo.
+  - It is said that when worn with
+  - its brothers, it will bestow
+  - strengthened speed.
+  recipe:
+  - i@WendigoPelt|i@WendigoPelt|i@WendigoPelt
+  - i@WendigoPelt|i@air|i@WendigoPelt
+  - i@air|i@air|i@air
+WendigoBoots:
+  type: item
+  material: i@LEATHER_BOOTS[flags=HIDE_ENCHANTS]
+  display name: <&4>Wild Boots
+  lore:
+  - A leather and fur based shoe
+  - made from the treated skin
+  - of a Wendigo.
+  - It is said that when worn with
+  - its brothers, it will bestow
+  - strengthened speed.
+  recipe:
+  - i@WendigoPelt|i@air|i@WendigoPelt
+  - i@WendigoPelt|i@air|i@WendigoPelt
+  - i@air|i@air|i@air
+IwaDagger:
+  type: item
+  material: STONE_SWORD[flags=HIDE_ENCHANTS]
+  display name: <&4>Blood Dagger
+  lore:
+  - A mysterious dagger made from
+  - a refined Wendigo's claw
+  - and a handle shaped from
+  - an unknown, yet dark wood.
+  enchantments:
+  - DAMAGE_ALL:4
+  - DURABILITY:20
+Runestone:
+  type: item
+  material: i@PRISMARINE_CRYSTALS[flags=HIDE_ENCHANTS]
+  display name: <&b>Runestone
+  lore:
+  - A crystal shaving taken 
+  - from the runed
+  - bluffs on La<&sq>on.
+  - Its properties are unknown.
+LunaWeapon:
+  type: item
+  material: i@IRON_AXE[flags=HIDE_ENCHANTS]
+  display name: <&b>Luna
+  lore:
+  - A strange tool that
+  - resembles a cross between a
+  - hand axe and a scythe.
+  - The handle appears to extend,
+  - forming a formidable weapon.
+  - A series of glowing, humming
+  - runes are also seen on
+  - the handle.
+  enchantments:
+  - DURABILITY:9
+CommanderSabre:
+  type: item
+  material: IRON_SWORD[flags=HIDE_ENCHANTS]
+  display name: <&7>Commander's Sabre
+  enchantments:
+  - damage_all:4
+  - knockback:1
+  lore:
+  - The sabre's hilt is made of gold. The
+  - metal is of fine quality and has an 
+  - engraving of a sword and shield in it.
+ScoutTomahawk:
+  type: item
+  material: IRON_AXE[flags=HIDE_ENCHANTS]
+  display name: <&b>Scout Tomahawk
+  enchantments:
+  - damage_all:1
+  - durability:1
+  lore:
+  - Tomahawk used by the Sonn scouts.
+GuardTomahawk:
+  type: item
+  material: IRON_AXE[flags=HIDE_ENCHANTS]
+  display name: <&b>Guard Tomahawk
+  enchantments:
+  - durability:1
+  lore:
+  - Tomahawk used by the Sonn guard natives.
+ScoutSword:
+  type: item
+  material: IRON_SWORD[flags=HIDE_ENCHANTS]
+  display name: <&b>Scout Sword
+  enchantments:
+  - damage_all:1
+  - durability:1
+  lore:
+  - Sword used by the Sonn scouts.
+GuardSword:
+  type: item
+  material: IRON_SWORD[flags=HIDE_ENCHANTS]
+  display name: <&b>Guard Sword
+  enchantments:
+  - durability:1
+  lore:
+  - Sword used by the Sonn Guards.
+Scoutbow:
+  type: item
+  material: BOW[flags=HIDE_ENCHANTS]
+  display name: <&b>Scout bow
+  enchantments:
+  - arrow_damage:1
+  - durability:1
+  lore:
+  - A bow used by the Sonn scouts.
+MikasFlute:
+  type: item
+  material: STICK[flags=HIDE_ENCHANTS]
+  display name: <&b>Mika's Flute
+  enchantments:
+  - mending:1
+  lore:
+  - Mika's personal flute.
+  - There are native carvings and intricate
+  - designs painted on it.
+Shine:
+  type: item
+  material: GOLDEN_SWORD[flags=HIDE_ENCHANTS]
+  display name: <&6>Shine
+  enchantments:
+  - durability:5
+  - knockback:1
+  - fire_aspect:1
+  lore:
+  - A shining blade that seems
+  - to emit beauty and grace.
+SavageSpear:
+  type: item
+  material: STONE_SPADE[flags=HIDE_ENCHANTS]
+  display name: <&4>Savage Spear
+  enchantments:
+  - damage_all:3
+  lore:
+  - A spear typically wielded by
+  - savages.
+PirateSaber:
+  type: item
+  material: stone_sword[flags=HIDE_ENCHANTS]
+  display name: <&4>Pirate Saber
+  enchantments:
+  - damage_all:1
+  lore:
+  - Avast Ye Scurvy Dogs
+Valenbow:
+  type: item
+  material: BOW[flags=HIDE_ENCHANTS]
+  display name: <&b>Valen's bow
+  enchantments:
+  - arrow_damage:3
+QuartermasterCompass:
+  type: item
+  material: COMPASS[flags=HIDE_ENCHANTS]
+  display name: <&2>Quartermaster's Compass
+  enchantments:
+  - lure:3
+RingShard:
+  type: item
+  material: IRON_NUGGET[flags=HIDE_ENCHANTS]
+  display name: <&d>Ring Shard
+  lore:
+  - An ancient metallic fragment
+  - which seems to be part of some
+  - ring due to crescent shape and size.
+  enchantments:
+  - lure:3
+BloodStainedJournal:
+  type: item
+  material: i@JournalText[flags=HIDE_ENCHANTS]
+  display name: <&4>Blood Stained Journal
+JournalText:
+  type: book
+  title: Blood Stained Journal
+  author: Unknown
+  signed: true
+  text:
+  - '*The first few'
+  - 'pages are stained'
+  - 'with blood*'
+  - 'Three more'
+  - 'Three more'
+  - 'The voices ENDLESS'
+  - 'Shut up SHUT UP'
+  - 'Leave me alone'
+  - 'What have I done...'
+  - 'The basement talks'
+  - '"kill, kill, kill"'
+  - 'Never stopping'
+  - 'I<&sq>ll end this'
+  - 'Myself.'
+# MASK ITEMS
+#BASE MATERIALS
+#---------------------------------------------------------------------
+Machai:
+  type: item
+  material: i@STICK
+  display name: <&c>Machai Knife
+  lore:
+  - A ritualistic carving tool used to
+  - carve one<&sq>s Syndesi from Ivory or Wood.
+  enchants:
+  recipe:
+  - i@COBBLESTONE|i@STICK|i@air
+  - i@air|i@STICK|i@air
+  - i@air|i@STICK|i@COBBLESTONE
+Ivory:
+  type: item
+  material: i@BONE_BLOCK
+  display name: <&b>Ivory
+  lore:
+  - Ancient Ivory. It is rumored that Elephants and
+  - mammoths used to roam La<&sq>On before the Native
+  - population flourished.
+WoodenMask:
+  type: item
+  material: skull_item
+  display name: <&e>Wooden Mask Template
+  lore:
+  - A loosely carved wooden mask.
+  - It has an abnormal shape, as it is meant
+  - to be decorated and infused, then cut to
+  - form the specific shape the wearer desires.
+  enchants:
+  shapeless_recipe: i@OAK_LOG|i@Machai
+IvoryMask:
+  type: item
+  material: skull_item
+  display name: <&b>Ivory Mask Template
+  lore:
+  - A loosely carved ivory mask.
+  - It has an abnormal shape, as it is meant
+  - to be decorated and infused, then cut to
+  - form the specific shape the wearer desires.
+  shapeless_recipe: i@Machai|i@Ivory
+#-----------------------------------------------------------------------------
+#ENCHANTED MASK LISTS
+#-----------------------------------------------------------------------------
+WoodenSpeedMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTE5NDQ4MDcsInByb2ZpbGVJZCI6IjIzZDE4YjNhN2E1NjQyM2E4NDZmZGJlNGVjYjJmNzJmIiwicHJvZmlsZU5hbWUiOiJHZW1pbml4UGxheXMiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzY0ZmQyZmVhNDg0MWRiNTcxYmIyN2YwMmIyOGI2ZTJmNWY5YzBiZDc3NzU2OWI5YWY2OTNhNTQ3NzI5NGMifX19]
+  display name: <&b>Syndesi Tachyse
+  lore:
+  - A native decorated mask of swiftness.
+  - It is said that those who wear this
+  - will be granted speed from the gods.
+  shapeless_recipe: i@StormPowder|i@AirPowder|i@WoodenMask|i@Machai
+IvorySpeedMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTEwNjUwNTIwMTQsInByb2ZpbGVJZCI6ImFkMWM2Yjk1YTA5ODRmNTE4MWJhOTgyMzY0OTllM2JkIiwicHJvZmlsZU5hbWUiOiJGdXJrYW5iejAwIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xNWU1NjRjMDc0NjQ0OGJjZDNjOTgwYzkxNDQwYWQyMjk0YjVhM2NjYjY1YWUyMmRhYmM1NmMzNGMyN2JiN2YifX19]
+  display name: <&b>Syndesi Tachyse
+  lore:
+  - A native decorated mask of swiftness.
+  - It is said that those who wear this
+  - will be granted speed from the gods.
+  shapeless_recipe: i@StormPowder|i@AirPowder|i@IvoryMask|i@Machai
+WoodenHasteMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTI4MDM5MzcsInByb2ZpbGVJZCI6ImQxY2VjOWFkMWRhODQxNzliMWU1NjA0ZjcyYmZiMjI2IiwicHJvZmlsZU5hbWUiOiJydXRnZXI0NjUiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2MwZDhhYzk1NjgyMWUzZWNmMDY0ODI5MjI1ZDY4NTU0ZGNiZTdlZWZlMmQ0MmVhNDM4OWNmODBjMWM2YzZmZSJ9fX0=]
+  display name: <&b>Syndesi Tachyse
+  lore:
+  - A native decorated mask of haste.
+  - It is said that those who wear this
+  - will be granted stamnia and haste by
+  - the gods.
+  shapeless_recipe: i@WorldPowder|i@FirePowder|i@WoodenMask|i@Machai
+IvoryHasteMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTIwNzY1MzQsInByb2ZpbGVJZCI6ImFkMWM2Yjk1YTA5ODRmNTE4MWJhOTgyMzY0OTllM2JkIiwicHJvZmlsZU5hbWUiOiJGdXJrYW5iejAwIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS84MTQ4OTMyYTYzNThlODA2YWI4ZTc4NTM1MWRiYzdlOTkxZDliOWU0OGM3OWE3MzFmZTVmY2I3MjE1YjRkN2MifX19]
+  display name: <&b>Syndesi Tachyse
+  lore:
+  - A native decorated mask of haste.
+  - It is said that those who wear this
+  - will be granted stamnia and haste by
+  - the gods.
+  shapeless_recipe: i@WorldPowder|i@FirePowder|i@IvoryMask|i@Machai
+WoodenHealthMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTIxNTQ2NzEsInByb2ZpbGVJZCI6IjIzZjFhNTlmNDY5YjQzZGRiZGI1MzdiZmVjMTA0NzFmIiwicHJvZmlsZU5hbWUiOiIyODA3Iiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9lMGMzNTdkYzNjMmY4MTIyNTE1YjRkZDY5MThkODMzNDU2ZWY4NzVlNzc5ZWRmZWNlZTJlNzZlZTRhZGM4MmMifX19]
+  display name: <&c>Syndesi Ygeia
+  lore:
+  - A native decorated mask of health.
+  - It is said that those who wear this
+  - will be granted blessings from the gods.
+  shapeless_recipe: i@Machai|i@WoodenMask|i@WorldPowder|i@AirPowder
+IvoryHealthMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTIxOTkwNTYsInByb2ZpbGVJZCI6IjkxOGEwMjk1NTlkZDRjZTZiMTZmN2E1ZDUzZWZiNDEyIiwicHJvZmlsZU5hbWUiOiJCZWV2ZWxvcGVyIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8zOWMzNWMyYmI0MmI5ZGQxN2IyNWM3M2ZjNzc2MmRhOGYzMjZiZjI5OTA3YzJmZTRjZDIwNDZjYzVhZmRjYTY5In19fQ==]
+  display name: <&c>Syndesi Ygeia
+  lore:
+  - A native decorated mask of health.
+  - It is said that those who wear this
+  - will be granted blessings from the gods.
+  shapeless_recipe: i@Machai|i@IvoryMask|i@WorldPowder|i@AirPowder
+WoodenNightVisionMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTIyNDg0MDQsInByb2ZpbGVJZCI6ImMxZWQ5N2Q0ZDE2NzQyYzI5OGI1ODFiZmRiODhhMjFmIiwicHJvZmlsZU5hbWUiOiJ5b2xvX21hdGlzIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS84ODhmYmNjZjdmZmM2ZjFlZDFlMDg0ZWExZDdlZGFhZTZhY2Y0OWVmOTZjYTBhYTJmZDZlNjE2Y2VmYWViYjMifX19]
+  display name: <&1>Syndesi Orama
+  lore:
+  - A native decorated mask of sight.
+  - It is said that those who wear this
+  - will be granted vision even in the darkest
+  - of places.
+  shapeless_recipe: i@Machai|i@WoodenMask|i@WorldPowder|i@LightPowder
+IvoryNightVisionMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTIzMjAxMDEsInByb2ZpbGVJZCI6ImJkM2M2NDhiZDZhMDRmMDM5NDkzMjc1MzVjYjgzMWViIiwicHJvZmlsZU5hbWUiOiJFbW1hYVBsYXl6Iiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xNGE0MzlmOTUwM2U3ZGE0ZWE0MWVhNjM3MDk0YzM2ZGIyZDg4MTg0MzFmMTViNGI4MjNiZGEyOWI2ZGIzMmFmIn19fQ==]
+  display name: <&1>Syndesi Orama
+  lore:
+  - A native decorated mask of sight.
+  - It is said that those who wear this
+  - will be granted vision even in the darkest
+  - of places.
+  shapeless_recipe: i@Machai|i@IvoryMask|i@WorldPowder|i@LightPowder
+WoodenInvisMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTA1MzY5MTM0NzgsInByb2ZpbGVJZCI6ImNhYjI4ODVkMTUxNjQ1OTNhZmI2MDkwODJlOTE2NmU3IiwicHJvZmlsZU5hbWUiOiJGYW5jeV9MdWR3aWciLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzgzNzhiZDdiY2I3OWU0NmM4YzJmMjU3YzZhNzg2ZGY5ODk3ZWE0NjY5NWNjODQ0MjhhNzhiZDAzNGFhNyJ9fX0=]
+  display name: <&9>Syndesi Aurato
+  lore:
+  - A native decorated mask of ghost.
+  - It is said that those who wear this
+  - will be granted the ability to vanish
+  - into thin air.
+  shapeless_recipe: i@Machai|i@WoodenMask|i@VapourPowder|i@LightPowder
+IvoryInvisMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTA1MzU4NDIwMDIsInByb2ZpbGVJZCI6ImMxZWQ5N2Q0ZDE2NzQyYzI5OGI1ODFiZmRiODhhMjFmIiwicHJvZmlsZU5hbWUiOiJ5b2xvX21hdGlzIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9kNjZmNWI5ZWJhYjA0MTEzNGQ4NGE3ZWFhZTJhYzc4Nzc0YTU1ZWQyZDU2NDJkNTFhYmNlOGNiNGVlMWNiZjgifX19]
+  display name: <&9>Syndesi Aurato
+  lore:
+  - A native decorated mask of ghost.
+  - It is said that those who wear this
+  - will be granted the ability to vanish
+  - into thin air.
+  shapeless_recipe: i@Machai|i@IvoryMask|i@VapourPowder|i@LightPowder
+WoodenWaterBreathingMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MDk1NzU3ODQ1NzYsInByb2ZpbGVJZCI6ImUzYjQ0NWM4NDdmNTQ4ZmI4YzhmYTNmMWY3ZWZiYThlIiwicHJvZmlsZU5hbWUiOiJNaW5pRGlnZ2VyVGVzdCIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRjZTYzNTQzZWE4NWZjNzRkZDQxYzVkNGRkNWM0ZmZhNTJkMzZkNGE2NThmZWZmNjY4YzZhZThmNWM3OSJ9fX0=]
+  display name: <&b>Syndesi Thalassa
+  lore:
+  - A native decorated mask of respiration.
+  - It is said that those who wear this
+  - will be granted the ability to breathe
+  - underwater.
+  shapeless_recipe: i@Machai|i@WoodenMask|i@VapourPowder
+IvoryWaterBreathingMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MDk1NzU3ODQ1NzYsInByb2ZpbGVJZCI6ImUzYjQ0NWM4NDdmNTQ4ZmI4YzhmYTNmMWY3ZWZiYThlIiwicHJvZmlsZU5hbWUiOiJNaW5pRGlnZ2VyVGVzdCIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRjZTYzNTQzZWE4NWZjNzRkZDQxYzVkNGRkNWM0ZmZhNTJkMzZkNGE2NThmZWZmNjY4YzZhZThmNWM3OSJ9fX0=]
+  display name: <&b>Syndesi Thalassa
+  lore:
+  - A native decorated mask of
+  - It is said that those who wear this
+  - will be granted the ability to breathe
+  - underwater.
+  shapeless_recipe: i@Machai|i@IvoryMask|i@VapourPowder
+  
+WoodenRegenMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTA1MzY3NDcwMTksInByb2ZpbGVJZCI6ImJiMDgwOTFhOTJlZDQzYWQ5NGYxZWRmZDc0NmIwYTJjIiwicHJvZmlsZU5hbWUiOiJJcDRuZHgiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2M1ZTdlNmMyNzVkYWY0ZTY1NDg0MTEyYTA0NDJkN2RiNTJkZmE3N2FiYzRkZjcxODM4MjllM2MzYzJmYWQifX19]
+  display name: <&c>Syndesi Mys
+  lore:
+  - A native decorated mask of restoration.
+  - It is said that those who wear this
+  - will recover faster from battle.
+  shapeless_recipe: i@Machai|i@WoodenMask|i@HumidityPowder|i@WaterPowder
+IvoryRegenMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTA1MzU4MzczNjksInByb2ZpbGVJZCI6IjBiZTU2MmUxNzIyODQ3YmQ5MDY3MWYxNzNjNjA5NmNhIiwicHJvZmlsZU5hbWUiOiJ4Y29vbHgzIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS83ODNmNTQxNTQyYzkyMDdkODdmMTg3ZjViOGM5ODVkZDczMmE3MjAzYTJlYTllMzE1M2U1ODZlNTQ0Y2Y1YWUifX19]
+  display name: <&c>Syndesi Mys
+  lore:
+  - A native decorated mask of restoration.
+  - It is said that those who wear this
+  - will recover faster from battle.
+  shapeless_recipe: i@Machai|i@IvoryMask|i@HumidityPowder|i@WaterPowder
+WoodenJumpMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTA1MzU4NTk2MjAsInByb2ZpbGVJZCI6ImJkM2M2NDhiZDZhMDRmMDM5NDkzMjc1MzVjYjgzMWViIiwicHJvZmlsZU5hbWUiOiJFbW1hYVBsYXl6Iiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8yNDQyNjE0ZDhmZTNkM2MwYzM0ZmQ3Njg4YjljYWUxN2ZhOWM4OWViNGJjZmU0MGJlZTJkNDQ5YTEyYyJ9fX0=]
+  display name: <&a>Syndesi Alma
+  lore:
+  - A native decorated mask of leaping.
+  - It is said that those who wear this
+  - can jump higher than normal.
+  shapeless_recipe: i@Machai|i@WoodenMask|i@GravityPowder|i@AirPowder
+IvoryJumpMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTA1MzU4MzU5OTMsInByb2ZpbGVJZCI6IjkxOGEwMjk1NTlkZDRjZTZiMTZmN2E1ZDUzZWZiNDEyIiwicHJvZmlsZU5hbWUiOiJCZWV2ZWxvcGVyIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS81ZmZiZDI4ZjJiMWUzYjk5NGVjMTdiYTczZWVkMWQ4YmY4OTRmMGNiZmE3ZGZhMjc2ZmQxODQ4YmJkMSJ9fX0=]
+  display name: <&a>Syndesi Alma
+  lore:
+  - A native decorated mask of leaping.
+  - It is said that those who wear this
+  - can jump higher than normal.
+  shapeless_recipe: i@Machai|i@IvoryMask|i@GravityPowder
+WoodenStrengthMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTI2NDkwNDIsInByb2ZpbGVJZCI6ImNhYjI4ODVkMTUxNjQ1OTNhZmI2MDkwODJlOTE2NmU3IiwicHJvZmlsZU5hbWUiOiJGYW5jeV9MdWR3aWciLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2YyNjcyZTQ2YzFkN2E0YWZmM2Q0ZDdlNWZhYzdiNGYxZTFkMzRlZDUyN2JkMjU0ODVkYTEzZmQ2NzIzZmI0NiJ9fX0=]
+  display name: <&d>Syndesi Dynami
+  lore:
+  - A native decorated mask of power.
+  - It is said that those who wear this
+  - will be granted greater strength 
+  - in battle.
+  shapeless_recipe: i@Machai|i@WoodenMask|i@WorldPowder|i@StormPowder
+IvoryStrengthMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTA1MzU4ODIzMDAsInByb2ZpbGVJZCI6ImE5MGI4MmIwNzE4NTQ0ZjU5YmE1MTZkMGY2Nzk2NDkwIiwicHJvZmlsZU5hbWUiOiJJbUZhdFRCSCIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmUwNjk4ZWM3NjYyOTY4NGFmNWY4OGEzZjhjNjA1MjE4MzQ4YjFjY2VjMWFmMzNiYTEzZTc3ZWU2YzljYzExIn19fQ==]
+  display name: <&d>Syndesi Dynami
+  lore:
+  - A native decorated mask of power.
+  - It is said that those who wear this
+  - will be granted greather strength
+  - in battle.
+  shapeless_recipe: i@Machai|i@IvoryMask|i@WorldPowder|i@StormPowder
+
+WoodenWolfMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTI3NTgwNDIsInByb2ZpbGVJZCI6ImRhNzQ2NWVkMjljYjRkZTA5MzRkOTIwMTc0NDkxMzU1IiwicHJvZmlsZU5hbWUiOiJEYW5jaW5nRG9nZ29fIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS83ZTRjYmU1Njc0ZjI4Y2ZkYjM1ZDE4ZDY2YzY3OGViYmI0NTZhMDk3NTQ0ZDExNTA5NzU2OGExMzlhZmI5ZiJ9fX0=]
+  display name: <&b>Syndesi Lykos
+  lore:
+  - A native decorated mask of transformation.
+  - It is said that those who wear this
+  - will be granted the form of a wolf.
+  shapeless_recipe: i@Machai|i@WoodenMask|i@CorruptionShard|i@Moon|i@WolfBlood
+IvoryWolfMask:
+  type: item
+  material: skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MTExOTI4MDEyMTcsInByb2ZpbGVJZCI6IjcwOTU2NDU0NTJkOTRiYTI5YzcwZDFmYTY3YjhkYTQyIiwicHJvZmlsZU5hbWUiOiJIaWRkdXMiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzhmMDFiYzBkOTQyNGJlN2U2YjU4ZjdiMjMxOTgyYjk1MTMyNDUxZGY1NTQyZWI1NjIxMmVlZmM2OGFkNGNjYyJ9fX0=]
+  display name: <&b>Syndesi Lykos
+  lore:
+  - A native decorated mask of transformation.
+  - It is said that those who wear this
+  - will be granted the form of a wolf.
+  shapeless_recipe: i@Machai|I@IvoryMask|i@CorruptionShard|i@Moon|i@WolfBlood
+WolfBlood:
+  type: item
+  material: 331
+  display name: <&4>Wolf Blood
+  lore:
+  - A vial of wolf blood.
+#-----------------------------------------------------------------------------
+#WORLD SCRIPT
+#-----------------------------------------------------------------------------
+
+MaskWorld:
+  type: world
+  events:
+    on player equips IvorySpeedMask:
+    - cast speed d:25 p:1 <player>
+    on player clicks IvorySpeedMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast speed remove <player>
+    
+    on player equips WoodenSpeedMask:
+    - cast speed d:999999 p:1
+    on player clicks WoodenSpeedMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast speed remove <player>
+    
+    on player equips IvoryHasteMask:
+    - cast fast_digging d:999999 p:1
+    on player clicks IvoryHasteMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast fast_digging remove <player>
+    
+    on player equips WoodenHasteMask:
+    - cast fast_digging d:999999 p:1
+    on player clicks WoodenHasteMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast fast_digging remove <player>
+    
+    on player equips IvoryStrengthMask:
+    - cast increase_damage d:999999 p:1
+    on player clicks IvoryStrengthMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast fast_digging remove <player>
+    
+    on player equips WoodenStrengthMask:
+    - cast increase_damage d:999999 p:1
+    on player clicks WoodenStrengthMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast increase_damage remove <player>
+    
+    on player equips IvoryJumpMask:
+    - cast jump d:999999 p:1
+    on player clicks IvoryJumpMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast jump remove <player>
+    
+    on player equips WoodenJumpMask:
+    - cast jump d:999999 p:1
+    on player clicks WoodenJumpMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast jump remove <player>
+    
+    on player equips IvoryRegenMask:
+    - cast regeneration d:999999 p:1
+    on player clicks ivoryRegenMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast regeneration remove <player>
+    
+    on player equips WoodenRegenMask:
+    - cast regeneration d:999999 p:1
+    on player clicks WoodenRegenMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast regeneration remove <player>
+    
+    on player equips IvoryInvisMask:
+    - if <player.has_flag[MaskInvis]> {
+      - narrate "Your mask must recharge."
+      }
+      else {
+      - cast invisibility d:60 p:1
+      - flag player MaskInvis duration:120s
+      }
+    on player clicks IvoryInvisMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    
+    on player equips WoodenInvisMask:
+    - if <player.has_flag[MaskInvis]> {
+      - narrate "Your mask must recharge."
+      }
+      else {
+      - cast invisibility d:60 p:1
+      - flag player MaskInvis duration:120s
+      }
+    on player clicks WoodenInvisMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    
+    on player equips IvoryWaterBreathingMask:
+    - cast water_breathing d:999999 p:1
+    on player clicks IvoryWaterBreathingMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast water_breathing remove <player>
+    
+    on player equips WoodenWaterBreathingMask:
+    - cast water_breathing d:999999 p:1
+    on player clicks WoodenWaterBreathingMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast water_breathing remove <player>
+    
+    on player equips IvoryNightVisionMask:
+    - cast night_vision d:999999 p:1
+    on player clicks IvoryNightVisionMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast night_vision remove <player>
+    
+    on player equips WoodenNightVisionMask:
+    - cast night_vision d:999999 p:1
+    on player clicks WoodenNightVisionMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - cast night_vision remove <player>
+    
+    on player equips IvoryHealthMask:
+    - if <player.has_flag[healthmaskcooldown]>
+      {
+      - narrate "The Mask's energy is recharging."
+      }
+      else {
+      - cast heal d:999999 p:1
+      - flag player healthmaskcooldown duration:15s
+      }
+    on player equips WoodenHealthMask:
+    - if <player.has_flag[healthmaskcooldown]>
+      {
+      - narrate "The Mask's energy is recharging."
+      }
+      else {
+      - cast heal d:999999 p:1
+      - flag player healthmaskcooldown duration:15s
+      }
+    
+    on player equips WoodenWolfMask:
+    - execute as_op "disguise wolf"
+    on player clicks WoodenWolfMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - execute as_op "undisguise"
+    on player equips IvoryWolfMask:
+    - execute as_op "disguise wolf"
+    on player clicks IvoryWolfMask in inventory:
+    - if <context.raw_slot> != 6 {
+      - queue clear
+      }
+    - execute as_op "undisguise"
+#task:
+#  type: task
+#  script:
+#  - give skull_item[skull_skin=Syndesi|eyJ0aW1lc3RhbXAiOjE1MDk1NzU3ODQ1NzYsInByb2ZpbGVJZCI6ImUzYjQ0NWM4NDdmNTQ4ZmI4YzhmYTNmMWY3ZWZiYThlIiwicHJvZmlsZU5hbWUiOiJNaW5pRGlnZ2VyVGVzdCIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRjZTYzNTQzZWE4NWZjNzRkZDQxYzVkNGRkNWM0ZmZhNTJkMzZkNGE2NThmZWZmNjY4YzZhZThmNWM3OSJ9fX0=]
+#skull[skull_skin=<util.random.uuid>|<SkinTextureString>]
+#give skull_item[skull_skin=NAME|TEXTURE]
+#give skull_item[Mergn|ValueString]
+  
+  
+  
+#-----------------------------#
+#---------EVENT ITEMS---------#
+#-----------------------------#
+
+#-----------------------------#
+#-----Arken Goblin Event------#
+#-----------------------------#
+CrudeGoblinChestplate:
+  type: item
+  material: LEATHER_CHESTPLATE[flags=HIDE_ENCHANTS]
+  display name: <&2>Crude Goblin Pauldrons
+  color:
+CrudeGoblinLeggings:
+  type: item
+  material: LEATHER_LEGGINGS[flags=HIDE_ENCHANTS]
+  display name: <&2>Crude Goblin Faulds
+CrudeBow:
+  type: item
+  material: BOW[flags=HIDE_ENCHANTS]
+  display name: <&8>Crude Bow
+  lore:
+  - You<&sq>re afraid that drawing it
+  - will cause the bow arms to snap in half.
+CrudeSword:
+  type: item
+  material: WOODEN_SWORD[flags=HIDE_ENCHANTS]
+  display name: <&8>Crude Sword
+  lore:
+  - Basically a sharpened floorboard.
+CrudeArrows:
+  type: item
+  material: ARROW[flags=HIDE_ENCHANTS]
+  display name: <&8>Crude Arrows
+  lore:
+  - They look as if they were sharpened
+  - by being gnawed upon.
+  enchantments:
+HumanRemainsSkull:
+  type: item
+  material: SKULL[flags=HIDE_ENCHANTS]
+  display name: <&7>Human Remains
+  lore:
+  - It almost looks like someone you knew.
+  enchantments:
+HumanRemainsFlesh:
+  type: item
+  material: ROTTEN_FLESH[flags=HIDE_ENCHANTS]
+  display name: <&7>Human Remains
+  lore:
+  - It<&sq>s juicy and sloughing right off the bone.
+  enchantments:
+GoblinSnot:
+  type: item
+  material: SLIME_BALL[flags=HIDE_ENCHANTS]
+  display name: <&a>Goblin Snot
+  lore:
+  - It<&sq>s sticky and slimy.
+CharredFood:
+  type: item
+  material: CHARCOAL[flags=HIDE_ENCHANTS]
+  display name: <&7>Charred Food
+  lore:
+  - Completely inedible by now.
+GoblinGoldCoin:
+  type: item
+  material: GOLD_NUGGET[flags=HIDE_ENCHANTS]
+  display name: <&e>Gold Coin
+GoblinSilverCoin:
+  type: item
+  material: IRON_NUGGET[flags=HIDE_ENCHANTS]
+  display name: <&7>Silver Coin
+GoblinCopperCoin:
+  type: item
+  material: PUMPKIN_SEEDS[flags=HIDE_ENCHANTS]
+  display name: <&6>Copper Coins
+GrisgrisDust:
+  type: item
+  material: BONE_MEAL[flags=HIDE_ENCHANTS]
+  display name: Grisgris Dust
+  lore:
+  - Dust of ground bones,
+  - usually used to keep bad juju away.
+GoblinPoop:
+  type: item
+  material: COCOA_BEANS[flags=HIDE_ENCHANTS]
+  display name: <&7>Is that...
+  lore:
+  - Oh my god you<&sq>re holding it? Gross!
+  

@@ -1,0 +1,52 @@
+Clone:
+  type: task
+  script:
+  - create player <player.name> <player.location>
+  - execute as_server "npc name <player.name>"
+  - wait 3
+  - execute as_server "npc remove <player.name>"
+Clone2:
+  type: task
+  script:
+  - create player <player.name> <player.location>
+  - execute as_server "npc name <player.name>"
+  - wait 4
+  - execute as_server "npc remove <player.name>"
+Clone3:
+  type: task
+  script:
+  - create player <player.name> <player.location>
+  - execute as_server "npc name <player.name>"
+  - wait 5
+  - execute as_server "npc remove <player.name>"  
+ClassReset:
+  type: task
+  script:
+  - flag player Herbalist:!
+  - flag player Archaeologist:!
+  - flag player Fisherman:!
+  - flag player Smithy:!
+  - flag player Miner:!
+  - flag player Tinkerer:!
+  - flag player Farmer:!
+  - flag player Brewer:!
+  - flag player Hunter:!
+  - flag player Apprentice:!
+  - flag player Smith1:!
+  - flag player Smith2:!
+  - flag player Smith3:!
+  - flag player Smith4:!
+  - flag player Alchemist:!
+Shapeshift:
+  type: task
+  script:
+  - random 
+    {
+    - execute as_op "disguise BAT"
+    - execute as_op "disguise WITHER_SKELETON"
+    - execute as_op "disguise SKELETON"
+    - execute as_op "disguise WOLF"
+    - execute as_op "disguise RABBIT"
+    }
+  - wait 10
+  - execute as_op "undisguise"

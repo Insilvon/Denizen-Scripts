@@ -1,0 +1,373 @@
+ButcherShopNPCa:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    on click:
+    - narrate "<green>Sloan<&co> You can just talk to me instead of poking me."
+  interact scripts:
+  - 1 ButcherShopNPCi
+
+ButcherShopNPCi:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+            - random {
+              - chat "I've got the finest cuts of meat in the Grand Sonnarie!"
+              - chat "My sirloin steaks will make your mouth water."
+              - chat "Let me know if you need something."
+              }
+        exit:
+          script:
+            - chat "Come back when you want to treat yourself to the finest cuts of meat in the Grand Sonnarie!"
+            - zap 1
+ArmsandArmorShopNPCa:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    on click:
+    - narrate "<green>Bruno<&co> You can just talk to me instead of poking me."
+  interact scripts:
+  - 1 ArmsandArmorShopNPCi
+
+ArmsandArmorShopNPCi:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+            - random {
+              - chat "I've got the finest arms and armor in the Grand Sonnarie!"
+              - chat "My armor will stop a native arrow in it's tracks."
+              - chat "Let me know if you need something."
+              }
+        exit:
+          script:
+            - chat "Come back when you need some quality arms and armor!"
+            - zap 1
+MinerBlacksmithNPCa:
+  type: assignment
+  on assignment:
+    - chat "Assignment Set!"
+  on click:
+    - narrate "<green>Kio<&co> You can just say hello, ya know. There's no need to poke."
+  interact scripts:
+  - 1 MinerBlacksmithNPCi
+
+MinerBlacksmithNPCi:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hi|Hello|Greetings|Hey|Good day|hi|hello|greetings|hey|good day/
+          Script:
+              - chat "Greetings! Do you need me to make you an iron pickaxe?"
+              - zap 2
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Ya|yes|ya/
+          Script:
+            - chat "Alright, I can do that. However, I need you to provide the supplies."
+            - wait 2
+            - chat "I need 3 iron ingots, 2 sticks, and 300 Widgets."
+            - wait 2
+            - chat "Do you have those on you?"
+            - zap 3
+        2:
+          trigger: /Regex:No|Na|no|na/
+          Script:
+            - chat "Alright, come back when you need an iron pickaxe!"
+            - zap 1
+    3:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Ya|yes|ya|Here|here|/
+          Script:
+          - if <player.inventory.contains[265].quantity[3]> && <player.inventory.contains[280].quantity[2]> && <player.money> > "300" {
+            - take IRON_INGOT quantity:3
+            - take STICK quantity:2
+            - execute as_op "eco take <player.money> 300"
+            - chat "Great! Wait one moment while I hammer this out."
+            - wait 3
+            - chat "Alright, here ya go. One iron pickaxe. Pretty good work if I do say so myself."
+            - give IRON_PICKAXE quantity:1
+            - wait 2
+            - chat "Come back if you need another one!
+            - zap 1
+            }
+            else {
+            - chat "Don't ya lie to me! I can see that ya don't have the resources. Come back when ya have them."
+            - zap 1
+        2:
+          trigger: /Regex:No|no/
+          script:
+          - chat "Alright, well come back when ya do."
+          - zap 1
+OreShopNPCa:
+  type: assignment
+  on assignment:
+    - chat "Assignment Set!"
+  on click:
+    - narrate "<green>OreShop<&co> You can just talk to me instead of poking me."
+  interact scripts:
+  - 1 OreShopNPCi:
+
+OreShopNPCi:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+            - random {
+              - chat "I've got the finest ore in the Grand Sonnarie!"
+              - chat "My iron ingots are of the finest quality."
+              - chat "Let me know if you need something."
+              - chat "My coal will make the longest-lasting and hottest fires."
+              }
+        exit:
+          - chat "Come back when you need some quality ore and ingots!"
+            - zap 1
+ToolShopNPCa:
+  type: assignment
+  on assignment:
+    - chat "Assignment Set!"
+  on click:
+    - narrate "<green>Toolshop<&co> You can just talk to me instead of poking me."
+  interact scripts:
+  - 1 ToolShopNPCi
+
+ToolShopNPCi:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+          - if <player.flag[ToolShopJobstart]> {
+            - zap step:NeedToolSuppliescheck
+            }
+            else {
+            - random {
+              - chat "Come get your tools here! Best tools in the Grand Sonnarie!"
+              - chat "Finest tools in the Grand Sonnarie! Get them now before they sell out!"
+              - chat "I made these tools myself, so their quality is guaranteed!"
+              - inject NeedToolSuppliesStart
+              }
+            }
+        exit:
+          script:
+            - if <player.flag[ToolShopJobstart]> {
+              - chat "Please bring those supplies quickly. I need to make some more tools before I run out."
+              }
+              else {
+              - chat "Come back when you need some tools!"
+              - zap 1
+              }
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|yes|Ya|ya/
+          script:
+          - chat "Great, please get them to me as soon as possible."
+          - ^flag player ToolShopJobstart
+          - zap step:NeedToolSuppliescheck
+        2:
+          trigger: /Regex:No|no|Nope|nope/
+          script:
+          - chat "Okay, well please have a look at my wares then."
+          - zap 1
+        3:
+          trigger: /Regex:Goodbye|goodbye/
+          script:
+          - chat "Alright, see you."
+          - zap 1
+    NeedToolSuppliescheck:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|supplies/
+          script:
+          - if <player.inventory.contains[OAK_PLANKS].quantity[16]> {
+            - if <player.inventory.contains[COBBLESTONE].quantity[16]> {
+              - chat "Thank you so much."
+              - wait 2
+              - take OAK_PLANKS quantity:16
+              - take cobblestone quantity:16
+              - wait 1
+              - chat "Here is your pay. Thank you and please check out my wares."
+              - flag player ToolShopJobstart:false
+              - execute as_op "eco give <player.name> 60" 
+              - zap 1
+              }
+              else {
+              - chat "You suck."
+              }
+            }
+            else {
+            - chat "I see you don't have the supplies on you. Make sure you get them to me soon."
+            - wait 2
+            - chat "I need them to make my wares."
+            }
+        2:
+          trigger: /Regex:Goodbye|goodbye/
+          script:
+          - chat "Alright, see you."
+          - ^flag player ToolShopJobstart:false
+          - zap 1
+
+NeedToolSuppliesStart:
+  type: task
+  script:
+    - chat "Hello <player.name>, could I ask you a favor?"
+    - wait 2
+    - chat "I need someone to go out and get me some supplies."
+    - wait 2
+    - chat "Can you bring me 16 cobblestone and 16 oak wooden planks? I'll pay you 60 widgets for your time and effort."
+    - zap script:ToolShopNPCi step:2
+    
+          
+          
+TourGuide:
+  Type: Interact
+  Steps:
+    1:
+      click Trigger:
+        script:
+        - chat "Hello! Would you like a tour?"
+      chat Trigger:
+        1:
+          Trigger: /Regex:Yes|Sure/ that would be great.
+          Script:
+          - chat "Wonderful. If you'll follow me..."
+          - create player Tour_Guide <npc.location> save:Tour_Guide
+          - adjust <player> hide_entity:<npc>
+          - adjust <server.list_online_players.exclude[<player>]> hide_entity:<entry[Tour_Guide].created_npc>
+          - run TourPath npc:<entry[Tour_Guide].created_npc> def:<^npc>
+          - run TourTalk npc:<entry[Tour_Guide].created_npc>
+          - zap 2
+        2:
+          Trigger: /Regex:No|nah|not really/ but thank you though.
+          Script:
+          - chat "I understand, you prefer to find your own way. Come back if you change your mind."
+TourPath:
+  type: task
+  definitions: masternpc
+  script:
+  - ^flag <npc> step:1
+  - ~walk <def[masternpc].anchor[spot1]> auto_range
+  - ^inject TourPause
+  - ^flag <npc> step:2
+  - ~walk <def[masternpc].anchor[spot2]> auto_range
+  - ^inject TourPause
+  - ^flag <npc> step:3
+  - ~walk <def[masternpc].anchor[spot3]> auto_range
+  - ^inject TourPause
+  - ^flag <npc> step:4
+  - ~walk <def[masternpc].anchor[spot4]> auto_range
+  - ^inject TourPause
+  - ^flag <npc> step:5
+  - ~walk <def[masternpc].anchor[spot5]> auto_range
+  - wait 1
+  - remove <npc>
+  - adjust <player> show_entity:<def[masternpc]>
+  - zap 1 script:s@TourGuide
+  
+TourPause:
+  type: task
+  script:
+  - ^while <npc.location.distance[<player.location>].is[OR_LESS].than[5]> {
+    - chat "Try to keep up!"
+    - wait 1
+  }
+TourTalk:
+  type: task
+  script:
+  - chat "Alright, let's begin."
+  - wait 2
+  - chat "This town is a cool place."
+  - while <npc.flag[step].is[OR_LESS].than[1]> {
+    - wait 1
+  }
+  - chat "Over here is <&9>THE THING"
+  - wait 2
+  - while <npc.flag[step].is[OR_LESS].than[2]> {
+    - wait 1
+  }
+  - chat "This is the town square. Here you can go basically anywhere,"
+  - chat "you can go upstairs towards the market and high-class residential,"
+  - chat "you can go halfway up there to the guilds and casual markets,"
+  - chat "you can go straight west and enter the dense and cheaper residential districts,"
+  - chat "you can leave the city through this Eastern Gate here,"
+  - chat "or you can return back to the docks. It's a pretty simple setup."
+  - wait 2
+  - chat "As of right now, there is an arena being constructed through that gate there."
+  - wait 1
+  - chat "The compass rose engraved into the base here can always direct and reorient you if you get lost."
+  - while <npc.flag[step].is[OR_LESS].than[3]> {
+    - wait 1
+  }
+  - chat "This is the marketplace. Every Saturday traders and residents rent out stalls and sell and trade and so on."
+  - wait 1
+  - while <npc.flag[step].is[OR_LESS].than[4]> {
+    - wait 1
+  }
+  - chat "The main markets are up here. You can see pretty much anything from here. The river is cold this time of year, but it"
+  - chat "doesn't stop people from trying to swim in it."
+  - wait 2
+  - while <npc.flag[step].is[OR_LESS].than[5]> {
+    - wait 1
+  }
+  - chat "And finally, up here is the top town square."
+  - chat "If you head East of here, you will see the lock, docks, and Mayor Moreau's manor."
+  - chat "There's the warehouse over there too where they work on the waterwheel and operate the lock."
+TourAss:
+  type: assignment
+  interact scripts:
+  - 10 TourGuide
+welcomescript:
+  type: assignment
+  actions:
+    on assignment:
+    - trigger name:proximity state:true
+  interact scripts:
+  - 1 welcomescripti
+welcomescripti:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+            - if <player.flag[SonnResident]> {
+              - chat "Hello there, citizen!"
+              }
+              else {
+              - chat "Hello! I see that you are new here."
+              - execute as_op "townyadmin town The_Grand_Sonnarie add <player.name>"
+              - chat "Enjoy your stay!"
+              - flag player SonnResident
+              }
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hi|Hey|Good day/
+          script:
+           - chat "Do you need to join our humble town?"
+           - narrate "Yes|No"
+        2:
+          trigger: /Regex:Yes|Yeah/
+          script:
+            - chat "Alrighty!"
+            - execute as_op "townyadmin town The_Grand_Sonnarie add <player.name>"
+            - chat "Enjoy your stay!"
+            - flag player SonnResident
+townaddfix:
+  type: task
+  script:
+  - flag player SonnResident:false

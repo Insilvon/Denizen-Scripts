@@ -1,0 +1,117 @@
+RandomNative1:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    on click:
+    - random {
+      - chat "Fresh Ingredients, locally gathered!"
+      - chat "Meat, fresh from the hunt!"
+      - chat "What beast did these come from? ...You don't wanna know."
+      - chat "Light armor means quieter movement. Better hunting."
+      - chat "Was there something that you needed?"
+      - chat "You want apples? Carrots? Beetroot? We got torches."
+      - chat "The sun is high, but the prices are not."
+      - chat "Look at that shoddy armor you're wearing. You ought to pick up some medicine."
+      - chat "What're you buying?"
+      - chat "Got some rare things on sale here, Stranger."
+      - chat "May you die with a sword in your hand."
+      }
+  interact scripts:
+  - 1 RandomNative1I
+RandomNative1I:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+          - random {
+            - chat "Fresh Ingredients, locally gathered!"
+            - chat "Meat, fresh from the hunt!"
+            - chat "What beast did these come from? ...You don't wanna know."
+            - chat "Light armor means quieter movement. Better hunting."
+            - chat "Was there something that you needed?"
+            - chat "You want apples? Carrots? Beetroot? We got torches."
+            - chat "The sun is high, but the prices are not."
+            - chat "Look at that shoddy armor you're wearing. You ought to pick up some medicine."
+            - chat "What're you buying?"
+            - chat "Got some rare things on sale here, Stranger."
+            - chat "May you die with a sword in your hand."
+            }
+RandomNative2:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    on click:
+    - random {
+      - chat "Faith in money will lead you nowhere."
+      - chat "You catch on quick. After all, you and I both know where we come from."
+      - chat "Just so we understand each other: I don't trust you."
+      - chat "Create with the heart; build with the mind."
+      - chat "That's not the biggest I've ever seen... Yes, I've seen bigger wounds for sure."
+      - chat "I keep asking for wine, but all Pita gives me is fish."
+      - chat "Why are you even here? If you aren't bleeding, you don't need to be here."
+      - chat "It is not the mountain we conquer but ourselves."
+      - chat "I am fond of pigs. Dogs look up to us. Cats look down on us. Pigs treat us as equals."
+      - chat "It is not that life ashore is distasteful to me, but life at sea is better."
+      }
+  interact scripts:
+  - 1 RandomNative2I
+RandomNative2I:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+          - random {
+            - chat "Faith in money will lead you nowhere."
+            - chat "You catch on quick. After all, you and I both know where we come from."
+            - chat "Just so we understand each other: I don't trust you."
+            - chat "Create with the heart; build with the mind."
+            - chat "That's not the biggest I've ever seen... Yes, I've seen bigger wounds for sure."
+            - chat "I keep asking for wine, but all Pita gives me is fish."
+            - chat "Why are you even here? If you aren't bleeding, you don't need to be here."
+            - chat "It is not the mountain we conquer but ourselves."
+            - chat "I am fond of pigs. Dogs look up to us. Cats look down on us. Pigs treat us as equals."
+            - chat "It is not that life ashore is distasteful to me, but life at sea is better."
+            }
+RandomNative3:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    on click:
+    - random {
+      - chat "Smithing is easy! All you have to do is take out the wrong parts."
+      - chat "Sometimes the wheel turns slowly, but it still turns."
+      - chat "No hour of life is wasted that is spent in the saddle."
+      - chat "Everything has its limit - iron ore cannot be educated into gold."
+      - chat "One man's 'magic' is another man's engineering."
+      - chat "The purpose of education is to replace an empty mind with an open one."
+      - chat "If gods had really intended for men to fly, they'd make it easier to control Ki that way."
+      - chat "Even though the future seems far away, it is actually beginning right now."
+      - chat "Skill without imagination is craftsmanship and gives us many useful objects such as wickerwork baskets."
+      }
+  interact scripts:
+  - 1 RandomNative3I
+RandomNative3I:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+          - random {
+            - chat "Smithing is easy! All you have to do is take out the wrong parts."
+            - chat "Sometimes the wheel turns slowly, but it still turns."
+            - chat "No hour of life is wasted that is spent in the saddle."
+            - chat "Everything has its limit - iron ore cannot be educated into gold."
+            - chat "One man's 'magic' is another man's engineering."
+            - chat "The purpose of education is to replace an empty mind with an open one."
+            - chat "If gods had really intended for men to fly, they'd make it easier to control Ki that way."
+            - chat "Even though the future seems far away, it is actually beginning right now."
+            - chat "Skill without imagination is craftsmanship and gives us many useful objects such as wickerwork baskets."
+            }

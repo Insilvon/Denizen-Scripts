@@ -1,0 +1,790 @@
+#---------------------------BDO Scripts--------------------------#
+
+WorkerMerchant:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment Set."
+    - trigger name:click state:true
+    
+  interact scripts:
+  - 1 WorkerMerchantI
+#Flags: BDOFarmer1, BDOFarmer2, BDOMiner1, BDOMiner2, BDOMiner3, BDOWoodcutter1, BDOWoodcutter2, BDOCooldown, BDOFarmer1Paid, BDOFarmer2Paid, BDOMiner1Paid, BDOMiner2Paid, BDOMiner3Paid, BDOWoodcutter1Paid,  BDOWoodcutter2Paid, BDOPaid
+WorkerMerchantI:
+  type: interact
+  steps:
+    1:
+      click trigger:
+          script:
+              - chat "You have a voucher to exchange, eh?"
+              - narrate "Make sure you are holding the voucher you wish to exchange."
+              - if <player.item_in_hand> == <i@Farmer1Voucher>
+                {
+                - chat "Would you like to sell your supplies here for cash, or would you like to keep Your supplies?"
+                - narrate "XYZ inventory required."
+                - narrate "Supplies|Cash"
+                - zap step:farm1pay
+                }
+                else
+                {
+                - if <player.item_in_hand> == <i@Farmer2Voucher>
+                  {
+                  - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                  - narrate "XYZ inventory required."
+                  - narrate "Supplies|Cash"
+                  - zap step:farm2pay
+                  }
+                  else
+                  {
+                  - if <player.item_in_hand> == <i@Miner1Voucher>
+                    {
+                    - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                    - narrate "XYZ inventory required."
+                    - narrate "Supplies|Cash"
+                    - zap step:miner1pay
+                    }
+                    else
+                    {
+                    - if <player.item_in_hand> == <i@Miner2Voucher>
+                      {
+                      - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                      - narrate "XYZ inventory required."
+                      - narrate "Supplies|Cash"
+                      - zap step:miner2pay
+                      }
+                      else
+                      {
+                      - if <player.item_in_hand> == <i@Miner3Voucher>
+                        {
+                        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                        - narrate "XYZ inventory required."
+                        - narrate "Supplies|Cash"
+                        - zap step:miner3pay
+                        }
+                        else
+                        {
+                        - if <player.item_in_hand> == <i@Woodcutter1Voucher>
+                          {
+                          - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                          - narrate "XYZ inventory required."
+                          - narrate "Supplies|Cash"
+                          - zap step:wood1pay
+                          }
+                          else
+                          {
+                          - if <player.item_in_hand> == <i@Woodcutter2Voucher>
+                            {
+                            - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                            - narrate "XYZ inventory required."
+                            - narrate "Supplies|Cash"
+                            - zap step:wood2pay
+                            }
+                            else
+                            {
+                            - chat "It appears you aren't holding a valid voucher. Are you sure you've got one?"
+                            - wait 2
+                            - chat "Come back again when you've figured it out."
+                            }
+                         }
+                       }
+                      }
+                    }
+                  }
+                }
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hi|Hey|Greetings|Good day/.
+          script:
+          - chat "Hello. Are you here to hire a worker, check in, or exchange a voucher?"
+          - narrate "Yes|No|Worker?|Check in|Voucher|Goodbye"
+        2:
+          trigger: /Regex:Worker/?
+          script:
+          - chat "Yes! A worker. I'm the ambassador for the Arken Worker's union, contracting out workers for you to use to get special-"
+          - wait 2
+          - chat "materials, simple goods, or more."
+          - wait 2
+          - chat "I've currently got workers for Mining, Farming, and Woodcutting."
+          - chat "So.. want one?"
+          - narrate "Yes|No|Goodbye"
+        3:
+          trigger: /Regex:Yes|Yeah|Okay/.
+          script:
+          - chat "Fantastic. Which worker are you interested in hiring?"
+          - narrate "Woodcutter|Miner|Farmer|Goodbye"
+        4:
+          trigger: /Regex:Wood|Woodcutter/.
+          script:
+          - if <player.has_flag[BDOWoodcutter1]>
+            {
+            - narrate "You have already contracted a Woodcutter and cannot purchase another until they return."
+            - zap 1
+            }
+            else if <player.has_flag[BDOWoodcutter2]>
+              {
+              - narrate "You have already contracted a Woodcutter and cannot purchase another until they return."
+              - zap 1
+              }
+              else {
+              - chat "The woodcutter eh? I've got two guys that do that. Level One comes back with regular oak and spruce for $3000, Level Two with Dark Oak and Acacia for $6000."
+              - chat "Which one do you want?"
+              - narrate "Level One|Level Two|Goodbye"
+              - zap step:wood
+              }
+        5:
+          trigger: /Regex:Miner|Mine/.
+          script:
+          - if <player.has_flag[BDOMiner1]>
+            {
+            - narrate "You have already contracted a Miner and cannot purchase another until they return."
+            - zap 1
+            }
+            else if <player.has_flag[BDOMiner2]>
+              {
+              - narrate "You have already contracted a Miner and cannot purchase another until they return."
+              - zap 1
+              }
+              else if <player.has_flag[BDOMiner3]>
+              {
+              - narrate "You have already contracted a Miner and cannot purchase another until they return."
+              - zap 1
+              }
+              else
+              {
+              - chat "Miner eh? I've got three guys on that one. Level One comes back with regular ores and ingots for $5000, Level Two with regular and some rare ores for $7500, and Level Three with all rare for $10,000."
+              - chat "Which one do you want?"
+              - narrate "Level One|Level Two|Level Three|Goodbye"
+              - zap step:mine
+              }
+        6:
+          trigger: /Regex:Farmer|Farm/.
+          script:
+          - if <player.has_flag[BDOFarmer1]>
+            {
+            - narrate "You have already contracted a Farmer and cannot purchase another until they return."
+            - zap 1
+            }
+            else if <player.has_flag[BDOFarmer2]>
+              {
+              - narrate "You have already contracted a Farmer and cannot purchase another until they return."
+              - zap 1
+              }
+              else {
+              - chat "Farmer eh? I've got two guys on that one. Level One comes back with bounties of wheat for $1000. Level Two comes back with Potatoes, Carrots, and Beetroot for $3000."
+              - chat "Which one do you want?"
+              - narrate "Level One|Level Two|Goodbye"
+              - zap step:farm
+              }
+        7:
+          trigger: /Regex:Check|in/.
+          script:
+          - run BDOCooldownCheck
+        9:
+          trigger: /Regex:No|Nah|no|Goodbye/.
+          script:
+          - chat "No worries. I'll be around if you change your mind."
+        8:
+          trigger: /Regex:voucher|Voucher/.
+          script:
+          - chat "You have a voucher to exchange, eh?"
+          - narrate "Make sure you are holding the voucher you wish to exchange."
+          - if <player.item_in_hand> == <i@Farmer1Voucher>
+            {
+            - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+            - narrate "XYZ inventory required."
+            - narrate "Supplies|Cash"
+            - zap step:farm1pay
+            }
+            else
+            {
+            - if <player.item_in_hand> == <i@Farmer2Voucher>
+              {
+              - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+              - narrate "XYZ inventory required."
+              - narrate "Supplies|Cash"
+              - zap step:farm2pay
+              }
+              else
+              {
+              - if <player.item_in_hand> == <i@Miner1Voucher>
+                {
+                - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                - narrate "XYZ inventory required."
+                - narrate "Supplies|Cash"
+                - zap step:miner1pay
+                }
+                else
+                {
+                - if <player.item_in_hand> == <i@Miner2Voucher>
+                  {
+                  - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                  - narrate "XYZ inventory required."
+                  - narrate "Supplies|Cash"
+                  - zap step:miner2pay
+                  }
+                  else
+                  {
+                  - if <player.item_in_hand> == <i@Miner3Voucher>
+                    {
+                    - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                    - narrate "XYZ inventory required."
+                    - narrate "Supplies|Cash"
+                    - zap step:miner3pay
+                    }
+                    else
+                    {
+                    - if <player.item_in_hand> == <i@Woodcutter1Voucher>
+                      {
+                      - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                      - narrate "XYZ inventory required."
+                      - narrate "Supplies|Cash"
+                      - zap step:wood1pay
+                      }
+                      else
+                      {
+                      - if <player.item_in_hand> == <i@Woodcutter2Voucher>
+                        {
+                        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+                        - narrate "XYZ inventory required."
+                        - narrate "Supplies|Cash"
+                        - zap step:wood2pay
+                        }
+                        else
+                        {
+                        - chat "It appears you aren't holding a valid voucher. Are you sure you've got one?"
+                        - wait 2
+                        - chat "Come back again when you've figured it out."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+    farm1pay:
+      click trigger:
+        script:
+        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+        - narrate "8 inventory required."
+        - narrate "Supplies|Cash"
+      chat trigger:
+        1:
+          trigger: /Regex:Supplies|supply/.
+          script:
+          - chat "Alrighty. Supplies incoming!"
+          - take Farmer1Voucher
+          - give WHEAT quantity:512
+          - chat "Take care now."
+          - flag player BDOFarmer1:!
+          - zap 1
+        2:
+          trigger: /Regex:Cash|Money/.
+          script:
+          - chat "Money it is. Here you are!"
+          - take Farmer1Voucher
+          - execute as_op "eco give <player.name> 2000"
+          - chat "Take care now."
+          - flag player BDOFarmer1:!
+          - zap 1
+    farm2pay:
+      click trigger:
+        script:
+        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+        - narrate "9 inventory required."
+        - narrate "Supplies|Cash"
+      chat trigger:
+        1:
+          trigger: /Regex:Supplies|supply/.
+          script:
+          - take Farmer2Voucher
+          - chat "Alrighty. Supplies incoming!"
+          - give POTATO_ITEM quantity:256
+          - give BEETROOT quantity:128
+          - give STONE_HOE quantity:128
+          - give REEDS quantity:64
+          - chat "Take care now."
+          - flag player BDOFarmer2:!
+          - zap 1
+        2:
+          trigger: /Regex:Cash|Money/.
+          script:
+          - take Farmer2Voucher
+          - chat "Money it is. Here you are!"
+          - execute as_op "eco give <player.name> 4000"
+          - chat "Take care now."
+          - flag player BDOFarmer2:!
+          - zap 1
+    miner1pay:
+      click trigger:
+        script:
+        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+        - narrate "10 inventory required."
+        - narrate "Supplies|Cash"
+      chat trigger:
+        1:
+          trigger: /Regex:Supplies|supply/.
+          script:
+          - take Miner1Voucher
+          - chat "Alrighty. Supplies incoming!"
+          - give IRON_INGOT quantity:256
+          - give DIAMOND quantity:32
+          - give GOLD_INGOT quantity:32
+          - give COAL quantity:256
+          - chat "Take care now."
+          - flag player BDOMiner1:!
+          - zap 1
+        2:
+          trigger: /Regex:Cash|Money/.
+          script:
+          - take Miner1Voucher
+          - chat "Money it is. Here you are!"
+          - execute as_op "eco give <player.name> 5000"
+          - chat "Take care now."
+          - flag player BDOMiner1:!
+          - zap 1
+    miner2pay:
+      click trigger:
+        script:
+        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+        - narrate "11 inventory required."
+        - narrate "Supplies|Cash"
+      chat trigger:
+        1:
+          trigger: /Regex:Supplies|supply/.
+          script:
+          - take Miner2Voucher
+          - chat "Alrighty. Supplies incoming!"
+          - give DIAMOND quantity:128
+          - give GOLD_INGOT quantity:128
+          - give REDSTONE quantity:128
+          - give ADarksteel quantity:128
+          - give ACobalt quantity:128
+          - give AAstralSilver quantity:32
+          - chat "Take care now."
+          - flag player BDOMiner2:!
+          - zap 1
+        2:
+          trigger: /Regex:Cash|Money/.
+          script:
+          - take Miner2Voucher
+          - chat "Money it is. Here you are!"
+          - execute as_op "eco give <player.name> 7000"
+          - chat "Take care now."
+          - flag player BDOMiner2:!
+          - zap 1
+    miner3pay:
+      click trigger:
+        script:
+        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+        - narrate "10 inventory required."
+        - narrate "Supplies|Cash"
+      chat trigger:
+        1:
+          trigger: /Regex:Supplies|supply/.
+          script:
+          - take Miner3Voucher
+          - chat "Alrighty. Supplies incoming!"
+          - give ADarksteel quantity:128
+          - give ACobalt quantity:128
+          - give AAstralSilver quantity:128
+          - give AMithril quantity:1
+          - give ARuby quantity:64
+          - give ABronze quantity:64
+          - give ATitanium quantity:64
+          - chat "Take care now."
+          - flag player BDOMiner3:!
+          - zap 1
+        2:
+          trigger: /Regex:Cash|Money/.
+          script:
+          - take Miner3Voucher
+          - chat "Money it is. Here you are!"
+          - execute as_op "eco give <player.name> 9000"
+          - chat "Take care now."
+          - flag player BDOMiner3:!
+          - zap 1
+    wood1pay:
+      click trigger:
+        script:
+        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+        - narrate "8 inventory spaces required."
+        - narrate "Supplies|Cash"
+      chat trigger:
+        1:
+          trigger: /Regex:Supplies|supply/.
+          script:
+          - take Woodcutter1Voucher
+          - chat "Alrighty. Supplies incoming!"
+          - give OAK_LOG quantity:256
+          - give SPRUCE_LOG quantity 256
+          - chat "Take care now."
+          - flag player BDOWoodcutter1:!
+          - zap 1
+        2:
+          trigger: /Regex:Cash|Money/.
+          script:
+          - take Woodcutter1Voucher
+          - chat "Money it is. Here you are!"
+          - execute as_op "eco give <player.name> 5000"
+          - chat "Take care now."
+          - flag player BDOWoodcutter1:!
+          - zap 1
+    wood2pay:
+      click trigger:
+        script:
+        - chat "Would you like to sell your supplies here for cash, or would you like to keep your supplies?"
+        - narrate "XYZ inventory required."
+        - narrate "Supplies|Cash"
+      chat trigger:
+        1:
+          trigger: /Regex:Supplies|supply/.
+          script:
+          - take Woodcutter2Voucher
+          - chat "Alrighty. Supplies incoming!"
+          - give BIRCH_LOG quantity:256
+          - give DARKOAK_LOG quantity:256
+          - chat "Take care now."
+          - flag player BDOWoodcutter2:!
+          - zap 1
+        2:
+          trigger: /Regex:Cash|Money/.
+          script:
+          - take Woodcutter2Voucher
+          - chat "Money it is. Here you are!"
+          - execute as_op "eco give <player.name> 6000"
+          - chat "Take care now."
+          - flag player BDOWoodcutter2:!
+          - zap 1
+    wood:
+      chat trigger:
+        1:
+          trigger: /Regex:One|1/.
+          script:
+          - if "<player.money>" > "3000"
+            {
+            - execute as_op "eco take <player.name> 3000"
+            - chat "Alright. You now have a Level One Woodcutter working for you."
+            - chat "Come back in XYZ to pick up materials or cash."
+            - flag player BDOWoodcutter1
+            - flag player BDOWoodcutter1Cooldown duration:20
+            - zap 1
+            }
+            else
+            {
+            - chat "You don't have the money to hire... so it seems. Come back another time."
+            - zap 1
+            }
+        2:
+          trigger: /Regex:Two|2/.
+          script:
+          - if "<player.money>" > "4000"
+            {
+            - execute as_op "eco take <player.name> 4000"
+            - chat "Alright. You now have a Level Two Woodcutter working for you."
+            - chat "Come back in XYZ to pick up materials or cash."
+            - flag player BDOWoodcutter2Cooldown duration:20
+            - flag player BDOWoodcutter2
+            - zap 1
+            }
+            else
+            {
+            - chat "You don't have the money to hire... so it seems. Come back another time."
+            - zap 1
+            }
+        3:
+          trigger: /Regex:Goodbye|Nevermind/.
+          script:
+          - chat "Change your mind? See you then."
+          - zap 1
+    mine:
+      chat trigger:
+        1:
+          trigger: /Regex:One|1/.
+          script:
+          - if "<player.money>" > "3000"
+            {
+            - execute as_op "eco take <player.name> 3000"
+            - chat "Alright. You now have a Level One Miner working for you."
+            - chat "Come back in XYZ to pick up materials or cash."
+            - flag player BDOMiner1Cooldown duration:20
+            - flag player BDOMiner1
+            - zap 1
+            }
+            else
+            {
+            - chat "You don't have the money to hire... so it seems. Come back another time."
+            - zap 1
+            }
+        2:
+          trigger: /Regex:Two|2/.
+          script:
+          - if "<player.money>" > "4000"
+            {
+            - execute as_op "eco take <player.name> 4000"
+            - chat "Alright. You now have a Level Two Miner working for you."
+            - chat "Come back in XYZ to pick up materials or cash."
+            - flag player BDOMiner2Cooldown duration:20
+            - flag player BDOMiner2
+            - zap 1
+            }
+            else
+            {
+            - chat "You don't have the money to hire... so it seems. Come back another time."
+            - zap 1
+            }
+        3:
+          trigger: /Regex:Three|3/
+          script:
+          - if "<player.money>" > "5000"
+            {
+            - execute as_op "eco take <player.name> 5000"
+            - chat "Alright. You now have a Level Three Miner working for you."
+            - chat "Come back in XYZ to pick up materials or cash."
+            - flag player BDOMiner3Cooldown duration:20
+            - flag player BDOMiner3
+            - zap 1
+            }
+            else
+            {
+            - chat "You don't have the money to hire... so it seems. Come back another time."
+            - zap 1
+            }
+        4:
+          trigger: /Regex:Goodbye|Nevermind/.
+          script:
+          - chat "Change your mind? See you then."
+          - zap 1
+    farm:
+      chat trigger:
+        1:
+          trigger: /Regex:One|1/.
+          script:
+          - if "<player.money>" > "1000"
+            {
+            - execute as_op "eco take <player.name> 1000"
+            - chat "Alright. You now have a Level One Farmer working for you."
+            - chat "Come back in XYZ to pick up materials or cash."
+            - flag player BDOFarmer1Cooldown duration:20
+            - flag player BDOFarmer1
+            - zap 1
+            }
+            else
+            {
+            - chat "You don't have the money to hire... so it seems. Come back another time."
+            - zap 1
+            }
+        2:
+          trigger: /Regex:Two|2/.
+          script:
+          - if "<player.money>" > "3000"
+            {
+            - execute as_op "eco take <player.name> 3000"
+            - chat "Alright. You now have a Level Farmer working for you."
+            - chat "Come back in XYZ to pick up materials or cash."
+            - flag player BDOFarmer2Cooldown duration:20
+            - flag player BDOFarmer2
+            - zap 1
+            }
+            else
+            {
+            - chat "You don't have the money to hire... so it seems. Come back another time."
+            - zap 1
+            }
+        3:
+          trigger: /Regex:Goodbye|Nevermind/.
+          script:
+          - chat "Change your mind? See you then."
+          - zap 1
+Farmer1Voucher:
+  type: item
+  material: paper
+  display name: <&a>Level One Farming Voucher
+  lore:
+  - A voucher for the Arken Worker Manager.
+  - Can be exchanged for numerous goods or
+  - a hefty chunk of widgets.
+Farmer2Voucher:
+  type: item
+  material: paper
+  display name: <&a>Level Two Farming Voucher
+  lore:
+  - A voucher for the Arken Worker Manager.
+  - Can be exchanged for numerous goods or
+  - a hefty chunk of widgets.
+Woodcutter1Voucher:
+  type: item
+  material: paper
+  display name: <&a>Level One Woodcutter Voucher
+  lore:
+  - A voucher for the Arken Worker Manager.
+  - Can be exchanged for numerous goods or
+  - a hefty chunk of widgets.
+Woodcutter2Voucher:
+  type: item
+  material: paper
+  display name: <&a>Level Two Woodcutter Voucher
+  lore:
+  - A voucher for the Arken Worker Manager.
+  - Can be exchanged for numerous goods or
+  - a hefty chunk of widgets.
+Miner1Voucher:
+  type: item
+  material: paper
+  display name: <&a>Level One Mining Voucher
+  lore:
+  - A voucher for the Arken Worker Manager.
+  - Can be exchanged for numerous goods or
+  - a hefty chunk of widgets.
+Miner2Voucher:
+  type: item
+  material: paper
+  display name: <&a>Level Two Mining Voucher
+  lore:
+  - A voucher for the Arken Worker Manager.
+  - Can be exchanged for numerous goods or
+  - a hefty chunk of widgets.
+Miner3Voucher:
+  type: item
+  material: paper
+  display name: <&a>Level Three Mining Voucher
+  lore:
+  - A voucher for the Arken Worker Manager.
+  - Can be exchanged for numerous goods or
+  - a hefty chunk of widgets.
+BDOCooldownCheck:
+  type: task
+  script:
+  - if <player.has_flag[BDOFarmer1Cooldown]>
+    {
+    - chat "Your Farmer is still tilling. Come back later!"
+    }
+    else
+    {
+    - if <player.has_flag[BDOFarmer2Cooldown]>
+      {
+      - chat "Your Farmer is still tilling. Come back later!"
+      }
+      else
+      {
+      - if <player.has_flag[BDOWoodcutter1Cooldown]>
+        {
+        - chat "Your lumberjack is still working. Come back later!"
+        }
+        else
+        {
+        - if <player.has_flag[BDOWoodcutter2Cooldown]>
+          {
+          - chat "Your lumberjack is still working. Come back later!"
+          }
+          else
+          {
+          - if <player.has_flag[BDOMiner1Cooldown]>
+            {
+            - chat "Your miner is still down there. Come back later!"
+            }
+            else
+            {
+            - if <player.has_flag[BDOMiner2Cooldown]>
+              {
+              - chat "Your miner is still down there. Come back later!"
+              }
+              else
+              {
+              - if <player.has_flag[BDOMiner3Cooldown]>
+                {
+                - chat "Your miner is still down there. Come back later!"
+                }
+                else
+                {
+                - run BDOFlagCheck
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+BDOFlagCheck:
+  type: task
+  script:
+  script:
+  - if <player.has_flag[BDOFarmer1]>
+    {
+    - chat "Your level one farmer has returned. Please take this voucher for his goods."
+    - narrate "You can right click the NPC to easily exchange a voucher."
+    - give Farmer1Voucher
+    - chat "Take care now!"
+    - flag player BDOFarmer1:!
+    }
+    else
+    {
+    - if <player.has_flag[BDOFarmer2]>
+      {
+      - chat "Your level one farmer has returned. Please take this voucher for his goods."
+      - narrate "You can right click the NPC to easily exchange a voucher." 
+      - give Farmer2Voucher
+      - chat "Take care now!"
+      - flag player BDOFarmer2:!
+      }
+      else
+      {
+      - if <player.has_flag[BDOWoodcutter1]>
+        {
+        - chat "Your level one farmer has returned. Please take this voucher for his goods."
+        - narrate "You can right click the NPC to easily exchange a voucher."
+        - give Woodcutter1Voucher
+        - chat "Take care now!"
+        - flag player BDOWoodcutter1:!
+        }
+        else
+        {
+        - if <player.has_flag[BDOWoodcutter2]>
+          {
+          - chat "Your level one farmer has returned. Please take this voucher for his goods."
+          - narrate "You can right click the NPC to easily exchange a voucher."
+          - give Woodcutter2Voucher
+          - chat "Take care now!"
+          - flag player BDOWoodcutter2:!
+          }
+          else
+          {
+          - if <player.has_flag[BDOMiner1]>
+            {
+            - chat "Your level one farmer has returned. Please take this voucher for his goods."
+            - narrate "You can right click the NPC to easily exchange a voucher."
+            - give Miner1Voucher
+            - chat "Take care now!"
+            - flag player BDOMiner1:!
+            }
+            else
+            {
+            - if <player.has_flag[BDOMiner2]>
+              {
+              - chat "Your level one farmer has returned. Please take this voucher for his goods."
+              - narrate "You can right click the NPC to easily exchange a voucher."
+              - give Miner2Voucher
+              - chat "Take care now!"
+              - flag player BDOMiner2:!
+              }
+              else
+              {
+              - if <player.has_flag[BDOMiner3]>
+                {
+                - chat "Your level one farmer has returned. Please take this voucher for his goods."
+                - narrate "You can right click the NPC to easily exchange a voucher."
+                - give Miner3Voucher
+                - chat "Take care now!"
+                - flag player BDOMiner3:!
+                }
+                else
+                {
+                - chat "You have not purchased any workers!"
+                - wait 2
+                - narrate "Workers?|Goodbye"
+                }
+              }
+            }
+          }
+        }
+      }
+    }

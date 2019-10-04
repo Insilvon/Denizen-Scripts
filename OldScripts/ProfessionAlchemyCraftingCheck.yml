@@ -1,0 +1,248 @@
+Placeholder:
+  type: world
+  events:
+    on UnityCrystal recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts UnityCrystal:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on FireDust recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts FireDust:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on WaterDust recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts WaterDust:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on AirDust recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts AirDust:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on EarthDust recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts EarthDust:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    
+    on UnityDust recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts UnityDust:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on FirePowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts FirePowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on WaterPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts WaterPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on AirPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts AirPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on EarthPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts EarthPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on UnityPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts UnityPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on UnityElixir recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts UnityElixir:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on SeperationPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts SeperationPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+#Combination Powders -----------------------------------------------    
+    on LanguagePowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts LanguagePowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on LanguagePotion recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts LanguagePotion:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on HumidityPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts HumidityPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on StormPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts StormPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    
+    on SandPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts SandPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on MagmaPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts MagmaPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on SteamPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts SteamPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on GravityPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts GravityPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    
+    on WorldPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts WorldPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on VolcanoPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts VolcanoPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on VapourPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts VapourPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    #FIXME#
+    on GeyserPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts GeyserPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+#Combination Stones -----------------------------------------    
+    on HumidityStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts HumidityStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on StormStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts StormStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on SandStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts SandStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on MagmaStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts MagmaStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on SteamStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts SteamStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on GravityStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts GravityStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on WorldStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts WorldStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on VolcanoStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts VolcanoStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on VapourStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts VapourStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on GeyserStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts GeyserStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on KnowledgeOmen recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts KnowledgeOmen:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on EmptyTome recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts EmptyTome:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on SoulStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts SoulStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on SoulStoneFull recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts SoulStoneFull:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on KiStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts KiStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on StateStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts StateStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on TransmutationPowder recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts TransmutationPowder:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+#END ALCHEMY1#
+    on CorruptionShard recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts CorruptionShard:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on CleansingShard recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts CleansingShard:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on AntiStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts AntiStone:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+#States of Change
+    on Sun recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Sun:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Moon recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Moon:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Cloud recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Cloud:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Star recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Star:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Sol recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Sol:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Luna recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Luna:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Darkness recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Darkness:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Light recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Light:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+#Advanced Omens
+    on Nature recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Nature:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Existance recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Existance:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Fate recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Fate:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Time recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Time:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on Universe recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts Universe:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on PhilosopherStone recipe formed:
+      - if !<player.has_flag[Alchemist]> determine cancelled
+    on player crafts PhilosopherStone:
+      - determine cancelled

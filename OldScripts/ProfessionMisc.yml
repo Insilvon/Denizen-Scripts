@@ -1,0 +1,264 @@
+##Farming and Fishing Scripts##
+
+FishProfessWorld:
+  type: world
+  events:
+    on player fishes:
+    - if <player.item_in_hand> == <i@FishermanRod>{
+      - if <player.has_flag[FishCoolDown]> {
+        - queue clear
+        }
+        else {
+        - if <player.has_flag[Fisherman]> 
+          { 
+          - random {
+            - run randomfish2
+            - queue clear
+            }
+          - flag Player FishCoolDown d:10s
+          }
+          else {
+          - queue clear
+          }
+        }
+      }
+      else {
+      - if <player.has_flag[FishCoolDown]> {
+        - queue clear
+        }
+        else {
+        - if <player.has_flag[Fisherman]> 
+          { 
+          - random {
+            - run randomfish
+            - queue clear
+            }
+          - flag Player FishCoolDown d:10s
+          }
+          else {
+          - queue clear
+          }
+        }
+      
+      }
+   
+randomfish:
+  type: task
+  script:
+  - if <player.has_flag[DeepSeaFish]>
+    {
+    - random 
+      {
+      - give Koi
+      - give Fugu
+      - give Trout
+      - give Swordfish
+      - give Tuna
+      - give Stingray
+      - give BlueTang
+      - give AlligatorGar
+      - give Catfish
+      - give Bass
+      - give Eel
+      - give Squid
+      - give Seaweed
+      - give CraftingGem
+      - give CraftingGem2
+      - give CraftingGem3
+      - give CraftingGem4
+      - give ADarksteel
+      - give AAstralSilver
+      - give ATitanium
+      - give AMithril
+      - give HerablistLeaves
+      }
+    }
+    else {
+    - random 
+      {
+      - give Koi
+      - give Fugu
+      - give Trout
+      - give Swordfish
+      - give Tuna
+      - give Stingray
+      - give BlueTang
+      - give AlligatorGar
+      - give Catfish
+      - give Bass
+      - give Eel
+      - give Squid
+      - give Seaweed
+      }
+    }
+randomfish2:
+  type: task
+  script:
+  - if <player.has_flag[DeepSeaFish]>
+    {
+    - random {
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - give CraftingGem
+      - give CraftingGem2
+      - give CraftingGem3
+      - give CraftingGem4
+      - give ADarksteel
+      - give AAstralSilver
+      - give ATitanium
+      - give AMithril
+      - give HerablistLeaves
+      - give CraftingGem
+      - give CraftingGem2
+      - give CraftingGem3
+      - give CraftingGem4
+      - give ADarksteel
+      - give AAstralSilver
+      - give ATitanium
+      - give AMithril
+      - give HerablistLeaves
+      }
+    }
+    else {
+    - random {
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - run randomfish
+      - give CraftingGem
+      - give CraftingGem2
+      - give CraftingGem3
+      - give CraftingGem4
+      - give ADarksteel
+      - give AAstralSilver
+      - give ATitanium
+      - give AMithril
+      - give HerablistLeaves
+      }
+    }
+#FarmingWorker:
+#  type: task
+###  script:
+#  - random 5
+#  - run CScript
+#  - run PScript
+#  - run WScript
+#  - run WoodScript
+#  - run SScript
+#CScript:
+#  type: task
+#  - run BDOWaitScript
+#  - flag player CWorker
+#PScript:
+#  type: task
+##  - run BDOWaitScript
+# - flag player PWorker
+#WScript:
+#  type: task
+#  - run BDOWaitScript
+#  - flag player WWorker
+#WoodScript:
+#  type: task
+#  - run BDOWaitScript
+#  - flag player WoodWorker
+#SScript:
+#  type: task
+#  - run BDOWaitScript
+#  - flag player SWorker
+
+
+#Herbalism:
+Analyze:
+  type: task
+  script:
+  - if <i@Marigold> == <player.item_in_hand> 
+    {
+    - take i@Marigold
+    - give i@AMarigold
+    - narrate "You look over the Marigold closely and remember..."
+    }
+    else 
+    {
+    - if <i@AloeVera> == <player.item_in_hand> 
+      {
+      - take i@AloeVera
+      - give i@AAloeVera
+      - narrate "You look over the Aloe Vera closely and remember..."
+      }
+      else 
+      {
+      - if <i@Papaya> == <player.item_in_hand>
+        {
+        - take i@Papaya
+        - give i@APapaya
+        - narrate "You look over the Papaya closely and remember..."
+        }
+        else
+        {
+        - if <i@WhiteSnakeroot> == <player.item_in_hand>
+          {
+          - take i@WhiteSnakeroot
+          - give i@AWhiteSnakeroot
+          - narrate "You look over the Snakeroot closely and remember..."
+          }
+          else
+          {
+          - if <i@GardenAngelica> == <player.item_in_hand>
+            {
+            - take i@GardenAngelica
+            - give i@AGardenAngelica
+            - narrate "You look over the Garden Angelica closely and remember..."
+            }
+            else
+            {
+            - if <i@Astragalus> == <player.item_in_hand>
+              {
+              - take i@Astragalus
+              - give i@AAstragalus
+              - narrate "You look over the Astragalus closely and remember..."
+              }
+              else
+              {
+              - narrate "No remedy in hand!"
+              }
+            }
+          }
+        }
+      }
+    }
+Check:
+  type: task
+  script:
+  - narrate <player.item_in_hand>

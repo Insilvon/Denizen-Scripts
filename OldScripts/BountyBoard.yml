@@ -1,0 +1,282 @@
+BBOgreA:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment Set!"
+  interact scripts:
+  - 1 BBOgreI
+BBOgreI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hi|Hey|Good Day|Greetings/.
+          script:
+            - if <player.has_flag[BBCooldown]>
+              {
+              - chat "You've done enough right now. Come back in a couple of days, hunter."
+              }
+              else 
+              {
+              - if <player.has_flag[BBOgre]>
+                {
+                - if <player.inventory.contains[OgreEar]>
+                  {
+                  - take i@OgreEar
+                  - chat "Ah, you killed it! I owe you big for this one."
+                  - wait 2
+                  - chat "As promised, here's your reward."
+                  - execute as_op "eco give <player.name> 1000"
+                  - flag player BBOgre:!
+                  - flag player BBCooldown duration:48h
+                  }
+                  else 
+                  {
+                  - chat "How's the hunt going? You take care of that problem yet?"
+                  }
+                }
+                else 
+                {
+                - chat "Hello Kid. You here about the Bounty Board flyer?"
+                - zap 2
+                }
+              }
+        2:
+          trigger: /Regex:Goodbye/
+          script:
+            - chat "Agh... let me be."
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:Yeah|Yes|Okay|Of course/.
+          script:
+            - chat "Ah... I knew it."
+            - run BBTOgre
+            - flag player BBOgre
+            - zap 1
+        2:
+          trigger: /Regex:No|Nah|Nope/
+          script:
+              - chat "Either that means you ain't heard about the bounty or you're just talking to talk."
+              - wait 2
+              - chat "Look, there's a thing that needs taking care of. You wanna know about it, or you gonna leave?"
+              - narrate "Yes|Goodbye"
+        3:
+          trigger: /Goodbye/
+          script:
+            - chat "Agh... let me be then."
+            - zap 1
+OgreEar:
+  type: item
+  material: CACTUS_GREEN
+  display name: <&a>Ogre Ear
+  lore:
+  - A nasty cut off Ogre ear.
+  - You honestly do not even want to know
+  - what the properties are.
+BBPotentZombieA:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment Set!"
+  interact scripts:
+  - 1 BBPotentZombieI
+BBPotentZombieI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hi|Hey|Good Day|Greetings/.
+          script:
+            - if <player.has_flag[BBCooldown]>
+              {
+              - chat "You've done enough right now. Come back in a couple of days, hunter."
+              }
+              else 
+              {
+              - if <player.has_flag[BBPotentZombie]>
+                {
+                - if <player.inventory.contains[PotentZombieArm]>
+                  {
+                  - take i@PotentZombieArm
+                  - chat "Ah, you killed it! I owe you big for this one."
+                  - wait 2
+                  - chat "As promised, here's your reward."
+                  - execute as_op "eco give <player.name> 1000"
+                  - flag player BBPotentZombie:!
+                  - flag player BBCooldown duration:48h
+                  }
+                  else 
+                  {
+                  - chat "How's the hunt going? You take care of that problem yet?"
+                  }
+                }
+                else 
+                {
+                - chat "Hello Kid. You here about the Bounty Board flyer?"
+                - zap 2
+                }
+              }
+        2:
+          trigger: /Regex:Goodbye/
+          script:
+            - chat "Agh... let me be."
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:Yeah|Yes|Okay|Of course/.
+          script:
+            - chat "Ah... I knew it."
+            - run BBTPotentZombie
+            - flag player BBPotentZombie
+            - zap 1
+        2:
+          trigger: /Regex:No|Nah|Nope/
+          script:
+              - chat "Either that means you ain't heard about the bounty or you're just talking to talk."
+              - wait 2
+              - chat "Look, there's a thing that needs taking care of. You wanna know about it, or you gonna leave?"
+              - narrate "Yes|Goodbye"
+        3:
+          trigger: /Goodbye/
+          script:
+            - chat "Agh... let me be then."
+            - zap 1
+PotentZombieArm:
+  type: item
+  material: ROTTEN_FLESH
+  display name: <&a>Zombie Arm
+  lore:
+  - A nasty cut off Zombie Arm.
+  - You honestly do not even want to know
+  - what the properties are.
+BBSpectreA:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment set!"
+  interact scripts:
+  - 1 BBSpectreI
+BBSpectreI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hi|Hey|Good Day|Greetings/.
+          script:
+            - if <player.has_flag[BBCooldown]>
+              {
+              - chat "You've done enough right now. Come back in a couple of days, hunter."
+              }#else no cooldown
+              else 
+              {
+              - if <player.has_flag[BBSpectre]>
+                {
+                - if <player.inventory.contains[Ectoplasm]>
+                  {
+                  - take i@Ectoplasm
+                  - chat "Ah, you killed it! I owe you big for this one."
+                  - wait 2
+                  - chat "As promised, here's your reward."
+                  - execute as_op "eco give <player.name> 1000"
+                  - flag player BBSpectre:!
+                  - flag player BBCooldown duration:48h
+                  }
+                  else 
+                  {
+                  - chat "How's the hunt going? You take care of that problem yet?"
+                  }
+                }
+                else 
+                {
+                - chat "Hello Kid. You here about the Bounty Board flyer?"
+                - zap 2
+                }
+              }
+        2:
+          trigger: /Regex:Goodbye/
+          script:
+            - chat "Agh... let me be."
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:Yeah|Yes|Okay|Of course/.
+          script:
+            - chat "Ah... I knew it."
+            - run BBTSpectre
+            - flag player BBSpectre
+            - zap 1
+        2:
+          trigger: /Regex:No|Nah|Nope/
+          script:
+              - chat "Either that means you ain't heard about the bounty or you're just talking to talk."
+              - wait 2
+              - chat "Look, there's a thing that needs taking care of. You wanna know about it, or you gonna leave?"
+              - narrate "Yes|Goodbye"
+        3:
+          trigger: /Goodbye/
+          script:
+            - chat "Agh... let me be then."
+            - zap 1
+Ectoplasm:
+  type: item
+  material: SLIME_BALL
+  display name: <&a>Ectoplasm
+  lore:
+  - A pile of spooky goo. You kinda want to touch it,
+  - but you also really do not.
+BBTOgre:
+  type: task
+  script:
+  - chat "There's been reports of this great hulking green thing lying somewhere south of here, near the southern fork."
+  - wait 2
+  - chat "Thing's eatin' children, harassing natives and colonist settlements alike."
+  - wait 2
+  - chat "If you can bring back the thing's ear, then I'll reward you handsomely."
+BBTPotentZombie:
+  type: task
+  script:
+  - chat "There's been hubub about a funky lookin reanimated thing out in the ancient Sonn ruins, SouthWest of the southern fork."
+  - wait 2
+  - chat "They say it's a bit more powerful than the other reanimates that have been poppin up lately."
+  - wait 2
+  - chat "If you can bring back the thing's arm, preferably dead-dead, then I'll reward you handsomely."
+BBTBanshee: #Central SW Tip
+  type: task
+  script:
+  - chat "There's been a lot of people coming from <THE PLACE> recently with their ears bleedin'."
+  - wait 2
+  - chat "They say they see a bizarre lookin' banshee creature runnin amuck."
+  - wait 2
+  - chat "Take the thing's tongue from it's throat and bring it to me. I'll reward you handsomely."
+BBTMystery:
+  type: task
+  script:
+  - chat "Somethin's been out rooting around <THE PLACE> causing trouble."
+  - wait 2
+  - chat "We aren't quite sure what it is, but that's why we need you."
+  - wait 2
+  - chat "They say it comes out at night, but if you can bring back a piece of whatever it is, I'll reward you handsomely."
+BBTSpectre: #moneta
+  type: task
+  script:
+  - chat "Merchants of Moneta have been holdin' off on opening up shop recently due to spectres plaguing the town."
+  - wait 2
+  - chat "They say that the spectres fade in and out, so killin' em requires your own Silver Blade."
+  - wait 2
+  - chat "Get out there, purge the scum, then bring back some ectoplasm as proof for me. I'll reward you handsomely."
+BBTWolves: #gladeHaven
+  type: task
+  script:
+  - chat "Glade Haven's got a wolf problem. The damn things are running rampant, picking off citizens like there's no tomorrow."
+  - wait 2
+  - chat "I don't know if you know anything about wolves, but they typically have a den. Sniff em out, merc em, and bring me back a tail or two."
+  - wait 2
+  - chat "I'll, of course, reward you handsomely."
+BBTBee: #QuarryBridge
+  type: task
+  script:
+  - chat "Can't believe it came to this... but we have a bee problem."
