@@ -1,4 +1,21 @@
-info:
-  character_location: l@335.94230856273253,4,1352.7812416860747,24.971420288085938,-112.5829849243164,buildworld
-  character_name: Dude1
-  username: Insilvon
+Script:
+  Version: 0.0.2
+Description:
+  Text: '""'
+Town:
+  Name: '""'
+Renown:
+  Skyborne: '0'
+  ChildrenOfTheSun: '0'
+  Outsiders: '0'
+Flags:
+  1AB1EE9B-873A-4545-BB5B-254E7B23B0E0_PLAYER:
+    FLAG: '1'
+  CHARACTER: '1'
+  CHARACTERGUI: 'true'
+Info:
+  Character_Display_Name: Player1
+  Character_Location: l@36.04667134770836,72,42.92514230969438,30.000017166137695,-170.8052978515625,world
+  Character_Name: Player1
+Faction:
+  Name: '""'
