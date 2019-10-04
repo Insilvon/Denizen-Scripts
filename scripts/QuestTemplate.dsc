@@ -103,20 +103,27 @@ YourQuestInteract:
                     trigger: /Regex:Goodbye/
                     script:
                         - inject YourQuestGoodbye
-    #====================================================#
-    #======================QuestItems====================#
-    #====================================================#
-    YourQuestMenuItem:
-        type: item
-        material: book
-        display name: Your NPC<&sq>s Quest
-        lore:
-            - "Click to see information"
-    YourQuestGuideBook:
-        type: book
-        author: Active Quest
-        title: Your Quest Title
-        signed: yes
-        text:
-            - "This is what you were asked to do"
-            - "Should be the same as your quest remind"
+#====================================================#
+#======================QuestItems====================#
+#====================================================#
+YourQuestMenuItem:
+    type: item
+    material: book
+    display name: Your NPC<&sq>s Quest
+    lore:
+        - "Click to see information"
+YourQuestGuideBook:
+    type: book
+    author: Active Quest
+    title: Your Quest Title
+    signed: yes
+    text:
+        - "This is what you were asked to do"
+        - "Should be the same as your quest remind"
+YourQuestQuestCompleted:
+    type: book
+    author: Completed Quest
+    title: Your Quest Title
+    signed: yes
+    text:
+        - "This is a one-page description of the quest. Do not exceed one page."
