@@ -1,7 +1,7 @@
 # Radiant Quests REWRITE 2
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 3.0.0
+# @version 3.0.1
 # Proof of Concept for Radiant/Dynamic Quests
 
 # All things Radiant Quests
@@ -13,25 +13,72 @@
 
 SampleBook:
     type: item
-    material: book_and_quill
+    material: BookDesc
     display name: TestQuest
     lore:
         - Test Quest!
-# <player.uuid>_<player.flag[CurrentCharacter]>
+BookDesc:
+    type: book
+    title: test1
+    author: Insilvon
+    signed: true
+    text:
+        - Hello world
+
+# <proc[GetCharacterName].context[<player>]>
 AddTestQuest:
     type: task
     script:
-        - flag player <player.uuid>_<player.flag[CurrentCharacter]>_ActiveQuestItems:->:<player.item_in_hand>
+        - flag player <proc[GetCharacterName].context[<player>]>_ActiveQuestItems:->:<player.item_in_hand>
 AddTestQuests:
     type: task
     script:
         - repeat 44:
-            - flag player <player.uuid>_<player.flag[CurrentCharacter]>_ActiveQuestItems:->:SampleBook
+            - flag player <proc[GetCharacterName].context[<player>]>_ActiveQuestItems:->:SampleBook
 AddTestQuest2:
     type: task
     script:
-        - flag player <player.uuid>_<player.flag[CurrentCharacter]>_CompletedQuestItems:<player.item_in_hand>
+        - flag player <proc[GetCharacterName].context[<player>]>_CompletedQuestItems:<player.item_in_hand>
 
+RemoveActiveQuest:
+    type: task
+    definitions: player|item
+    script:
+        - narrate "Attempting to remove <[item]>"
+        - define character:<proc[GetCharacterName].context[<[player]>]>
+        - narrate <player.flag[<[character]>_ActiveQuestItems]>
+        - if <player.flag[<[character]>_ActiveQuestItems].size> == 1:
+            - narrate "Comparing <player.flag[<[character]>_ActiveQuestItems]> to <[item]>"
+            - if <player.flag[<[character]>_ActiveQuestItems]> == <[item]>:
+                - flag player <[character]>_ActiveQuestItems:!
+                - narrate "Clearing ActiveQuestItems - empty list"
+            - else:
+                - stop
+        - else:
+            - narrate "Original Active Items - <player.flag[<[character]>_ActiveQuestItems]>"
+            - narrate "Active items after removal goal - <player.flag[<[character]>_ActiveQuestItems].exclude[<[item]>]>"
+            - flag <[player]> <[character]>_ActiveQuestItems:<player.flag[<[character]>_ActiveQuestItems].exclude[<[item]>]>
+            - narrate "New Active Items - <player.flag[<[character]>_ActiveQuestItems]>"
+
+        
+AddActiveQuest:
+    type: task
+    definitions: player|item
+    script:
+        - narrate "adding <[item]>"
+        - narrate "Flag before addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
+        - flag player <proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems:->:<[item]>
+        - narrate "Flag after addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
+
+    
+AddCompletedQuest:
+    type: task
+    definitions: player|item
+    script:
+        - narrate "adding <[item]>"
+        - narrate "Flag before completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
+        - flag player <proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems:->:<[item]>
+        - narrate "Flag after completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
 # =================================================================================
 # ================================= Main Command ==================================
 # =================================================================================
@@ -44,16 +91,16 @@ QuestLog:
         - inject QuestLoginScript
         - define questType:ActiveQuest
         - inject LoadInventory
-        # =================================================================================
-        # ================================ Helper Scripts =================================
-        # =================================================================================
+# =================================================================================
+# ================================ Helper Scripts =================================
+# =================================================================================
         
 # Quest Controller script - manages item clicks
 QuestReset:
     type: task
     script:
-        - define character:<player.uuid>_<[number]>
-        - narrate "<&e>[Quests] - Removing data for character in slot <[number]>"
+        - define character:<proc[GetCharacterName].context[<player>]>
+        - narrate "<&e>[Quests] - Removing data for character <[character]>"
         - flag player <[character]>_QuestJournal:!
         - note remove as:<[character]>_ActiveQuestMenu
         - note remove as:<[character]>_CompletedQuestMenu
@@ -61,28 +108,44 @@ QuestReset:
         - flag player <[character]>_ActiveQuestItems:!
         - flag player <[character]>_CompletedQuestItems:!
         - flag player <[character]>_QuestJournalMenu:!
+
 QuestController:
     type: world
     events:
         on player clicks in inventory priority:1:
-            - if <context.inventory> == in@<player.uuid>_<player.flag[CurrentCharacter]>_ActiveQuestMenu || <context.inventory> == in@<player.uuid>_<player.flag[CurrentCharacter]>_CompletedQuestMenu:
-                - determine cancelled
+            - define character:<proc[GetCharacterName].context[<player>]>
+            - if <context.inventory> == in@<[character]>_CompletedQuestMenu:
+                - if <context.click> == RIGHT:
+                    - if <player.has_flag[QuestBookReceived]>:
+                        - narrate "You must wait <player.flag[QuestBookReceived].expiration.formatted> before getting another physical copy."
+                        - determine cancelled
+                    - else:
+                        - flag player QuestBookReceived d:20h
+                        - give <context.item>
+                        - determine cancelled
+                - else:
+                    - adjust <player> show_book:<context.item>
+                    - determine cancelled
+            - if <context.inventory> == in@<[character]>_ActiveQuestMenu:
+                - if <context.click> == LEFT:
+                    - adjust <player> show_book:<context.item>
+                    - determine cancelled
         on player drop clicks in inventory priority:1:
-            - if <context.inventory> == in@<player.uuid>_<player.flag[CurrentCharacter]>_ActiveQuestMenu || <context.inventory> == in@<player.uuid>_<player.flag[CurrentCharacter]>_CompletedQuestMenu:
+            - if <context.inventory> == in@<[character]>_ActiveQuestMenu || <context.inventory> == in@<[character]>_CompletedQuestMenu:
                 - determine cancelled
         on player control_drop clicks in inventory priority:1:
-            - if <context.inventory> == in@<player.uuid>_<player.flag[CurrentCharacter]>_ActiveQuestMenu || <context.inventory> == in@<player.uuid>_<player.flag[CurrentCharacter]>_CompletedQuestMenu:
+            - if <context.inventory> == in@<[character]>_ActiveQuestMenu || <context.inventory> == in@<[character]>_CompletedQuestMenu:
                 - determine cancelled
         on player left clicks ActiveQuestItem in inventory:
             - run QuestMenuHandler def:ActiveQuest instantly
             # - define questType:ActiveQuest
             # - inject QuestMenuHandler
-            #- inventory open d:in@<player.uuid>_<player.flag[CurrentCharacter]>_ActiveQuestMenu
+            #- inventory open d:in@<proc[GetCharacterName].context[<player>]>_ActiveQuestMenu
         on player left clicks CompletedQuestItem in inventory:
             - run QuestMenuHandler def:CompletedQuest instantly
             # - define questType:CompletedQuest
             # - inject QuestMenuHandler
-            #- inventory open d:in@<player.uuid>_<player.flag[CurrentCharacter]>_CompletedQuestMenu
+            #- inventory open d:in@<proc[GetCharacterName].context[<player>]>_CompletedQuestMenu
         on player left clicks NextPageActiveQuestItem in inventory:
             - run QuestPageHandler def:ActiveQuest|next instantly
             # - inject QuestPageHandler
@@ -99,7 +162,7 @@ QuestController:
             - wait 1s
             - inject QuestLoginScript
         on player drops item:
-            - define character:<player.uuid>_<player.flag[CurrentCharacter]>
+            - define character:<proc[GetCharacterName].context[<player>]>
             - define inv:<context.inventory||null>
             - if <[inv]> != null:
                 - if <[inv]> == <[character]>_ActiveQuestMenu || <[inv]> == <[character]>_CompletedQuestMenu:
@@ -111,7 +174,7 @@ QuestMenuHandler:
     script:
         - determine cancelled passively
         - inventory close
-        - flag player <player.uuid>_<player.flag[CurrentCharacter]>_QuestJournalMenu:1
+        - flag player <proc[GetCharacterName].context[<player>]>_QuestJournalMenu:1
         - inject LoadInventory
 
 # Helper script - sets up next page
@@ -127,30 +190,38 @@ QuestChangePage:
     type: task
     script:
         - if <[direction]> == next:
-            - flag player <player.uuid>_<player.flag[CurrentCharacter]>_QuestJournalMenu:++
+            - flag player <proc[GetCharacterName].context[<player>]>_QuestJournalMenu:++
         - else:
-            - flag player <player.uuid>_<player.flag[CurrentCharacter]>_QuestJournalMenu:--
+            - flag player <proc[GetCharacterName].context[<player>]>_QuestJournalMenu:--
         - inject LoadInventory
 LoadInventory:
     type: task
     script:
-        - define character:<player.uuid>_<player.flag[CurrentCharacter]>
-        - define itemlist:<player.flag[<[character]>_<[questType]>Items].as_list>
+        - narrate <[questType]>
+        - define character:<proc[GetCharacterName].context[<player>]>
         - define menu:<player.flag[<[character]>_QuestJournalMenu]>
         - define end:<[menu].as_int.mul_int[42]>
         - define start:<[end].as_int.sub_int[41]>
         #- narrate "<[itemlist].size> vs <[start]> to <[end]>"
-        - if <[itemlist].size> < <[start]>:
-            # - narrate "list less than start"
-            - flag player <player.uuid>_<player.flag[CurrentCharacter]>_QuestJournalMenu:--
-            - stop
-        #- narrate "list greater than start"
-        - define display:<[itemlist].get[<[start]>].to[<[end]>]||null>
-        #- narrate "<[display]>"
+        - narrate "<player.flag[<[character]>_<[questType]>Items]>"
+        - narrate "comparing to catch"
+        - narrate "<player.flag[<[character]>_<[questType]>Items].matches[<[catch]>]>"
+        - define catch:li@
         - inventory clear d:in@<[character]>_<[questType]>Menu
-        #- narrate "inventory cleared"
-        - foreach <[display]> as:item:
-            - inventory add d:in@<[character]>_<[questType]>Menu o:<[item]>
+
+        - if <player.flag[<[character]>_<[questType]>Items]> != <[catch]> && <player.has_flag[<[character]>_<[questType]>Items]>:
+            - narrate "List does not equal empty, getting creds for start <[start]> and end <[end]>"
+            - narrate <player.flag[<[character]>_<[questType]>Items].get[<[start]>].to[<[end]>]>
+            - if <player.flag[<[character]>_<[questType]>Items].size> < <[start]>:
+                # - narrate "list less than start"
+                - flag player <proc[GetCharacterName].context[<player>]>_QuestJournalMenu:--
+                - stop
+            #- narrate "list greater than start"
+            - define display:<player.flag[<[character]>_<[questType]>Items].get[<[start]>].to[<[end]>]>
+            - narrate "<[display]>"
+            #- narrate "inventory cleared"
+            - foreach <[display]> as:item:
+                - inventory add d:in@<[character]>_<[questType]>Menu o:<[item]>
         - if <[questType]> == ActiveQuest:
             - inventory set d:in@<[character]>_<[questType]>Menu o:CompletedQuestItem slot:43
             - inventory set d:in@<[character]>_<[questType]>Menu o:LastPageActiveQuestItem slot:44
@@ -164,13 +235,16 @@ LoadInventory:
 QuestLoginScript:
     type: task
     script:
-        - define character:<player.uuid>_<player.flag[CurrentCharacter]>
+        - define character:<proc[GetCharacterName].context[<player>]||null>
+        - if <[character]> == null:
+            - narrate "You need a character for this"
+            - stop
         - if !<player.has_flag[<[character]>_QuestJournal]>:
             - note in@QuestJournalActiveQuests as:<[character]>_ActiveQuestMenu
             - note in@QuestJournalCompletedQuests as:<[character]>_CompletedQuestMenu
             - flag player <[character]>_QuestJournal
-            - flag player <[character]>_ActiveQuestItems:null
-            - flag player <[character]>_CompletedQuestItems:null
+            # - flag player <[character]>_ActiveQuestItems:null
+            # - flag player <[character]>_CompletedQuestItems:null
         - flag player <[character]>_QuestJournalMenu:1
 # =================================================================================
 # =============================== Items/Inventories ===============================

@@ -6,21 +6,50 @@
 # Allows for quick and easy setup of Quests
 
 #====================================================#
+#======================Responses=====================#
+#====================================================#
+Example1Intro:
+    type: task
+    script:
+        - chat "Hi I'm Steve I have a Quest for you"
+Example1Goodbye:
+    type: task
+    script:
+        - chat "See ya"
+Example1Pitch:
+    type: task
+    script:
+        - inject Example1Remind
+        - chat "Accept/Decline"
+Example1Accept:
+    type: task
+    script:
+        - chat "Ok cool thanks"
+        - run AddActiveQuest def:<player>|Example1GuideBook
+Example1Decline:
+    type: task
+    script:
+        - chat "Whatever okay"
+Example1Remind:
+    type: task
+    script:
+        - chat "Yeah can you come back and say hello"
+Example1Waiting:
+    type: task
+    script:
+        - chat "Hey thanks for that you win"
+        - run AddCompletedQuest def:<player>|Example1QuestCompleted
+#====================================================#
 #======================NPC Container=================#
 #====================================================#
-YourQuestAssignment:
+Example1Assignment:
     type: assignment
     actions:
         on assignment:
             - narrate "Assignment set!"
     interact scripts:
-        - 1 YourQuestInteract
-TestInject:
-    type: task
-    definitions: <script>|<player>|<step>
-    script:
-        - zap <[step]> s@<[script]> player:<[player]>
-YourQuestInteract:
+        - 1 Example1Interact
+Example1Interact:
     type: interact
     steps:
         1:
@@ -28,60 +57,62 @@ YourQuestInteract:
                 1:
                     trigger: /Regex:Hello/
                     script:
-                        - chat "Ok cool thanks do the thing"
-                        - zap 2
+                        - inject Example1Intro
                 2:
                     trigger: /Regex:Goodbye/
                     script:
-                        - chat "See ya"
+                        - inject Example1Goodbye
                 3:
                     trigger: /Regex:Quest/
                     script:
-                        - chat "Can u come say hello to me"
-                        - chat "Accept/Decline"
+                        - inject Example1Pitch
                         - zap 2
         2:
             chat trigger:
                 1:
                     trigger: /Regex:Hello/
                     script:
-                        - chat "Can u come say hello to me"
+                        - inject Example1Pitch
                 2:
                     trigger: /Regex:Accept/
                     script:
-                        - chat "Ok cool thanks"
-                        - run AddActiveQuest def:<player>|YourQuestGuideBook
+                        - inject Example1Accept
                         - zap 3
                 3:
                     trigger: /Regex:Decline/
                     script:
-                        - chat "Whatever okay"
+                        - inject Example1Decline
                         - zap 1
                 4:
                     trigger: /Regex:Goodbye/
                     script:
-                        - run TestInject def:<YourQuestInteract>|<player>
+                        - inject Example1Goodbye
+                        - zap 1
         3:
             chat trigger:
                 1:
                     trigger: /Regex:Hello/
                     script:
-                        - chat "Hey thanks for that you win"
-                        - run AddCompletedQuest def:<player>|YourQuestQuestCompleted
-                        - run RemoveActiveQuest def:<player>|YourQuestGuideBook
-                        - zap 1
+                        - inject Example1Waiting
                 2:
                     trigger: /Regex:Remind/
                     script:
-                        - chat "Can u come say hello to me"
+                        - inject Example1Pitch
                 3:
                     trigger: /Regex:Goodbye/
                     script:
-                        - chat "See ya"
+                        - inject Example1Goodbye
+                        - zap 1
 #====================================================#
 #======================QuestItems====================#
 #====================================================#
-YourQuestGuideBook:
+Example1MenuItem:
+    type: item
+    material: book
+    display name: Your NPC<&sq>s Quest
+    lore:
+        - "Click to see information"
+Example1GuideBook:
     type: book
     author: Active Quest
     title: Your Quest Title
@@ -89,10 +120,15 @@ YourQuestGuideBook:
     text:
         - "This is what you were asked to do"
         - "Should be the same as your quest remind"
-YourQuestQuestCompleted:
+Example1QuestCompleted:
     type: book
     author: Completed Quest
     title: Your Quest Title
     signed: yes
     text:
         - "This is a one-page description of the quest. Do not exceed one page."
+Cleanup:
+    type: task
+    script:
+        - foreach <player.list_flags> as:flag:
+            - flag <player> <[flag]>:!

@@ -9,13 +9,10 @@ Renown:
   ChildrenOfTheSun: '0'
   Outsiders: '0'
 Flags:
-  1AB1EE9B-873A-4545-BB5B-254E7B23B0E0_PLAYER:
-    FLAG: '1'
   CHARACTER: '1'
-  CHARACTERGUI: 'true'
 Info:
   Character_Display_Name: Player1
-  Character_Location: l@36.04667134770836,72,42.92514230969438,30.000017166137695,-170.8052978515625,world
+  Character_Location: l@28.70222604172151,72,41.1434169364867,18.75002670288086,38.744632720947266,world
   Character_Name: Player1
 Faction:
   Name: '""'
