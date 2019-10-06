@@ -1,7 +1,7 @@
 # Radiant Quests REWRITE 2
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 3.0.1
+# @version 3.0.2
 # Proof of Concept for Radiant/Dynamic Quests
 
 # All things Radiant Quests
@@ -129,6 +129,8 @@ QuestController:
             - if <context.inventory> == in@<[character]>_ActiveQuestMenu:
                 - if <context.click> == LEFT:
                     - adjust <player> show_book:<context.item>
+                    - determine cancelled
+                - else:
                     - determine cancelled
         on player drop clicks in inventory priority:1:
             - if <context.inventory> == in@<[character]>_ActiveQuestMenu || <context.inventory> == in@<[character]>_CompletedQuestMenu:

@@ -8,7 +8,7 @@
 #====================================================#
 #======================NPC Container=================#
 #====================================================#
-YourQuestAssignment:
+Example1Assignment:
     type: assignment
     actions:
         on assignment:
@@ -20,11 +20,11 @@ YourQuestAssignment:
         - narrate "See you! Your character is <proc[GetCharacterName].context[<player>]>" targets:<server.match_player[Insilvon]>
         - define step:<player.flag[<proc[GetCharacterName].context[<player>]>_<npc>]||1>
         - narrate "Zapping to step <[step]>"
-        - zap step:<[step]> s@YourQuestInteract player:<player>
+        - zap step:<[step]> s@Example1Interact player:<player>
     interact scripts:
-    - 1 YourQuestInteract
+    - 1 Example1Interact
 
-YourQuestInteract:
+Example1Interact:
     type: interact
     steps:
         1:
@@ -32,7 +32,7 @@ YourQuestInteract:
                 1:
                     trigger: /Regex:Hello/
                     script:
-                        - chat "Hi welcome to stage one"
+                        - chat "Greetings. I'm the Example 1 npc. I have a quest for you, if you're interested."
                         - flag player <proc[GetCharacterName].context[<player>]>_<npc>:1
                 2:
                     trigger: /Regex:Goodbye/
@@ -42,7 +42,7 @@ YourQuestInteract:
                 3:
                     trigger: /Regex:Quest/
                     script:
-                        - chat "Can u come say hello to me"
+                        - chat "All I want you to do is to come say hello!"
                         - chat "Accept/Decline"
                         - flag player <proc[GetCharacterName].context[<player>]>_<npc>:2
                         - zap 2
@@ -57,7 +57,7 @@ YourQuestInteract:
                     trigger: /Regex:Accept/
                     script:
                         - chat "Ok cool thanks"
-                        - run AddActiveQuest def:<player>|YourQuestGuideBook
+                        - run AddActiveQuest def:<player>|Example1GuideBook
                         - flag player <proc[GetCharacterName].context[<player>]>_<npc>:3
                         - zap 3
                 3:
@@ -77,15 +77,15 @@ YourQuestInteract:
                 1:
                     trigger: /Regex:Hello/
                     script:
-                        - chat "Hey thanks for that you win"
-                        - run AddCompletedQuest def:<player>|YourQuestQuestCompleted
-                        - run RemoveActiveQuest def:<player>|YourQuestGuideBook
+                        - chat "Hey thanks for coming to say hello - I appreciate it!"
+                        - run AddCompletedQuest def:<player>|Example1QuestCompleted
+                        - run RemoveActiveQuest def:<player>|Example1GuideBook
                         - flag player <proc[GetCharacterName].context[<player>]>_<npc>:1
                         - zap 1
                 2:
                     trigger: /Regex:Remind/
                     script:
-                        - chat "Can u come say hello to me"
+                        - chat "All I want you to do is to come say hello!"
                         - flag player <proc[GetCharacterName].context[<player>]>_<npc>:3
                 3:
                     trigger: /Regex:Goodbye/
@@ -95,18 +95,18 @@ YourQuestInteract:
 #====================================================#
 #======================QuestItems====================#
 #====================================================#
-YourQuestGuideBook:
+Example1GuideBook:
     type: book
     author: Active Quest
-    title: Your Quest Title
+    title: <&a>Example Quest 1
     signed: yes
     text:
         - "This is what you were asked to do"
         - "Should be the same as your quest remind"
-YourQuestQuestCompleted:
+Example1QuestCompleted:
     type: book
     author: Completed Quest
-    title: Your Quest Title
+    title: <&a>Example Quest 1
     signed: yes
     text:
         - "This is a one-page description of the quest. Do not exceed one page."
