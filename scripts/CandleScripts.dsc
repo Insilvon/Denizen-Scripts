@@ -97,10 +97,14 @@ CandleScentText:
         - if <[cuboid].contains[honeysuckle]>:
             - narrate "<&e>*The sweet smell of sugar and honeysuckle fills the air*"
             - stop
+        - if <[cuboid].contains[wheat]>:
+            - narrate "<&e>*The smell of fresh wheat radiates around you.*"
+            - stop
 
 CandleOnPlayerRightClicksPlayer_Head:
     type: task
     script:
+        - narrate "<[customItem]>"
         - if <[customItem].contains_text[Candle]>:
-        - inject CandleHandler
+            - inject CandleHandler
     

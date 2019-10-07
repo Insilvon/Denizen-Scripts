@@ -728,5 +728,12 @@ RedwoodCandle:
         - the hint of redwood in this candle
         - makes one long for adventure, particularly
         - in incredibly tall trees.
+WheatCandle:
+    type: item
+    material: player_head[skull_skin=18a1195e-d865-4d46-81bc-078843606e02|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjZkMmM3NzdmZGYwNTdkMzY1NzUzZmZiNGQ3NGYzMGI4YzRlOGVkZTdiYzY4ZWFkMWYyMWY2MmE5OThhYTI0ZCJ9fX0=]
+    display name: Wheat Candle
+    lore:
+        - As a wise woman once described it,
+        - <&dq>cow hot<&dq>
 # Telegraph/Radio Items are in Telegraph.dsc
 

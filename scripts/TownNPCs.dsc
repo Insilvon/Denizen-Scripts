@@ -42,7 +42,6 @@ TownNPCController:
                     - run TownRemoveNPC instantly def:<[entity]>|<[town]>
         on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher|TownAlchemistVoucher|TownWoodcutterVoucher|TownMinerVoucher|TownTrainerVoucher:
             # permission check
-            # TODO: IMPLEMENT OWNER CHECK
             - define locale:<player.location.cursor_on.relative[0,1,0]>
             - define scriptname:<context.item.script>
             - define npcType:<proc[GetNPCType].context[<[scriptname]>]>
@@ -56,6 +55,9 @@ TownNPCController:
                 - determine cancelled
             - if !<player.location.cuboids.contains_text[<[townID]>]>:
                 - narrate "You are not in your town, your NPC cannot help you!"
+                - determine cancelled
+            - if !<proc[CheckTownOwner].context[<player>]>:
+                - narrate "You are not the owner of this town! You cannot invite people here."
                 - determine cancelled
             # create DNPC
             - create player <proc[GetRandomName]> <[locale]> save:temp
@@ -125,6 +127,17 @@ GetTownNPCSkin:
                 - determine https://i.imgur.com/BjpGsf6.png
                 - determine https://i.imgur.com/nO1AsGv.png
                 - determine https://i.imgur.com/K61pPMU.png
+        - if <[type]> == automata:
+            - random:
+                - determine https://i.imgur.com/xY3LOqf.png
+                - determine https://i.imgur.com/ZioUK54.png
+                - determine https://i.imgur.com/veIFOmY.png
+                - determine https://i.imgur.com/pr6OEID.png
+                - determine https://i.imgur.com/viCeTLf.png
+                - determine https://i.imgur.com/yIrM2d7.png
+                - determine https://i.imgur.com/OAS66Rt.png
+                - determine https://i.imgur.com/L2xqwtc.png
+                - determine https://i.imgur.com/0WAaBk6.png
 SetNPCURLSKin:
     type: task
     script:

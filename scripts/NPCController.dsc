@@ -31,8 +31,24 @@ DynamicNPC:
     name: dnpc
     usage: /dnpc create
     script:
-        - define name:<proc[GetRandomName]>
-        - execute as_op "npc create <[name]>"
+        - define args:<context.args>
+        - if <[args].size> == 1:
+            - create player <proc[GetRandomName]> <player.location.cursor_on.add[0,1,0]> save:temp
+            - adjust <entry[temp].created_npc> lookclose:TRUE
+            - run SetVulnerable npc:<entry[temp].created_npc>
+            
+            # set skin of DNPC
+            - define npcType:<[args].get[1]>
+            - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
+            - define counter:0
+            - define success:false
+            - while <[success].matches[false]> && <[counter].as_int> <= 10:
+                - define counter:<[counter].add_int[1]>
+                - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
+                - inject SetNPCURLSkin
+        - else:
+            - define name:<proc[GetRandomName]>
+            - execute as_op "npc create <[name]>"
 DNPCAssignment:
     type: assignment
     interact scripts:
