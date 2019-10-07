@@ -35,3 +35,9 @@ GetRenownStatus:
                 - determine shunned
             - else:
                 - determine despised
+ModifyRenownValue:
+    type: task
+    definitions: player|faction|value
+    script:
+        - define character:<proc[GetCharacterName].context[<[player]>]>
+        - run ModifyCharacterYAML def:<[player]>|Renown.<[faction]>|<[value]>

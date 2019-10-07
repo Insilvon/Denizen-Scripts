@@ -66,3 +66,7 @@ TownMinerVoucher:
     type: item
     material: paper
     display name: Town Miner Voucher
+TownInfantryVoucher:
+    type: item
+    material: paper
+    display name: Town Infantry Voucher

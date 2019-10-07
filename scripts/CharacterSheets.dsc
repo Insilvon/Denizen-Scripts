@@ -46,9 +46,19 @@ SetCharacterYAML:
     script:
         - define id:<[player].flag[CurrentCharacter]>
         - ~yaml "load:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
-        - ~yaml id:<[player]> set <[key]>:<[value]>
+        - yaml id:<[player]> set <[key]>:<[value]>
         - ~yaml "savefile:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
-        - ~yaml unload id:<[player]>
+        - yaml unload id:<[player]>
+ModifyCharacterYAML:
+    type: task
+    definitions: player|key|value
+    script:
+        - define id:<[player].flag[CurrentCharacter]>
+        - ~yaml "load:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
+        - define newValue:<yaml[<[player]>].read[<[key]>].add_int[<[value]>]>
+        - yaml id:<[player]> set <[key]>:<[newValue]>
+        - ~yaml "savefile:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
+        - yaml unload id:<[player]>
 
 # Gets this character's base name
 # Could be replaced, purely here for accessibility

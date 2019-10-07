@@ -30,7 +30,21 @@ FarmerNPCInteract:
                         - chat "Excellent, I am now yours."
                         - chat "Take this voucher. Place it where you want me to work."
                         - give TownFarmerVoucher
-
+TownPermissionHelper:
+    type: task
+    script:
+    - if !<player.has_flag[CurrentCharacter]>:
+        - narrate "You do not have an active character. Please fix this first!"
+        - determine cancelled
+    - if <[townID]> == none:
+        - narrate "You are not a member of a town!"
+        - determine cancelled
+    - if !<player.location.cuboids.contains_text[<[townID]>]>:
+        - narrate "You are not in your town, your NPC cannot help you!"
+        - determine cancelled
+    - if !<proc[CheckTownOwner].context[<player>]>:
+        - narrate "You are not the owner of this town! You cannot invite people here."
+        - determine cancelled
 TownNPCController:
     type: world
     events:
@@ -47,18 +61,8 @@ TownNPCController:
             - define npcType:<proc[GetNPCType].context[<[scriptname]>]>
             - define townID:<proc[GetCharacterTown].context[<player>]>
 
-            - if !<player.has_flag[CurrentCharacter]>:
-                - narrate "You do not have an active character. Please fix this first!"
-                - determine cancelled
-            - if <[townID]> == none:
-                - narrate "You are not a member of a town!"
-                - determine cancelled
-            - if !<player.location.cuboids.contains_text[<[townID]>]>:
-                - narrate "You are not in your town, your NPC cannot help you!"
-                - determine cancelled
-            - if !<proc[CheckTownOwner].context[<player>]>:
-                - narrate "You are not the owner of this town! You cannot invite people here."
-                - determine cancelled
+            - inject TownPermissionHelper
+
             # create DNPC
             - create player <proc[GetRandomName]> <[locale]> save:temp
             - adjust <entry[temp].created_npc> lookclose:TRUE
@@ -75,11 +79,51 @@ TownNPCController:
                 - inject SetNPCURLSkin
 
             - run TownAddNPC instantly def:<[townID]>|<entry[temp].created_npc>/<[npcType]>|<[npcType]>
+        on player right clicks with TownInfantryVoucher:
+            - define locale:<player.location.cursor_on.relative[0,1,0]>
+            - define scriptname:<context.item.script>
+            - define npcType:<proc[GetNPCType].context[<[scriptname]>]>
+            - define townID:<proc[GetCharacterTown].context[<player>]>
+
+            - inject TownPermissionHelper
+
+            # create DNPC
+            - create player <proc[GetRandomName]> <[locale]> traits:Sentinel save:temp
+            - adjust <entry[temp].created_npc> lookclose:TRUE
+            - adjust <entry[temp].created_npc> set_assignment:PlacedTown<[npcType]>Assignment
+
+            - run InfantrySetup npc:<entry[temp].created_npc>
+            
+            # set skin of DNPC
+            - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
+            - define counter:0
+            - define success:false
+            - while <[success].matches[false]> && <[counter].as_int> <= 10:
+                - define counter:<[counter].add_int[1]>
+                - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
+                - inject SetNPCURLSkin
+
+            - run TownAddNPC instantly def:<[townID]>|<entry[temp].created_npc>/<[npcType]>|<[npcType]>
 
 SetVulnerable:
     type: task
     script:
         - vulnerable state:true
+InfantrySetup:
+    type: task
+    script:
+        - vulnerable state:true
+        - execute as_server "sentinel addtarget denizen_proc:TownInfantryTargeting:<npc.id> --id:<npc.id>"
+TownInfantryTargeting:
+    type: procedure
+    definitions: npc
+    script:
+        - if <entity.type> == player:
+            # If the player is an enemy of the town
+            - define character:<proc[GetCharacterName].context[<entity>]>
+            - if <entity.flag[<[character]>_TownEnemy].contains[]>
+        - if <entity.type> == npc:
+
 # Based on the provided script voucher name, returns the keyword to use when
 # referencing this npc type later
 GetNPCType:
@@ -215,3 +259,4 @@ PlacedTownTrainerInteract:
                     script:
                         - if <player.inventory.contains[InfantryVoucher]>:
                             - chat "Alright! I'll take that voucher and... bam! You've acquired new militia."
+                            - give TownInfantryVoucher
