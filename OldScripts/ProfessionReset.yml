@@ -1,0 +1,20 @@
+ProfessionClear:
+  type: task
+  script:
+  - flag player Miner:!
+  - flag player Herbalist:!
+  - flag player Smith1:!
+  - flag player Smith2:!
+  - flag player Smith3:!
+  - flag player Smith4:!
+  - flag player Tinkerer:!
+  - flag player Farmer:!
+  - flag player Fisherman:!
+  - flag player Native:!
+  - execute as_server "pex user <player.name> group remove Profession2"
+  - execute as_server "pex user <player.name> group remove Archetype2"
+ProfessionReset:
+  type: assignment
+  actions:
+    on click:
+    - run ProfessionClear

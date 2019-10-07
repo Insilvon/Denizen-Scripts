@@ -1,0 +1,23 @@
+#Wood 1 = birch, 2 = oak, 3 = jungle, 4 = spruce, 5 = acacia, 6 = dark oak
+brewerybook:
+  type: book
+  title: Brewery Recipes
+  author: The Gods Above
+  signed: false
+  text:
+  - Format: Line 1: Name<n>Line 2:Ingredients: <ID> <Number><n>Line 3:<Cook Time (in cauldron)> <n>Line 4:<Number of Distills> <Wood Type for aging and length>
+  - Skunky/Wheatbear/Fine: <n>Wheat:3<n>CookTime:8 <n>Birch aged, 2 years
+  - Hooch/Beer/Craft: <n>Wheat:6 Wheat Seeds:4 <n>CookTime:6 Distill:3 <n>No aging
+  - Start/Whiskey/Bourbon: <n>Beetroot Seeds:4 Wheat:2 Wheat Seeds:2 <n>CookTime:7 <n>Oak aged, 25 years
+  - Wine/Fine/Millenium: <n>372:3 Sugar:3<n>CookTime:9<n>Birch aged, 30 years
+  - Iced/House/Espresso:<n>351:3 (cocoa beans) Sugar:3 Milk_Bucket:1<n>CookTime:5<n>No aging
+  - Classic/Fine Ale/Golden:<n>Wheat:4 Wheat Seeds:2 <n>CookTime:7 Distill:3<n>No aging
+  - Boild/Herbal Tea/Aeromatic:<n>Yellow Flower:3 Red Flower:3 31:5 <n>CookTime:9<n>No aging
+  - Start/Vodka/Fine: <n>Potato:3 Wheat:2 Wheat Seeds:2 <n>CookTime:2 Distill:4 <n>No aging
+  - Congealed Honey/Sweet Mead/Golden:<n>Sugar_Cane:4 MelonSlice:2 Wheat Seeds:2<n>CookTime:12<n>Birch aging, 14 years
+  - Congealed Honey/Crisp Mead/Apple:<n>Sugar_Cane:4 Apple:2 Wheat Seeds:2<n>CookTime:7<n>Spruce aging, 14 years
+  - Chocolate Milk/Warm Cocoa/Hot:<n>351:2 (cocoa beans) Sugar:1 Milk_Bucket:1 <n>CookTime:3<n>No aging
+  - Seasoned/Pumpkin Spice Ale/Witches Brew:<n>Pumpkin Seeds:2 Wheat:4 Wheat Seeds:2<n>CookTime:7 Distill:2 <n>No aging
+  - Skuny/Darkbeer/Fine: <n>Wheat:6<n>CookTime:8 <n>Spruce aged, 8 years
+  - Bitter/Spicy Rum/Golden: <n>Sugar_Cane:14<n>CookTime:5 Distill:2<n>Oak Aged, 14 years
+  - More coming.

@@ -1,0 +1,1963 @@
+##Herbs##
+Marigold:
+  type: item
+  material: i@yellow_flower
+  display name: <&e>Marigold
+  lore:
+  - A pretty yellow flower.
+  shapeless_recipe: i@yellow_flower|i@HerbalistLeaves
+AMarigold:
+  type: item
+  material: i@yellow_flower
+  display name: <&e>Marigold
+  lore:
+  - A pretty yellow flower.
+  - It is commonly used to heal
+  - minor cuts and bruises.
+AloeVera:
+  type: item
+  material: i@large_fern
+  display name: <&a>Aloe Vera
+  lore:
+  - A grass-like plant, emits a sticky resin
+  - when cut.
+  shapeless_recipe: i@large_fern|i@HerbalistLeaves
+AAloeVera:
+  type: item
+  material: i@large_fern
+  display name: <&a>Aloe Vera
+  lore:
+  - A grass-like plant, emits a sticky resin
+  - when cut. Typically used to treat minor
+  - abraisions and burns.
+HerbalistLeaves:
+  Type: item
+  material: i@jungle_leaves
+  display name: <&a>Herbalist Leaves
+  lore:
+  - Leaves used by a herbalist to assist
+  - in crafting and using new herbs.
+  shapeless_recipe: i@oak_leaves|i@stick
+Papaya:
+  type: item
+  material: i@potato_item
+  display name: <&6>Papaya
+  lore:
+  - A bright orange fruit. It is
+  - rather sweet and juicy.
+  shapeless_recipe: i@potato_item|i@HerbalistLeaves
+APapaya:
+  type: item
+  material: i@potato_item
+  display name: <&6>Papaya
+  lore:
+  - A bright orange fruit. It is
+  - rather sweet and juicy.
+  - Used to help cleanse and heal
+  - most surface wounds. 
+WhiteSnakeroot:
+  type: item
+  material: i@azure_bluet
+  display name: <&7>White Snakeroot
+  lore:
+  - A clump of flowers that resemble
+  - little stars.
+  shapeless_recipe: i@azure_bluet|i@HerbalistLeaves
+AWhiteSnakeroot:
+  type: item
+  material: i@azure_bluet
+  display name: <&7>White Snakeroot
+  lore:
+  - A clump of flowers that resemble
+  - little stars. 
+  - Typically used as an antidote for most
+  - venemous poisons.
+GardenAngelica:
+  type: item
+  material: i@acacia_sapling
+  display name: <&2>Garden Angelica
+  lore:
+  - A bright green plant covered in
+  - many pointy leaves.
+  shapeless_recipe: i@acacia_sapling|i@HerbalistLeaves
+AGardenAngelica:
+  type: item
+  material: i@acacia_sapling
+  display name: <&2>Garden Angelica
+  lore:
+  - A bright green plant covered in
+  - many pointy leaves.
+  - Assists in bringing down raging fevers.
+Astragalus:
+  type: item
+  material: i@allium
+  display name: <&5>Astragalus
+  lore:
+  - A rounded purple flower.
+  shapeless_recipe: i@allium|i@HerbalistLeaves
+AAstragalus:
+  type: item
+  material: i@allium
+  display name: <&5>Astragalus
+  lore:
+  - A rounded purple flower.
+  - A potent herb used to overhaul
+  - and boost activity.
+
+##Ores##
+
+RubyOre:
+  type: item
+  material: i@redstone_ore
+  display name: <&4>Unknown Ore
+  lore:
+  - A bright red stone can be seen
+  - through the cracks in the ore.
+  - It shimmers under light.
+  
+PrometheumOre:
+  type: item
+  material: i@coal_ore
+  display name: <&0>Unknown Ore
+  lore:
+  - The mineral appears to
+  - be a dark gray, opaque, 
+  - buried within crusted stone.
+
+AdamantineOre:
+  type: item
+  material: i@iron_ore
+  display name: <&7>Unknown Ore
+  lore:
+  - The mineral appears to resemble
+  - a light gray metal, glinting softly
+  - in the light.
+  
+MithrilOre:
+  type: item
+  material: i@diamond_ore
+  display name: <&1>Unknown Ore
+  lore:
+  - The ore appears to be a
+  - dark blue. It seems oddly light
+  - and emits a faint light.
+  
+AstralSilverOre:
+  type: item
+  material: i@iron_ore
+  display name: <&7>Unknown Ore
+  lore:
+  - A lustrous silver mineral can be seen
+  - through the cracks in the stone.
+  - It shines a soft white.
+
+TitaniumOre:
+  type: item
+  material: i@iron_ore
+  display name: <&7>Unknown Ore
+  lore:
+  - The mineral resembles a light gray
+  - metal. It appears rather strong.
+  
+AetherOre:
+  type: item
+  material: i@diamond_ore
+  display name: <&b>Unknown Ore
+  lore:
+  - A strange white mineral can be seen
+  - through the cracks in the stone. When
+  - touched, a tough shell encapsulates it.
+    
+DarksteelOre:
+  type: item
+  material: i@iron_ore
+  display name: <&8>Unknown Ore
+  lore:
+  - A dark metalic mineral can be seen
+  - through the cracks in the stone.
+  - No light reflects off it.
+  
+CobaltOre:
+  type: item
+  material: i@lapis_ore
+  display name: <&9>Unknown Ore
+  lore:
+  - A dark blue mineral can be
+  - seen in the cracks in the stone.
+  - It reflects a bright blue light.
+
+QuicksilverOre:
+  type: item
+  material: i@iron_ore
+  display name: <&7>Unknown Ore
+  lore:
+  - A light gray metallic mineral be seen
+  - can through the cracks in the stone.
+  
+LightstoneOre:
+  type: item
+  material: i@gold_ore
+  display name: <&e>Lightstone Ore
+  lore:
+  - A bright, glowing yellow stone
+  - is visible buried within the tough
+  - outer core.
+  
+BronzeOre:
+  type: item
+  material: i@gold_ore
+  display name: <&6>Unknown Ore
+  lore:
+  - The mineral appears to
+  - be a mixture of brown and yellow.
+  - Seems soft too.
+
+PlatinumOre:
+  type: item
+  material: i@iron_ore
+  display name: <&8>Unknown Ore
+  lore:
+  - A dark gray mineral can be
+  - seen in the cracks in the stone.
+  - It reflects a silver light.
+
+##Ingots##
+
+Ruby:
+  type: item
+  material: i@redstone
+  display name: <&4>Red Gem
+  lore:
+  - A lustrous red gem.
+  shapeless_recipe: i@coal|i@RubyOre
+
+ARuby:
+  type: item
+  material: i@redstone
+  display name: <&4>Ruby
+  lore:
+  - A lustrous red gem.
+  - Fire tribes would hoard these
+  - and use them in their rituals.
+  
+Prometheum:
+  type: item
+  material: i@coal
+  display name: <&0>Gray Metal
+  lore:
+  - A chunk of some sort
+  - of dark gray mineral.
+  shapeless_recipe: i@coal|i@PrometheumOre
+  
+APrometheum:
+  type: item
+  material: i@coal
+  display name: <&0>Prometheum
+  lore:
+  - A chunk of some sort
+  - of dark gray mineral.
+  - It has strange properties.
+  - While bendable, preserves strength.
+  - While strong, is light.
+  - Natives called this 
+  - Origin Ore.
+  
+Adamantine:
+  type: item
+  material: i@iron_ingot
+  display name: <&7>Light Gray Metal
+  lore:
+  - A bar of light gray metal. It
+  - appears as though it may be rather
+  - strong.
+  shapeless_recipe: i@coal|i@AdamantineOre
+  
+AAdamantine:
+  type: item
+  material: i@iron_ingot
+  display name: <&7>Adamantine
+  lore:
+  - A bar of light gray metal. It
+  - appears as though it may be rather
+  - strong.
+  - Once solidified, melting down this material
+  - is darn next to impossible.
+  
+Mithril:
+  type: item
+  material: i@diamond
+  display name: <&1>Pristine Metal
+  lore:
+  - A bar of a dark blue.
+  - mineral. It feels quite light.
+  shapeless_recipe: i@coal|i@MithrilOre
+  
+AMithril:
+  type: item
+  material: i@diamond
+  display name: <&1>Mithril
+  lore:
+  - A bar of a dark blue
+  - mineral.
+  - This ore is legendary.
+  - It is strong, light, harder than diamonds,
+  - and has infinite possibilities.
+  
+AstralSilver:
+  type: item
+  material: i@iron_ingot
+  display name: <&7>Shining White Metal
+  lore:
+  - A bar of lustrus
+  - silver metal.
+  enchantments:
+  - lure:1
+  shapeless_recipe: i@coal|i@AstralSilverOre
+  
+AAstralSilver:
+  type: item
+  material: i@iron_ingot[flags=HIDE_ENCHANTS]
+  display name: <&7>Astral Silver
+  lore:
+  - A bar of lustrus
+  - silver metal.
+  - This ore is renknown for its
+  - beauty and practical use, allowing it
+  - to be used in any number of different
+  - applications.
+  enchantments:
+  - lure:1
+  
+Titanium:
+  type: item
+  material: i@iron_ingot
+  display name: <&8>Stormy Metal
+  lore:
+  - A bar of a nearly
+  - white metal.
+  shapeless_recipe: i@coal|i@TitaniumOre
+  
+ATitanium:
+  type: item
+  material: i@iron_ingot
+  display name: <&8>Titanium
+  lore:
+  - A bar of a nearly
+  - white metal. Stronger
+  - than true iron.
+  
+Aether:
+  type: item
+  material: i@ghast_tear
+  display name: <&b>Unknown Element
+  lore:
+  - The closest thing you could
+  - get to a "bar" of this stuff.
+  - While it holds a rectangular
+  - ingot shape, It is composed of
+  - strange dark gray and purple wisps.
+  shapeless_recipe: i@coal|i@AetherOre
+  
+AAether:
+  type: item
+  material: i@ghast_tear
+  display name: <&b>Aether
+  lore:
+  - The closest thing you could
+  - get to a "bar" of this stuff.
+  - While it holds a rectangular
+  - ingot shape, It is composed of
+  - strange dark gray and purple wisps.
+  - You feel wrong just touching it.
+  
+Darksteel:
+  type: item
+  material: i@iron_ingot
+  display name: <&8>Dark Metal
+  lore:
+  - A bar of a nearly
+  - black metal.
+  shapeless_recipe: i@coal|i@DarksteelOre
+  
+ADarksteel:
+  type: item
+  material: i@iron_ingot
+  display name: <&8>Darksteel
+  lore:
+  - A bar of a nearly
+  - black metal. Stronger than
+  - iron,
+  - it has a great weight.
+  
+Cobalt:
+  type: item
+  material: i@lapis_lazuli
+  display name: <&9>Blue Gem
+  lore:
+  - A bar of a dark
+  - blue metal.
+  shapeless_recipe: i@coal|i@CobaltOre
+  
+ACobalt:
+  type: item
+  material: i@lapis_lazuli
+  display name: <&9>Cobalt
+  lore:
+  - A bar of many cobalt gems
+  - metled together. It shines a beautiful
+  - blue. In this form, it could have many
+  - applications.
+  
+Quicksilver:
+  type: item
+  material: i@iron_ingot
+  display name: <&7>Slippery Metal
+  lore:
+  - A bar of a bright
+  - silver metal.
+  shapeless_recipe: i@coal|i@QuicksilverOre
+  
+AQuicksilver:
+  type: item
+  material: i@iron_ingot
+  display name: <&7>Quicksilver
+  lore:
+  - A bar of a bright
+  - silver metal. It is slippery,
+  - but natives say it brings speed and
+  - luck to the holder.
+  
+Lightstone:
+  type: item
+  material: i@glowstone
+  display name: <&e>Lightstone
+  lore:
+  - A stone that appears
+  - to glow.
+  enchantments:
+  - lure:1
+  shapeless_recipe: i@coal|i@LightstoneOre
+  
+ALightstone:
+  type: item
+  material: i@glowstone
+  display name: <&e>Lightstone
+  lore:
+  - A stone that appears
+  - to glow.
+  - Ancient cultures used these
+  - to illuminate their homes, mines,
+  - and more.
+  enchantments:
+  - lure:1
+  
+Bronze:
+  type: item
+  material: i@gold_ingot
+  display name: <&6>Brown Metal
+  lore:
+  - A bar of a light
+  - brown mineral.
+  shapeless_recipe: i@coal|i@BronzeOre
+  
+ABronze:
+  type: item
+  material: i@gold_ingot
+  display name: <&6>Bronze
+  lore:
+  - A bar of a light
+  - brown mineral. 
+  - I mean, it'd make a good trophy?
+  
+Platinum:
+  type: item
+  material: i@iron_ingot
+  display name: <&8>Shimmer Metal
+  lore:
+  - A bar of a dark
+  - gray metal.
+  shapeless_recipe: i@coal|i@PlatinumOre
+  
+APlatinum:
+  type: item
+  material: i@iron_ingot
+  display name: <&8>Platinum
+  lore:
+  - A bar of a dark
+  - gray metal.
+  - It is shiny, It is metal, and
+  - It is basically iron.
+  - Used a lot in ritual items,
+  - such as murder-daggers.
+  
+Chain:
+  type: item
+  material: i@iron_nugget
+  display name: <&7>Chain
+  lore:
+  - A light gray
+  - metal chain. Used for..
+  - armor. Right. Armor.
+  shapeless_recipe: i@iron_nugget
+  
+##Armor##
+CraftingGem:
+  type: item
+  material: i@emerald[flags=HIDE_ENCHANTS]
+  display name: <&c>Crafting Gem
+  lore:
+  - A small gem which assists smiths in crafting
+  - high quality gear.
+  recipe:
+  - i@diamond|i@air|i@diamond
+  - i@air|i@iron_block|i@air
+  - i@diamond|i@air|i@diamond
+CraftingGem2:
+  type: item
+  material: i@emerald[flags=HIDE_ENCHANTS]
+  display name: <&c>Crafting Gem 2
+  lore:
+  - A small gem which assists smiths in crafting
+  - high quality gear. This gem has been refined.
+  recipe:
+  - i@diamond|i@CraftingGem|i@diamond
+  - i@air|i@iron_block|i@air
+  - i@diamond|i@air|i@diamond
+CraftingGem3:
+  type: item
+  material: i@emerald[flags=HIDE_ENCHANTS]
+  display name: <&c>Crafting Gem 3
+  lore:
+  - A small gem which assists smiths in crafting
+  - high quality gear. This gem has been refined
+  - twice.
+  recipe:
+  - i@diamond|i@CraftingGem2|i@diamond
+  - i@air|i@iron_block|i@air
+  - i@diamond|i@air|i@diamond
+CraftingGem4:
+  type: item
+  material: i@emerald[flags=HIDE_ENCHANTS]
+  display name: <&c>Crafting Gem 4
+  lore:
+  - A small gem which assists smiths in crafting
+  - high quality gear. This gem has been refined
+  - three times to a Master Level.
+  recipe:
+  - i@diamond|i@CraftingGem3|i@diamond
+  - i@air|i@iron_block|i@air
+  - i@diamond|i@air|i@diamond
+##Iron##
+IronHelm:
+  type: item
+  material: i@iron_helmet
+  display name: <&b>Iron Helmet
+  lore:
+  - A well crafted iron helmet.
+  recipe:
+  - i@iron_ingot|i@iron_ingot|i@iron_ingot
+  - i@iron_ingot|i@CraftingGem|i@iron_ingot
+  - i@air|i@air|i@air
+IronChest:
+  type: item
+  material: i@iron_chestplate
+  display name: <&b>Iron Chestplate
+  lore:
+  - A well crafted iron chestplate.
+  recipe:
+  - i@iron_ingot|i@CraftingGem|i@iron_ingot
+  - i@iron_ingot|i@iron_ingot|i@iron_ingot
+  - i@iron_ingot|i@iron_ingot|i@iron_ingot
+IronLegs:
+  type: item
+  material: i@iron_leggings
+  display name: <&b>Iron Leggings
+  lore:
+  - well crafted iron leggings.
+  recipe:
+  - i@iron_ingot|i@iron_ingot|i@iron_ingot
+  - i@iron_ingot|i@CraftingGem|i@iron_ingot
+  - i@iron_ingot|i@air|i@iron_ingot
+IronBoots:
+  type: item
+  material: i@iron_boots
+  display name: <&b>Iron Boots
+  lore:
+  - well crafted iron boots.
+  recipe:
+  - i@air|i@air|i@air
+  - i@iron_ingot|i@CraftingGem|i@iron_ingot
+  - i@iron_ingot|i@air|i@iron_ingot
+IronSword:
+  type: item
+  material: i@iron_sword
+  display name: <&b>Iron Sword
+  lore:
+  - A well crafted iron blade.
+  recipe: 
+  - i@air|i@iron_ingot|i@air
+  - i@air|i@iron_ingot|i@air
+  - i@CraftingGem|i@stick|i@air
+IronHoe:
+  type: item
+  material: i@iron_hoe
+  display name: <&b>Iron Hoe
+  lore:
+  - A well crafted iron hoe.
+  recipe:
+  - i@iron_ingot|i@iron_ingot|i@air
+  - i@air|i@stick|i@air
+  - i@CraftingGem|i@stick|i@air
+IronAxe:
+  type: item
+  material: i@iron_axe
+  display name: <&b>Iron Axe
+  lore:
+  - A well crafted iron axe.
+  recipe:
+  - i@iron_ingot|i@iron_ingot|i@air
+  - i@iron_ingot|i@stick|i@air
+  - i@CraftingGem|i@stick|i@air
+IronShovel:
+  type: item
+  material: i@iron_spade
+  display name: <&b>Iron Shovel
+  lore:
+  - A well crafted iron shovel.
+  recipe:
+  - i@air|i@iron_ingot|i@air
+  - i@air|i@stick|i@air
+  - i@CraftingGem|i@stick|i@air
+#Tools: Darksteel, Astral, Titanium#
+DarksteelPick:
+  type: item
+  material: i@stone_pickaxe[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Pickaxe
+  lore:
+  - A reinforced pickaxe made with Darksteel.
+  - They hit harder, longer.
+  recipe:
+  - i@ADarksteel|i@ADarksteel|i@ADarksteel
+  - i@air|i@stick|i@air
+  - i@CraftingGem2|i@stick|i@air
+  enchantments:
+  - durability:2
+  - dig_speed:2
+DarksteelHoe:
+  type: item
+  material: i@stone_hoe[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Hoe
+  lore:
+  - A reinforced hoe made with Darksteel.
+  recipe:
+  - i@ADarksteel|i@ADarksteel|i@air
+  - i@air|i@stick|i@air
+  - i@CraftingGem2|i@stick|i@air
+  enchantments:
+  - durability:2
+  - dig_speed:2
+DarksteelAxe:
+  type: item
+  material: i@stone_axe[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Axe
+  lore:
+  - A reinforced Axe made with Darksteel.
+  - They cut deeper and don<&sq>t break
+  - as quickly.
+  recipe:
+  - i@ADarksteel|i@ADarksteel|i@air
+  - i@ADarksteel|i@stick|i@air
+  - i@CraftingGem2|i@stick|i@air
+  enchantments:
+  - durability:2
+  - damage_all:2
+DarksteelShield:
+  type: item
+  material: i@shield[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Shield
+  lore:
+  - A reinforced shield made with Darksteel.
+  recipe:
+  - i@oak_planks|i@ADarksteel|i@oak_planks
+  - i@oak_planks|i@oak_planks|i@oak_planks
+  - i@CraftingGem2|i@oak_planks|i@air
+  enchantments:
+  - durability:2
+DarksteelShovel:
+  type: item
+  material: i@stone_spade[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Shovel
+  lore:
+  - A reinforced shovel made with Darksteel.
+  recipe:
+  - i@air|i@ADarksteel|i@air
+  - i@air|i@stick|i@air
+  - i@CraftingGem2|i@stick|i@air
+  enchantments:
+  - durability:2
+  - dig_speed:2
+
+AstralSilverPick:
+  type: item
+  material: i@iron_pickaxe[flags=HIDE_ENCHANTS]
+  display name: <&b>Astral Silver Pickaxe
+  lore:
+  - A reinforced pickaxe made with Astral Silver.
+  - It radiates a soft light.
+  recipe:
+  - i@AAstralSilver|i@AAstralSilver|i@AAstralSilver
+  - i@air|i@stick|i@air
+  - i@CraftingGem3|i@stick|i@air
+  enchantments:
+  - durability:3
+  - dig_speed:2
+  - fortune:1
+AstralSilverHoe:
+  type: item
+  material: i@iron_hoe[flags=HIDE_ENCHANTS]
+  display name: <&b>Astral Silver Hoe
+  lore:
+  - A reinforced hoe made with Astral Silver.
+  - It radiates a soft light.
+  recipe:
+  - i@AAstralSilver|i@AAstralSilver|i@air
+  - i@air|i@stick|i@air
+  - i@CraftingGem3|i@stick|i@air
+  enchantments:
+  - durability:3
+  - dig_speed:2
+  - fortune:1
+AstralSilverAxe:
+  type: item
+  material: i@iron_axe[flags=HIDE_ENCHANTS]
+  display name: <&b>Astral Silver Axe
+  lore:
+  - A reinforced Axe made with Astral Silver.
+  - It radiates a soft light, cutting deeper.
+  recipe:
+  - i@AAstralSilver|i@AAstralSilver|i@air
+  - i@AAstralSilver|i@stick|i@air
+  - i@CraftingGem3|i@stick|i@air
+  enchantments:
+  - durability:3
+  - damage_all:2
+  - damage_arthropods:2
+  - knockback:1
+AstralSilverShield:
+  type: item
+  material: i@shield[flags=HIDE_ENCHANTS]
+  display name: <&8>Astral Silver Shield
+  lore:
+  - A reinforced shield made with Astral Silver.
+  - It radiates a soft light, and weighs practically
+  - nothing.
+  recipe:
+  - i@oak_planks|i@AAstralSilver|i@oak_planks
+  - i@oak_planks|i@oak_planks|i@oak_planks
+  - i@CraftingGem3|i@oak_planks|i@air
+  enchantments:
+  - durability:4
+AstralSilverShovel:
+  type: item
+  material: i@iron_spade[flags=HIDE_ENCHANTS]
+  display name: <&8>Astral Silver Shovel
+  lore:
+  - A reinforced shovel made with Astral Silver.
+  - It radiates a soft light, even through dirt.
+  recipe:
+  - i@air|i@AAstralSilver|i@air
+  - i@air|i@stick|i@air
+  - i@CraftingGem3|i@stick|i@air
+  enchantments:
+  - durability:3
+  - dig_speed:2
+  - fortune:1
+
+TitaniumPick:
+  type: item
+  material: i@iron_pickaxe[unbreakable=true;flags=HIDE_ENCHANTS]
+  display name: <&7>Titanium Pickaxe
+  lore:
+  - A well crafted pickaxe made from
+  - purified titanium. Rumor has it that
+  - these never break.
+  recipe:
+  - i@ATitanium|i@ATitanium|i@ATitanium
+  - i@air|i@stick|i@air
+  - i@CraftingGem3|i@stick|i@air
+  enchantments:
+  - dig_speed:2
+TitaniumHoe:
+  type: item
+  material: i@iron_hoe[unbreakable=true;flags=HIDE_ENCHANTS]
+  display name: <&7>Titanium Hoe
+  lore:
+  - A well crafted hoe made from
+  - purified titanium. Rumor has it that
+  - these never break.
+  recipe:
+  - i@ATitanium|i@ATitanium|i@air
+  - i@air|i@stick|i@air
+  - i@CraftingGem3|i@stick|i@air
+  enchantments:
+  - dig_speed:2
+TitaniumAxe:
+  type: item
+  material: i@iron_axe[unbreakable=true;flags=HIDE_ENCHANTS]
+  display name: <&7>Titanium Axe
+  lore:
+  - A well crafted hatchet made from
+  - purified titanium. Rumor has it that
+  - these never break.
+  recipe:
+  - i@ATitanium|i@ATitanium|i@air
+  - i@ATitanium|i@stick|i@air
+  - i@CraftingGem3|i@stick|i@air
+  enchantments:
+  - damage_all:2
+TitaniumShield:
+  type: item
+  material: i@shield[unbreakable=true;flags=HIDE_ENCHANTS]
+  display name: <&7>Titanium Shield
+  lore:
+  - A strong, reinforced titanium shield made from
+  - purified titanium. Rumor has it that
+  - these never break.
+  recipe:
+  - i@oak_planks|i@ATitanium|i@oak_planks
+  - i@oak_planks|i@oak_planks|i@oak_planks
+  - i@CraftingGem3|i@oak_planks|i@air
+TitaniumShovel:
+  type: item
+  material: i@iron_spade[unbreakable=true;flags=HIDE_ENCHANTS]
+  display name: <&7>Titanium Shovel
+  lore:
+  - A well crafted shovel made from
+  - purified titanium. Rumor has it that
+  - these never break.
+  recipe:
+  - i@air|i@ATitanium|i@air
+  - i@air|i@stick|i@air
+  - i@CraftingGem3|i@stick|i@air
+  enchantments:
+  - dig_speed:2
+TitaniumBlade:
+  type: item
+  material: i@iron_sword[unbreakable=true;flags=HIDE_ENCHANTS]
+  display name: <&7>Titanium Blade
+  lore:
+  - A well crafted, folded blade.
+  - It<&sq>s heavy, but wonderfully strong.
+  enchantments:
+  - damage_all:5
+  - knockback:4
+  recipe:
+  - i@air|i@ATitanium|i@air
+  - i@air|i@ATitanium|i@air
+  - i@CraftingGem3|i@stick|i@air
+  
+
+##Mithril##
+MithrilHelm:
+  type: item
+  material: i@diamond_helmet[flags=HIDE_ENCHANTS]
+  display name: <&1>Mithril Helm
+  lore:
+  - A legendary helm. Natives view this
+  - as the armor of the gods. Lightweight,
+  - durable, and flashy.
+  recipe:
+  - i@AMithril|i@AMithril|i@AMithril
+  - i@AMithril|i@air|i@AMithril
+  - i@air|i@air|i@air
+  enchantments:
+  - durability:4
+  - protection_environmental:3
+  
+MithrilChest:
+  type: item
+  material: i@diamond_chestplate[flags=HIDE_ENCHANTS]
+  display name: <&1>Mithril Chestplate
+  lore:
+  - A legendary chestplate. Natives view this
+  - as the armor of the gods. Lightweight,
+  - durable, and flashy.
+  recipe:
+  - i@AMithril|i@air|i@AMithril
+  - i@AMithril|i@AMithril|i@AMithril
+  - i@AMithril|i@AMithril|i@AMithril
+  enchantments:
+  - durability:4
+  - protection_environmental:3
+  
+MithrilLegs:
+  type: item
+  material: i@diamond_leggings[flags=HIDE_ENCHANTS]
+  display name: <&1>Mithril Leggings
+  lore:
+  - Legendary leggings. Natives view this
+  - as the armor of the gods. Lightweight,
+  - durable, and flashy.
+  recipe:
+  - i@AMithril|i@AMithril|i@AMithril
+  - i@AMithril|i@air|i@AMithril
+  - i@AMithril|i@air|i@AMithril
+  enchantments:
+  - durability:4
+  - protection_environmental:3
+  
+MithrilBoots:
+  type: item
+  material: i@diamond_boots[flags=HIDE_ENCHANTS]
+  display name: <&1>Mithril Boots
+  lore:
+  - Legendary boots. Natives view this
+  - as the armor of the gods. Lightweight,
+  - durable, and flashy.
+  recipe:
+  - i@air|i@air|i@air
+  - i@AMithril|i@air|i@AMithril
+  - i@AMithril|i@air|i@AMithril
+  enchantments:
+  - durability:4
+  - protection_environmental:3
+  - protection_fall:2
+
+MithrilBlade:
+  type: item
+  material: i@diamond_sword[flags=HIDE_ENCHANTS]
+  display name: <&b>Infamous Mitrhil Blade
+  lore:
+  - A perfect, glowing, mithril blade.
+  - It is said to be stronger than diamond, sharper
+  - than obsidian, and more beautiful
+  - than the fairest maiden.
+  enchantments:
+  - lure:1
+  - sharpness:1
+  - knockback:1
+  - unbreaking:3
+  recipe:
+  - i@air|i@AMithril|i@air
+  - i@air|i@AMithril|i@air
+  - i@CraftingGem|i@stick|i@CraftingGem
+  
+##Astral Silver##
+AstralSilverHelm:
+  type: item
+  material: i@iron_helmet[flags=HIDE_ENCHANTS]
+  display name: <&7>Astral Silver Helm
+  lore:
+  - The helm is a bright silver.
+  - It is quite smooth.
+  - Natives call this the armor of the sun,
+  - due to the way it reflects light.
+  recipe:
+  - i@AAstralSilver|i@AAstralSilver|i@AAstralSilver
+  - i@AAstralSilver|i@air|i@AAstralSilver
+  - i@air|i@air|i@air
+  enchantments:
+  - durability:2
+  - protection_environmental:2
+  - protection_projectile:2
+  - protection_fire:2
+
+AstralSilverChest:
+  type: item
+  material: i@iron_chestplate[flags=HIDE_ENCHANTS]
+  display name: <&7>Astral Silver Chestplate
+  lore:
+  - The chestplate is a bright
+  - silver. It is quite smooth.
+  - Natives call this the armor of the sun,
+  - due to the way it reflects light.
+  recipe:
+  - i@AAstralSilver|i@air|i@AAstralSilver
+  - i@AAstralSilver|i@AAstralSilver|i@AAstralSilver
+  - i@AAstralSilver|i@AAstralSilver|i@AAstralSilver
+  enchantments:
+  - durability:2
+  - protection_environmental:2
+  - protection_projectile:2
+  - protection_fire:2
+
+AstralSilverLegs:
+  type: item
+  material: i@iron_leggings[flags=HIDE_ENCHANTS]
+  display name: <&7>Astral Silver Leggings
+  lore:
+  - The leggings are a bright
+  - silver. They're quite smooth.
+  - Natives call this the armor of the sun,
+  - due to the way it reflects light.
+  recipe:
+  - i@AAstralSilver|i@AAstralSilver|i@AAstralSilver
+  - i@AAstralSilver|i@air|i@AAstralSilver
+  - i@AAstralSilver|i@air|i@AAstralSilver
+  enchantments:
+  - durability:2
+  - protection_environmental:2
+  - protection_projectile:2
+  - protection_fire:2
+  
+AstralSilverBoots:
+  type: item
+  material: i@iron_boots[flags=HIDE_ENCHANTS]
+  display name: <&7>Astral Silver Boots
+  lore:
+  - The boots are a bright
+  - silver. They're quite smooth.
+  - Natives call this the armor of the sun,
+  - due to the way it reflects light.
+  recipe:
+  - i@air|i@air|i@air
+  - i@AAstralSilver|i@air|i@AAstralSilver
+  - i@AAstralSilver|i@air|i@AAstralSilver
+  enchantments:
+  - durability:2
+  - protection_environmental:2
+  - protection_projectile:2
+  - protection_fire:2
+AstralSilverBlade:
+  type: item
+  material: i@iron_sword[flags=HIDE_ENCHANTS]
+  display name: <&7>The Astral Blade
+  lore:
+  - A shimmering blade made of
+  - pure astral silver.
+  - They say it cuts like a knife, 
+  - but the starlike pattern
+  - engraved into the hilt makes it
+  - seem more like an art piece.
+  enchantments:
+  - damage_all:2
+  - unbreaking:1
+  - knockback:1
+  - loot_bonus_mobs:2
+  - damage_undead:5
+  - damage_arthropods:4
+  
+##Darksteel##
+DarksteelHelm:
+  type: item
+  material: i@iron_helmet[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Helm
+  lore:
+  - The helm is a dark gray.
+  - It is relatively heavy,
+  - but damn if it doesn't look
+  - badass.
+  recipe:
+  - i@ADarksteel|i@ADarksteel|i@ADarksteel
+  - i@ADarksteel|i@air|i@ADarksteel
+  - i@air|i@CraftingGem|i@air
+  enchantments:
+  - protection_environmental:3
+  - durability:4
+DarksteelChest:
+  type: item
+  material: i@iron_chestplate[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Chestplate
+  lore:
+  - The chestplate is a dark
+  - gray. It is relatively heavy,
+  - but damn if it doesn't look
+  - badass.
+  recipe:
+  - i@ADarksteel|i@CraftingGem|i@ADarksteel
+  - i@ADarksteel|i@ADarksteel|i@ADarksteel
+  - i@ADarksteel|i@ADarksteel|i@ADarksteel
+  enchantments:
+  - protection_environmental:3
+  - durability:4
+DarksteelLegs:
+  type: item
+  material: i@iron_leggings[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Leggings
+  lore:
+  - The leggings are a dark gray.
+  - They're relatively heavy,
+  - but damn if it doesn't look
+  - badass.
+  recipe:
+  - i@ADarksteel|i@ADarksteel|i@ADarksteel
+  - i@ADarksteel|i@CraftingGem|i@ADarksteel
+  - i@ADarksteel|i@air|i@ADarksteel
+  enchantments:
+  - protection_environmental:3
+  - durability:4
+DarksteelBoots:
+  type: item
+  material: i@iron_boots[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Boots
+  lore:
+  - The boots are a dark gray.
+  - They're relatively heavy,
+  - but damn if it doesn't look
+  - badass.
+  recipe:
+  - i@air|i@CraftingGem|i@air
+  - i@ADarksteel|i@air|i@ADarksteel
+  - i@ADarksteel|i@air|i@ADarksteel
+  enchantments:
+  - protection_environmental:3
+  - durability:4
+DarksteelBlade:
+  type: item
+  material: i@stone_sword[flags=HIDE_ENCHANTS]
+  display name: <&8>Darksteel Blade
+  lore:
+  - A sinister, dark metal sword
+  - with a ruby gem embedded in
+  - the hilt. You look like a villain,
+  - but darn you look good.
+  recipe:
+  - i@air|i@ADarksteel|i@air
+  - i@air|i@ADarksteel|i@air
+  - i@CraftingGem|i@stick|i@CraftingGem
+  enchantments:
+  - damage_all:5
+  - durability:3
+  - loot_bonus_mobs:2
+##Cobalt##
+CobaltHelm:
+  type: item
+  material: i@leather_helmet[flags=HIDE_ENCHANTS]
+  display name: <&9>Cobalt Helm
+  lore:
+  - The helm is a brilliant
+  - gemstone blue.
+  - Used for more ornamental purposes.
+  recipe:
+  - i@ACobalt|i@ACobalt|i@ACobalt
+  - i@ACobalt|i@air|i@ACobalt
+  - i@air|i@CraftingGem|i@air
+  color: blue
+  enchantments:
+  - durability:6
+  
+CobaltChest:
+  type: item
+  material: i@leather_chestplate[flags=HIDE_ENCHANTS]
+  display name: <&9>Cobalt Chestplate
+  lore:
+  - The chestplate is a bright
+  - blue. It is rather rough.
+  - Used for more ornamental purposes.
+  recipe:
+  - i@ACobalt|i@CraftingGem|i@ACobalt
+  - i@ACobalt|i@ACobalt|i@ACobalt
+  - i@ACobalt|i@ACobalt|i@ACobalt
+  enchantments: 
+  color: blue
+  enchantments:
+  - durability:6
+CobaltLegs:
+  type: item
+  material: i@leather_leggings[flags=HIDE_ENCHANTS]
+  display name: <&9>Cobalt Leggings
+  lore:
+  - The leggings are a bright
+  - blue. they're rather rough.
+  - Used for more ornamental purposes.
+  color: blue
+  recipe:
+  - i@ACobalt|i@ACobalt|i@ACobalt
+  - i@ACobalt|i@CraftingGem|i@ACobalt
+  - i@ACobalt|i@air|i@ACobalt
+  enchantments:
+  - durability:6  
+CobaltBoots:
+  type: item
+  material: i@leather_boots[flags=HIDE_ENCHANTS]
+  display name: <&9>Cobalt Boots
+  lore:
+  - The boots are a bright
+  - blue. they're rather rough.
+  - Used for more ornamental purposes.
+  recipe:
+  - i@air|i@CraftingGem|i@air
+  - i@ACobalt|i@air|i@ACobalt
+  - i@ACobalt|i@air|i@ACobalt
+  color: blue
+  enchantments:
+  - durability:6
+##Chain##
+ChainHelm:
+  type: item
+  material: i@chainmail_helmet
+  display name: <&7>Chainmail Helm
+  lore:
+  - A standard chainmail helmet.
+  recipe:
+  - i@Chain|i@Chain|i@Chain
+  - i@Chain|i@air|i@Chain
+  - i@air|i@CraftingGem|i@air
+  
+ChainChest:
+  type: item
+  material: i@chainmail_chestplate
+  display name: <&7>Chainmail Chestplate
+  lore:
+  - A standard chainmail chestplate.
+  recipe:
+  - i@Chain|i@CraftingGem|i@Chain
+  - i@Chain|i@Chain|i@Chain
+  - i@Chain|i@Chain|i@Chain
+
+ChainLegs:
+  type: item
+  material: i@chainmail_leggings
+  display name: <&7>Chainmail Leggings
+  lore:
+  - A standard chainmail set of
+  - leggings.
+  recipe:
+  - i@Chain|i@Chain|i@Chain
+  - i@Chain|i@CraftingGem|i@Chain
+  - i@Chain|i@air|i@Chain
+  
+ChainBoots:
+  type: item
+  material: i@chainmail_boots
+  display name: <&7>Chainmail Boots
+  lore:
+  - A standard set of chainmail boots.
+  recipe:
+  - i@air|i@CraftingGem|i@air
+  - i@Chain|i@air|i@Chain
+  - i@Chain|i@air|i@Chain 
+
+##Aether##
+AetherHelm:
+  type: item
+  material: i@diamond_helmet[flags=HIDE_ENCHANTS]
+  display name: <&b>Aether Helm
+  lore:
+  - A mysterious helmet made of 
+  - pure Aether. Unknown properties.
+  recipe:
+  - i@AAether|i@AAether|i@AAether
+  - i@AAether|i@air|i@AAether
+  - i@air|i@CraftingGem|i@air
+  
+AetherChest:
+  type: item
+  material: i@diamond_chestplate[flags=HIDE_ENCHANTS]
+  display name: <&b>Aether Chest
+  lore:
+  - A mysterious chestplate made
+  - of pure Aether. Unknown properties.
+  recipe:
+  - i@AAether|i@CraftingGem|i@AAether
+  - i@AAether|i@AAether|i@AAether
+  - i@AAether|i@AAether|i@AAether
+
+AetherLegs:
+  type: item
+  material: i@diamond_leggings[flags=HIDE_ENCHANTS]
+  display name: <&b>Aether Leggings
+  lore:
+  - Mysterious leggings made 
+  - of pure Aether. Unknown properties.
+  recipe:
+  - i@AAether|i@AAether|i@AAether
+  - i@AAether|i@CraftingGem|i@AAether
+  - i@AAether|i@air|i@AAether
+  
+AetherBoots:
+  type: item
+  material: i@diamond_boots[flags=HIDE_ENCHANTS]
+  display name: <&b>Aether Boots
+  lore:
+  - A mysterious set of boots
+  - made of pure Aether. Unknown properties. 
+  recipe:
+  - i@air|i@CraftingGem|i@air
+  - i@AAether|i@air|i@AAether
+  - i@AAether|i@air|i@AAether
+    
+##Constructs##
+
+Flintlock:
+  type: item
+  material: i@stick[flags=HIDE_ENCHANTS]
+  enchantments:
+  - LURE:1
+  display name: <&8>Flintlock
+  lore:
+  - A flintlock-based pistol. Its barrel is
+  - finely decorated, typically wooden
+  - with iron inlay.
+  recipe:
+  - i@air|i@air|i@air
+  - i@Barrel|i@Mechanism2|i@flint
+  - i@air|i@air|i@stick
+
+Crossbow:
+  type: item
+  material: i@wood_pickaxe[flags=HIDE_ENCHANTS]
+  enchantments:
+  - LURE:1  
+  display name: <&8>Crossbow
+  lore:
+  - It is a bow that's
+  - on its side.. With a trigger!
+  recipe:
+  - i@stick|i@bow|i@stick
+  - i@air|i@Mechanism|i@air
+  - i@air|i@stick|i@air
+  
+BreechLoader:
+  type: item
+  material: i@stick[flags=HIDE_ENCHANTS]
+  enchantments:
+  - LURE:1
+  display name: <&7>Breech Loader
+  lore:
+  - A rifle. The barrel is
+  - quite long.
+  recipe:
+  - i@air|i@air|i@air
+  - i@Barrel|i@Barrel|i@ExplosivePowder
+  - i@air|i@Mechanism3|i@stick
+  
+Matchlock:
+  type: item
+  material: i@stick[flags=HIDE_ENCHANTS]
+  enchantments:
+  - LURE:1
+  display name: <&8>Matchlock
+  lore:
+  - A matchlock-based musket. The design
+  - is rather plain, but has better range.
+  recipe:
+  - i@air|i@air|i@air
+  - i@Barrel|i@Barrel|i@oak_planks
+  - i@air|i@Mechanism|i@stick
+Mechanism:
+  type: item
+  material: i@gold_nugget
+  display name: <&e>Clockwork Mechanism
+  lore:
+  - An elaborate clockwork mechanism, capable
+  - of being used in a variety of utilities.
+  - This mechanism uses a conductive
+  - Darksteel core.
+  recipe:
+  - i@gold_nugget|i@gold_nugget|i@gold_nugget
+  - i@air|i@ADarksteel|i@air
+  - i@air|i@air|i@air
+Mechanism2:
+  type: item
+  material: i@gold_nugget
+  display name: <&e>Clockwork Mechanism
+  lore:
+  - An elaborate clockwork mechanism capable
+  - of being used in a variety of utilities.
+  - This mechanism uses a conductive Silver
+  - core.
+  recipe:
+  - i@gold_nugget|i@gold_nugget|i@gold_nugget
+  - i@air|i@AAstralSilver|i@air
+  - i@air|i@air|i@air
+Mechanism3:
+  type: item
+  material: i@gold_nugget
+  display name: <&e>Clockwork Mechanism
+  lore:
+  - An elaborate clockwork mechanism, capable
+  - of being used in a variety of utilities.
+  - This mechanism uses a conductive
+  - Titanium core.
+  recipe:
+  - i@gold_nugget|i@gold_nugget|i@gold_nugget
+  - i@air|i@ATitanium|i@air
+  - i@air|i@air|i@air
+Mechanism4:
+  type: item
+  material: i@gold_nugget
+  display name: <&e>Clockwork Mechanism
+  lore:
+  - An elaborate clockwork mechanism, capable
+  - of being used in a variety of utilities.
+  - This mechanism uses a conductive
+  - Mithril core.
+  recipe:
+  - i@gold_nugget|i@gold_nugget|i@gold_nugget
+  - i@air|i@AMithril|i@air
+  - i@air|i@air|i@air
+Bolt:
+  type: item
+  material: i@arrow
+  display name: <&b>Sturdy Bolt
+  lore:
+  - A strong tipped bolt, typically used for
+  - crossbow ammunition.
+  shapeless_recipe: i@stick|i@arrow
+
+Cartridge:
+  type: item 
+  material: i@name_tag
+  display name: <&7>Cartridge
+  lore:
+  - A paper cartridge. It contains
+  - ammunition and explosive powder.
+  shapeless_recipe: i@sulphur|i@paper|i@paper|i@ExplosivePowder
+  
+Ramrod:
+  type: item
+  material: i@stick
+  display name: <&6>Ramrod
+  lore:
+  - A long rod. Cold to
+  - the touch.
+  - Used for pushing gunpowder
+  - into a barrel.
+  shapeless_recipe: i@stick|i@Mechanism
+  
+Steamcell:
+  type: item
+  material: i@iron_nugget
+  display name: <&7>Steamcell
+  lore:
+  - Some sort of power
+  - cell used for steam-based
+  - mechanisms.
+  recipe:
+  - i@iron_ingot|i@coal|i@iron_ingot
+  - i@coal|i@water_bucket|i@coal
+  - i@iron_ingot|i@coal|i@iron_ingot
+  
+Ammunition:
+  type: item
+  material: i@clay_ball
+  display name: <&8>Ammunition
+  lore:
+  - Ammunition for a
+  - gun.
+  shapeless_recipe: i@iron_nugget|i@gold_nugget|i@sulphur|i@Cartridge
+StonePowder:
+  type: item
+  material: sulphur
+  display name: <&c>Stone Powder
+  lore:
+  - A fine powder made from grinding the rubble
+  - from picked stones.
+ExplosivePowder:
+  type: item
+  material: i@sulphur
+  display name: <&8>Explosive Powder
+  lore:
+  - A highly reactive
+  - black powder.
+  shapeless_recipe: i@sulphur|i@redstone|i@StonePowder
+
+Barrel:
+  type: item
+  material: i@stick
+  display name: <&6>Barrel
+  lore:
+  - A metal or wooden barrel for
+  - a gun.
+  shapeless_recipe: i@stick|i@iron_ingot
+
+PilotWheel:
+  type: item
+  material: i@ladder
+  display name: <&6>Captain's Wheel
+  lore:
+  - A wooden captain's wheel
+  - for a vessel. A staple for
+  - any adventurer's craft.
+  recipe:
+  - i@stick|i@stick|i@stick
+  - i@stick|i@Mechanism|i@stick
+  - i@stick|i@stick|i@stick
+
+WheatBundle:
+  type: item
+  material: i@wheat
+  display name: <&e>Wheat Bundle
+  lore:
+  - A bundle of wheat wrapped
+  - together with string.
+  - Used for advanced processing.
+  shapeless_recipe: i@wheat|i@string
+
+Flax:
+  type: item
+  material: i@wheat
+  display name: <&a>Flax
+  lore:
+  - A processed form of wheat, 
+  - broken down for It is thinner yet
+  - strong stringlike properties.
+  shapeless_recipe: i@WheatBundle
+
+FineString:
+  type: item
+  material: i@string
+  display name: <&7>Fine String
+  lore:
+  - This string is very thin.
+  - It is a little hard to manage,
+  - but your cat will love it.
+  recipe:
+  - air|i@air|i@air
+  - i@Flax|i@Flax|i@Flax
+  - i@air|i@air|i@air
+
+Rope:
+  type: item
+  material: i@string
+  display name: <&6>Rope
+  lore:
+  - The rope is sturdy. Some pieces of
+  - string stray from the intended design.
+  recipe:
+  - i@air|i@air|i@air
+  - i@FineString|i@FineString|i@FineString
+  - i@air|i@air|i@air
+  
+GApple:
+  type: item
+  material: i@golden_apple
+  display name: <&e>Golden Apple
+  lore:
+  - The apple glows
+  - a golden light.
+  recipe:
+  - i@gold_nugget|i@gold_nugget|i@gold_nugget
+  - i@gold_nugget|i@apple|i@gold_nugget
+  - i@gold_nugget|i@apple|i@gold_nugget
+
+GCarrot:
+  type: item
+  material: i@golden_carrot
+  display name: <&e>Golden Carrot
+  lore:
+  - The carrot glows
+  - a golden light.
+  recipe:
+  - i@gold_nugget|i@gold_nugget|i@gold_nugget
+  - i@gold_nugget|i@carrot_item|i@gold_nugget
+  - i@gold_nugget|i@carrot_item|i@gold_nugget
+
+##Fishing##
+
+Rigging:
+  type: item
+  material: i@lead
+  display name: <&6>Rigging
+  lore:
+  - A very sturdy set of
+  - rope and chains.
+  - Used to suspend cloths and reinforce
+  - designs for vessels.
+  recipe:
+  - i@Rope|i@Rope|i@Rope
+  - i@Rope|i@iron_ingot|i@Rope
+  - i@Rope|i@Rope|i@Rope
+  
+  
+Sailcloth:
+  type: item
+  material: i@paper
+  display name: <&7>Sailcloth
+  lore:
+  - A very thick cloth.
+  - It is quite smooth, patchy,
+  - but it will do in a pinch.
+  recipe:
+  - i@CanvasPatch|i@CanvasPatch|i@CanvasPatch
+  - i@CanvasPatch|i@Rope|i@CanvasPatch
+  - i@CanvasPatch|i@CanvasPatch|i@CanvasPatch
+  
+CanvasPatch:
+  type: item
+  material: i@paper
+  display name: <&7>Canvas Patch
+  lore:
+  - A thick patch of
+  - cloth.
+  - Used to repair or form sailcloths.
+  recipe:
+  - i@string|i@string|i@string
+  - i@string|i@Rope|i@string
+  - i@string|i@string|i@string
+
+Koi:
+  type: item
+  material: i@raw_fish
+  display name: <&d>Koi
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Fugu:
+  type: item
+  material: i@raw_pufferfish
+  display name: <&c>Fugu
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Trout:
+  type: item
+  material: i@raw_fish
+  display name: <&3>Trout
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Swordfish:
+  type: item
+  material: i@raw_fish
+  display name: <&9>Swordfish
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Tuna:
+  type: item
+  material: i@raw_fish
+  display name: <&2>Tuna
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Stingray:
+  type: item
+  material: i@raw_fish
+  display name: <&3>Stingray
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+BlueTang:
+  type: item
+  material: i@raw_fish
+  display name: <&1>Blue Tang
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+AlligatorGar:
+  type: item
+  material: i@raw_salmon
+  display name: <&2>Alligator Gar
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Catfish:
+  type: item
+  material: i@raw_salmon
+  display name: <&5>Catfish
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Bass:
+  type: item
+  material: i@raw_fish
+  display name: <&6>Bass
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Eel:
+  type: item
+  material: i@raw_fish
+  display name: <&3>Eel
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+Squid:
+  type: item
+  material: i@raw_fish
+  display name: <&e>Squid
+  lore:
+  - A brightly colored
+  - exotic sea creature.
+CookedKoi:
+  type: item
+  material: i@cooked_fish
+  display name: <&d>Koi
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+  shapeless_recipe: i@coal|i@Koi
+CookedFugu:
+  type: item
+  material: i@raw_pufferfish
+  display name: <&c>Fugu
+  shapeless_recipe: i@coal|i@Fugu
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedTrout:
+  type: item
+  material: i@cooked_fish
+  display name: <&3>Trout
+  shapeless_recipe: i@coal|i@Trout
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedSwordfish:
+  type: item
+  material: i@cooked_fish
+  display name: <&9>Cooked Swordfish
+  shapeless_recipe: i@coal|i@Swordfish
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedTuna:
+  type: item
+  material: i@cooked_fish
+  display name: <&2>Tuna
+  shapeless_recipe: i@coal|i@Tuna
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedStingray:
+  type: item
+  material: i@cooked_fish
+  display name: <&3>Stingray
+  shapeless_recipe: i@coal|i@Stingray
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedBlueTang:
+  type: item
+  material: i@cooked_fish
+  display name: <&1>Blue Tang
+  shapeless_recipe: i@coal|i@BlueTang
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedAlligatorGar:
+  type: item
+  material: i@cooked_salmon
+  display name: <&2>Alligator Gar
+  shapeless_recipe: i@coal|i@AlligatorGar
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedCatfish:
+  type: item
+  material: i@cooked_salmon
+  display name: <&5>Catfish
+  shapeless_recipe: i@coal|i@Catfish
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedBass:
+  type: item
+  material: i@cooked_fish
+  display name: <&6>Bass
+  shapeless_recipe: i@coal|i@Bass
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedEel:
+  type: item
+  material: i@cooked_fish
+  display name: <&3>Eel
+  shapeless_recipe: i@coal|i@Eel
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+CookedSquid:
+  type: item
+  material: i@cooked_fish
+  display name: <&e>Squid
+  shapeless_recipe: i@coal|i@Squid
+  lore:
+  - A finely cooked, steamed,
+  - and grilled exotic seafood.
+Sushi:
+  type: item
+  material: i@raw_fish
+  display name: <&b>Sushi
+  lore:
+  - Organic fresh raw fish wrapped
+  - in seaweed, doused with soy sauce,
+  - and expertly assembled.
+  shapeless_recipe: i@Fugu|i@Seaweed
+Sardine:
+  type: item
+  material: i@raw_fish
+  display name: <&1>Sardine
+  lore:
+  - A tasty, nutrient rich fish.
+  - Often eaten grilled, pickled,
+  - or smoked.
+Shark:
+  type: item
+  material: i@raw_fish
+  display name: <&9>Shark
+  lore:
+  - You feel a sense of
+  - power biting into this one.
+Salmon:
+  type: item
+  material: i@raw_fish,1
+  display name: <&c>Salmon
+  lore:
+  - Commonly served in fillets
+  - or in a variety of other forms,
+  - salmon is one of the most popular
+  - fishes to eat.
+Tilapia:
+  type: item
+  material: i@raw_fish,1
+  display name: <&2>Tilapia
+  lore:
+  - A next to tasteless fish
+  - with a memorable texture.
+  - Added seasonings make this
+  - fish a treat.
+Anchovies:
+  type: item
+  material: i@raw_fish
+  display name: <&a>Anchovies
+  lore:
+  - Do not put on a pizza.
+Herring:
+  type: item
+  material: i@raw_fish
+  display name: <&d>Herring
+  lore:
+  - A small, silver colored fish.
+  - Not to be confused with it<&sq>s
+  - fake red brother.
+Shrimp:
+  type: item
+  material: i@raw_fish
+  display name: <&c>Shrimp
+  lore:
+  - They<&sq>re cute, they<&sq>re tasty,
+  - they eat the pollution of the sea and
+  - they have a popcorn recipe. What more
+  - could you need?
+Scallop:
+  type: item
+  material: i@raw_fish
+  display name: <&7>Scallop
+  lore:
+  - A saltwater clam. Pour some
+  - olive oil and rev up those
+  - fryers, <&sq>cause this baby
+  - is a treat.
+Oyster:
+  type: item
+  material: i@raw_fish
+  display name: <&8>Oyster
+  lore:
+  - Crack this sucker open
+  - and get your slurp on.
+BeefStew:
+  type: item
+  material: i@rabbit_stew
+  display name: <&e>Beef Stew
+  lore:
+  - A hearty stew to keep
+  - your muscles strong.
+  shapeless_recipe: i@potion|i@bowl|i@carrot_item|i@potato_item|i@cooked_beef
+FriedChicken:
+  type: item
+  material: i@cooked_chicken
+  display name: <&e>Breaded Chicken
+  lore:
+  - Cooked chicken covered in a season rub
+  - and breaded.
+  shapeless_recipe: i@cooked_chicken|i@bread
+ChickenSoup:
+  type: item
+  material: i@mushroom_stew
+  display name: <&e>Chicken Noodle Soup
+  lore:
+  - The best soup of all time.
+  shapeless_recipe: i@cooked_chicken|i@Noodles|i@bowl|i@carrot_item|i@potato_item
+Noodles:
+  type: item
+  material: i@string
+  display name: <&e>Noodles
+  lore:
+  - Noodles, be it ramen, spaghetti,
+  - farfalle or shells, are the pivotal
+  - ingredient for most pastas.
+  shapeless_recipe: i@wheat|i@wheat
+ApplePie:
+  type: item
+  material: i@pumpkin_pie
+  display name: <&c>Apple Pie
+  lore:
+  - A seasonal dish, apple
+  - pies are some of the best
+  - desserts assuming they<&sq>re
+  - made well.
+  shapeless_recipe: i@bread|i@apple|i@sugar|i@egg|i@egg|i@egg
+LoadedPotato:
+  type: item
+  material: i@baked_potato
+  display name: <&e>Fully Loaded Baked Potato
+  lore:
+  - A baked potato, but for champions.
+  - Contains potato, pork, and some
+  - flavoring.
+  shapeless_recipe: i@baked_potato|i@sugar_cane|i@milk_bucket|i@grilled_pork
+CarrotCake:
+  type: item
+  material: i@cake
+  display name: <&e>Carrot Cake
+  lore:
+  - A sweet carrot flavored
+  - cake.
+  shapeless_recipe: i@cake|i@carrot_item
+Seaweed:
+  type: item
+  material: i@vine
+  display name: <&a>Seaweed
+  lore:
+  - Ew. Seaweed.
+FishermanRod:
+  type: item
+  material: i@raw_fishing_rod
+  display name: <&b>Master Rod
+  lore:
+  - A reliable fishing rod crafted by
+  - an experienced fisherman. Attracts
+  - more fish!
+  recipe:
+  - i@air|i@air|i@stick
+  - i@air|i@stick|i@FineString
+  - i@stick|i@air|i@FineString
+StretchedLeather:
+  type: item
+  material: i@leather
+  display name: <&e>Stretched Leather
+  lore:
+  - Leather stretched and worked
+  - by a farmer which has many
+  - practical uses.
+  recipe:
+  - i@leather|i@stick|i@leather
+  - i@leather|i@stick|i@leather
+  - i@leather|i@stick|i@leather
+StretchedLeatherSaddle:
+  type: item
+  material: i@saddle
+  display name: <&e>Saddle
+  lore:
+  - A custom made saddle
+  - constructed from the finest
+  - stretched leather.
+  recipe:
+  - i@StretchedLeather|i@StretchedLeather|i@StretchedLeather
+  - i@StretchedLeather|i@iron_ingot|i@StretchedLeather
+  - i@air|i@air|i@air
+StretchedLeatherLead:
+  type: item
+  material: i@lead
+  display name: Lead
+  lore:
+  - A fancy lead made by a Farmer.
+  - Use to leash animals.
+  shapeless recipe: i@StretchedLeather|i@StretchedLeather
+MinerBackpack:
+  type: item
+  material: i@yellow_shulker_box
+  display name: <&e><player.name><&sq>s Backpack

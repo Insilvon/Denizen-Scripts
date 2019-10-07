@@ -1,0 +1,133 @@
+RollScript:
+  type: task
+  script:
+  - random {
+    - define roll "1"
+    - define roll "2"
+    - define roll "3"
+    - define roll "4"
+    - define roll "5"
+    - define roll "6"
+    - define roll "7"
+    - define roll "8"
+    - define roll "9"
+    - define roll "10"
+    - define roll "11"
+    - define roll "12"
+    - define roll "13"
+    - define roll "14"
+    - define roll "15"
+    - define roll "16"
+    - define roll "17"
+    - define roll "18"
+    - define roll "19"
+    - define roll "20"
+    }
+  - narrate "<player.name> <&e>rolled a <&b><def[roll]>" targets:<player.location.find.players.within[<10.10>]>
+
+RollScripta:
+  type: task
+  script:
+  - random {
+    - define roll "2"
+    - define roll "3"
+    - define roll "4"
+    - define roll "5"
+    - define roll "6"
+    - define roll "7"
+    - define roll "8"
+    - define roll "9"
+    - define roll "10"
+    - define roll "11"
+    - define roll "12"
+    - define roll "13"
+    - define roll "14"
+    - define roll "15"
+    - define roll "16"
+    - define roll "17"
+    - define roll "18"
+    - define roll "19"
+    - define roll "20"
+    - define roll "21"
+    }
+  - narrate "<player.name> <&e>rolled a <&b><def[roll]>" targets:<player.location.find.players.within[<10.10>]>
+RollScriptb:
+  type: task
+  script:
+  - random {
+    - define roll "3"
+    - define roll "4"
+    - define roll "5"
+    - define roll "6"
+    - define roll "7"
+    - define roll "8"
+    - define roll "9"
+    - define roll "10"
+    - define roll "11"
+    - define roll "12"
+    - define roll "13"
+    - define roll "14"
+    - define roll "15"
+    - define roll "16"
+    - define roll "17"
+    - define roll "18"
+    - define roll "19"
+    - define roll "20"
+    - define roll "21"
+    - define roll "22"
+    }
+  - narrate "<player.name> <&e>rolled a <&b><def[roll]>" targets:<player.location.find.players.within[<10.10>]>
+  
+RollScriptc:
+  type: task
+  script:
+  - random {
+    - define roll "4"
+    - define roll "5"
+    - define roll "6"
+    - define roll "7"
+    - define roll "8"
+    - define roll "9"
+    - define roll "10"
+    - define roll "11"
+    - define roll "12"
+    - define roll "13"
+    - define roll "14"
+    - define roll "15"
+    - define roll "16"
+    - define roll "17"
+    - define roll "18"
+    - define roll "19"
+    - define roll "20"
+    - define roll "21"
+    - define roll "22"
+    - define roll "23"
+    }
+  - narrate "<player.name> <&e>rolled a <&b><def[roll]>" targets:<player.location.find.players.within[<10.10>]>
+  
+RollScriptd:
+  type: task
+  script:
+  - random {
+    - define roll "5"
+    - define roll "6"
+    - define roll "7"
+    - define roll "8"
+    - define roll "9"
+    - define roll "10"
+    - define roll "11"
+    - define roll "12"
+    - define roll "13"
+    - define roll "14"
+    - define roll "15"
+    - define roll "16"
+    - define roll "17"
+    - define roll "18"
+    - define roll "19"
+    - define roll "20"
+    - define roll "21"
+    - define roll "22"
+    - define roll "23"
+    - define roll "24"
+    }
+  - narrate "<player.name> <&e>rolled a <&b><def[roll]>" targets:<player.location.find.players.within[<10.10>]>

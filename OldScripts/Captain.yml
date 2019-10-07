@@ -1,0 +1,76 @@
+Captain1:
+  Type: Interact
+  Steps:
+    1:
+      chat Trigger:
+        1:
+          Trigger: /Yes/, I'd like a ride.
+          Script:
+          - chat "Grah... you peasants are going to work me silly. Do ya' have the gold for it?"
+          - wait 2
+          - chat "The cost of my vessel is 500 gold there, 500 gold back? Ya' still in?"
+          - zap 2
+        2:
+          Trigger: /No/ thanks, not yet.
+          Script:
+          - chat "Bah... don't waste my time."
+          - zap 1
+    2:
+      chat Trigger:
+        1:
+          Trigger: /Yes/, I'll pay.
+          Script:
+          - chat "Alright then... if you say so! Where do you want to go?"
+          - wait 2
+          - chat "I can take you to A, to B, or to C."
+          - zap 3
+        2:
+          Trigger: /No/ thanks, I've changed my mind.
+          Script:
+          - chat "You're killing me here. I have a family to feed you know."
+          - wait 1
+          - chat "Come back when ya' grow a spine for adventure!"
+          - zap 1
+    3:
+      chat trigger:
+        1:
+          Trigger: /A/
+          Script:
+          - chat "Alright, to A!"
+          - execute as_op "eco take <player.name> 500"
+          - chat "*The sails unfurl as the boat pulls away from the dock..."
+          - flag player BoatTemp duration:10s
+          - execute as_op "warp xyz <player.name>"
+          - zap 1          
+        2:
+          Trigger: /B/
+          Script:
+          - chat "Alright, to B!"
+          - money take 500 <player.name>
+          - chat "*The sails unfurl as the boat pulls away from the dock..."
+          - flag player BoatTemp duration:10s
+          - warp xyz
+        3:
+          Trigger: /C/
+          Script:
+          - chat "Alrighty, to C!"
+          - money take 500 <player.name>
+          - chat "*The sails unfurl as the boat pulls away from the dock..."
+          - flag player BoatTemp duration:10s
+          - warp xyz          
+        4:
+          Trigger: /None/
+          Script:
+          - chat "You're killing me here. I have a family to feed you know."
+          - wait 1
+          - chat "Come back when ya' grow a spine for adventure!"
+          - zap 1
+Captain:
+  Type: Assignment
+  actions:
+    on assignment:
+    - trigger name:click state:true
+    on click:
+    - chat "Oi! What are you poking me for?!"
+  interact scripts:
+  - 1 Captain1

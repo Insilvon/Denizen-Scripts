@@ -1,0 +1,764 @@
+#Rumors and Memory
+
+#The Soul Staff
+
+memory1:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - wait 3
+  - title "title:<&d>It's... been a long time Jack." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&9>I know... It really has Marie." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&d>You... to be honest... don't look so good." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&9>I don't know whether to be" "subtitle:<&9>flattered or insulted, Marie." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&d>I was worried that you weren't going to be" "subtitle:<&d>coming back from that expedition of yours.." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&9>Well... hate to disappoint you," "subtitle: <&9>but they want me back out soon." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&d>Please... Jack, don't go back out there." "subtitle:<&d>The natives in Sonn are talking about the storms..." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&9>You know that I don't have a choice." "subtitle:<&9>We gotta investigate these reports." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&d>Men are dead, Jack. It's not worth your time." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&9>Trust me, Marie. We're almost there." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&9>Between you and me... I think we've nearly got it." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3 
+  - title "title:<&d>The staff, Jack?" fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - title "title:<&9>The staff, Marie." fade_in1s stay:8s fade_out:3s targets:<player.name> 
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory2:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - wait 3
+  - title "title:<&c>Jackson! What the hell are you doing?!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>Grah! They're coming out of the walls, Chief!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>No! Damnit! No! Did you get it!? Do you have it!?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>Just the head of it! C'mon!" "subtitle:We gotta get out of this fucking mountain!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>No Jack! We need it all!" "subtitle:Get the hell back in there or you're dying here!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>What the hell do you mean!? We're gonna die in here!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>Get it Jack! Get it now!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>AHHHHHHHHHH!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory3:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..." 
+  - title "title:<&d>Jack... where the hell are you..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>Jack... it's been weeks... answer me..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>Jack..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory4:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..." 
+  - title "title:<&9>Ngh... *Cough, Cough*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>H-hello? A-anybody there?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>Chief? *cough, cough*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&4>*A deep rumbling noise shakes you where you stand.*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>What the... *cough* what the hell?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>Wha... WHAT THE HELL ARE YOU?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&4>*A horrifying screech pierces your ears.*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*The noise of metal tinking against stone*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>HERE! TAKE IT! I'M SORRY!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>I DIDN'T WANT IT ANYWAY! THEY MADE ME!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>They... failed... you." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>NYAGHHHHHH!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory5:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - title "title:<&d>Chief! Chief Reggie!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>I'm sorry, Marie. I just don't have time." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>Gods damnit! Make time, Reggie!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>Where's my husband!?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>Marie... this is hardly the time, or the place." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>We just wanted a casual drink." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>Where's my husband, Reggie?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*The sounds of barstools shifting*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>Come on. We'll talk outside." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory6:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - title "title:<&e>Where... <&9>where..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&e>am... <&9>am..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3 
+  - title "title:<&e>I.... now..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>No... feel so weird..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&e>Not... like myself..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>I gotta... <&e>get back..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>To Marie..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory7:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - title "title:<&c>Marie... he didn't make it."
+  - wait 3
+  - title "title:<&d>*Your nose wriggles, your fist clenches.*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>What... happened..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>We went in... but there was a savage ambush..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>He... took a spear to the back... as they..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>As... they what..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&c>As they rolled a boulder in on us..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>You were supposed to protect him... you promised..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>YOU PROMISED!!!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*You see a glint of light, feeling your hand reach into your pocket...*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&d>YOU PROMISED!!!!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*The knife clangs on the ground as a gunshot is heard.*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*Screams, echoing in the air. You go lightheaded...*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory8:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - title "title:<&9>I'm... I'm ready." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&e>It will not be easy..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&9>I don't care. Do it." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&e>As you wish..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*You see a golden staff, lying on the ground.*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>You reach out... to touch it..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>And it... swallows you whole." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+
+#The Treasure Trove
+memory9:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - title "title:<&3>Did you hide it? Are we safe?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Yeah man. It's out there good." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>And it's where we talked about... right?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Course boss! The bottom of that lake." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>And none of those citizens saw you?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Nope... but, it was so strange..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>They were all fighting," "subtitle:they're all miserable or angry..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>Odd... but little matter. As long as it's safe." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Course boss. Sadness can't stop fame." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+
+#The Heroes of Legend
+memory10:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - title "title:<&b>*While you feel yourself speak... the language is-"
+  - wait 3
+  - title "title:<&b>clearly not your own... reminiscant of ancient native...*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><Nija, where have the Ahiga gone?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Is it not time for bed, young one?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><Please Nija, it will help me sleep.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Fine sweet. Here we go.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Many... many years ago, when the skies were gold-" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>and the seas shone green, the tribes lived-" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>together happily. However... the Katai came..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>and it threatened everything that they had built." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>When the Elan'Tal felt the change, they summoned the" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Ahiga from each village." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Together, they prayed." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>They prayed to the sky, the sea, the earth, and the flames." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>They did this for many days and nights... until...>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><Until what, Nija?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Until one night... the gods blessed them each.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><The gods took the Syndesi of each Ahiga" "subtitle:and infused them with ki and light.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><With their new gifts" "subtitle:the Ahiga found many other new strengths...>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>With these strengths, they went off to face the Katai.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><And then what?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>That... will have to wait for tomorrow night.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+  
+
+memory11:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you were somewhere else..."
+  - title "title:<&1><Nija! You swore you would continue the story!>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*A smile... a beautiful smile..*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Alright, Hahli. I promised.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*She sat down on the bed.*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><So... the Ahiga went off to face the Katai." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>They traveled long and far... for many days and nights." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>However, when they found the Katai," "subtitle:it wasn't what they expected." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>In the middle of a burned field," "subtitle:the Ahiga found a small doll." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>It was beautiful, with small yellow straw hair..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Sort of like yours, Hahli." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Ahiga saw the doll, and they prayed." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>But the strangest thing happened..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The doll, it turned into a small girl." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>But the girl... was not herself." "Subtitle: She was strange, bore strange markings..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>This girl told the Ahiga that their trial lay ahead," "subtitle:In a place so dangerous they could not go alone." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Underworld." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Ahiga of Fire spoke out," "subtitle:saying not to be afraid." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>You see, they were not alone..." "subtitle: they had each other." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The girl nodded, and she turned" "subtitle:to face a beautiful <&b>crystal tree." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The girl plucked a leaf from the tree, then gave it to the Ahiga." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>She said the only way to kill the Katai" "subtitle: was to go to it's den where it slept..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>And so she opened a ribbon to the sky, which the Ahiga climbed." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>And with that, the Ahiga disappeared into another realm." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Now! Young girl, you must sleep." "subtitle: I'll tell you more tomorrow.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory12:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strage... as if you were somewhere else..."
+  - title "title:<&6><Alright, Hahli. You ready for a story?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><Yes, Nija!>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Alright... so." "subtitle:The Ahiga climbed until their bodies screamed."afade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>They climbed and climbed... then climbed some more." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>As they reached the top of the ribbon..." "subtitle: they saw a great void." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>It was the Katai, the great beast of the Underworld." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>It was so strong, so massive, so awe-some." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Ahiga found themselves swallowed by the Katai," "subtitle: alone." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Katai split them up, isolating them from each other." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Without friends, they would surely go crazy." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>However, using their powers from the gods, the Ahiga" "subtitle:channeled their Ki, creating a a great light." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>This light pierced the void entirely," "subtitle: creating a great field on the back of the turtle." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Katai shrunk it's size into the form of a behemoth," "subtitle: shaking the very earth below." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>But the Ahiga were not scared." "subtitle: They came together, holding their weapons to each others." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>As they focused their Ki..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Ahiga came together into their great Forme..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>And as one, they battled the Katai into extinction." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Katai's soul was absorbed into the Syndesi of the Ahiga..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>And the Ahiga remained in the Skie.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><No! That can't be all!>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Tomorrow, Hahli. They're still watching over you.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory13:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you're somewhere else..."
+  - title "title:<&6><Alright, Hahli. Ready for the ending?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><Yes Nija!>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Alright. Here goes...>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><The Ahiga meditated in the Skie, remaining calm." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>They held the Katai in for a great time," "subtitle: but the demon beast remained alive." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Despite its soul being split, it dwelled on..." "subtitle:within the Ahiga's Syndesi." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Katai rested, growing it's strength." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>One day, the beast attempted to reform," "subtitle: secretly as the Ahiga meditated." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>It grew large, and it attacked the Ahiga as they lay still." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>The Ahiga, hurt and beaten," "subtitle: only just barely managed to keep the beast at bay..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>But their bodies were weak, and their minds fell." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Their Syndesi fell from the Skie to La'On," "subtitle: to their tombs." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Now, the body of the demon dwells in the Skie," fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>but its soul is shattered in another world.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><Nija... is the Katai coming back?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><What do you mean?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><The town says the storms are coming again..." "subtitle: they call it...>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><Symfora...>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Oh, Hahli. You shouldn't worry about superstition." "subtitle: It is just the rains.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><But... I'm scared...>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Do not be frightened, daughter." "subtitle: You are strong... you will be strong.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><When you are scared, look to the Ahiga above." "subtitle: Be like them. Be a hero." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6>Wear your Syndesi with pride... be like the hunter Kanasti." "subtitle: Do you remember him?>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&1><Yes Nija, Ta Kanata nos Kanasti.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&6><Ta Kanata... nos Kanasti.>" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+#Alchemy Memories:
+memory14:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you're somewhere else..."
+  - title "title:<&a>Oh blast it... where did I leave that mortar?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>I swear, it's like all my stuff is walking" "subtitle:away on it's own again." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Alright, so let me see, humidity stone..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Where did I leave that bloody paper?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Yes yes, here we go." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Mix one Fire powder and Air powder!" "subtitle:Seems easy enough..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Alright, let's go get those crystals..." "subtitle:Fire Crystal... yoo-hoo..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Ah, yes. the crystals." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&b>*There is a clang as he drops the crystals" "subtitle:<&b>into the mortar.*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Annnd.... crush these two... *Ngh*" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Righto - fire powder and air powder made." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>And... we'll... mix those all up..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Voila! A perfect specimen of Humidity Powder.." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>Aha! To the furnace with you!" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "effect <player.name> clear"
+memory15:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 1000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you're somewhere else..."
+  - title "title:<&a>Daddy... Will we see Mom someday?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>We'll all be together again eventually." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>For now... we just have to accept it." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>I... I miss her..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>I miss her too." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - execute as_op "effect <player.name> clear"
+memory16:
+  type: task
+  script:
+  - execute as_op "effect <player.name> 15 10000 200 0 true"
+  - narrate "<&b>You begin to feel strange... as if you're somewhere else..."
+  - execute as_op "effect <player.name> clear"
+  - execute as_op "warp memory16 <player.name>"
+  - title "title:<&a>Dad... it's beautiful." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>I wish I could show you more..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>But the nights are getting long... " "subtitle:<&3>More dangerous..." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>One day... I'm gonna be brave like you." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&a>We'll be unstoppable. Right Daddy?" fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - title "title:<&3>Of course dear... of course." fade_in1s stay:8s fade_out:3s targets:<player.name>
+  - wait 3
+  - execute as_op "back"
+memory17:
+  type: task
+  script:
+  - teleport <l@-356,57,946,Aetheria.find.players.within[<1.1]>> <l@-410.4843953103497,50.0,-246.6,Noramir>
+memorybottlenew:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  enchantments:
+  - arrow_infinite:1
+memorybottle1:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two lovers. (1/8)
+  enchantments:
+  - arrow_infinite:1
+memorybottle2:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two lovers. (2/8)
+  enchantments:
+  - arrow_infinite:1
+memorybottle3:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two lovers. (3/8)
+  enchantments:
+  - arrow_infinite:1
+memorybottle4:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two lovers. (4/8)
+  enchantments:
+  - arrow_infinite:1
+memorybottle5:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two lovers. (5/8)
+  enchantments:
+  - arrow_infinite:1
+memorybottle6:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two lovers. (6/8)
+  enchantments:
+  - arrow_infinite:1
+memorybottle7:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two lovers. (7/8)
+  enchantments:
+  - arrow_infinite:1
+memorybottle8:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two lovers. (8/8)
+  enchantments:
+  - arrow_infinite:1
+memorybottle9:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of two rogues. (1/1)
+  enchantments:
+  - arrow_infinite:1
+memorybottle10:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of an ancient tale. (1/5)
+  enchantments:
+  - arrow_infinite:1
+memorybottle11:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of an ancient tale. (2/5)
+  enchantments:
+  - arrow_infinite:1
+memorybottle12:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of an ancient tale. (3/5)
+  enchantments:
+  - arrow_infinite:1
+memorybottle13:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of an ancient tale. (4/5)
+  enchantments:
+  - arrow_infinite:1
+memorybottle14:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of an ancient tale. (5/5)
+  enchantments:
+  - arrow_infinite:1
+memorybottle15:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of a forlorn daughter. (2/2) 
+  enchantments:
+  - arrow_infinite:1
+memorybottle16:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains memory of a forlorn father. (1/2)
+  enchantments:
+  - arrow_infinite:1
+memorybottle:
+  type: item
+  material: potion[flags=HIDE_ENCHANTS|HIDE_ATTRIBUTES|HIDE_POTION_EFFECTS]
+  display name: <&b>Memory Vial
+  lore:
+  - A wispy, blue memory contained in a small vial.
+  - Maybe... just a sip couldn't hurt... right?
+  - Contains
+  enchantments:
+  - arrow_infinite:1
+
+#MEMORY WORLD SCRIPTS. BE SURE TO ADD NEW MEMORIES TO THIS TOO.
+
+memoryworld:
+  type: world
+  events:
+    on player consumes memorybottle1:
+    - wait 1
+    - take glass_bottle
+    - give memorybottle1
+    - inject memory1
+    on player consumes memorybottle2:
+    - take glass_bottle
+    - inject memory2
+    - give memorybottle2
+    on player consumes memorybottle3:
+    - take glass_bottle
+    - inject memory3
+    - give memorybottle3
+    on player consumes memorybottle4:
+    - take glass_bottle
+    - inject memory4
+    - give memorybottle4
+    on player consumes memorybottle5:
+    - take glass_bottle
+    - inject memory5
+    - give memorybottle5
+    on player consumes memorybottle6:
+    - take glass_bottle
+    - inject memory6
+    - give memorybottle6
+    on player consumes memorybottle7:
+    - take glass_bottle
+    - inject memory7
+    - give memorybottle7
+    on player consumes memorybottle8:
+    - take glass_bottle
+    - inject memory8
+    - give memorybottle8
+    on player consumes memorybottle9:
+    - take glass_bottle
+    - inject memory9
+    - give memorybottle9
+    on player consumes memorybottle10:
+    - take glass_bottle
+    - inject memory10
+    - give memorybottle10
+    on player consumes memorybottle11:
+    - take glass_bottle
+    - inject memory11
+    - give memorybottle11
+    on player consumes memorybottle12:
+    - take glass_bottle
+    - inject memory12
+    - give memorybottle12
+    on player consumes memorybottle13:
+    - take glass_bottle
+    - inject memory13
+    - give memorybottle13
+    on player consumes memorybottle14:
+    - take glass_bottle
+    - inject memory14
+    - give memorybottle14
+    on player consumes memorybottle15:
+    - take glass_bottle
+    - inject memory15
+    - give memorybottle15
+    on player consumes memorybottle16:
+    - take glass_bottle
+    - inject memory16
+    - give memorybottle16
+    on player consumes memorybottle17:
+    - take glass_bottle
+    - inject memory17
+    - give memorybottle17

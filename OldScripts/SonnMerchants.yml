@@ -1,0 +1,977 @@
+andrescripta:
+  type: assignment
+  actions:
+    on assignment:
+      - chat "Assignment set!"
+      - trigger name:click state:true
+  interact scripts:
+  - 1 andrescripti
+andrescripti:
+  type: interact
+  steps:
+    1:
+      click trigger:
+        script:
+        - chat "*He grunts a measly hullo*"
+      chat trigger:
+        1:
+          Trigger: /Regex:Hi|Hello|Hey|Good day/.
+          script:
+          - chat "*He grunts as he puts down his hammer*"
+          - wait 1
+          - chat "Ho! How can I help you civvie? I'm not currently taking anything"
+          - wait 1
+          - chat "except guild and guard orders. You with any of em?"
+          - wait 2
+          - chat "Or were you here for a premium pickaxe?"
+          - zap 2
+        2:
+          trigger: /regex:goodbye/.
+          script:
+          - chat "*Grunts*"
+          - zap 1
+    2:
+      click trigger:
+        script:
+        - chat "You heard me - you with any of them guilds?"
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Yeah|I am/.
+          script:
+          - chat "Oh goodie. Which one?"
+        2:
+          trigger: /Regex:No|nah|not/.
+          script:
+          - chat "Well, then I got nuffin' for you at the moment."
+          - zap 1
+        3:
+          trigger: /regex:Explorer|adventure|explorer's/.
+          script:
+          - chat "Is that so... let me see if you have a form."
+          - if <player.inventory.contains[i@CadetSwordForm]> {
+            - chat "Aha, a sword form. Let me get you your gift..."
+            - anchor walkto i:A2
+            - wait 2
+            - anchor walkto i:A1
+            - wait 1
+            - chat "Alright, here you are. Don't go losing it now, you hear?"
+            - take i@CadetSwordForm quantity:1
+            - ^flag player ECadet
+            - give i@CadetSword
+            - chat "There you are. Take care!"
+            - zap 1
+            }
+            else {
+            - chat "Er... doesn't look like you've got any vouchers from them."
+            - wait 1
+            - chat "Probably should check on that one."
+            - zap 1
+            }
+        4:
+          trigger: /regex:Fighters|fight|fighter's/.
+          script:
+          - chat "Is that so... let me see if you have a form."
+          - if <player.inventory.contains[i@CadetShieldForm]> {
+            - chat "Aha, a shield form. Let me get you your gift..."
+            - anchor walkto i:A2
+            - wait 2
+            - anchor walkto i:A1
+            - wait 1
+            - chat "Alright, here you are. Don't go losing it now, you hear?"
+            - take i@CadetShieldForm quantity:1
+            - ^flag player FCadet
+            - give i@CadetShield
+            - chat "There you are. Take care!"
+            - zap 1
+            }
+            else {
+            - chat "Er... doesn't look like you've got any vouchers from them."
+            - wait 1
+            - chat "Probably should check on that one."
+            - zap 1
+            }
+        5:
+          trigger: /Regex:Iron|Pickaxe|Premium|Pick/.
+          script:
+          - chat "Yeah. I sell the only iron pickaxes in the city. If you want one, you're gonna have to-"
+          - wait 2
+          - chat "cough up some cash and some stones. Cost is two-thousand and two knowledgestones. Sound fair?"
+          - zap step:pickaxe
+    pickaxe:
+      chat trigger:
+        1:
+          trigger: /Regex:yeah|yes|okay|fair|deal|Yes/.
+          script:
+          - if "player.money" > "2000" {
+            - chat "Let's see, you seem to have the funds..."
+            - if <player.inventory.contains[i@KnowledgeStone].quantity[2]> {
+              - chat "You've got the stones..."
+              - take i@KnowledgeStone
+              - take i@KnowledgeStone
+              - execute as_op "eco take <player.name> 2000"
+              - execute as_op "give <player.name> iron_pickaxe 1"
+              - chat "Enjoy it, and treat it nice. Take care."
+              - zap 1
+              }
+              else {
+              - chat "You ain't got no stones. Don't waste my time."
+              - zap 1
+              }
+            }
+            else {
+            - chat "You don't have the money. "
+            - chat "Come back later."
+            - zap 1
+            }
+        2:
+          trigger: /Regex:Goodbye/
+          script:
+          - zap 1
+CadetSword:
+  type: item
+  material: stone_sword[flags=HIDE_ENCHANTS]
+  display name: <&a>Cadet Sword
+  enchantments:
+  - damage_all:3
+  - durability:4
+  lore:
+  - A cadet's sword for the explorer's guild
+  - fashioned by the guard's smith, Andre.
+  - It appears rather strong, surprisingly.
+CadetShield:
+  type: item
+  material: shield[flags=HIDE_ENCHANTS]
+  display name: <&c>Recruits Shield
+  enchantments:
+  - durability:4
+  - knockback:2
+  lore:
+  - A recruit's shield for the explorer's guild
+  - fashioned by the guard's smith, Andre.
+  - It has deliberately been left unpainted,
+  - allowing the wielder to pain their own emblem.
+                        
+ExplorerMerchantA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - narrate "<green>Kio<&co> You can just say hello, you know. No need to poke."
+  interact scripts:
+  - 1 ExplorerMerchantI
+ExplorerMerchantI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|hi|Hi|Hey|hey|Good Day|good day|Greetings|greetings/.
+          script:
+          - chat "Hello there civvie. Interested in joining the Explorer's Guild I see?"
+          - wait 2
+          - chat "There's so much that we do that I can't convey in just a small conversation,"
+          - wait 1
+          - chat "so let me ask you this - is there anything you'd like to know?"
+          - wait 2
+          - chat "I can tell you about myself, the guild's activities, the benefits, or application."
+        2:
+          trigger: /Regex:You|yourself/.
+          script:
+          - chat "*He laughs cheerfully.* I'm Kio, the public rep for the Explorer's Guild."
+          - wait 3
+          - chat "I washed up here a couple years back. The guild took me in, and here I am."
+          - wait 3
+          - chat "I get people interested in joining in order to keep us all safe."
+          - wait 3
+          - chat "Anything else you want to know? The guild's activities, benefits, applications?"
+        3:
+          trigger: /Regex:The guild's activities|activities./
+          script:
+          - chat "The guild is known for frequently leading expeditions beyond the walls"
+          - wait 1
+          - chat "of the Grand Sonnarie in search of understanding the world in which we live."
+          - wait 3
+          - chat "I mean, everyone here came from somewhere, and we all want to get home."
+          - wait 1
+          - chat "Because of that, learning about where we are is crucial. We've had some..."
+          - wait 1
+          - chat "issues... in the past with some native involvement, however we feel like"
+          - wait 1
+          - chat "we're closer than ever to understanding that storm at sea!"
+          - wait 3
+          - chat "In short, we investigate ruins, native camps, and uncover secrets like"
+          - wait 1
+          - chat "any true explorer. *He smiles.*"
+          - wait 2
+          - chat "Anything else you want to know? Myself, the benefits, applications?"
+        4:
+          trigger: /Regex:Benefits|benefits./
+          script:
+          - chat "Ho ho! A man seeking reward. It's admirable, fret not. Especially in a place like this."
+          - wait 2
+          - chat "The guild provides it's members with free meals, tools, and some gear to aid them in"
+          - wait 1
+          - chat "their expeditions. You also get the chance to be the first to uncover the world's secrets,"
+          - wait 1
+          - chat "loot, and history. Sometimes you even get to keep the artifacts you find!"
+          - wait 5
+          - chat "And, best of all, you have some friends at your back to keep you alive through tough times."
+          - wait 1
+          - chat "Nothing better than the gift of friendship."
+          - wait 3
+          - chat "Anything else you want to know? The guild's activities, myself, applications?"
+        5:
+          trigger: /Regex:no|No/.
+          script:
+          - chat "No worries! If you feel like joining us, be sure to go check out our"
+          - chat "guild hall by the docks. You can't miss it!"
+        6:
+          trigger: /Regex:apply|Applications|application/.
+          script:
+          - chat "All applications can be filled out down at the guild hall near the docks."
+          - wait 1
+          - chat "You'll have a screening, meeting with a higher-up, then a test engagement."
+          - wait 1
+          - chat "Anything else?"
+        7:
+          trigger: /Goodbye/.
+          script:
+          - chat "See ya around!"
+          - zap 1
+FighterMerchantA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Oi! I'll cut your tongue out of your mouth if you do that again."
+  interact scripts:
+  - 1 FighterMerchantI
+FighterMerchantI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|hi|Hi|Hey|hey|Good Day|good day|Greetings|greetings/.
+          script:
+          - chat "Greetings, citizen. Now cut the crap - are you interested in the Fighter's Guild"
+          - chat "or not?"
+          - zap 2
+        2:
+          trigger: /Goodbye/.
+          script:
+          - chat "..."
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:I am.|Yes|yes/.
+          script:
+          - chat "Great. Here's the deal. We protect our citizens and each other. It's what we do."
+          - wait 2
+          - chat "In a time of crisis like this, we all have to be in our best shape in order to survive."
+          - wait 2
+          - chat "If you want to be the strongest individual you can be and put your potential to use,"
+          - wait 2
+          - chat "then this is the group for you. If you've even got a doubt in your head, then don't"
+          - wait 2
+          - chat "waste our time."
+          - wait 3
+          - chat "All we ask for is your commitment, brotherhood, and patience. We'll give you everything"
+          - wait 2
+          - chat "else you need in return. Training, weapons, the whole deal."
+          - wait 2
+          - chat "So are you in, yes or no?"
+          - zap 3
+        2:
+          trigger: /Regex:No|no/.
+          script:
+          - chat "Then don't waste my time. It's a time of crisis, not lollygagging."
+          - wait 1
+          - chat "Come back when you decide a spine is worth your trouble. *She grunts.*"
+          - zap 1
+        3:
+          trigger: /Goodbye/.
+          script:
+          - chat "..."
+    3:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|yes/.
+          script:
+          - chat "Damn straight you are. Our guild is on the underside of the tower to the South."
+          - wait 1
+          - chat "Go talk to the receptionist for application information, until then, goodday."
+          - zap 1
+        2:
+          trigger: /Regex:No|no/.
+          script:
+          - chat "Then don't waste my time. It's a time of crisis, not lollygagging."
+          - wait 1
+          - chat "Come back when you decide a spine is worth your trouble. *She grunts.*"
+          - zap 1
+        3:
+          trigger: /Goodbye/.
+          script:
+          - chat "..."
+HorseMerchantA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Er... ahoy?"
+  interact scripts:
+  - 1 HorseMerchantI
+HorseMerchantI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|hi|Hi|Hey|hey|Good Day|good day|Greetings|greetings/.
+          script:
+          - chat "Oh, uh, hey there. You interested in getting some horse gear?"
+          - wait 1
+          - chat "I sell to everyone, although the Explorer's Guild is the largest buyer."
+          - wait 2
+          - chat "Oh! Uh, I sell saddles and leads. Which would you like?"
+          - zap 2
+        2:
+          trigger: /Goodbye/.
+          script:
+          - chat "Oh, uh, see you."
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:Leads|leads|Lead|lead/, please.
+          script:
+          - chat "Leads, yes. I can sell you them individually, or in packs of 5 or 10."
+          - wait 1
+          - chat "Each one is 20 widgets, with 5 being 90 and 10 being 180 widgets."
+          - wait 1
+          - chat "How many would you like?"
+          - zap 3
+        2:
+          trigger: /Regex:Saddles|Saddle|saddles|saddle/, please.
+          script:
+          - chat "Saddles, okay yes. I sell each one on it's own for 590 widgets."
+          - chat "Would you like one?"
+          - zap 4
+        3:
+          trigger: /Goodbye/.
+          script:
+          - chat "Oh, uh, see you."
+          - zap 1
+    3:
+      chat trigger:
+        1:
+          Trigger: /Regex:One|one/.
+          Script:
+          - if "<player.money>" < "20" {
+            - chat "Sorry, you don't have enough cash for this."
+            - zap 1
+            }
+            else {
+            - chat "Uh, enjoy."
+            - execute as_op "eco take <player.name> 20"
+            - wait 1
+            - execute as_op "give <player.name> 420 1"
+            - zap 1
+            }
+        2:
+          Trigger: /Regex:Yes|Yeah|Yup|That would be great/.
+          Script:
+          - if "<player.money>" < "90" {
+            - chat "Sorry, you don't have enough cash for this."
+            - zap 1
+            }
+            else {
+            - chat "Uh, enjoy."
+            - execute as_op "eco take <player.name> 90"
+            - wait 1
+            - execute as_op "give <player.name> 420 5"
+            - zap 1
+            }
+        3:
+          Trigger: /Regex:Ten|ten/.
+          Script:
+          - if "<player.money>" < "180" {
+            - chat "Sorry, you don't have enough cash for this."
+            - zap 1
+            }
+            else {
+            - chat "Uh, enjoy."
+            - execute as_op "eco take <player.name> 180"
+            - wait 1
+            - execute as_op "give <player.name> 420 10"
+            - zap 1
+            }
+        4:
+          trigger: /Goodbye/.
+          script:
+          - chat "Oh, uh, see you."
+          - zap 1
+    4:
+      chat trigger:
+        1:
+          Trigger: /Regex:Yes|Yeah|Yup|yes|That would be great/.
+          Script:
+          - if "<player.money>" < "590" {
+            - chat "Sorry, you don't have enough cash for this."
+            - zap 1
+            }
+            else {
+            - chat "Uh, enjoy."
+            - execute as_op "eco take <player.name> 590"
+            - wait 3
+            - execute as_op "give <player.name> 329 1"
+            - zap 1
+            }
+        2:
+          trigger: /Regex:No|no/.
+          script:
+          - chat "Oh, haha. No worries."
+          - zap 1
+        3:
+          trigger: /Goodbye/.
+          script:
+          - chat "Oh, uh, see you."
+          - zap 1
+HorseKSA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Er... ahoy?"
+  interact scripts:
+  - 1 HorseKSI
+HorseKSI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|hi|Hi|Hey|hey|Good Day|good day|Greetings|greetings/.
+          script:
+          - chat "Oh, uh, hey there. You interested in getting some horse gear?"
+          - wait 1
+          - chat "I sell to everyone, although the Explorer's Guild is the largest buyer."
+          - wait 2
+          - chat "Oh! Uh, I sell saddles and leads. Which would you like?"
+          - zap 2
+        2:
+          trigger: /Goodbye/.
+          script:
+          - chat "Oh, uh, see you."
+    2:
+      chat trigger:
+        1:
+          trigger: /Regex:Leads|leads|Lead|lead/, please.
+          script:
+          - chat "Leads, yes. I can sell you them individually, or in packs of 5 or 10."
+          - wait 1
+          - chat "1 being 1 knowledge stone, 5 being 3 Knowledge Stones and 10 being 4."
+          - wait 1
+          - chat "How many would you like?"
+          - zap 3
+        2:
+          trigger: /Regex:Saddles|Saddle|saddles|saddle/, please.
+          script:
+          - chat "Saddles, okay yes. I sell each one on it's own for 5 Knowledge Stones."
+          - chat "Would you like one?"
+          - zap 4
+        3:
+          trigger: /Goodbye/.
+          script:
+          - chat "Oh, uh, see you."
+          - zap 1
+    3:
+      chat trigger:
+        1:
+          Trigger: /Regex:One|one/.
+          Script:
+          - if <player.inventory.contains[KnowledgeStone].quantity[1]> {
+            - chat "Uh, enjoy."
+            - take KnowledgeStone.quantity[1]
+            - wait 1
+            - execute as_op "give <player.name> 420 1"
+            - zap 1
+            }
+            else {
+            - chat "Sorry, you don't have enough cash for this."
+            - zap 1
+            }
+        2:
+          Trigger: /Regex:Yes|Yeah|Yup|That would be great/.
+          Script:
+          - if <player.inventory.contains[KnowledgeStone].quantity[3]> {
+            - chat "Uh, enjoy."
+            - take KnowledgeStone.quantity[3]
+            - wait 1
+            - execute as_op "give <player.name> 420 5"
+            - zap 1
+            }
+            else {
+            - chat "Sorry, you don't have enough cash for this."
+            - zap 1
+            }
+        3:
+          Trigger: /Regex:Ten|ten/.
+          Script:
+          - if <player.inventory.contains[KnowledgeStone].quantity[4]> {
+            - chat "Uh, enjoy."
+            - take KnowledgeStone.quantity[4]
+            - wait 1
+            - execute as_op "give <player.name> 420 10"
+            - zap 1
+            }
+            else {
+            - chat "Sorry, you don't have enough cash for this."
+            - zap 1
+            }
+        4:
+          trigger: /Goodbye/.
+          script:
+          - chat "Oh, uh, see you."
+          - zap 1
+    4:
+      chat trigger:
+        1:
+          Trigger: /Regex:Yes|Yeah|Yup|yes|That would be great/.
+          Script:
+          - if <player.inventory.contains[KnowledgeStone].quantity[5]> {
+            - chat "Uh, enjoy."
+            - take KnowledgeStone.quantity[5]
+            - wait 3
+            - execute as_op "give <player.name> 329 1"
+            - zap 1
+            }
+            else {
+            - chat "Sorry, you don't have enough cash for this."
+            - zap 1
+            }
+        2:
+          trigger: /Regex:No|no/.
+          script:
+          - chat "Oh, haha. No worries."
+          - zap 1
+        3:
+          trigger: /Goodbye/.
+          script:
+          - chat "Oh, uh, see you."
+          - zap 1
+guardmerchantA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:proximity state:true
+    - trigger name:click state:true
+    on click:
+    - narrate "<green>Jim<&co> Er, hello?."
+  Interact Scripts:
+  - 1 guardmerchantI
+guardmerchantI:
+  type: interact
+  Steps:
+    1:
+      proximity trigger:
+        entry:
+          Script:
+          - chat "Serve your settlement! Join the guard!"
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Hi|Hello|Goodday|Good day|Hey|Greetings/.
+          Script:
+          - chat "Greetings citizen. Are you interested in joining the guard?"
+          - zap 2
+        2:
+          Trigger: /Goodbye/
+          Script:
+          - chat "Er - alright then."
+          - zap 1
+    2:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Sure|Of course|Yeah|Yes/
+          Script:
+          - chat "Glad to hear it! Only the most noble and notable actually protect the citizens..."
+          - wait 1
+          - chat "Unlike the fighter's guild or explorer's guild..."
+          - wait 2
+          - chat "Anyway! If you're interested in joining you should speak with Tyler Finch."
+          - wait 1
+          - chat "You can send him a letter or request a meeting with him, however he won't speak"
+          - wait 1
+          - chat "with you unless you have a referral paper, which, conveinently, I have for you."
+          - wait 2
+          - chat "Take this paper to him, and he will speak with you about enrollment."
+          - give i@GuardForm qty:1
+          - wait 1
+          - chat "Thank you for stopping by!"
+          - zap 1
+        2:
+          Trigger: /Regex:Not at the moment|Nope|No/, sorry.
+          Script:
+          - chat "I understand. What's a city without people to protect? If you change your mind, I'm here."
+          - wait 1
+          - chat "Goodbye, citizen!"
+          - zap 1
+        3:
+          Trigger: /Goodbye/
+          Script:
+          - chat "Er - alright then."
+          - zap 1
+arcanemerchanta:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:proximity state:true
+  Interact Scripts:
+  - 1 arcanemerchanti
+arcanemerchanti:
+  type: interact
+  Steps:
+    1:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Hi|Hello|Goodday|Good day|Hey|Greetings/.
+          Script:
+          - chat "Good day to you... I pray you are not one of the un-enlightened."
+          - wait 1
+          - chat "*She sighs* There are far too many whom discredit the work we do. I only hope you aren't one of them."
+          - wait 2
+          - chat "My apologies, are you perhaps interested in the study of the arcane?"
+          - zap 2
+        2:
+          Trigger: /Goodbye/
+          Script:
+          - chat "Good day."
+          - zap 1
+    2:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Sure|Of course|Yeah|Yes/
+          Script:
+          - chat "Ah.. Then let me tell you a little of our collective."
+          - wait 1
+          - chat "We are a group of colonists and natives dedicated to studying the 'magic' of native culture."
+          - wait 1
+          - chat "While most just call us magicians or illusionists, we do far much more than just that - working with potions and -"
+          - chat "otherworldly practices."
+          - wait 3
+          - chat "If this, perhaps, seems worth your time, then you can speak with the leader of the guild in the second tier."
+          - wait 2
+          - chat "I can only appreciate you taking the time to listen, unless you wanted to know more of the potions, magic, or natives."
+          - zap 3
+        2:
+          Trigger: /Regex:Not at the moment|Nope|No/, sorry.
+          Script:
+          - chat "Ah... Understandable. We wish you only the best then."
+          - zap 1
+        3:
+          Trigger: /Goodbye/
+          Script:
+          - chat "*She gives a nod.*"
+          - zap 1
+    3:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Potions/.
+          Script:
+          - chat "Potions... our collective has been known to brew interesting concoctions using resources from the island."
+          - wait 1
+          - chat "While we have made poisons and curses, we prefer to spend most of our time with premonition potions, mimic potions, and more."
+          - wait 1
+          - chat "To be fair, not much is unobtainable to the enlightened mind."
+          - wait 1
+          - chat "Did you want to know anything else - the magic or natives, or will that be all?"
+          - zap 3
+        2:
+          Trigger: /Regex:Magic/.
+          Script:
+          - chat "Magic is a broad term, given meaning by the beholder. While most think of spells, we mainly study the movement of energy throughout-"
+          - chat "a person. The natives call it 'Ki.' They believe tapping into this power grants wonderous gifts and understandings, which, we pursue."
+          - wait 3
+          - chat "Did you want to know anything else - the potions or natives, or will that be all?"
+          - zap 3
+        3:
+          Trigger: /Regex:Natives/.
+          Script:
+          - chat "I do hope you aren't one of those... yes. We do work with natives. They are the key to understanding the arcane in this land, and they are the most-"
+          - wait 2
+          - chat "arguably intelligent species on this island. They tell us their stories and we investigate, attempting to bridge the disbelief of the colonists with the-"
+          - wait 1
+          - chat "belief of the natives. As such, you'd be working quite closely with them."
+          - wait 2
+          - chat "Did you want to know anything else - the magic or potions, or will that be all?"
+          - zap 3
+        4:
+          Trigger: /Regex:Goodbye|That is all/.
+          Script:
+          - chat "May the ki guide you, traveller."
+          - zap 1
+Bottleshop3:
+  type: assignment
+  actions:
+    on assignment:
+    - trigger name:click state:true
+    on click:
+    - narrate "<green>Bob<&co> hi"
+  interact scripts:
+  - 1 BottleshopInteract
+
+BottleshopInteract:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Hello/.
+          script:
+          - chat "Would you like me to take those bottles off your hands?"
+          - zap 2
+    2:
+      chat trigger:
+        1:
+          trigger: /Yes/.
+          script:
+          - chat "Alrighty, would you like me to take 1, 5, 8, or a stack?"
+          - zap 3
+        2:
+          trigger: /No/.
+          script:
+          - chat "No worries, come back soon!"
+          - zap 1
+    3:
+      chat trigger:
+        1:
+          trigger: /1/ bottle, please.
+          script:
+          - if <player.inventory.contains[exp_bottle].quantity[1]> {
+            - take exp_bottle quantity:1
+            - chat "Mmmkay. Here you go!"
+            - execute as_op "class exp <player.name> 10"
+            - wait 2
+            - chat "Take care now!"
+            - zap 1
+            }
+            else {
+            - chat "Trying to pull a fast one? You don't have enough bottles!"
+            - wait 1
+            - chat "Come back when you have some more!"
+            - zap 1
+            }
+        2:
+          trigger: /5/ bottles, please.
+          script:
+          - if <player.inventory.contains[exp_bottle].quantity[5]> {
+            - take exp_bottle quantity:5
+            - chat "Alright, five bottles worth, coming right up."
+            - execute as_op "class exp <player.name> 50"
+            - wait 2
+            - chat "Take care, <player.name>!"
+            - zap 1
+            }
+            else {
+            - chat "Trying to pull a fast one? You don't have enough bottles!"
+            - wait 1
+            - chat "Come back when you have some more!"
+            - zap 1
+            }
+        3:
+          trigger: /8/ bottles, please.
+          script:
+          - if <player.inventory.contains[exp_bottle].quantity[8]> {
+            - take exp_bottle quantity:8
+            - chat "Here you go. 8 bottles worth."
+            - execute as_op "class exp <player.name> 80"
+            - wait 2
+            - chat "Come again, <player.name>!"
+            - zap 1
+            }
+            else {
+            - chat "Trying to pull a fast one? You don't have enough bottles!"
+            - wait 1
+            - chat "Come back when you have some more!"
+            - zap 1
+            }
+        4:
+          trigger: /64/ bottles, please.
+          script:
+          - if <player.inventory.contains[exp_bottle].quantity[64]> {
+            - take exp_bottle quantity:64
+            - chat "Oh my! A whole stack! Here, a little extra for you."
+            - execute as_op "class exp <player.name> 700"
+            - wait 2
+            - chat "Come back soon!"
+            - zap 1
+            }
+            else {
+            - chat "Trying to pull a fast one? You don't have enough bottles!"
+            - wait 1
+            - chat "Come back when you have some more!"
+            - zap 1
+            }
+        5:
+          trigger: A /stack/ of bottles, please.
+          script:
+          - if <player.inventory.contains[exp_bottle].quantity[64]> {
+            - take exp_bottle quantity:64
+            - chat "Oh my! A whole stack! Here, a little extra for you."
+            - execute as_op "class exp <player.name> 700"
+            - wait 2
+            - chat "Come back soon!"
+            - zap 1
+            }
+            else {
+            - chat "Trying to pull a fast one? You don't have enough bottles!"
+            - wait 1
+            - chat "Come back when you have some more!"
+            - zap 1
+            }    
+midnightmerchanta:
+  type: assignment
+  actions:
+    on assignment:
+      - chat "Assignment Set!"
+      - trigger name:click state:true
+    on click:
+      - chat "Usually people charge for touching like that..."
+  interact scripts:
+  - 1 midnightmerchanti
+midnightmerchanti:
+  type: interact
+  steps:
+    1:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Hello|Hi|Hey|Good Day|Greetings|Howdy/.
+          Script:
+            - chat "Good evening... what have you come here for tonight?"
+            - wait 1
+            - chat "Have you heard rumors of me... do you know anything of me at all?"
+            - zap 2
+    2:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Yes|Yeah|I have|Sure/
+          Script:
+            - chat "You are a liar... aren't you."
+            - chat "Alright... look. We can make a deal. If you've got those knowledge stones..."
+            - wait 2
+            - chat "Then maybe we can talk."
+            - if <player.inv.contains[i@knowledgestone].quantity[1]> {
+              - chat "I see you have some on you. If you're willing to trade, I can tell you about almost anything."
+              - chat "For one knowledge stone, I'll tell you a rumor I've heard. For five, I'll tell you something substantial."
+              - wait 3
+              - chat "For 10 - something very few know. For 20 - something nobody knows."
+              - wait 2
+              - chat "So... what'll it be?"
+              - wait 2
+              - chat "Or perhaps you aren't interested in rumor... perhaps you want something more... tangible?"
+              - zap 3
+              }
+              else {
+                - chat "Which... you do not. Don't waste my time... I get plenty of customers you know."
+                - wait 2
+                - chat "The only thing I can offer you is something... tangible."
+                - wait 2
+                - chat "Are you interested?"
+                - zap 3
+                }
+
+        2:
+          Trigger: /Regex:No|Not Really|No Thanks/.
+          Script:
+            - chat "*He gasps.* I'm offended! Why, I'm the only person in this town who"
+            - wait 2
+            - chat "actually knows anything about anything."
+            - wait 2
+            - chat "Alright... look. We can make a deal. If you've got those knowledge stones..."
+            - wait 2
+            - chat "Then maybe we can talk."
+            - if <player.inv.contains[i@knowledgestone].quantity[1]> {
+              - chat "I see you have some on you. If you're willing to trade, I can tell you about almost anything."
+              - chat "For one knowledge stone, I'll tell you a rumor I've heard. For five, I'll tell you something substantial."
+              - wait 3
+              - chat "For 10 - something very few know. For 20 - something nobody knows."
+              - wait 2
+              - chat "So... what'll it be?"
+              - wait 2
+              - chat "Or perhaps you aren't interested in rumor... perhaps you want something more... tangible?"
+              - zap 3
+              }
+              else {
+                - chat "Which... you do not. Don't waste my time... I get plenty of customers you know."
+                - wait 2
+                - chat "The only thing I can offer you is something... tangible."
+                - wait 2
+                - chat "Are you interested?"
+                - zap 3
+                }
+    3:
+      chat trigger:
+        1:
+          trigger: /Regex:Store|Tangible|Item|Yes|I am/.
+          script:
+            - chat "Ah... yes. Few come to me for rumors nowadays."
+            - wait 2
+            - chat "What will it be..."
+            - wait 2
+            - chat "Ah... I know. But I will not tell you. It will be 200 widgets..."
+            - wait 2
+            - chat "200 widgets... for a mystery. Sound good?"
+            - zap 4
+        2:
+          trigger: /Regex:No|Not|Sorry/.
+          script:
+            - chat "mm... then leave me be."
+            - zap 1
+    4:
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Yeah|Sure/.
+          script:
+            - chat "Good... Good."
+            - if "<player.money>" < "200" {
+              - chat "Sorry... you don't have enough cash for this."
+              - zap 1
+              }
+              else {
+              - chat "Let's see..."
+              - execute as_op "eco take <player.name> 200"
+              - wait 3
+              - give i@marijuanarecipe
+              - execute as_op "give <player.name> 351:2 1"
+              - execute as_op "give <player.name> 259 1"
+              - execute as_op "give <player.name> 339 1"
+              - chat "Take Care..."
+              - zap 1
+              }
+marijuanarecipe:
+  type: book
+  title: MJ Recipe...
+  author: Midnight Merchant
+  signed: true
+  text:
+  - 1 2 3 <n>4 CG 6<n>7 6 9
+knowledgestone:
+  type: item
+  material: EMERALD[flags=HIDE_ENCHANTS]
+  display name: <blue>Knowledge Stone
+  lore:
+  - A stone, treasured by natives and colonists alike.
+  - Many people feel compelled to share more than
+  - normal to those who offer these stones...
+  enchantments:
+  - LOOT_BONUS_BLOCKS:2
+              

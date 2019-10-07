@@ -1,0 +1,767 @@
+IronPickaxeA:
+  type: item
+  material: i@iron_pickaxe
+  display name: <&b>Smith<&sq>s Pick
+  lore:
+  - A standard iron pickaxe made by
+  - your everyday blacksmith.
+  recipe: 
+  - i@iron_ingot|i@iron_ingot|i@iron_ingot
+  - i@air|i@stick|i@air
+  - i@CraftingGem|i@stick|i@air
+
+
+GunslingerCheck:
+  type: assignment
+  interact scripts:
+  - gunslingerchecki
+gunslingerchecki:
+  type: interact
+  steps:
+    1:
+      click trigger:
+        script:
+        - if <player.has_flag[Tinkerer]> {
+          - narrate "Type /class profess Gunslinger"
+          - execute as_server "pex user <player.name> add skillapi.class.Gunslinger"
+          - execute as_server "pex user <player.name> group add Pilot"
+          }
+          else {
+          - chat "You ain't no gunslinger..."
+          }
+
+SkillsCrafting:
+  type: world
+  events:
+    on player crafts white_shulker_box:
+      - determine cancelled
+    on player crafts orange_shulker_box:
+      - determine cancelled
+    on player crafts light_blue_shulker_box:
+      - determine cancelled
+    on player crafts yellow_shulker_box:
+      - determine cancelled
+    on player crafts lime_shulker_box:
+      - determine cancelled
+    on player crafts pink_shulker_box:
+      - determine cancelled
+    on player crafts gray_shulker_box:
+      - determine cancelled
+    on player crafts silver_shulker_box:
+      - determine cancelled
+    on player crafts cyan_shulker_box:
+      - determine cancelled
+    on player breaks diamond_ore:
+      - if !<player.has_flag[Miner]> determine NOTHING
+#Herbalism Items#
+    on HerbalistLeaves recipe formed:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on player crafts HerbalistLeaves:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on Papaya recipe formed:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on player crafts Papaya:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on WhiteSnakeroot recipe formed:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on player crafts WhiteSnakeroot:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on player crafts GardenAngelica:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on GardenAngelica recipe formed:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on Astragalus recipe formed:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+    on player crafts Astragalus:
+      - if !<player.has_flag[Herbalist]> determine cancelled
+#Mining Items#
+    on Ruby recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Ruby:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Prometheum recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Prometheum:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Adamantine recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Adamantine:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Mithril recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Mithril:
+      - if !<player.has_flag[Miner]> determine cancelled  
+    on AstralSilver recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts AstralSilver:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Titanium recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Titanium:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Aether recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Aether:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Darksteel recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Darksteel:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Cobalt recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Cobalt:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Quicksilver recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Quicksilver:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Lightstone recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Lightstone:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Bronze recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Bronze:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Platinum recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Platinum:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on Chain recipe formed:
+      - if !<player.has_flag[Miner]> determine cancelled
+    on player crafts Chain:
+      - if !<player.has_flag[Miner]> determine cancelled
+    #Smithing#
+    #Flags: Smith1, Smith2, Smith3, MasterSmith, ArmorSmith, ToolSmith, WeaponSmith
+    
+    on shield recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts shield:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+    on CraftingGem recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+    on player crafts CraftingGem:
+      - if !<player.has_flag[Smith1]> determine cancelled
+    
+    on CraftingGem2 recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+    on player crafts CraftingGem2:
+      - if !<player.has_flag[Smith1]> determine cancelled
+    
+    on CraftingGem3 recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+    on player crafts CraftingGem3:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      
+    on CraftingGem4 recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+    on player crafts CraftingGem4:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+
+    on MithrilHelm recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts MithrilHelm:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on MithrilChest recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts MithrilChest:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on MithrilLegs recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts MithrilLegs:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on MithrilBoots recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts MithrilBoots:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on MithrilBlade recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts MithrilBlade:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+    on AstralSilverHelm recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts AstralSilverHelm:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on AstralSilverChest recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled 
+    on player crafts AstralSilverChest:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on AstralSilverLegs recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts AstralSilverLegs:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on AstralSilverBoots recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled 
+    on player crafts AstralSilverBoots:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on AstralSilverBlade recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts AstralSilverBlade:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+    on DarksteelHelm recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts DarksteelHelm:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on DarksteelChest recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts DarkSteelChest:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on DarksteelLegs recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on DarksteelBoots recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on DarksteelBlade recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on CobaltHelm recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on CobaltChest recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts CobaltChest:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on CobaltLegs recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts CobaltLegs:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on CobaltBoots recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts CobaltBoots:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on ChainHelm recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts ChainHelm:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on ChainChest recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts ChainChest:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on ChainLegs recipe formed:
+     - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts ChainLegs:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on ChainBoots recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts ChainBoots:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on AetherHelm recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts AetherHelm:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on AetherChest recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts AetherChest:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on AetherLegs recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts AetherLegs:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on AetherBoots recipe formed:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts AetherBoots:
+      - if !<player.has_flag[MasterSmith]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on IronHelm recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts IronHelm:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on IronChest recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts IronChest:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on IronLegs recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+    on player crafts IronLegs:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on IronBoots recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled  
+    on player crafts IronBoots:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ArmorSmith]> determine cancelled
+      
+    on IronShovel recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts IronShovel:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on IronAxe recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled  
+    on player crafts IronAxe:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled 
+      
+    on IronSword recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts IronSword:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled 
+      
+    on IronHoe recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts IronHoe:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on IronPickaxeA recipe formed:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts IronPickaxeA:
+      - if !<player.has_flag[Smith1]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on DarksteelPick recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts DarksteelPick:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on DarksteelHoe recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts DarksteelHoe:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on DarksteelAxe recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts DarksteelAxe:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+    on DarksteelShield recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts DarksteelShield:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on DarksteelShovel recipe formed:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts DarksteelShovel:
+      - if !<player.has_flag[Smith2]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+     
+    on AstralSilverPick recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts AstralSilverPick:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on AstralSilverHoe recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts AstralSilverHoe:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on AstralSilverAxe recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled        
+    on player crafts AstralSilverAxe:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+    on AstralSilverShield recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts AstralSilverShield: 
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+    on AstralSilverShovel recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts AstralSilverShovel:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on TitaniumPick recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts TitaniumPick:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on TitaniumHoe recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+    on player crafts TitaniumHoe:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on TitaniumAxe recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts TitaniumAxe:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+    on TitaniumShield recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts TitaniumShield:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+    on TitaniumShovel recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled     
+    on player crafts TitaniumShovel:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[ToolSmith]> determine cancelled
+      
+    on TitaniumBlade recipe formed:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+    on player crafts TitaniumBlade:
+      - if !<player.has_flag[Smith3]> determine cancelled
+      - if !<player.has_flag[WeaponSmith]> determine cancelled
+      
+
+#Tinkerer#
+    on DISPENSER recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts DISPENSER:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on OBSERVER recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts OBSERVER:
+      - if !<player.has_flag[Tinkerer]> determine cancelled  
+    on STICKY_PISTON recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts STICKY_PISTON:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on PISTON recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts PISTON:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on DROPPER recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts DROPPER:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on REPEATER recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts REPEATER:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on COMPARATOR recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled  
+    on player crafts COMPARATOR:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on FlintLock recipe formed:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on player crafts FlintLock:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on Crossbow recipe formed:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on player crafts Crossbow:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on BreechLoader recipe formed:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on player crafts BreechLoader:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on Matchlock recipe formed:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on player crafts Matchlock:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on Mechanism recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts Mechanism:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on Mechanism2 recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts Mechanism2:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on Mechanism3 recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts Mechanism3:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on Mechanism4 recipe formed:
+      - if !<player.has_flag[MasterTinkerer]> determine cancelled
+    on player crafts Mechanism4:
+      - if !<player.has_flag[MasterTinkerer]> determine cancelled
+    on Bolt recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts Bolt:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on Cartridge recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts Cartridge:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on Ramrod recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts Ramrod:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on Steamcell recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts Steamcell:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on Ammunition recipe formed:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on player crafts Ammunition:
+      - if !<player.has_flag[Gunsmith]> determine cancelled
+    on ExplosivePowder recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts ExplosivePowder:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on Barrel recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts Barrel:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on PilotWheel recipe formed:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    on player crafts PilotWheel:
+      - if !<player.has_flag[Tinkerer]> determine cancelled
+    #Farmer#
+    on StretchedLeather recipe formed:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on player crafts StretchedLeather:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on StretchedLeatherSaddle recipe formed:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on player crafts StretchedLeatherSaddle:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on WheatBundle recipe formed:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on player crafts WheatBundle:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on Flax recipe formed:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on player crafts Flax:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on FineString recipe formed:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on player crafts FineString:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on Rope recipe formed:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on player crafts Rope:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on GApple recipe formed:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on player crafts GApple:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on GCarrot recipe formed:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    on player crafts GCarrot:
+      - if !<player.has_flag[Farmer]> determine cancelled
+    #Fisherman#
+    on Rigging recipe formed:
+      - if !<player.has_flag[Fisherman]> determine cancelled
+    on player crafts Rigging:
+      - if !<player.has_flag[Fisherman]> determine cancelled
+    on Sailcloth recipe formed:
+      - if !<player.has_flag[Fisherman]> determine cancelled
+    on player crafts Sailcloth:
+      - if !<player.has_flag[Fisherman]> determine cancelled
+    on CanvasPatch recipe formed:
+      - if !<player.has_flag[Fisherman]> determine cancelled
+    on player crafts CanvasPatch:
+      - if !<player.has_flag[Fisherman]> determine cancelled
+    #Native#
+    on IvorySpeedMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvorySpeedMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryHasteMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryHasteMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryHealthMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryHealthMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryNightVisionMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryNightVisionMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryInvisMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryInvisMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryWaterBreathingMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryWaterBreathingMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryRegenMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryRegenMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryJumpMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryJumpMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryStrengthMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryStrengthMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on IvoryWolfMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts IvoryWolfMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenSpeedMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenSpeedMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenHasteMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenHasteMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenHealthMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenHealthMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenNightVisionMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenNightVisionMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenInvisMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenInvisMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenWaterBreathingMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenWaterBreathingMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenRegenMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenRegenMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenJumpMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenJumpMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenStrengthMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenStrengthMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    on WoodenWolfMask recipe formed:
+      - if !<player.has_flag[Native]> determine cancelled
+    on player crafts WoodenWolfMask:
+      - if !<player.has_flag[Native]> determine cancelled
+    #COOKING#
+    on Sushi recipe formed:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on player crafts Sushi:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on BeefStew recipe formed:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on player crafts BeefStew:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on FriedChicken recipe formed:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on player crafts FriedChicken:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on ChickenSoup recipe formed:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on player crafts ChickenSoup:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on Noodles recipe formed:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on player crafts Noodles:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on ApplePie recipe formed:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on player crafts ApplePie:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on LoadedPotato recipe formed:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on player crafts LoadedPotato:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on CarrotCake recipe formed:
+      - if !<player.has_flag[Cook]> determine cancelled
+    on player crafts CarrotCake:
+      - if !<player.has_flag[Cook]> determine cancelled

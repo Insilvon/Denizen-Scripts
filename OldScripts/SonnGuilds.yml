@@ -1,0 +1,1390 @@
+ExplorerRandom:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+  interact scripts:
+  - 1 ExplorerRandomi
+ExplorerRandomi:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hi|hey|hello|hi|Hey|Good day|Greetings/.
+          script:
+          - if <player.flag[EGMember]> {
+            - chat "Greetings brother. Staying strong, I hope."
+            - wait 1
+            - chat "You check in with Lewis lately?"
+            }
+            else {
+            - chat "Welcome stranger..."
+            - wait 1
+            - chat "Just don't stick your nose where it don't belong, you hear? We're serious here."
+            }
+ArcanistRandom:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+  interact scripts:
+  - 1 ArcanistRandomi
+ArcanistRandomi:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|Hi|hey|hello|hi|Hey|Good day|Greetings/.
+          script:
+          - if <player.flag[AGMember]> {
+            - chat "Greetings fellow. Staying strong, I hope."
+            - wait 1
+            - chat "You check in with Kanja lately?"
+            }
+            else {
+            - chat "Welcome stranger..."
+            - wait 1
+            - chat "Just don't stick your nose where it don't belong, you hear? We're serious here."
+            }
+ExplorerGuildQuestA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment set!"
+    - trigger name:Click state:true
+  interact scripts:
+  - 1 ExplorerGuildQuestI
+FlagFix1:
+  type: task
+  script:
+  - flag player FGMember
+ExplorerGuildQuestI:
+  type: interact
+  steps:
+    1:
+      click trigger:
+        script:
+        - chat "Welcome to the Explorer's Guild."
+        - wait 2
+        - chat "We take great pride in surveying beyond the wall and... and..."
+        - wait 2
+        - chat "Well, I suspect you already know all that."
+        - wait 1
+        - chat "Are you interested in joining our guild?"
+        - if <player.flag[AGMember]> {
+          - wait 1
+          - chat "Wait a moment... you're a member of the Arcanist guild already, aren't you?"
+          - wait 1
+          - chat "You shouldn't have the time. Leave them, then come back. Duty is important."
+          }
+          else {
+          - if <player.flag[FGMember]> {
+            - chat "You're a member of the Fighter's guild. Leave them, if you wish to join."
+            }
+            else {
+            - zap 2
+            }
+          }
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/.
+          script:
+          - chat "Welcome to the Explorer's Guild."
+          - wait 2
+          - chat "We take great pride in surveying beyond the wall and... and..."
+          - wait 2
+          - chat "Well, I suspect you already know all that."
+          - wait 1
+          - chat "Are you interested in joining our guild?"
+          - if <player.flag[AGMember]> {
+            - wait 1
+            - chat "Wait a moment... you're a member of the Arcanist guild already, aren't you?"
+            - wait 1
+            - chat "You shouldn't have the time. Leave them, then come back. Duty is important."}
+            else {
+            - if <player.flag[FGMember]> {
+              - chat "You're a member of the Fighter's guild. Leave them, if you wish to join."}
+              }
+              else {
+              - zap 2
+              }
+          
+    2:
+      chat trigger:
+        1:
+          trigger: /Yes/, I will join.
+          script:
+          - chat "Glad to hear it! We can always use more manpower."
+          - wait 1
+          - chat "I'm Leroy, the main assignment giver for the Explorer's Guild."
+          - wait 2
+          - chat "When you're ready to get started, come let me know."
+          - ^zap step:noob
+          - ^flag player EGMember
+        2:
+          trigger: /No/, I will not.
+          script:
+          - chat "I see. Only the true heroes tend to join us anyway..."
+          - wait 1
+          - chat "I suppose we'll just have to make do. *he smiles.*"
+    noob:
+      click trigger:
+        script:
+        - chat "Welcome back, adventurer."
+        - wait 1
+        - chat "Glad to see that you're still alive."
+        - wait 2
+        - chat "Are you ready for your first assignment?"
+      chat trigger:
+        1:
+          trigger: /Yes/, I am.
+          script:
+          - chat "Good good. There's always something to do."
+          - wait 1
+          - chat "Since you're a new recruit, I'll give you your newbie job."
+          - wait 2
+          - chat "All new recruits, in order to stay alive, recieve a special sword-"
+          - wait 2
+          - chat "From the guard's blacksmith."
+          - wait 2
+          - chat "Go take this form to Andre of the Guard's Barracks, and he'll give you a sword."
+          - give i@CadetSwordForm
+          - ^flag player EGCQuest
+          - wait 2
+          - chat "Then, return to me when you are done."
+          - zap step:return1
+        2:
+          trigger: /No/, I am not.
+          script:
+          - chat "There's work to be done, you know. Try to make it quick."
+    return1:
+      click trigger:
+        script:
+        - if <player.flag[ECadet]> {
+          - chat "Ah, *he spies the new scabbard* I see you got your sword."
+          - wait 2
+          - chat "In that case, I can call you an official member of our guild!"
+          - wait 2
+          - chat "Good good. Alright. Are you ready for your first assignment?"
+          - zap step:cadet
+          }
+          else {
+          - chat "Er... no sword yet? Gotta start with that, kiddo."
+          }
+    cadet:
+      click trigger:
+        script:
+        - if <player.flag[EGCooldown]> {
+          - random {
+            - chat "Didn't I tell you to take a breather, Cadet?"
+            - chat "Oi, I understand you're excited, but you need to relax."
+            - chat "24 hours. I told you. Go sleep or something."
+            - chat "Do you ever sleep?"
+            - chat "I'm still writing my assignments. Come back soon."
+            }
+          }
+          else {
+          - random {
+            - chat "Welcome back. Can I help you with something?"
+            - chat "Good day, recruit. Are you ready for more?"
+            - chat "Oh, yes. You. Want a job?"
+            }
+          }  
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/.
+          script:
+          - if <player.flag[EGCooldown]> {
+            - random {
+              - chat "Didn't I tell you to take a breather, Cadet?"
+              - chat "Oi, I understand you're excited, but you need to relax."
+              - chat "24 hours. I told you. Go sleep or something."
+              - chat "Do you ever sleep?"
+              - chat "I'm still writing my assignments. Come back soon."
+              }
+            }
+            else {
+            - random {
+              - chat "Welcome back, can I help you with something?"
+              - chat "Good day, recruit. Are you ready for more?"
+              - chat "Oh, yes. You. Want a job?"
+              }
+            }
+        2:
+          trigger: /yes/
+          script:
+          - chat "Great. Here's an assignment for you..."
+          - random {
+            - inject explorerscript1
+            - inject explorerscript2
+            - inject explorerscript3
+            - inject explorerscript4
+            - inject explorerscript5
+            - inject explorerscript6
+            }
+        3:
+          trigger: /no/
+          script:
+          - chat "I'll be here... always stuff to do."
+          - zap step:cadet
+        4:
+          trigger: /Regex:leave/.
+          script:
+          - chat "You wish to leave? This is a shame... are you sure?"
+          - zap step:leavecheck
+    leavecheck:
+      chat trigger:
+        1:
+          trigger: /Regex:Yea|Yes|yeah|indeed/.
+          script:
+          - chat "A shame... but I see. Good day, then."
+          - flag player EGMember:false
+          - zap 1
+        2:
+          trigger: /Regex:No|Nah|Not|no|Goodbye/.
+          script:
+          - chat "Reassuring. Take a breather, hero."
+          - zap step:cadet
+    EGtask1check: 
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[explorertask1complete]> {
+            - if <player.inventory.contains[i@GeraltEGReport]> {
+              - chat "Ah, thank you <player.name> for bringing me the report."
+              - take i@GeraltEGReport
+              - wait 2
+              - chat "Here is your reward."
+              - execute as_op "eco give <player.name> 500"
+              - wait 2
+              - chat "Come back tomorrow. I'll have more work for you then."
+              - flag player explorertask1complete:false
+              - flag player EGCooldown duration:22h
+              - zap cadet
+              }
+              else {
+              - chat "Where is the report? I receieved word that they delivered it to you..."
+              - wait 2
+              - chat "Bring me that report cadet. That comes first. Go back to them if you have to."
+            }
+            else {
+            - chat "I need you to get that report to me as soon as possible."
+            - wait 2
+            - chat "Come talk to me when you have it."
+            - wait 1
+            - chat "Or do you need a reminder?"
+            }
+        2:
+          trigger: /Regex:remind|Reminder/.
+          script:
+          - inject explorerscript1
+    EGtask2check: 
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[explorertask2complete]> {
+              - if <player.inventory.contains[i@SarahEGReport]> {
+              - take i@SarahEGReport
+              - chat "Ah, thank you <player.name> for bringing me the report."
+              - wait 2
+              - chat "Here is your reward."
+              - execute as_op "eco give <player.name> 500"
+              - wait 2
+              - chat "Come back tomorrow. I'll have more work for you then."
+              - flag player explorertask2complete:false
+              - flag player EGCooldown duration:22h
+              - zap cadet
+              }
+              else {
+              - chat "Where's the report? Go get one! Even if you need to go back!"
+              }
+            }
+            else {
+            - chat "I need you to get that report to me as soon as possible."
+            - wait 2
+            - chat "Come talk to me when you have it."
+            - wait 1
+            - chat "Or do you need a reminder?"
+            }
+        2:
+          trigger: /Regex:remind|Reminder/.
+          script:
+          - inject explorerscript2
+    EGtask3check: 
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[explorertask3complete]> {
+            - if <player.inventory.contains[i@JessicaEGReport]> {
+              - take i@JessicaEGReport
+              - chat "Ah, thank you <player.name> for bringing me the report."
+              - wait 2
+              - chat "Here is your reward."
+              - execute as_op "eco give <player.name> 500"
+              - wait 2
+              - chat "Come back tomorrow. I'll have more work for you then."
+              - flag player explorertask3complete:false
+              - flag player EGCooldown duration:22h
+              - zap cadet
+              }
+              else {
+              - chat "Where's the report? Go get one! Even if you need to go back!"
+              }
+            }
+            else {
+            - chat "I need you to get that report to me as soon as possible."
+            - wait 2
+            - chat "Come talk to me when you have it."
+            - wait 1
+            - chat "Or do you need a reminder?"
+            }
+        2:
+          trigger: /Regex:remind|Reminder/.
+          script:
+          - inject explorerscript3
+    EGtask4check: 
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[explorertask4complete]> {
+              - if <player.inventory.contains[i@RobertEGReport]> {
+              - chat "Ah, thank you <player.name> for bringing me the report."
+              - take i@RobertEGReport
+              - wait 2
+              - chat "Here is your reward."
+              - execute as_op "eco give <player.name> 500"
+              - wait 2
+              - chat "Come back tomorrow. I'll have more work for you then."
+              - flag player explorertask4complete:false
+              - flag player EGCooldown duration:22h
+              - zap cadet
+              }
+              else {
+              - chat "Where's the report? Go get one! Even if you need to go back!"
+              }
+            }
+            else {
+            - chat "I need you to get that report to me as soon as possible."
+            - wait 2
+            - chat "Come talk to me when you have it."
+            - wait 1
+            - chat "Or do you need a reminder?"
+            }
+        2:
+          trigger: /Regex:remind|Reminder/.
+          script:
+          - inject explorerscript4
+    EGtask5check: 
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[explorertask5complete]> {
+            - if <player.inventory.contains[i@RickEGReport]> {
+              - take i@RickEGReport
+              - chat "Ah, thank you <player.name> for bringing me the report."
+              - wait 2
+              - chat "Here is your reward."
+              - execute as_op "eco give <player.name> 500"
+              - wait 2
+              - chat "Come back tomorrow. I'll have more work for you then."
+              - flag player explorertask5complete:false
+              - flag player EGCooldown duration:22h
+              - zap cadet
+              }
+              else {
+              - chat "Where's the report? Go get one! Even if you need to go back!"
+              }
+            }
+            else {
+            - chat "I need you to get that report to me as soon as possible."
+            - wait 2
+            - chat "Come talk to me when you have it."
+            - wait 1
+            - chat "Or do you need a reminder?"
+            }
+        2:
+          trigger: /Regex:remind|Reminder/.
+          script:
+          - inject explorerscript5
+    EGtask6check: 
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[explorertask6complete]> {
+            - if <player.inventory.contains[i@DussellEGReport]> {
+              - take i@DusselEGReport
+              - chat "Ah, thank you <player.name> for bringing me the report."
+              - wait 2
+              - chat "Here is your reward."
+              - execute as_op "eco give <player.name> 500"
+              - wait 2
+              - chat "Come back tomorrow. I'll have more work for you then."
+              - flag player explorertask6complete:false
+              - flag player EGCooldown duration:22h
+              - zap cadet
+              }
+              else {
+              - chat "Where's the report? Go get one! Even if you need to go back!"
+              }
+            }
+            else {
+            - chat "I need you to get that report to me as soon as possible."
+            - wait 2
+            - chat "Come talk to me when you have it."
+            - wait 1
+            - chat "Or do you need a reminder?"
+            }
+        2:
+          trigger: /Regex:remind|Reminder/.
+          script:
+          - inject explorerscript6
+            
+CadetSwordForm:
+  type: item
+  material: paper
+  display name: <green>Explorer's Guild Voucher
+  lore:
+  - A voucher from the Explorer's Guild
+  - to receieve a gift from Andre of the
+  - Guard Barrack's Smithy. 
+#-------------------------------------------------------
+explorerscript1:
+  type: task
+  script:
+  - chat "We have several operatives out in the center isle to observe and record new findings."
+  - wait 2
+  - chat "However, they cannot leave their region to bring back their reports, as something crucial might happen when they are away."
+  - wait 3
+  - chat "I need you to find Geralt and bring back his report. He should be Southwest of here beyond the farm next to the ship wrecks."
+  - ^flag player "explorertask1start"
+  - zap script:ExplorerGuildQuestI step:EGtask1check
+explorerscript2:
+  type: task
+  script:
+  - chat "We have several operatives out in the center isle to observe and record new findings."
+  - wait 2
+  - chat "However, they cannot leave their region to bring back their reports, as something crucial might happen when they are away."
+  - wait 3
+  - chat "I need you to find Sarah and bring back her report. She should be at the Soutwest corner of the center isle, observing a nearby native camp."
+  - ^flag player "explorertask2start"
+  - zap script:ExplorerGuildQuestI step:EGtask2check
+explorerscript3:
+  type: task
+  script:
+  - chat "We have several operatives out in the center isle to observe and record new findings."
+  - wait 2
+  - chat "However, they cannot leave their region to bring back their reports, as something crucial might happen when they are away."
+  - wait 3
+  - chat "I need you to find Jessica, who is currently observing a native camp south of Sonn. She should be on the north side of a big lake."
+  - wait 2
+  - chat "Follow the eastern road out of Sonn and turn right. Follow that road until you reach a camp and a fork in the road."
+  - wait 2
+  - chat "Take the right road and she should be northeast of the native camp."
+  - ^flag player "explorertask3start"
+  - zap script:ExplorerGuildQuestI step:EGtask3check
+explorerscript4:
+  type: task
+  script:
+  - chat "We have several operatives out in the center isle to observe and record new findings."
+  - wait 2
+  - chat "However, they cannot leave their region to bring back their reports, as something crucial might happen when they are away."
+  - wait 3
+  - chat "I need you to find Robert and bring back his report."
+  - wait 2
+  - chat "He should be observing a developing pirate hold and a small church on the southeastern part of the center isle."
+  - wait 2
+  - chat "Take the road from Primnee and turn left. Follow the road until you come to a fork. Take the left road and look for the church on the right."
+  - wait 2
+  - chat "He should be just past the church next to a large tree."
+  - ^flag player "explorertask4start"
+  - zap script:ExplorerGuildQuestI step:EGtask4check
+explorerscript5:
+  type: task
+  script:
+  - chat "We have several operatives out in the center isle to observe and record new findings."
+  - wait 2
+  - chat "However, they cannot leave their region to bring back their reports, as something crucial might happen when they are away."
+  - wait 3
+  - chat "I need you to find Rick, who should be investigating a native camp and an ancient native castle."
+  - wait 2
+  - chat "Go to Pita's Inn and head southwest. Rick should be in between the castle ruins and the native camp behind a tree."
+  - ^flag player "explorertask5start"
+  - zap script:ExplorerGuildQuestI step:EGtask5check
+explorerscript6:
+  type: task
+  script:
+  - chat "We have several operatives out in the center isle to observe and record new findings."
+  - wait 2
+  - chat "However, they cannot leave their region to bring back their reports, as something crucial might happen when they are away."
+  - wait 3
+  - chat "I need you to go find Dussell and bring back his report."
+  - wait 2
+  - chat "He is currently investigating a cave system southeast of Sonn. Follow the road east and turn right at the fork."
+  - wait 2
+  - chat "Then, when you come to the 'T', go left off the road and into the cave."
+  - ^flag player "explorertask6start"
+  - zap script:ExplorerGuildQuestI step:EGtask6check
+#ExplorersGuildNPCs (Field)
+
+#Quest 1
+
+GeraltAssignmenta:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Hey, you could've just said hello."
+  interact scripts:
+  - 1 GeraltAssignmenti
+GeraltAssignmenti:
+  type: interact
+  steps:
+    1:
+      Chat Trigger:
+        1:
+          trigger: /Regex:Hi|hi|Hello|hello|Greeting|greeting|Hey|hey/.
+          Script:
+            - if <player.flag[explorertask1start]> {
+              - chat "Oh, you must be the report runner."
+              - wait 2
+              - chat "Do you want me to give you my current report?"
+              - zap 2
+              }
+              else {
+              - chat "Take care of yourself out here. The natives are the least of your concerns."
+              - zap 1
+              }
+    2:
+      Click Trigger:
+        script:
+        - chat "Do you want me to give you my current report?"
+      Chat Trigger:
+        1:
+          trigger: /Regex:Yes|yes|Ya|ya/
+          script:
+          - chat "Alright, here you go. Make sure this gets back to the guild soon."
+          - wait 2
+          - chat "Otherwise, they will send another person to get my report."
+          - give i@GeraltEGReport qty:1
+          - ^flag player "explorertask1complete"
+          - ^flag player "explorertask1start:false"
+          - zap 1
+        2:
+          trigger: /Regex:No|no|Not|not|Later|later/
+          script:
+            - chat "Alright, well it's ready when you want it."
+            - zap 1
+GeraltEGReport:
+  type: item
+  material: paper
+  display name: Geralt's Explorers Guild Report
+  lore:
+  - A detailed report about recent findings
+  - and activity on the shipwreck coast. 
+  - Includes writing, pictures, and figures.
+
+#Quest2
+
+SarahAssignmenta:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Hey, you could've just said hello."
+  interact scripts:
+  - 1 SarahAssignmenti
+SarahAssignmenti:
+  type: interact
+  steps:
+    1:
+      Chat Trigger:
+        1:
+          trigger: /Regex:Hi|hi|Hello|hello|Greeting|greeting|Hey|hey/.
+          Script:
+            - if <player.flag[explorertask2start]> {
+              - chat "Oh, you must be the report runner."
+              - wait 2
+              - chat "Do you want me to give you my current report?"
+              - zap 2
+              }
+              else {
+              - chat "Watch out for native patrols. They are not friendly."
+              - zap 1
+              }
+    2:
+      Click Trigger:
+        script:
+        - chat "Do you want me to give you my current report?"
+      Chat Trigger:
+        1:
+          trigger: /Regex:Yes|yes|Ya|ya/
+          script:
+          - chat "Alright, here you go. Make sure this gets back to the guild soon."
+          - wait 2
+          - chat "Otherwise, they will send another person to get my report."
+          - give i@SarahEGReport qty:1
+          - ^flag player "explorertask2complete"
+          - ^flag player "explorertask2start:false"
+          - zap 1
+        2:
+          trigger: /Regex:No|no|Not|not|Later|later/
+          script:
+            - chat "Alright, well it's ready when you want it."
+            - zap 1
+SarahEGReport:
+  type: item
+  material: paper
+  display name: Sarah's Explorers Guild Report
+  lore:
+  - A detailed report about recent findings
+  - and activity in the native camp. Includes
+  - writing, pictures, and figures.
+
+#Quest3
+
+JessicaAssignmenta:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Hey, you could've just said hello."
+  interact scripts:
+  - 1 JessicaAssignmenti
+JessicaAssignmenti:
+  type: interact
+  steps:
+    1:
+      Chat Trigger:
+        1:
+          trigger: /Regex:Hi|hi|Hello|hello|Greeting|greeting|Hey|hey/.
+          Script:
+            - if <player.flag[explorertask3start]> {
+              - chat "Oh, you must be the report runner."
+              - wait 2
+              - chat "Do you want me to give you my current report?"
+              - zap 2
+              }
+              else {
+              - chat "Watch out for native patrols. They are not friendly."
+              - zap 1
+              }
+    2:
+      Click Trigger:
+        script:
+        - chat "Do you want me to give you my current report?"
+      Chat Trigger:
+        1:
+          trigger: /Regex:Yes|yes|Ya|ya/
+          script:
+          - chat "Alright, here you go. Make sure this gets back to the guild soon."
+          - wait 2
+          - chat "Otherwise, they will send another person to get my report."
+          - give i@JessicaEGReport qty:1
+          - ^flag player "explorertask3complete"
+          - ^flag player "explorertask3start:false"
+          - zap 1
+        2:
+          trigger: /Regex:No|no|Not|not|Later|later/
+          script:
+            - chat "Alright, well it's ready when you want it."
+            - zap 1
+JessicaEGReport:
+  type: item
+  material: paper
+  display name: Jessica's Explorers Guild Report
+  lore:
+  - A detailed report about recent findings
+  - and activity in the native camp. Includes
+  - writing, pictures, and figures.
+  
+#Quest4
+
+RobertAssignmenta:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Hey, you could've just said hello."
+  interact scripts:
+  - 1 RobertAssignmenti
+RobertAssignmenti:
+  type: interact
+  steps:
+    1:
+      Chat Trigger:
+        1:
+          trigger: /Regex:Hi|hi|Hello|hello|Greeting|greeting|Hey|hey/.
+          Script:
+            - if <player.flag[explorertask4start]> {
+              - chat "Oh, you must be the report runner."
+              - wait 2
+              - chat "Do you want me to give you my current report?"
+              - zap 2
+              }
+              else {
+              - chat "Watch out for the pirates on the coast. They will attack on sight."
+              - zap 1
+              }
+    2:
+      Click Trigger:
+        script:
+        - chat "Do you want me to give you my current report?"
+      Chat Trigger:
+        1:
+          trigger: /Regex:Yes|yes|Ya|ya/
+          script:
+          - chat "Alright, here you go. Make sure this gets back to the guild soon."
+          - wait 2
+          - chat "Otherwise, they will send another person to get my report."
+          - give i@RobertEGReport qty:1
+          - ^flag player "explorertask4complete"
+          - ^flag player "explorertask4start:false"
+          - zap 1
+        2:
+          trigger: /Regex:No|no|Not|not|Later|later/
+          script:
+            - chat "Alright, well it's ready when you want it."
+            - zap 1
+RobertEGReport:
+  type: item
+  material: paper
+  display name: Robert's Explorers Guild Report
+  lore:
+  - A detailed report about recent findings
+  - and activity in the pirate hold. Includes
+  - writing, pictures, and figures.
+  
+#Quest5
+
+RickAssignmenta:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Hey, you could've just said hello."
+  interact scripts:
+  - 1 RickAssignmenti
+RickAssignmenti:
+  type: interact
+  steps:
+    1:
+      Chat Trigger:
+        1:
+          trigger: /Regex:Hi|hi|Hello|hello|Greeting|greeting|Hey|hey/.
+          Script:
+            - if <player.flag[explorertask5start]> {
+              - chat "Oh, you must be the report runner."
+              - wait 2
+              - chat "Do you want me to give you my current report?"
+              - zap 2
+              }
+              else {
+              - chat "Watch out for the natives, they aren't the friendliest people around."
+              - zap 1
+              }
+    2:
+      Click Trigger:
+        script:
+        - chat "Do you want me to give you my current report?"
+      Chat Trigger:
+        1:
+          trigger: /Regex:Yes|yes|Ya|ya/
+          script:
+          - chat "Alright, here you go. Make sure this gets back to the guild soon."
+          - wait 2
+          - chat "Otherwise, they will send another person to get my report."
+          - give i@RickEGReport qty:1
+          - ^flag player "explorertask5complete"
+          - ^flag player "explorertask5start:false"
+          - zap 1
+        2:
+          trigger: /Regex:No|no|Not|not|Later|later/
+          script:
+            - chat "Alright, well it's ready when you want it."
+            - zap 1
+RickEGReport:
+  type: item
+  material: paper
+  display name: Rick's Explorers Guild Report
+  lore:
+  - A detailed report about recent findings
+  - and activity in the native camp and castle 
+  - ruins. Includes writing, pictures, and figures.
+  
+#Quest6
+
+DussellAssignmenta:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment Set!"
+    - trigger name:click state:true
+    on click:
+    - chat "Hey, you could've just said hello."
+  interact scripts:
+  - 1 DussellAssignmenti
+DussellAssignmenti:
+  type: interact
+  steps:
+    1:
+      Chat Trigger:
+        1:
+          trigger: /Regex:Hi|hi|Hello|hello|Greeting|greeting|Hey|hey/.
+          Script:
+            - if <player.flag[explorertask6start]> {
+              - chat "Oh, you must be the report runner."
+              - wait 2
+              - chat "Do you want me to give you my current report?"
+              - zap 2
+              }
+              else {
+              - chat "Be careful in this cave, there are dangerous things within."
+              - zap 1
+              }
+    2:
+      Click Trigger:
+        script:
+        - chat "Do you want me to give you my current report?"
+      Chat Trigger:
+        1:
+          trigger: /Regex:Yes|yes|Ya|ya/
+          script:
+          - chat "Alright, here you go. Make sure this gets back to the guild soon."
+          - wait 2
+          - chat "Otherwise, they will send another person to get my report."
+          - give i@DussellEGReport qty:1
+          - ^flag player "explorertask6complete"
+          - ^flag player "explorertask6start:false"
+          - zap 1
+        2:
+          trigger: /Regex:No|no|Not|not|Later|later/
+          script:
+            - chat "Alright, well it's ready when you want it."
+            - zap 1
+DussellEGReport:
+  type: item
+  material: paper
+  display name: Dussell's Explorers Guild Report
+  lore:
+  - A detailed report about recent findings
+  - and activity in the cave. Includes writing,
+  - pictures, and figures.
+FighterGuildQuestA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment set!"
+    - trigger name:Click state:true
+  interact scripts:
+  - 1 FighterGuildQuestI
+
+FighterGuildQuestI:
+  type: interact
+  steps:
+    start*:
+      click trigger:
+        script:
+        - chat "Ho! Welcome to the fighter's guild, wimp."
+        - wait 2
+        - chat "In case you've been deaf all this time, we focus on training ourselves"
+        - wait 2
+        - chat "to be the strongest, best fighters we can be. If you aren't committed, get out."
+        - wait 1
+        - chat "Are you interested in joining our guild?"
+      chat trigger:
+        1:
+          trigger: /Yes/, I will join.
+          script:
+          - chat "Aha! Wonderful! That's the spirit I like to see."
+          - wait 1
+          - chat "I'm Jorgiff, the assignment-giver of the guild."
+          - wait 2
+          - chat "When you're ready to get started, come see me. Get prepared!"
+          - ^zap step:noob
+          - ^flag server FGMembers:->:<player>
+        2:
+          trigger: /No/, I will not.
+          script:
+          - chat "Probably for the best. We only take truly committed and strong people here."
+    noob:
+      click trigger:
+        script:
+        - chat "Welcome back, brother."
+        - wait 1
+        - chat "I figured you'd be back soon."
+        - wait 2
+        - chat "Are you ready for your first assignment?"
+      chat trigger:
+        1:
+          trigger: /Yes/, I am.
+          script:
+          - chat "Ho ho! Wonderful!"
+          - wait 1
+          - chat "Since you're a freshie, I'll give you your freshie job."
+          - wait 2
+          - chat "All new recruits, in order to stay alive, recieve a special shield-"
+          - wait 2
+          - chat "From the guard's blacksmith."
+          - wait 2
+          - chat "Go take this form to Andre of the Guard's Barracks, and he'll give you your gift."
+          - give i@CadetShieldForm qty:1
+          - ^flag player WGCQuest
+          - wait 2
+          - chat "Then, return to me when you are done."
+          - zap step:return1
+        2:
+          trigger: /No/, I am not.
+          script:
+          - chat "If you need time, make it snappy."
+    return1:
+      click trigger:
+        script:
+        - if <player.flag[FCadet]> {
+          - chat "Took you long enough to get that damned shield!"
+          - wait 2
+          - chat "Guh - regardless, since you've completed your first assignment, you're-"
+          - chat "now an official member of our guild. Yay."
+          - wait 3
+          - chat "Alright. Are you ready for your first /true/ assignment?"
+          - zap step:cadet
+          }
+        - else {
+          - chat "Why are you talking to me? Get your shield!"
+    cadet:
+      click trigger:
+        script:
+        - random
+          - chat "Welcome back. Can I help you with something?"
+          - chat "Good day, brother. Are you ready for more?"
+          - chat "You again. Want a job?"
+      chat trigger:
+        1:
+          trigger: /yes/
+          script:
+          - chat "Ho! Here's your assignment."
+          - run randomscript
+          - zap step:cadet
+        2:
+          trigger: /no/
+          script:
+          - chat "If you aren't here to help, then why are you here?"
+          - wait 2
+          - chat "Come back when you're ready!"
+          - zap step:cadet
+    timer:
+      click trigger:
+        script:
+        - random
+          - chat "There's no way you rested that quickly."
+          - chat "Oi, I understand you're excited, but you need to relax."
+          - chat "24 hours. I told you. Go sleep or something."
+          - chat "Leave some assignments for everyone else!"
+          - chat "I'm doing my own training. Come back later."
+CadetShieldForm:
+  type: item
+  material: paper
+  display name: <red>Fighter's Guild Voucher
+  lore:
+  - A voucher from the Fighter's Guild
+  - to receieve a gift from Andre of the
+  - Guard Barrack's Smithy. 
+randomscript:
+  type: task
+  script:
+  - chat "Coming Soon! Check back later!"
+ArcanistGuildQuestA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment set!"
+    - trigger name:Click state:true
+  interact scripts:
+  - 1 ArcanistGuildQuestI
+
+ArcanistGuildQuestI:
+  type: interact
+  steps:
+    1:
+      click trigger:
+        script:
+        - chat "Welcome... to the Arcanist guild."
+        - wait 2
+        - chat "We offer solace to those who wish to understand native magic... the ki... all that."
+        - wait 2
+        - chat "If you have come here... it would seem you care little for colonist regard."
+        - wait 1
+        - chat "I must then ask you... are you interested in joining our guild?"
+        - if <player.flag[EGMember]> {
+          - wait 1
+          - chat "Wait a moment... you're a member of the Explorer's guild already, aren't you?"
+          - wait 1
+          - chat "You shouldn't have the time. Leave them, then come back. Duty is important."
+          }
+          else {
+          - if <player.flag[FGMember]> {
+            - chat "You're a member of the fighter's guild. Leave them, if you wish to join."
+            }
+            else {
+            - zap 2
+            }
+          }
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|hi|hey|Greetings/.
+          script:
+          - chat "Welcome... to the Arcanist guild."
+          - wait 2
+          - chat "We offer solace to those who wish to understand native magic... the ki... all that."
+          - wait 2
+          - chat "If you have come here... it would seem you care little for colonist regard."
+          - wait 1
+          - chat "I must then ask you... are you interested in joining our guild?"
+          - if <player.flag[EGMember]> {
+            - wait 1
+            - chat "Wait a moment... you're a member of the Explorer's guild already, aren't you?"
+            - wait 1
+            - chat "You shouldn't have the time. Leave them, then come back. Duty is important."
+            }
+            else {
+            - if <player.flag[FGMember]> {
+              - chat "You're a member of the fighter's guild. Leave them, if you wish to join."
+              }
+              else {
+              - zap 2
+              }
+            }
+    2:
+      click trigger:
+        script:
+        - chat "I must then ask you... are you interested in joining our guild?"
+      chat trigger:
+        1:
+          trigger: /Yes/, I will join.
+          script:
+          - chat "Ah... I see. How pleasing..."
+          - wait 1
+          - chat "I am Kenja, the manager for this guild..."
+          - wait 2
+          - chat "When you are ready to begin... please come talk to me."
+          - ^zap step:noob
+          - ^flag player AGMember
+        2:
+          trigger: /No/, I will not.
+          script:
+          - chat "I understand... we are only for the non-faint of heart."
+    noob:
+      click trigger:
+        script:
+        - chat "Welcome back, pupil."
+        - wait 1
+        - chat "I figured you'd be back soon."
+        - wait 2
+        - chat "Are you ready for your first endeavour?"
+      chat trigger:
+        1:
+          trigger: /Regex:Yes|Yeah|Ready|Hello|hello|Hey|hey|Hi|hi/, I am.
+          script:
+          - chat "Good... Good."
+          - wait 1
+          - chat "One of the first things you will need is your own journal."
+          - wait 2
+          - chat "This journal is essential, and Yugis of the Card Shop makes special books for you to use."
+          - wait 2
+          - chat "He has been... an ally... for some time."
+          - wait 2
+          - chat "Go take this stamp to Yugis, ask about a journal. He will tend to you."
+          - give i@JournalForm qty:1
+          - ^flag player AGCQuest
+          - wait 2
+          - chat "Then, return to me when you are done."
+          - zap step:return1
+        2:
+          trigger: /No|Nah|Goodbye/, I am not.
+          script:
+          - chat "If you need time... It is here."
+    return1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|hi|hey|Greetings/.
+          script:
+          - if <player.flag[ACadet]> {
+            - chat "I see you have retrieved your journal... very good."
+            - wait 2
+            - chat "Now... you can call yourself an official pupil of this guild."
+            - wait 3
+            - chat "As a full student, you are now able to begin studying things officially... learning about your surroundings."
+            - wait 2
+            - chat "Are you ready to begin...?"
+            - zap step:cadet
+            }
+            else {
+            - chat "You lack a journal, and I lack anything new for the journal-less."
+            }
+      click trigger:
+        script:
+        - if <player.flag[ACadet]> {
+          - chat "I see you have retrieved your journal... very good."
+          - wait 2
+          - chat "Now... you can call yourself an official pupil of this guild."
+          - wait 3
+          - chat "As a full student, you are now able to begin studying things officially... learning about your surroundings."
+          - wait 2
+          - chat "Are you ready to begin...?"
+          - zap step:cadet
+          }
+          else {
+          - chat "You lack a journal, and I lack anything new for the journal-less."
+          }
+    cadet:
+      click trigger:
+        script:
+        - if <player.flag[AGCooldown]> {
+          - random {
+            - chat "There's no way you've studied that long."
+            - chat "Please... Eagerness is not needed."
+            - chat "As if you are ready yet... later..."
+            - chat "Patience... is a virtue."
+            }
+          }
+          else {
+          - random {
+            - chat "Good day... Come to study?"
+            - chat "Have you come to receive enlightenment?"
+            - chat "There is work to be done, if you are ready."
+            }
+          }  
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/.
+          script:
+          - if <player.flag[AGCooldown]> {
+            - random {
+              - chat "There's no way you've studied that long."
+              - chat "Please... Eagerness is not needed."
+              - chat "As if you are ready yet... later..."
+              - chat "Patience... is a virtue."
+              }
+            }
+            else {
+            - random {
+              - chat "Good day... Come to study?"
+              - chat "Have you come to receive enlightenment?"
+              - chat "There is work to be done, if you are ready."
+              }
+            }  
+        2:
+          trigger: /Regex:Yea|Yes|yeah|indeed/.
+          script:
+          - chat "Great. Here's an assignment for you..."
+          - random {
+            - inject arcanistscript3
+            - inject arcanistscript4
+            - inject arcanistscript1
+            - inject arcanistscript2
+            }
+        3:
+          trigger: /Regex:No|Nah|Not|no|Goodbye/.
+          script:
+          - chat "I'll be here... always stuff to do."
+          - zap step:cadet
+        4:
+          trigger: /Regex:leave/.
+          script:
+          - chat "You wish to leave? This is a shame... are you sure?"
+          - zap step:leavecheck
+    leavecheck:
+      chat trigger:
+        1:
+          trigger: /Regex:Yea|Yes|yeah|indeed/.
+          script:
+          - chat "A shame... but I see. Good day, then."
+          - flag player AGMember:false
+          - zap 1
+        2:
+          trigger: /Regex:No|Nah|Not|no|Goodbye/.
+          script:
+          - chat "Reassuring. Take a breather, pupil."
+          - zap step:cadet
+        
+          
+    AGtask1check:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[arcanisttask1start]> && <player.inventory.contains[sugar].quantity[16]> {
+            - chat "Ah, thank you for bringing the sugar."
+            - take sugar quantity:16
+            - wait 2
+            - chat "Here's your reward."
+            - wait 2
+            - ^flag player "arcanisttask1start:false"
+            - execute as_op "eco give <player.name> 500"
+            - chat "Come back tomorrow. I'll have another assignment for you then."
+            - flag player AGCooldown duration:22h
+            - zap cadet
+            }
+            else {
+            - chat "Have you gathered the sugar I asked you to?"
+            - wait 2
+            - chat "Remember, I need 16 sugar. Come talk to me when you have them."
+            }
+        2:
+          trigger: /Regex:remind|Reminder/.
+          script:
+          - inject arcanistscript1
+    AGtask2check:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[arcanisttask2start]> && <player.inventory.contains[SPIDER_EYE].quantity[4]> {
+            - chat "Ah, thank you for bringing the spider eyes."
+            - take SPIDER_EYE quantity:4
+            - wait 2
+            - chat "Here's your reward."
+            - wait 2
+            - ^flag player "arcanisttask2start:false"
+            - execute as_op "eco give <player.name> 500"
+            - chat "Come back tomorrow. I'll have another assignment for you then."
+            - flag player AGCooldown duration:22h
+            - zap cadet
+            }
+            else {
+            - chat "Have you gathered the spider eyes I asked you to?"
+            - wait 2
+            - chat "Remember, I need 4 spider eyes. Come talk to me when you have them."
+            }
+        2:
+          trigger: /Regex:remind|Reminder/.
+          script:
+          - inject arcanistscript2
+    AGtask3check:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hey|hey|Hi|hi/
+          script:
+          - if <player.flag[arcanisttask3complete]> {
+            - chat "I have gotten word from Sylvia that she has received the supplies."
+            - wait 2
+            - chat "Thank you for your time and effort. Here's your reward."
+            - wait 2
+            - execute as_op "eco give <player.name> 500"
+            - ^flag player arcanisttask3complete:false
+            - wait 1
+            - chat "Come back tomorrow. I'll have more work for you then."
+            - flag player AGCooldown duration:22h
+            - zap cadet
+            }
+            else {
+            - chat "I haven't received word from Sylvia that she has received her supplies yet."
+            - wait 2
+            - chat "She is Southwest of Primnee, studying the possibility of using fungi in alchemy."
+            - wait 2
+            - chat "If you take the wagon to Primnee, exit the town on the road and take a left."
+            - wait 2
+            - chat "Follow the road for a while until you see a 'Y' in the road."
+            - wait 2
+            - chat "Then look towards the north side of the road and she should be nearby some fungi."
+    AGtask4check:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|Hi|hi|Hey|hey/
+          script:
+          - if <player.flag[arcanisttask4complete]> {
+            - chat "I have gotten word from Ron that he has received the supplies."
+            - wait 2
+            - chat "Thank you for your time and effort. Here's your reward."
+            - wait 2
+            - execute as_op "eco give <player.name> 500"
+            - ^flag player arcanisttask4complete:false
+            - wait 1
+            - chat "Come back tomorrow. I'll have more work for you then."
+            - flag player AGCooldown duration:22h
+            - zap cadet
+            }
+            else {
+            - chat "I haven't received word from Ron that he has received his supplies yet."
+            - wait 2
+            - chat "He is at the northeast portion of the center isle at the entrance to a small cave."
+            - wait 2
+            - chat "Take the east road out of Sonn and take the left road at the fork."
+            - wait 2
+            - chat "Follow the road until you reach another fork."
+            - wait 2
+            - chat "There look to the mountain and he should be between two smaller hills at the entrace of a small cave."
+arcanistscript1:
+  type: task
+  script:
+  - chat "Since there is little to no support for our college from The Grand Sonnarie, we have to gather our own resources and ingredients."
+  - wait 2
+  - chat "I need you to gather 16 sugar and bring them back to me."
+  - ^flag player "arcanisttask1start"
+  - zap script:ArcanistGuildQuestI step:AGtask1check
+arcanistscript2:
+  type: task
+  script:
+  - chat "Since there is little to no support for our college from The Grand Sonnarie, we have to gather our own resources and ingredients."
+  - wait 2
+  - chat "I need you to gather 4 spider eyes and bring them back to me."
+  - wait 2
+  - chat "There is a rumor that there is a spider infestation in a camp nearby Pita's Inn."
+  - wait 2
+  - chat "While it might be dangerous to go there, you could always recruit a fighters guild or explorer's guild member to help you."
+  - ^flag player "arcanisttask2start"
+  - zap script:ArcanistGuildQuestI step:AGtask2check
+arcanistscript3:
+  type: task
+  script:
+  - chat "One of our guild members in the field needs some supplies."
+  - wait 1
+  - chat "Take these glowstone powders to Sylvia, who is southeast of Primnee."
+  - wait 1
+  - give glowstone_dust quantity:8
+  - ^flag player "arcanisttask3start"
+  - wait 1
+  - chat "She should be on the northside and just off the road."
+  - wait 2
+  - chat "If you come to a 'Y' in the road, you have gone too far."
+  - zap script:ArcanistGuildQuestI step:AGtask3check
+arcanistscript4:
+  type: task
+  script:
+  - chat "One of our guild members in the field needs some supplies."
+  - wait 1
+  - chat "Take these Fermented Spider Eyes to Ron in the small cave to the northeast."
+  - wait 2
+  - give FERMENTED_SPIDER_EYE quantity:8
+  - chat "Take the east road out of Sonn and take the left road at the fork."
+  - wait 2
+  - chat "Follow the road until you reach another fork."
+  - wait 2
+  - chat "There look to the mountain and he should be between two smaller hills at the entrace of a small cave."
+  - ^flag player "arcanisttask4start"
+  - zap script:ArcanistGuildQuestI step:AGtask4check  
+JournalForm:
+  type: item
+  material: paper
+  display name: <blue>Arcanist Guild Voucher
+  lore:
+  - A voucher from the Arcanist Guild
+  - to receieve a gift from Yugis.
+#-------------------------------------------------------

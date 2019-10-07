@@ -1,0 +1,166 @@
+DemolitionA:
+  type: assignment
+  actions: 
+    on assignment:
+    - narrate "Assignment set!"
+  interact scritps:
+  - 1 DemolitionI
+DemolitionI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hi|Hey|Hello|Greetings|Good day/.
+          script:
+            - if <player.item_in_hand>==<i@DemolitionPlans> {
+              - chat "Oh! The plans. Great. I'll be taking those, and you'll be taking this.
+              - take DemolitionPlans
+              - give KnowledgeStone quantity:1
+              - chat "Thanks much."
+              }
+              else {
+              - chat "You here about the bounty board?"
+              - narrate "Yes|No"
+              }
+        2:
+          trigger: /Regex:Yes|Yeah|Okay/.
+          script:
+            - chat "Good. I've been waiting far too long."
+            - wait 2
+            - chat "Here's the gist - that corruption's been spreading for the last several weeks. It ended up running over an outpost we made South of here."
+            - wait 2
+            - chat "There was some valuable stuff there, stones, plans, cash, so on." 
+            - wait 2
+            - chat "This is cut and dry bub. Go there, minimally get my plans and get them back to me. We need them for a couple counter attacks we're planning."
+            - wait 2
+            - chat "Good luck."
+        3:
+          trigger: /Regex:No|Nah|Goodbye/.
+          script:
+            - chat "Then get lost. I've got too much on my mind right now."
+DemolitionPlans:
+  type: item
+  material: i@Paper
+  display name: <&c>Construction Plans
+  lore:
+  - Important documents relating to a potential
+  - colonist counteroffensive structure near
+  - the corruption on the Southern isle.
+  - Take this to Christian north of the corruption.
+  
+  
+HunterPrey:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment set!"
+  interact scripts:
+  - 1 HunterPreyI
+HunterPreyI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hi|Hey|Hello|Greetings|Good day/.
+          script:
+            - if <player.item_in_hand> == <i@GreenBeret> {
+              - chat "That's it... that's mighty impressive kid."
+              - take GreenBeret
+              - chat "Take this, you've earned it."
+              - wait 2
+              - give KnowledgeStone
+              - chat "You take care now."
+              }
+              else {
+              - chat "You there... you look able bodied. Got a moment to help an old fellow? There's a reward in it for you."
+              - narrate "Yes|No|Goodbe."
+              }
+        2:
+          trigger: /Regex:Yes|Yeah|Okay/.
+          script:
+            - chat "*The old man shifts slightly, then clears his throat.*"
+            - chat "There was this guy. A real agile type - they called him the Nimble Nymph."
+            - wait 2
+            - chat "This guy is a reknown bounty hunter. Has been claiming colonist and native bounties alike."
+            - wait 2
+            - chat "Well, with all this war, he found himself in a bit of a predicament given that betrayal means your life now."
+            - wait 2
+            - chat "He turned to a life of crime, looting and pillaging without leaving a trace. Likes to leave his calling card though,"
+            - wait 2
+            - chat "Small green flowers. I need you to go search out this man and dispatch of him if you can. Scare him, beat him, do what you need to do."
+            - wait 2
+            - chat "I'll pay you handsomely. The guy wears a green beret, so if you bring that back to me I'll call it proof enough."
+            - wait 2
+            - chat "Good luck."
+        3:
+          trigger: /Regex:No|Nah|Goodbye/.
+          script:
+            - chat "*He would grunt in acknowledgement, then turn back to his drink."
+GreenBeret:
+  type: item
+  material: i@CACTUS_GREEN
+  display name: <&a>The Nimble Nymp<&sq>s Green Beret
+  lore:
+  - An ornate and flashy beret worn by the ex bounty hunter,
+  - the Nimble Nymph. An old man in the Compass Rose Tavern
+  - asked for this as proof of his nefarious ways.
+
+  
+PirateHatA:
+  type: assignment
+  actions:
+    on assignment:
+    - narrate "Assignment set!"
+  interact scripts:
+  - 1 PirateHatI
+PirateHatI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hi|Hey|Hello|Greetings|Good day/.
+          script:
+            - if <player.item_in_hand> == <i@PirateHat> {
+              - chat "That's it!!!"
+              - wait 1
+              - take PirateHat
+              - chat "*The kid rips the hat out of your hand, leaving behind a bright shining green stone.*"
+              - wait 1
+              - give KnowledgeStone
+              - chat "Thank you! Thank you! You can have that rock, I didn't want it anyway."
+              }
+              else {
+              - chat "Oh! You're one of those guys that went to the cold place, right? No? Maybe?"
+              - wait 1
+              - chat "Well whatever, it doesn't matter! I have a favor of you!"
+              - narrate "Listen to the kid's request? Yes|No"
+              }
+        2:
+          trigger: /Regex:Yes|Yeah|Okay/.
+          script:
+            - chat "Awesome!"
+            - wait 2
+            - chat "Okay, here's the thing, there's these pirates who moved into town on the other side of the lake by that inn right?"
+            - wait 1
+            - chat "Well their captain has this awesome hat, it's so cool and official! I... I really want it. I tried to snag it while"
+            - wait 1
+            - chat "My mom and I were staying there, but she yelled at me so I couldn't get it..."
+            - wait 1
+            - chat "But! I did find something really cool. If you get that hat for me, it's yours!"
+            - wait 1
+            - chat "Please come back with the hat! You'd be my hero."
+        3:
+          trigger: /Regex:No|Nah|Goodbye/.
+          script:
+            - chat "Oh... okay...."
+PirateHat:
+  type: item
+  material: i@Leather_Helmet
+  display name: <&4>Captain<&sq>s Hat
+  lore:
+  - A fancy hat stolen from the head of a sleeping
+  - pirate captain. There ought to be a kid
+  - somewhere who would love something like this.

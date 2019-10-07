@@ -1,0 +1,198 @@
+BDOWorkerA:
+  type: assignment
+  actions:
+    on assignment:
+    - chat "Assignment set!"
+    - trigger name:click state:true
+  interact scripts:
+  - 1 BDOWorkerI
+BDOWorkerI:
+  type: interact
+  steps:
+    1:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello/
+          script:
+          - if <player.has_flag[CWorker]> {
+            - chat "Hey, fuck you dude!"
+            }
+            else {
+            - if <player.has_flag[SWorker]> {
+              - chat "Fuck you double time!"
+              }
+              else {
+              - chat "Hello there. I'm the manager of the handyman's guild, so I dole out work to our members."
+              - wait 3
+              - chat "Are you here to hire, or here to pick up?"
+              - narrate "Hire/Pick Up"
+              }
+            }
+        2:
+          trigger: /Regex:Hire|Pick/
+          script:
+          - chat "Ah, very good."
+          - wait 2
+          - chat "What kind of worker would you like? Carrot, wheat, or potato farmer, woodcutter, or stone miner?"
+          - zap step:workerchoose
+    workerchoose:
+      chat trigger:
+        1:
+          trigger: /Regex:Hello|hello|hi|Hi|Hey|hey|Good Day|good day|Greetings|greetings/.
+          script: 
+            - chat "Great. What kind of worker would you like? Carrot, wheat, or potato farmer, woodcutter, or stone miner?"
+        2:
+          trigger: /Regex:Carrot/
+          script:
+            - chat "One carrot worker has now been bound to you. Come back after a week to recieve or sell your crop."
+            - flag player CWorker
+            - if <player.has_flag[CWorker]> {
+              - narrate "Check!"
+              - run BDOWaitScript
+              - zap 1
+              }
+              else {
+              - narrate "Fail!"
+              }
+        3:
+          trigger: /Regex:Wheat/
+          script:
+            - chat "One wheat worker has now been bound to you. Come back after a week to recieve or sell your crop."
+            - flag player WWorker
+            - run BDOWaitScript
+            - zap 1
+        4:
+          trigger: /Regex:Potato/
+          script:
+            - chat "One potato worker has now been bound to you. Come back after a week to recieve or sell your crop."
+            - flag player PWorker
+            - run BDOWaitScript
+            - zap 1
+        5:
+          trigger: /Regex:Wood/
+          script:
+            - chat "One woodcutter has been bound to you. Come back after a week to recieve or sell your crop."
+            - flag player WoodWorker
+            - run BDOWaitScript
+            - zap 1
+        6:
+          trigger: /Regex:Stone/
+          script:
+            - chat "One stone worker has been bound to you. Come back after a week to recieve or sell your crop."
+            - flag player SWorker
+            - run BDOWaitScript
+            - zap 1
+BDOWaitScript:
+  type: task
+  script:
+  - wait 12s
+  - narrate "Your worker has completed their work. Please visit the manager in Arken to pick up your goods."
+  - if <player.has_flag[CWorker]> {
+    - narrate "Hey, fuck you too dude!"
+    - flag player CWorker:!
+    - flag player SWorker
+    }
+    else {
+    - narrate "Well this sucks"
+    }
+locationcheck:
+  type: task
+  script:
+  - narrate <cu@TestCube.list_players>
+  - if <player.location.is_within[cu@TestCube]> {
+    - narrate "Check!"
+    }
+    else {
+    - narrate "Fail!"
+    }
+unknownworld3:
+  type: world
+  events:
+    on player picks up unknownitem:
+    - inject unknowntask
+unknownitem:
+  type: item
+  material: DRAGON_BREATH
+  display name: <&5>Symfora Residue
+unknowntask:
+  type: task
+  script:
+  - narrate "Your vision goes blurry..."
+  - wait 1
+  - take i@unknownitem
+  - narrate "You don't feel good..."
+  - wait 2
+  - execute as_op "effect <player.name> 9 10 255 true"
+  - wait 7
+  - narrate "You're about to vomit..."
+  - execute as_op "effect <player.name> 14 999999 0 true"
+  - execute as_op "warp spot0 <player.name>"
+CarvingBlade:
+  type: item
+  material: stone_sword[flags=HIDE_ENCHANTS]
+  display name: <&5>Carving Blade
+  lore:
+  - A menacing blade used to part
+  - flesh from bone, theoretically
+  - for eating.
+  enchantments:
+  - damage_all:2
+  - durability:5
+  - knockback:3
+gta:
+  type: world
+  events:
+    on player death:
+    - if <player.has_flag[Death1]> {
+      - wait 5
+      - narrate "<&c>You died."
+      - execute as_op "effect <player.name> slowness 480 3 true"
+      - execute as_op "effect <player.name> blindness 240 4 true"
+      - flag player Death2 duration:15m
+      }
+      else {
+      - if <player.has_flag[Death2]> {
+        - wait 5
+        - narrate "<&c>You died."
+        - execute as_op "effect <player.name> blindness 480 4 true"
+        - execute as_op "effect <player.name> weakness 240 4 true"
+        - execute as_op "effect <player.name> slowness 960 4 true"
+        - flag player Death3 duration:30m
+        }
+        else {
+        - if <player.has_flag[Death3]> {
+          - wait 5
+          - narrate "<&c>You died."
+          - execute as_op "effect <player.name> blindness 960 4 true"
+          - execute as_op "effect <player.name> weakness 480 4 true"
+          - execute as_op "effect <player.name> slowness 960 4 true"
+          - flag player Death3 duration:45m
+          }
+          else {
+          - wait 5
+          - narrate "<&c>You died."
+          - execute as_op "effect <player.name> slowness 240 2 true"
+          - flag player Death1 duration:7m
+          }
+        }
+      }
+
+ArkenGuard:
+  type: assignment
+  interact scripts:
+  - 1 arkenguardi
+arkenguardi:
+  type: interact
+  steps:
+    1:
+      proximity trigger:
+        entry:
+          script:
+            - random {
+              - chat "It's been some time since we've seen new castaways... Take care of yourself."
+              - chat "Damn natives, causing all sorts of ruckus out there."
+              - chat "You ever gotten yourself a bellyfull of ale? Check out that inn."
+              - chat "Darn, still no shiny. I'm gonna have to get another deck from the market."
+              - chat "You turned that crystal into a... what??"
+              - chat "You're looking a little scruffy there."
+              }

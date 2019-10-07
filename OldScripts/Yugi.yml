@@ -1,0 +1,143 @@
+Yugi:
+  Type: Interact
+  Steps:
+    1:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Hello|Hey|Hi|Good day|hello|hey|hi/.
+          Script:
+          - chat "Good day to you too... Interested in the card game, are you?"
+          - wait 2
+          - chat "Or... are you here for something else?"
+          - zap 2
+    2:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Yeah|Kinda|Yes|Yup|yes|yeah|kinda|yup|cards|game|card|Cards|Card|Game/.
+          Script:
+          - chat "Ah wonderful. It's pretty popular with the natives."
+          - wait 1
+          - chat "I don't know if you're like most of Sonn, but I do appreciate their culture."
+          - wait 1
+          - chat "Well, do you already have a starter pack and a deck?"
+          - zap 3
+        2:
+          Trigger: /Regex:Nope|No|Not really|no/.
+          Script:
+          - chat "No worries. I'm sure you'll be back later."
+          - wait 1
+          - chat "*He smiles cheerfully.*"
+          - flag player CardStart
+          - zap 1
+        3:
+          Trigger: /Regex:Journal|Arcane|Magic|Arcanist|Journals/.
+          script:
+          - if <player.flag[AGCQuest]> {
+            - chat "Ah... you're with the guild. Do you have your form?"
+            - if <player.inventory.contains[i@JournalForm]> {
+              - wait 1
+              - chat "Well that's a yes. Let me grab that."
+              - take i@JournalForm
+              - wait 1
+              - chat "Here's your journal. Do take care of it."
+              - give i@ArcaneJournal
+              - chat "Take it easy now."
+              - flag player ACadet
+              - flag player AGCQuest:false
+              }
+              else {
+              - chat "You don't have a form on you..."
+              - zap 1
+              }
+            }
+            else {
+            - chat "You... don't look like you're from the guild. Try again."
+            - zap 1
+            }
+    3:
+      Chat Trigger:
+        1:
+          Trigger: /Regex:Yeah|Kinda|Yes|Yup/.
+          Script:
+          - chat "Great! What do you need me for! *He laughs.* See you later kid."
+          - zap 1
+        2:
+          Trigger: /Regex:Nope|No|Not really|/
+          Script:
+          - if player.flag[CardTutorialComplete] {
+            - chat "Oi! I remember you. I'm afraid I can't give you the whole shpeal again."
+            }
+            else {
+            - chat "Perfect. A brand new player. Let me get a deck for you."
+            - wait 1
+            - execute as_op "cards giveboosterpack <player.name> Starterpack"
+            - chat "Alright... there's the starter pack, let me get you a deck.."
+            - wait 1
+            - execute as_op "pex user <player.name> group add Cards"
+            - execute as_server "sudo <player.name> cards getdeck 1"
+            - execute as_op "pex user <player.name> group remove Cards"
+            - chat "Okay, that deck will allow you to stow all your cards safely. That way they don't"
+            - chat "break and bend in your bag and whatnot."
+            - wait 2
+            - chat "Lemme get you a free set of the tokens... don't go losin' em now."
+            - inject CardTokens
+            - wait 2
+            - chat "Over there in the corner is a shop for the rulebook. The only thing I charge for, at"
+            - chat "the moment."
+            - flag player CardTutorialComplete
+            - zap 1
+            }
+TestFix:
+  type: task
+  script:
+  - flag player CardTutorialComplete
+YugiAss:
+  Type: assignment
+  Interact Scripts:
+  - 1 Yugi
+CardTokens:
+  type: task
+  script:
+  - give i@HeroHP quantity:32
+  - give i@3HP quantity:32
+  - give i@2HP quantity:32
+  - give i@1HP quantity:32
+  - give i@Boom quantity:32
+3HP:
+  type: item
+  material: GLASS,13
+  display name: <&a>3 HP
+2HP:
+  type: item
+  material: GLASS,4
+  display name: <&e>2 HP
+1HP:
+  type: item
+  material: GLASS,14
+  display name: <&4>1 HP
+Boom:
+  type: item
+  material: SULPHUR
+  display name: <&4>BOOM!
+HeroHP:
+  type: item
+  material: GUNPOWDER,8
+  display name: <&f>Hero HP
+  
+ArcaneJournal:
+  type: item
+  display name: <&b>Arcane Journal
+  material: i@ArcaneJournalB[flags=HIDE_ENCHANTS]
+  enchantments:
+  - lure:1
+  lore:
+  - The journal has an ornate cover, jewled and bound in leather.
+  - It shimmers slightly in the sunlight.
+ArcaneJournalB:
+  type: book
+  title: The Arcane Journal
+  Author: Unknown
+  Signed: false
+  text:
+  - 'This journal, for students of the arcane guild, is to chronicle your alchemical adventures.'
+  - The first rule of alchemy: All ingredients are derived from crystals. Fire, Earth, Water, Air.<n>Smashing these crystals derives 'Dusts.'
