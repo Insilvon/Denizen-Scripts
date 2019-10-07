@@ -50,7 +50,7 @@ TownCommand:
             - run TownHelp
         - if <[args].size> == 2:
             - define command:<[args].get[1]>
-            - foreach claim|raid|invite|create|join|surrender as:switch:
+            - foreach claim|raid|invite|create|join|surrender|scout as:switch:
                 - if <[args].get[1]> == <[switch]>:
                     - inject Town<[switch]>
         - if <[args].size> == 3:
@@ -222,6 +222,39 @@ TownSurrender:
         - narrate "Use /town claim <[town]> to accept." targets:<[target]||null>
         - flag server <[target].name>_townClaimInvite:<[town]> duration:5m
         - stop
+TownScout:
+    type: task
+    script:
+        - if <player.has_flag[TownScout]>:
+            - narrate "You must wait at least <player.flag[TownScout].expiration.formatted> before scouting again."
+        - else:
+            - flag player TownScout d:20h
+            - define RNG:<util.random.int[1].to[10]>
+            - define name:<context.args.get[2]>
+            - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
+            - repeat <[rng]>:
+                - random:
+                    - narrate "[Town] - Showing info for <[name]><&co> Satisfaction - <yaml[<[name]>].read[Town.Satisfaction]>"
+                    - narrate "<&b>[<[name]>] -    Building Materials: <&f><yaml[<[name]>].read[Resources.BuildingMaterials]>"
+                    - narrate "<&b>[<[name]>] -    Crafting Materials: <&f><yaml[<[name]>].read[Resources.CraftingMaterials]>"
+                    - narrate "<&b>[<[name]>] -    Food: <&f><yaml[<[name]>].read[Resources.Food]>"
+                    - narrate "<&b>[<[name]>] -    Minerals: <&f><yaml[<[name]>].read[Resources.Minerals]>"
+                    - narrate "<&b>[<[name]>] -    Weapons: <&f><yaml[<[name]>].read[Resources.Weapons]>"
+                    - narrate "<&e>[<[name]>] -    Farmers: <&f><yaml[<[name]>].read[NPCs.Farmer]>"
+                    - narrate "<&e>[<[name]>] -    Blacksmiths: <&f><yaml[<[name]>].read[NPCs.Blacksmith]>"
+                    - narrate "<&e>[<[name]>] -    Miners: <&f><yaml[<[name]>].read[NPCs.Miner]>"
+                    - narrate "<&e>[<[name]>] -    Woodcutters: <&f><yaml[<[name]>].read[NPCs.Woodcutter]>"
+                    - narrate "<&e>[<[name]>] -    Trainers <&f><yaml[<[name]>].read[NPCs.Trainer]>"
+                    - narrate "<&e>[<[name]>] -    Alchemists: <&f><yaml[<[name]>].read[NPCs.Alchemist]>"
+                    - narrate "<&a>[<[name]>] -    Infantry: <&f><yaml[<[name]>].read[Militia.Infantry]>"
+                    - narrate "<&a>[<[name]>] -    Sentry: <&f><yaml[<[name]>].read[Militia.Sentry]>"
+                    - narrate "<&a>[<[name]>] -    Archer: <&f><yaml[<[name]>].read[Militia.Archer]>"
+                    - narrate "<&a>[<[name]>] -    Mage: <&f><yaml[<[name]>].read[Militia.Mage]>"
+                    - narrate "<&a>[<[name]>] -    Miniboss: <&f><yaml[<[name]>].read[Militia.Miniboss]>"
+                    - narrate "<&a>[<[name]>] -    Boss: <&f><yaml[<[name]>].read[Militia.Boss]>"
+            - ~yaml unload id:<[name]>
+        - stop
+            
 # /town promote name rank - lets players promote other members of the town to specific titles
 TownPromote:
     type: task
