@@ -1,7 +1,7 @@
 # Radiant Quests REWRITE 2
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 3.0.4
+# @version 3.0.5
 # Proof of Concept for Radiant/Dynamic Quests
 
 # All things Radiant Quests
@@ -83,41 +83,43 @@ RemoveActiveQuest:
     type: task
     definitions: player|item
     script:
-        - narrate "Attempting to remove <[item]>"
+        # - narrate "Attempting to remove <[item]>"
         - define character:<proc[GetCharacterName].context[<[player]>]>
-        - narrate <player.flag[<[character]>_ActiveQuestItems]>
+        # - narrate <player.flag[<[character]>_ActiveQuestItems]>
         - if <player.flag[<[character]>_ActiveQuestItems].size> == 1:
-            - narrate "Comparing <player.flag[<[character]>_ActiveQuestItems]> to <[item]>"
+            # - narrate "Comparing <player.flag[<[character]>_ActiveQuestItems]> to <[item]>"
             - if <player.flag[<[character]>_ActiveQuestItems]> == <[item]>:
                 - flag player <[character]>_ActiveQuestItems:!
-                - narrate "Clearing ActiveQuestItems - empty list"
+                # - narrate "Clearing ActiveQuestItems - empty list"
             - else:
                 - stop
         - else:
-            - narrate "Original Active Items - <player.flag[<[character]>_ActiveQuestItems]>"
-            - narrate "Active items after removal goal - <player.flag[<[character]>_ActiveQuestItems].exclude[<[item]>]>"
+            # - narrate "Original Active Items - <player.flag[<[character]>_ActiveQuestItems]>"
+            # - narrate "Active items after removal goal - <player.flag[<[character]>_ActiveQuestItems].exclude[<[item]>]>"
             - flag <[player]> <[character]>_ActiveQuestItems:<player.flag[<[character]>_ActiveQuestItems].exclude[<[item]>]>
-            - narrate "New Active Items - <player.flag[<[character]>_ActiveQuestItems]>"
+            # - narrate "New Active Items - <player.flag[<[character]>_ActiveQuestItems]>"
 
 # Will add the specified item to the character's active quest menu
 AddActiveQuest:
     type: task
     definitions: player|item
     script:
-        - narrate "adding <[item]>"
-        - narrate "Flag before addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
+        # - narrate "adding <[item]>"
+        # - narrate "Flag before addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
         - flag player <proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems:->:<[item]>
-        - narrate "Flag after addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
+        - title "subtitle:<gold>Your questlog has been updated."
+        # - narrate "Flag after addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
 
 # Will add the specified item to the character's completed quest menu
 AddCompletedQuest:
     type: task
     definitions: player|item
     script:
-        - narrate "adding <[item]>"
-        - narrate "Flag before completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
+        # - narrate "adding <[item]>"
+        # - narrate "Flag before completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
         - flag player <proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems:->:<[item]>
-        - narrate "Flag after completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
+        - title "subtitle:<gold>Your questlog has been updated."
+        # - narrate "Flag after completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
 # =================================================================================
 # ================================ Helper Scripts =================================
 # =================================================================================
