@@ -123,6 +123,12 @@ ScrapMetal:
         - and parts. Frequently called
         - <&dq>Scrap<&dq> for short.
 
+SimpleKineticOre:
+    type: item
+    material: i@stone
+    display name: Simple Kinetic Ore
+    lore:
+        - PLACEHOLDER
 # Skyforged Items
 
 # Eldergleam:

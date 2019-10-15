@@ -42,7 +42,14 @@ ModifyRenownValue:
     definitions: player|faction|value
     script:
         - define character:<proc[GetCharacterName].context[<[player]>]>
+        - flag <[player]> renown_<[character]>_<[faction]>:+:<[value]>
         - run ModifyCharacterYAML def:<[player]>|Renown.<[faction]>|<[value]>
+SetRenownValue:
+    type: task
+    definitions: player|faction|value
+    script:
+        - define character:<proc[GetCharacterName].context[<[player]>]>
+        - flag <[player]> renown_<[character]>_<[faction]>:<[value]>
 RenownFlagUpdater:
     type: task
     script:

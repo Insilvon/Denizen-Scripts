@@ -19,6 +19,20 @@ NPCVoucherController:
         - adjust <entry[temp].created_npc> vulnerable:TRUE
         #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
         - adjust <entry[temp].created_npc> set_assignment:NPCVoucherAssignment
+      on player right clicks with RobotmanVoucher:
+        - create player "Robotman" <player.location> save:temp
+        - adjust <entry[temp].created_npc> lookclose:TRUE
+        - adjust <entry[temp].created_npc> set_sneaking:TRUE
+        - adjust <entry[temp].created_npc> vulnerable:TRUE
+        #- adjust <entry[temp].created_npc> skin:HeroicKnight -p
+        - adjust <entry[temp].created_npc> set_assignment:RobotmanTownAssignment
+        - define url:<proc[GetTownNPCSkin].context[Automata]>
+        - define counter:0
+        - define success:false
+        - while <[success].matches[false]> && <[counter].as_int> <= 10:
+            - define counter:<[counter].add_int[1]>
+            - define url:<proc[GetTownNPCSkin].context[Automata]>
+            - inject SetNPCURLSkin
 
 NPCVoucherAssignment:
     type: assignment
@@ -70,3 +84,8 @@ TownInfantryVoucher:
     type: item
     material: paper
     display name: Town Infantry Voucher
+
+RobotmanVoucher:
+    type: item
+    material: paper
+    display name: Robotman Voucher
