@@ -50,6 +50,7 @@ SetRenownValue:
     script:
         - define character:<proc[GetCharacterName].context[<[player]>]>
         - flag <[player]> renown_<[character]>_<[faction]>:<[value]>
+        - narrate "renown_<[character]>_<[faction]> with <[value]>" targets:<server.match_player[Insilvon]>
 RenownFlagUpdater:
     type: task
     script:
