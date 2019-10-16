@@ -96,6 +96,9 @@ RobotmanInteract:
                         - if <player.inventory.contains[SimpleKineticOre].quantity[2]>:
                             - take SimpleKineticOre quantity:2
                             - inject RobotmanThanks
+                            - run AddCompletedQuest def:<player>|YourRenownQuestQuestCompleted
+                            - run RemoveActiveQuest def:<player>|YourRenownQuestGuideBook
+                            - wait 1s
                             - chat "I have... a request, if you'd be so kind."
                             - wait 3s
                             - chat "The work here is brutal and unfulfilling. We are given just barely what we need to survive, and I have no prospects beyond it."
@@ -105,6 +108,7 @@ RobotmanInteract:
                             - chat "Will you accept my pledge, and allow me to join you?"
                             - narrate "<&hover[Accepting will allow you to bring this NPC to your town.]><&click[I would be honored to have you.]><&e>*Accept the automata<&sq>s offer*<&f><&end_click><&end_hover> | <&hover[Declining his offer will grant you nothing, but you lose nothing.]><&click[I think you'd be better off here. I'm sorry.]><&c>*Polietly Decline*<&f><&end_click><&end_hover>"
                             - flag player <proc[GetCharacterName].context[<player>]>_<npc>:4
+                            - run ModifyRenownValue def:<player>|Skyborne|1
                             - zap 4
                         - else:
                             - chat "Am I some --brrzzt-- joke to you? I just asked for simple kinetic ore. Get out of here."

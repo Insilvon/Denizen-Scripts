@@ -107,7 +107,7 @@ AddActiveQuest:
         # - narrate "adding <[item]>"
         # - narrate "Flag before addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
         - flag player <proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems:->:<[item]>
-        - title "subtitle:<gold>Your questlog has been updated."
+        - title "title: <gold>*QUESTS*" "subtitle:<gold>Your questlog has been updated."
         # - narrate "Flag after addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
 
 # Will add the specified item to the character's completed quest menu
@@ -118,7 +118,7 @@ AddCompletedQuest:
         # - narrate "adding <[item]>"
         # - narrate "Flag before completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
         - flag player <proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems:->:<[item]>
-        - title "subtitle:<gold>Your questlog has been updated."
+        - title "title: <gold>*QUESTS*" "subtitle:<gold>Your questlog has been updated."
         # - narrate "Flag after completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
 # =================================================================================
 # ================================ Helper Scripts =================================
