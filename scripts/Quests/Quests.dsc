@@ -21,36 +21,57 @@ QuestLog:
         - define questType:ActiveQuest
         - inject LoadInventory
 
+# Player Clicks in inventory event
+QuestOnPlayerClicksInInventory:
+    type: task
+    script:
+        - define character:<proc[GetCharacterName].context[<player>]>
+        - if <context.inventory> == in@<[character]>_CompletedQuestMenu:
+            - if <context.click> == RIGHT:
+                - if <player.has_flag[QuestBookReceived]>:
+                    - narrate "You must wait <player.flag[QuestBookReceived].expiration.formatted> before getting another physical copy."
+                    - determine cancelled
+                - else:
+                    - flag player QuestBookReceived d:20h
+                    - give <context.item>
+                    - determine cancelled
+            - else:
+                - adjust <player> show_book:<context.item>
+                - determine cancelled
+        - if <context.inventory> == in@<[character]>_ActiveQuestMenu:
+            - if <context.click> == LEFT:
+                - adjust <player> show_book:<context.item>
+                - determine cancelled
+            - else:
+                - determine cancelled
+# Drop Clicks event
+QuestOnPlayerDropClicksInInventory:
+    type: task
+    script:
+        - if <context.inventory> == in@<[character]>_ActiveQuestMenu || <context.inventory> == in@<[character]>_CompletedQuestMenu:
+            - determine cancelled
+
+# Control Click
+QuestOnPlayerControlClicksInInventory:
+    type: task
+    script:
+        - if <context.inventory> == in@<[character]>_ActiveQuestMenu || <context.inventory> == in@<[character]>_CompletedQuestMenu:
+            - determine cancelled
+
+QuestOnPlayerLogin:
+    type: task
+    script:
+        - wait 1s
+        - inject QuestLoginScript
+
 # Main Quest Controller - Manages clicking in the quest inventories
 QuestController:
     type: world
     events:
-        on player clicks in inventory priority:1:
-            - define character:<proc[GetCharacterName].context[<player>]>
-            - if <context.inventory> == in@<[character]>_CompletedQuestMenu:
-                - if <context.click> == RIGHT:
-                    - if <player.has_flag[QuestBookReceived]>:
-                        - narrate "You must wait <player.flag[QuestBookReceived].expiration.formatted> before getting another physical copy."
-                        - determine cancelled
-                    - else:
-                        - flag player QuestBookReceived d:20h
-                        - give <context.item>
-                        - determine cancelled
-                - else:
-                    - adjust <player> show_book:<context.item>
-                    - determine cancelled
-            - if <context.inventory> == in@<[character]>_ActiveQuestMenu:
-                - if <context.click> == LEFT:
-                    - adjust <player> show_book:<context.item>
-                    - determine cancelled
-                - else:
-                    - determine cancelled
-        on player drop clicks in inventory priority:1:
-            - if <context.inventory> == in@<[character]>_ActiveQuestMenu || <context.inventory> == in@<[character]>_CompletedQuestMenu:
-                - determine cancelled
-        on player control_drop clicks in inventory priority:1:
-            - if <context.inventory> == in@<[character]>_ActiveQuestMenu || <context.inventory> == in@<[character]>_CompletedQuestMenu:
-                - determine cancelled
+        # on player drop clicks in inventory priority:1:
+        #     - inject QuestOnPlayerDropClicksInInventory
+        # on player control_drop clicks in inventory priority:1:
+        #     - inject QuestOnPlayerControlClicksInInventory
         on player left clicks ActiveQuestItem in inventory:
             - run QuestMenuHandler def:ActiveQuest instantly
         on player left clicks CompletedQuestItem in inventory:
@@ -64,9 +85,8 @@ QuestController:
         on player left clicks LastPageCompletedQuestItem in inventory:
             - run QuestPageHandler def:CompletedQuest|back instantly
         #TODO: ADD THIS TO SERVERTASKS
-        on player logs in:
-            - wait 1s
-            - inject QuestLoginScript
+        # on player logs in:
+        #     - inject QuestOnPlayerLogin
         on player drops item:
             - define character:<proc[GetCharacterName].context[<player>]>
             - define inv:<context.inventory||null>

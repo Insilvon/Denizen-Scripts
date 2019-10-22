@@ -7,7 +7,20 @@
 # =================================================================================
 # ==========================="Kernal Core Setup Script"============================
 # =================================================================================
-
+Kernel:
+    type: world
+    events:
+        on player logs in:
+            - inject QuestOnPlayerLogin
+        on player clicks in inventory priority:1:
+            - inject QuestOnPlayerClicksInInventory
+            - inject SkillOnPlayerClicksInInventory
+        on player drop clicks in inventory priority:1:
+            - inject QuestOnPlayerDropClicksInInventory
+            - inject SkillOnPlayerDropClicksInInventory
+        on player control_drop clicks in inventory priority:1:
+            - inject QuestOnPlayerControlClicksInInventory
+            - inject SkillOnPlayerControlClicksInInventory
 # =================================================================================
 # ===========================Custom Block YAML Add/Edit============================
 # =================================================================================
