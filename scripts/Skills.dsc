@@ -21,21 +21,40 @@ SkillInventoryController:
             - if <context.inventory> == in@<proc[GetCharacterName].context[<player>]>_Skills:
                 - determine cancelled
         on player clicks in inventory priority:1:
+            #- narrate "<context.slot> <context.item>"
             - define character:<proc[GetCharacterName].context[<player>]>
             #- narrate "<context.inventory>"
             - if <context.inventory> == in@<[character]>_Skills:
+                - define inventory:in@<[character]>_skills
+                - flag player <[character]>_activeskills:!
+                #- narrate "in the right inventory"
+                - determine passively cancelled
                 - if <context.slot> > 45:
                     - define slot:<context.slot>
-                    - narrate "You have selected a skillslot. Choose a skill to equip!."
-                    - flag player <[character]>_Slot:<[slot]>
+                    - define item:<[inventory].slot[<[slot]>].script.name||air>
+                    - if <[item]> == INVENTORYBLOCKITEM:
+                        - determine cancelled
+                    - else:
+                        - narrate "You have selected a skillslot. Choose a skill to equip!."
+                        - flag player <[character]>_Slot:<[slot]>
                 - else:
                     #- narrate "You clicked below 45"
                     - if <player.has_flag[<[character]>_slot]>:
                         #- narrate "found flag, using <context.item>"
+                        #- run setitem def:in@<[character]>_skills|<context.item.name>|<player.flag[<[character]>_slot]>
                         - inventory set d:in@<[character]>_skills o:<context.item> s:<player.flag[<[character]>_slot]>
-                        - flag player <[character]>_ActiveSkills:->:<context.item>
-                        - flag player <[character]>_slot:!x
-                - determine cancelled
+                        #- narrate "final flags: <&e><player.flag[<[character]>_activeskills]>"
+                        #- flag player <[character]>_ActiveSkills:->:<context.item>
+                        - flag player <[character]>_slot:!
+            - define num:0
+            - define loop:<element[9].sub_int[<player.flag[<[character]>_BlockedSkills]>]>
+            - repeat <[loop]>:
+                - define number:<element[46].add_int[<[num]>]>
+                #- narrate "<[num]>"
+                #- narrate "current element: <[number]>"
+                #- narrate "found <[inventory].slot[<[number]>]>"
+                - flag player <[character]>_activeskills:->:<[inventory].slot[<element[46].add_int[<[num]>]>].script.name>
+                - define num:++
 
 SkillMenuHandler:
     type: task
@@ -47,6 +66,8 @@ SkillMenuHandler:
             - flag player <proc[GetCharacterName].context[<player>]>_SkillMenu:++
         - else:
             - flag player <proc[GetCharacterName].context[<player>]>_SkillMenu:--
+            - if <player.flag[<proc[GetCharacterName].context[<player>]>_SkillMenu]> < 1:
+                - flag player <proc[GetCharacterName].context[<player>]>_SkillMenu:1
         - inject LoadSkillInventory
 
 # Main Inventory Loader, used as Injection for QuestChangePage
@@ -57,27 +78,37 @@ LoadSkillInventory:
         - define menu:<player.flag[<[character]>_SkillMenu]>
         - define end:<[menu].as_int.mul_int[42]>
         - define start:<[end].as_int.sub_int[41]>
+        #- narrate "<[start]> to <[end]>"
         - define catch:li@
         - inventory clear d:in@<[character]>_Skills
-        - if <player.flag[<[character]>_ActiveSkills]> != <[catch]> && <player.has_flag[<[character]>_ActiveSkills]>:
-            - if <player.flag[<[character]>_ActiveSkills].size> < <[start]>:
-                - flag player <[character]>_QuestJournalMenu:--
-                - stop
-            - define display:<player.flag[<[character]>_ActiveSkills].get[<[start]>].to[<[end]>]>
+        #- narrate "<player.flag[<[character]>_LearnedSkills]>"
+        - if <player.flag[<[character]>_LearnedSkills]> != <[catch]> && <player.has_flag[<[character]>_LearnedSkills]>:
+            #- narrate "<player.flag[<[character]>_LearnedSkills].size> comparing to <[start]>"
+            - if <player.flag[<[character]>_LearnedSkills].size> < <[start]>:
+                #- narrate "ope! Can't do that!"
+                - flag player <[character]>_SkillMenu:--
+                - inventory close
+            - define display:<player.flag[<[character]>_LearnedSkills].get[<[start]>].to[<[end]>]||null>
             #- narrate "<[display]>"
-            - if <[display]> == <[catch]>:
-                - flag player <[character]>_QuestJournalMenu:--
+            - if <[display]> == <[catch]> || <[display]> == null:
+                - flag player <[character]>_SkillMenu:--
                 - stop
             - foreach <[display]> as:item:
                 - inventory add d:in@<[character]>_Skills o:<[item]>
         - inventory set d:in@<[Character]>_Skills o:i@NextSkillPageItem s:45
         - inventory set d:in@<[Character]>_Skills o:i@LastSkillPageItem s:44
         - define blocked:<player.flag[<[Character]>_BlockedSkills]>
+        - if <player.flag[<[character]>_ActiveSkills]> != <[catch]> && <player.has_flag[<[character]>_ActiveSkills]>:
+            - define value:0
+            - foreach <player.flag[<[Character]>_ActiveSkills]> as:skill:
+                - inventory set d:in@<[Character]>_Skills o:<[skill]> s:<element[46].add_int[<[value]>]>
+                - define value:++
         - repeat <[blocked]>:
             #- narrate "<element[55].sub_int[<[value]>]>"
             - inventory set d:in@<[Character]>_Skills o:i@InventoryBlockItem s:<element[55].sub_int[<[value]>]>
         - inventory close
         - inventory open d:in@<[character]>_Skills
+
 AddLearnedSkill:
     type: task
     definitions: player|item
@@ -136,10 +167,9 @@ SkillSetup:
     script:
         - define character:<proc[GetCharacterName].context[<player>]>
         - flag player <[Character]>_BlockedSkills:7
-        - flag player <[Character]>_ActiveSkills:->:SpeedSkillBook
-        - flag player <[Character]>_ActiveSkills:->:StrengthSkillBook
-        - flag player <[Character]>_ActiveSkills:->:WeaknessSkillBook
-        - flag player <[Character]>_LearnedSkills:Book|Book|Book|Book
+        - flag player <[Character]>_LearnedSkills:->:SpeedSkillBook
+        - flag player <[Character]>_LearnedSkills:->:StrengthSkillBook
+        - flag player <[Character]>_LearnedSkills:->:WeaknessSkillBook
         - flag player <[Character]>_SkillMenu:1
         - note in@InventoryTesting as:<[Character]>_Skills
 
