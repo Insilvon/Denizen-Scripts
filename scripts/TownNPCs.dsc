@@ -1,11 +1,14 @@
 # Utility Town NPCs Proof of Concept
 # Made and designed for AETHERIA
 # @author Insilvon
-# @version 2.0.0
+# @version 2.0.1
 # Allows players to recruit NPCs from the world and bring them to their town
 # Special thanks to Mergu for his NPC Skin->URL script, originally found
 # here: https://one.denizenscript.com/denizen/repo/entry/154, adapted for this specific task
 
+# =================================================================================
+# ==================================== FARMERS ====================================
+# =================================================================================
 FarmerNPCAssignment:
     type: assignment
     actions:
@@ -30,21 +33,149 @@ FarmerNPCInteract:
                         - chat "Excellent, I am now yours."
                         - chat "Take this voucher. Place it where you want me to work."
                         - give TownFarmerVoucher
-TownPermissionHelper:
-    type: task
-    script:
-    - if !<player.has_flag[CurrentCharacter]>:
-        - narrate "You do not have an active character. Please fix this first!"
-        - determine cancelled
-    - if <[townID]> == none:
-        - narrate "You are not a member of a town!"
-        - determine cancelled
-    - if !<player.location.cuboids.contains_text[<[townID]>]>:
-        - narrate "You are not in your town, your NPC cannot help you!"
-        - determine cancelled
-    - if !<proc[CheckTownOwner].context[<player>]>:
-        - narrate "You are not the owner of this town! You cannot invite people here."
-        - determine cancelled
+PlacedTownFarmerAssignment:
+    type: assignment
+    interact scripts:
+        - 1 PlacedTownFarmerInteract
+
+PlacedTownFarmerInteract:
+    type: interact
+    steps:
+        1:
+            chat trigger:
+                1:
+                    trigger: /Regex:Hello/
+                    script:
+                        - chat "Hello!"
+# TownShopController:
+#     type: world
+#     events:
+#         on player clicks <item> in <inventory>:
+            #- define click:<context.click>
+            # Buy material/acquire ingredient
+            #- if <[click]> == left:
+            # Give material/sell ingredient
+            #- if <[click]> == right:
+TownFarmerInventory:
+    type: inventory
+    title: Learned Skills
+    size: 54
+    slots:
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+# =================================================================================
+# =================================== TRAINERS ====================================
+# =================================================================================
+PlacedTownTrainerAssignment:
+    type: assignment
+    actions:
+        on assignment:
+            - narrate "Assignment Set!"
+    interact scripts:
+        - 1 PlacedTownTrainerInteract
+PlacedTownTrainerInteract:
+    type: interact
+    steps:
+        1:
+            chat trigger:
+                1:
+                    trigger: /Regex:Hello/
+                    script:
+                        - chat "Hello! Want to train some militia?"
+                2:
+                    trigger: /Regex:Yes/
+                    script:
+                        - chat "Excellent. What do you want to train?"
+                3:
+                    trigger: /Regex:Infantry/
+                    script:
+                        - if <player.inventory.contains[InfantryVoucher]>:
+                            - chat "Alright! I'll take that voucher and... bam! You've acquired new militia."
+                            - give TownInfantryVoucher
+# TownShopController:
+#     type: world
+#     events:
+#         on player clicks <item> in <inventory>:
+            #- define click:<context.click>
+            # Buy material/acquire ingredient
+            #- if <[click]> == left:
+            # Give material/sell ingredient
+            #- if <[click]> == right:
+TownTrainerInventory:
+    type: inventory
+    title: Learned Skills
+    size: 54
+    slots:
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+# =================================================================================
+# ================================= BLACKSMITHS ===================================
+# =================================================================================
+PlacedTownBlacksmithAssignment:
+    type: assignment
+    interact scripts:
+        - 1 PlacedTownBlacksmithInteract
+
+PlacedTownBlacksmithInteract:
+    type: interact
+    steps:
+        1:
+            chat trigger:
+                1:
+                    trigger: /Regex:Hello/
+                    script:
+                        - chat "Hello!"
+# TownShopController:
+#     type: world
+#     events:
+#         on player clicks <item> in <inventory>:
+            #- define click:<context.click>
+            # Buy material/acquire ingredient
+            #- if <[click]> == left:
+            # Give material/sell ingredient
+            #- if <[click]> == right:
+TownSmithInventory:
+    type: inventory
+    title: Learned Skills
+    size: 54
+    slots:
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+# =================================================================================
+# =================================== BUILDERS ====================================
+# =================================================================================
+# TownShopController:
+#     type: world
+#     events:
+#         on player clicks <item> in <inventory>:
+            #- define click:<context.click>
+            # Buy material/acquire ingredient
+            #- if <[click]> == left:
+            # Give material/sell ingredient
+            #- if <[click]> == right:
+TownBuilderInventory:
+    type: inventory
+    title: Learned Skills
+    size: 54
+    slots:
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+
+# =================================================================================
+# ================================== Controller ===================================
+# =================================================================================
 TownNPCController:
     type: world
     events:
@@ -109,11 +240,13 @@ SetVulnerable:
     type: task
     script:
         - vulnerable state:true
+
 InfantrySetup:
     type: task
     script:
         - vulnerable state:true
         - execute as_server "sentinel addtarget denizen_proc:TownInfantryTargeting:<npc.id> --id:<npc.id>"
+
 TownInfantryTargeting:
     type: procedure
     definitions: npc
@@ -133,7 +266,9 @@ GetNPCType:
         - foreach Farmer|Blacksmith|Alchemist|Woodcutter|Trainer|Miner as:type:
             - if <[name].contains_text[<[type]>]>:
                 - determine <[type]>
-
+# =================================================================================
+# =================================== SKINS =======================================
+# =================================================================================
 # Using the provided keyword, returns a random URL for a skin
 # To use for that NPC
 GetTownNPCSkin:
@@ -203,60 +338,3 @@ SetNPCURLSKin:
             - define success:true
         - flag server <def[key]>:!
         - yaml unload id:response
-
-PlacedTownFarmerAssignment:
-    type: assignment
-    interact scripts:
-        - 1 PlacedTownFarmerInteract
-
-PlacedTownFarmerInteract:
-    type: interact
-    steps:
-        1:
-            chat trigger:
-                1:
-                    trigger: /Regex:Hello/
-                    script:
-                        - chat "Hello!"
-
-PlacedTownBlacksmithAssignment:
-    type: assignment
-    interact scripts:
-        - 1 PlacedTownBlacksmithInteract
-
-PlacedTownBlacksmithInteract:
-    type: interact
-    steps:
-        1:
-            chat trigger:
-                1:
-                    trigger: /Regex:Hello/
-                    script:
-                        - chat "Hello!"
-
-PlacedTownTrainerAssignment:
-    type: assignment
-    actions:
-        on assignment:
-            - narrate "Assignment Set!"
-    interact scripts:
-        - 1 PlacedTownTrainerInteract
-PlacedTownTrainerInteract:
-    type: interact
-    steps:
-        1:
-            chat trigger:
-                1:
-                    trigger: /Regex:Hello/
-                    script:
-                        - chat "Hello! Want to train some militia?"
-                2:
-                    trigger: /Regex:Yes/
-                    script:
-                        - chat "Excellent. What do you want to train?"
-                3:
-                    trigger: /Regex:Infantry/
-                    script:
-                        - if <player.inventory.contains[InfantryVoucher]>:
-                            - chat "Alright! I'll take that voucher and... bam! You've acquired new militia."
-                            - give TownInfantryVoucher

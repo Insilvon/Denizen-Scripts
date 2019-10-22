@@ -396,6 +396,22 @@ TownRemoveNPC:
             - yaml id:<[name]> set NPCs.Total:-:1
             - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
             - yaml unload id:<[name]>
+
+TownPermissionHelper:
+    type: task
+    script:
+    - if !<player.has_flag[CurrentCharacter]>:
+        - narrate "You do not have an active character. Please fix this first!"
+        - determine cancelled
+    - if <[townID]> == none:
+        - narrate "You are not a member of a town!"
+        - determine cancelled
+    - if !<player.location.cuboids.contains_text[<[townID]>]>:
+        - narrate "You are not in your town, your NPC cannot help you!"
+        - determine cancelled
+    - if !<proc[CheckTownOwner].context[<player>]>:
+        - narrate "You are not the owner of this town! You cannot invite people here."
+        - determine cancelled
 # =================================================================================
 # =============================== Get/Set Methods =================================
 # =================================================================================
