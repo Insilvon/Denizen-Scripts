@@ -49,6 +49,24 @@ SetCharacterYAML:
         - yaml id:<[player]> set <[key]>:<[value]>
         - ~yaml "savefile:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
         - yaml unload id:<[player]>
+
+SetBaseYAML:
+    type: task
+    definitions: player|key|value
+    script:
+        - define id:<[player]>
+        - ~yaml "load:/CharacterSheets/<[player].uuid>/base.yml" id:<[player]>
+        - yaml id:<[player]> set <[key]>:<[value]>
+        - ~yaml "savefile:/CharacterSheets/<[player].uuid>/base.yml" id:<[player]>
+        - yaml unload id:<[player]>
+ReadBaseYAML:
+    type: procedure
+    definitions: player|key
+    script:
+        - yaml load:/CharacterSheets/<[player].uuid>/base.yml id:<[player]>
+        - define result:<yaml[<[player]>].read[<[key]>]>
+        - yaml unload id:<[player]>
+        - determine <[result]>
 ModifyCharacterYAML:
     type: task
     definitions: player|key|value
