@@ -148,23 +148,23 @@ SplinterController:
         - define severity:1
         - define counter:0
         # Main Loop
-        - while <player.has_flag[Splinter]>:
-            - define counter:+:1
-            - wait 2s
-            - random:
-                - narrate "<&a>You feel an annoying itch in your arm."
-                - narrate "<&a>You feel a frustrating itch behind your ear. Is it even possible to get splinters there?"
-                - narrate "<&a>That fall is still biting you. The small fleck of stray bark scratches at your inner flesh."
-                - narrate "<&a>Ow. Owwwww. OWWWWWWWWW. GET IT OUT."
-                - narrate "<&a>This is literally the worst thing. Take it out. It's going to drive you crazy."
-                - narrate "<&a>Must... resist... urge... to... scratch..."
-                - narrate "<&a>TAKE ME OUT"
-            # Run your effects here
-            - hurt 0.1
-            - if <[counter]> == 4:
-                - define severity:+:1
-                - define counter:0
-            - wait 5s
+        # - while <player.has_flag[Splinter]> && <player.is_online>:
+        #     - define counter:+:1
+        #     - wait 2s
+        #     - random:
+        #         - narrate "<&a>You feel an annoying itch in your arm."
+        #         - narrate "<&a>You feel a frustrating itch behind your ear. Is it even possible to get splinters there?"
+        #         - narrate "<&a>That fall is still biting you. The small fleck of stray bark scratches at your inner flesh."
+        #         - narrate "<&a>Ow. Owwwww. OWWWWWWWWW. GET IT OUT."
+        #         - narrate "<&a>This is literally the worst thing. Take it out. It's going to drive you crazy."
+        #         - narrate "<&a>Must... resist... urge... to... scratch..."
+        #         - narrate "<&a>TAKE ME OUT"
+        #     # Run your effects here
+        #     - hurt 0.1
+        #     - if <[counter]> == 4:
+        #         - define severity:+:1
+        #         - define counter:0
+        #     - wait 5s
 FluController:
     type: task
     script:

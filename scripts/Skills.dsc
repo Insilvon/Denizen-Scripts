@@ -58,18 +58,18 @@ SkillOnPlayerClicksInInventory:
                 - if <[item]> == INVENTORYBLOCKITEM:
                     - determine cancelled
                 - else:
-                    - narrate "You have selected a skillslot. Choose a skill to equip!."
+                    - narrate "You have selected a skillslot. Choose a skill to equip!"
                     - flag player <[character]>_Slot:<[slot]>
             - else:
                 - if <player.has_flag[<[character]>_slot]>:
                     - inventory set d:in@<[character]>_skills o:<context.item> s:<player.flag[<[character]>_slot]>
                     - flag player <[character]>_slot:!
-        - define num:0
-        - define loop:<element[9].sub_int[<player.flag[<[character]>_BlockedSkills]>]>
-        - repeat <[loop]>:
-            - define number:<element[46].add_int[<[num]>]>
-            - flag player <[character]>_activeskills:->:<[inventory].slot[<element[46].add_int[<[num]>]>].script.name>
-            - define num:++
+            - define num:0
+            - define loop:<element[9].sub_int[<player.flag[<[character]>_BlockedSkills]>]>
+            - repeat <[loop]>:
+                - define number:<element[46].add_int[<[num]>]>
+                - flag player <[character]>_activeskills:->:<[inventory].slot[<element[46].add_int[<[num]>]>].script.name>
+                - define num:++
 
 # Script to run on the "On Player Drop Clicks in Inventory" event
 SkillOnPlayerDropClicksInInventory:

@@ -3,12 +3,12 @@ DiscordBot:
     events:
         on discord message received channel:256968732511830017:
             - define message:<context.message>
-            - narrate "Message: <context.message>" targets:<server.match_player[Insilvon]>
-            - narrate "<context.author.nickname>" targets:<server.match_player[Insilvon]>
-            - narrate "<context.author.id>" targets:<server.match_player[Insilvon]>
-            - narrate "<context.author.name>" targets:<server.match_player[Insilvon]>
-            - narrate "<[message]>" targets:<server.match_player[Insilvon]>
-            - narrate "<[message].starts_with[~]>" targets:<server.match_player[Insilvon]>
+            #- narrate "Message: <context.message>" targets:<server.match_player[Insilvon]>
+            #- narrate "<context.author.nickname>" targets:<server.match_player[Insilvon]>
+            #- narrate "<context.author.id>" targets:<server.match_player[Insilvon]>
+            #- narrate "<context.author.name>" targets:<server.match_player[Insilvon]>
+            #- narrate "<[message]>" targets:<server.match_player[Insilvon]>
+            #- narrate "<[message].starts_with[~]>" targets:<server.match_player[Insilvon]>
             - if <[message].starts_with[~]>:
                 - narrate "Command received!" targets:<server.match_player[Insilvon]>
 AetheriaDiscordBot:
