@@ -21,10 +21,30 @@ Kernel:
         on player control_drop clicks in inventory priority:1:
             - inject QuestOnPlayerControlClicksInInventory
             - inject SkillOnPlayerControlClicksInInventory
+        # on player exits SkyworldZone:
+        on player enters SkyworldZone:
+            - if <player.inventory.list_contents.contains_text[Elytra]>:
+                - teleport <[player]> l@227,240,229,eventworld
+        # - if !<player.has_flag[Diving]>:
+            #     - narrate "Got you!"
+            #     - run TPCheck def:<player>
+            #     - flag player Diving duration:10s
 # =================================================================================
 # ===========================Custom Block YAML Add/Edit============================
 # =================================================================================
-
+# SkyworldTPScript:
+#     type: task
+#     script:
+#         - narrate "Got you"
+#         - teleport <player> l@227,240,229,eventworld
+# TPCheck:
+#     type: task
+#     definitions: player
+#     speed: instant
+#     script:
+#         # - execute as_op "warp eventworld"
+#         # - execute as_op "tp 227 255 229"
+#         - teleport <[player]> l@227,240,229,eventworld
 CreateChunkFile:
     type: task
     definitions: chunkID|locale|theItem

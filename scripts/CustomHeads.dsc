@@ -434,7 +434,14 @@ GetAllStars:
 LightGreenStar:
     type: Item
     material: player_head[skull_skin=cdde0eb0-680d-4b55-824c-9a0d35838049|eyJ0aW1lc3RhbXAiOjE1NjM2NDc0MDg5MjEsInByb2ZpbGVJZCI6IjkxZjA0ZmU5MGYzNjQzYjU4ZjIwZTMzNzVmODZkMzllIiwicHJvZmlsZU5hbWUiOiJTdG9ybVN0b3JteSIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTJkYjlmOWEzNjRmZTQzOGMwZGU1ZjQ5ODQwN2E5ODc2ZDRiOGIxM2ViM2E1YTQwNWZhZTJiNDI1YzRkNWMwMiJ9fX0=]
-    display name: Star
+    display name: The Crystalline Gem
+    lore:
+        - A mysterious, light green gem
+        - which shines as the sun hits it.
+        - On all sides, strange runes
+        - are engraved into the crystalline
+        - structure, none of which are the
+        - common language.
 YellowStar:
     type: Item
     material: player_head[skull_skin=0ad61031-c91f-49d8-8159-a286973fa19c|eyJ0aW1lc3RhbXAiOjE1NjM2NDc0MTYwMzksInByb2ZpbGVJZCI6IjU2Njc1YjIyMzJmMDRlZTA4OTE3OWU5YzkyMDZjZmU4IiwicHJvZmlsZU5hbWUiOiJUaGVJbmRyYSIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmJiM2NjOTM5MzUwNGQ0YzAzZTNmYzQ3NThlZDliMTY3MTE1ZGFhYmZjM2MwZWRhYmYwODgzYTFhNjU2ZDc5YSJ9fX0=]

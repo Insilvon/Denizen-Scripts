@@ -41,8 +41,9 @@ PlayerController:
             - inject PlayerControllerOnJoin
         # TODO - ...does this need to be generalized?
         on player clicks player_head in inventory:
-            - define arg:<context.raw_slot>
-            - inject CharacterSwap
+            - if <context.inventory.contains_text[GUI]>:
+                - define arg:<context.raw_slot>
+                - inject CharacterSwap
 
 CharacterGUIMenu:
     type: inventory
@@ -147,9 +148,9 @@ CharacterCreate:
                 - ~yaml id:<[id]> set Renown.ChildrenOfTheSun:0
                 - ~yaml id:<[id]> set Renown.Skyborne:0
                 - ~yaml id:<[id]> set Renown.Outsiders:0
-                # Flags
-                - foreach <player.list_flags> as:flag:
-                    - yaml id:<[id]> set Flags.<[flag]>:<player.flag[<[flag]>]>
+                # Flags - Why are we setting them on a new character???
+                # - foreach <player.list_flags> as:flag:
+                #     - yaml id:<[id]> set Flags.<[flag]>:<player.flag[<[flag]>]>
                 # Bounties ?
                 # Town
                 # Wayshrine ?
@@ -162,7 +163,7 @@ CharacterCreate:
                 - else:
                     - flag player Character_List:->:<[args].get[2]>
                 - note "i@player_head[display_name=<[args].get[2]>;lore=$*@*$]" as:<player.uuid>_head<player.flag[Character]>
-                - inventory add d:in@<player.uuid>_GUI o:i@<player.uuid>_head<player.flag[Character]>
+                - inventory add d:in@<player.uuid>_GUI o:<player.uuid>_head<player.flag[Character]>
             - else:
                 - narrate "<&b>[Characters] - You have reached your maximum amount of characters."
                 - narrate "<&b>[Characters] - Is this an error?"

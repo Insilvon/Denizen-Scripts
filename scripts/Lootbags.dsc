@@ -8,8 +8,8 @@
 test:
     type: world
     events:
-        on player picks up diamond:
-            - narrate "Working"
+        # on player picks up diamond:
+        #     - narrate "Working"
         on player right clicks with lootbox_voucher:
             - give lootbox_item
             - take lootbox_voucher
