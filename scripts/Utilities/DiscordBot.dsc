@@ -1,7 +1,10 @@
 DiscordBot:
     type: world
     events:
-        on discord message received channel:256968732511830017:
+        on discord message received channel:658679433795862537:
+            - if <context.author> == discorduser@mybot,418842777720193037:
+                - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[application-log]> "@everyone"
+        on discord message received channel:657665761833254913:
             - define message:<context.message>
             #- narrate "Message: <context.message>" targets:<server.match_player[Insilvon]>
             #- narrate "<context.author.nickname>" targets:<server.match_player[Insilvon]>
@@ -10,7 +13,44 @@ DiscordBot:
             #- narrate "<[message]>" targets:<server.match_player[Insilvon]>
             #- narrate "<[message].starts_with[~]>" targets:<server.match_player[Insilvon]>
             - if <[message].starts_with[~]>:
-                - narrate "Command received!" targets:<server.match_player[Insilvon]>
+                - define command:<context.message.substring[<2>]>
+                - if <[command]> == reload:
+                    - execute as_server "ex reload"
+                    - ~discord id:mybot message channel:<context.channel> "*Denizen has been reloaded.*"
+                    - stop
+                - if <[command]> == players:
+                    - define playerlist:<server.list_online_players>
+                    - if <[playerlist].size> == 0:
+                        - ~discord id:mybot message channel:<context.channel> "Nobody is online. Start an event!"
+                        - stop
+                    - else:
+                        - foreach <[playerlist]> as:player:
+                            - define newPlayerlist:->:<[player].name>
+                        - define result:<[newPlayerList].comma_separated>
+                    - ~discord id:mybot message channel:<context.channel> "<[result]>"
+                    - stop
+                - if <[command]> == characters:
+                    - define playerlist:<server.list_online_players>
+                    - if <[playerlist].size> == 0:
+                        - ~discord id:mybot message channel:<context.channel> "Nobody is online. Start an event!"
+                        - stop
+                    - else:
+                        - foreach <[playerlist]> as:player:
+                            - define newPlayerlist:->:<proc[GetCharacterName].context[<[player]>]||<player.name>>
+                        - ~discord id:mybot message channel:<context.channel> "<[newplayerlist].comma_separated>"
+                        - stop
+
+                - if <[command].starts_with[say]>:
+                    - define message:<[command].substring[<4>]>
+                    - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[big-sister]> "<[message]>"
+                    - stop
+                - if <[command]> == "debug on":
+                    - execute as_server "denizen debug on"
+                    - stop
+                - if <[command]> == "debug off"
+                    - execute as_server "denizen debug off"
+                    - stop
+
 AetheriaDiscordBot:
     type: command
     name: dDiscord

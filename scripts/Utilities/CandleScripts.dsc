@@ -6,7 +6,7 @@
 # When lit, the candles will narrate a lore description to the surrounding area.
 # Last Change: Prevented Flint and Steel from starting fires when lighting candles
 # TODO:// Allow Candles to be Craftable
-
+    
 CandleHandler:
     type: task
     speed: 3t
@@ -22,13 +22,13 @@ CandleHandler:
           - note remove as:<[theThing].notable_name>
           - execute as_server "denizen save"
         - else:
-          - if <player.item_in_hand.simple> == i@flint_and_steel:
+          - if <player.item_in_hand.simple> == i@torch:
             - determine passively cancelled
             - flag server <[customItem]>_<context.location.simple>:lit
             - define origin:<context.location.add[0,-1,0]>
             - define pos1:<[origin].add[4,-3,4]>
             - define pos2:<[origin].add[-4,3,-4]>
-            - note cu@<[pos1]>|<[pos2]> as:<[customItem]>_<[origin].simple>
+            - note cu@<[pos1].world>,<[pos1].xyz>,<[pos2].xyz> as:<[customItem]>_<[origin].simple>
             - execute as_server "denizen save"
             - narrate "*You light the candle. Its aroma fills the air.*"
             - run CandleScentText def:<[customItem]>
@@ -104,7 +104,25 @@ CandleScentText:
 CandleOnPlayerRightClicksPlayer_Head:
     type: task
     script:
-        - narrate "<[customItem]>"
+        # - narrate "<[customItem]>"
         - if <[customItem].contains_text[Candle]>:
             - inject CandleHandler
-    
+CandleOnPlayerBreaksBlock:
+    type: task
+    script:
+        - if <[itemDrop].contains_text[Candle]>:
+            - if <server.has_flag[<[itemDrop]>_<context.location.simple>]>:
+                # Yes? Okay, activate it.
+                - if <server.flag[<[itemDrop]>_<context.location.simple>]> == lit:
+                # Remove the thing
+                    - flag server <[itemDrop]>_<context.location.simple>:!
+                    - narrate "Your candle has flickered out."
+                    - define theThing <context.location.cuboids.filter[notable_name.starts_with[<[itemDrop]>]].get[1]||null>
+                    - note remove as:<[theThing].notable_name>
+                    - execute as_server "denizen save"
+                - else:
+                    - narrate "Not lit!"
+                    - flag server <[itemDrop]>_<context.location.simple>:!
+            - else:
+                - narrate "No flag for customItem context location simple"
+

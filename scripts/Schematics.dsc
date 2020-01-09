@@ -87,21 +87,3 @@ testschematic:
     type: item
     material: i@paper
     display name: NPC Schematic
-
-
-TestAssignment:
-    type: assignment
-    interact scripts:
-        - 1 TestInteract
-TestInteract:
-    type: interact
-    steps:
-        1:
-            chat trigger:
-                1:
-                    trigger: "Hello"
-                    script:
-                        - chat "Hello stranger."
-
-                  # Loop through the blocklist, show fake for each
-                  #- showfake <schematic[TestBench].block[<location>]>

@@ -1,0 +1,130 @@
+# Allows players to claim towns, manage their resources, and dominate their enemies
+# /town raid|claim|invite|promote|info|
+TownFormat:
+    type: format
+    format: "<&3>[Towns]<&co><&f> <text>"
+TownCommand:
+    type: command
+    debug: false
+    name: town
+    description: (DEV) Creates a town using active flags
+    usage: /town create name
+    script:
+        - define arg:<context.args||null>
+        - choose <[arg]>:
+            - case info:
+            - case create:
+            - case claim:
+            - case expand:
+            - case invite:
+            - default:
+                - inject TownHelp
+TownInfo:
+    type: task
+    debug: false
+    script:
+        - define Town:<player.flag[Town]||null>
+        - if <[town]> == null:
+            - narrate "You must be a member of a town to view this!" format:TownFormat
+            - stop
+        # Now list all details of the town
+TownCreate:
+    type: task
+    debug: false
+    script:
+        - define Town:<player.flag[Town]||null>
+        - if <[Town]> != null:
+            - narrate "You cannot create a town while a member of another!" format:TownFormat
+            - stop
+        # Now create the town
+TownClaim:
+    type: task
+    debug: false
+    script:
+        - define Town:<player.flag[Town]||null>
+        - if <[Town]> != null:
+            - narrate "You cannot claim a town while a member of another!" format:TownFormat
+            - stop
+        # Make this player the owner of this town
+TownExpand:
+    type: task
+    debug: false
+    script:
+        - define Town:<player.flag[Town]||null>
+        - define TownOwner:<server.flag[<[Town]>]||null>
+        - if <[TownOwner]> != <proc[GetCharacterName].context[<player>]>:
+            - narrate "You are not the owner of this town. You cannot expand the territory." format:TownFormat
+            - stop
+        # Run the expand
+TownInvite:
+    type: task
+    debug: false
+    script:
+        - define Town:<player.flag[Town]||null>
+        - if <[town]> == null:
+            - narrate "You must be a member of a town to do this!" format:TownFormat
+            - stop
+        # Check that the other player exists. Do we do this per-character or per-player???
+TownKick:
+    type: task
+    debug: false
+    script:
+TownPromote:
+    type: task
+    debug: false
+    script:
+TownLeave:
+    type: task
+    debug: false
+    script:
+TownDisband:
+    type: task
+    debug: false
+    script:
+TownDisbandConfirm:
+    type: task
+    debug: false
+    script:
+TownRaid:
+    type: task
+    debug: false
+    script:
+TownStore:
+    type: task
+    debug: false
+    script:
+TownHelp:
+    type: task
+    debug: false
+    script:
+        # - narrate "" format:TownFormat
+        - narrate "--------------------->" format:TownFormat
+        - narrate "<&3>/town: <&f>Displays this list!"
+        - narrate "<&3>/town Info: <&f>Displays information and stats about your town."
+        - narrate "<&3>/town Create <&lt>Name<&gt>: <&f>Creates a new town at your location. (Different than claim!)"
+        - narrate "<&3>/town Claim <&lt>Name<&gt>: <&f>Claims an inactive or ownerless town as your own. (You can only have one town.)"
+        - narrate "<&3>/town Expand: <&f>Adds the current chunk to your land claim, depending on your resources and number of villagers"
+        - narrate "<&3>/town Invite: <&f>Invites the Characteer you are currently looking at to your town."
+        - narrate "<&3>/town Kick <&lt>Player Name<&gt>: <&f>Removes that troublesome Character from your town."
+        - narrate "<&3>/town Promote <&lt>Player Name<&gt>: <&f>Gives another player ownership perms of your town. (Does not make them the true owner.)"
+        - narrate "<&3>/town Leave: <&f>Leaves your current Town. If you are the owner of the town, use /town disband."
+        - narrate "<&3>/town Disband: <&f>If you are the owner of a town, then this will remove your town completely."
+        - narrate "<&3>/town Disband (Ct.):<&f>Your NPCs will remain there and will be recruitable for others."
+        - narrate "<&3>/town Raid <&lt>Town Name<&gt>: <&f>Instigates a raid on another Town."
+        - narrate "<&3>/town Store: <&f>Will store a Militia Voucher (must be holding to work) in the town militia."
+
+# Helper Scripts =====================================
+# Checks if the player is the owner of their town
+TownCheckOwner:
+    type: procedure
+    debug: false
+    definitions: Town
+    script:
+        - determine <server.flag[Town]||null>
+# Checks if the player has a town
+TownCheck:
+    type: procedure
+    debug: false
+    definitions: Town
+    script:
+        - determine <player.flag[Town]||null>

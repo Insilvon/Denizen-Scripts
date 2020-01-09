@@ -14,7 +14,8 @@ CompanionTask:
         - equip <entry[temp].created_npc> hand:diamond_sword
         - execute as_server "npc select <entry[temp].created_npc.id>"
         - execute as_server "sentinel guard <player.name>"
-
+        - execute as_server "npc owner <player.name>"
+        - execute as_server "sentinel addtarget MONSTERS"
 CompanionAssignment:
     type: assignment
     actions:

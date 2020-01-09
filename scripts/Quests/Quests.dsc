@@ -64,36 +64,6 @@ QuestOnPlayerLogin:
         - wait 1s
         - inject QuestLoginScript
 
-# Main Quest Controller - Manages clicking in the quest inventories
-QuestController:
-    type: world
-    events:
-        # on player drop clicks in inventory priority:1:
-        #     - inject QuestOnPlayerDropClicksInInventory
-        # on player control_drop clicks in inventory priority:1:
-        #     - inject QuestOnPlayerControlClicksInInventory
-        on player left clicks ActiveQuestItem in inventory:
-            - run QuestMenuHandler def:ActiveQuest instantly
-        on player left clicks CompletedQuestItem in inventory:
-            - run QuestMenuHandler def:CompletedQuest instantly
-        on player left clicks NextPageActiveQuestItem in inventory:
-            - run QuestPageHandler def:ActiveQuest|next instantly
-        on player left clicks NextPageCompletedQuestItem in inventory:
-            - run QuestPageHandler def:CompletedQuest|next instantly
-        on player left clicks LastPageActiveQuestItem in inventory:
-            - run QuestPageHandler def:ActiveQuest|back instantly
-        on player left clicks LastPageCompletedQuestItem in inventory:
-            - run QuestPageHandler def:CompletedQuest|back instantly
-        #TODO: ADD THIS TO SERVERTASKS
-        # on player logs in:
-        #     - inject QuestOnPlayerLogin
-        on player drops item:
-            - define character:<proc[GetCharacterName].context[<player>]>
-            - define inv:<context.inventory||null>
-            - if <[inv]> != null:
-                - if <[inv]> == <[character]>_ActiveQuestMenu || <[inv]> == <[character]>_CompletedQuestMenu:
-                    - determine cancelled
-
 # =================================================================================
 # ============================== Manager Scripts ==================================
 # =================================================================================
@@ -103,43 +73,30 @@ RemoveActiveQuest:
     type: task
     definitions: player|item
     script:
-        # - narrate "Attempting to remove <[item]>"
         - define character:<proc[GetCharacterName].context[<[player]>]>
-        # - narrate <player.flag[<[character]>_ActiveQuestItems]>
         - if <player.flag[<[character]>_ActiveQuestItems].size> == 1:
-            # - narrate "Comparing <player.flag[<[character]>_ActiveQuestItems]> to <[item]>"
             - if <player.flag[<[character]>_ActiveQuestItems]> == <[item]>:
                 - flag player <[character]>_ActiveQuestItems:!
-                # - narrate "Clearing ActiveQuestItems - empty list"
             - else:
                 - stop
         - else:
-            # - narrate "Original Active Items - <player.flag[<[character]>_ActiveQuestItems]>"
-            # - narrate "Active items after removal goal - <player.flag[<[character]>_ActiveQuestItems].exclude[<[item]>]>"
             - flag <[player]> <[character]>_ActiveQuestItems:<player.flag[<[character]>_ActiveQuestItems].exclude[<[item]>]>
-            # - narrate "New Active Items - <player.flag[<[character]>_ActiveQuestItems]>"
 
 # Will add the specified item to the character's active quest menu
 AddActiveQuest:
     type: task
     definitions: player|item
     script:
-        # - narrate "adding <[item]>"
-        # - narrate "Flag before addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
         - flag player <proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems:->:<[item]>
         - title "title: <gold>*QUESTS*" "subtitle:<gold>Your questlog has been updated."
-        # - narrate "Flag after addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_ActiveQuestItems]>"
 
 # Will add the specified item to the character's completed quest menu
 AddCompletedQuest:
     type: task
     definitions: player|item
     script:
-        # - narrate "adding <[item]>"
-        # - narrate "Flag before completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
         - flag player <proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems:->:<[item]>
         - title "title: <gold>*QUESTS*" "subtitle:<gold>Your questlog has been updated."
-        # - narrate "Flag after completed addition - <player.flag[<proc[GetCharacterName].context[<[player]>]>_CompletedQuestItems]>"
 # =================================================================================
 # ================================ Helper Scripts =================================
 # =================================================================================
@@ -226,8 +183,6 @@ QuestLoginScript:
             - note in@QuestJournalActiveQuests as:<[character]>_ActiveQuestMenu
             - note in@QuestJournalCompletedQuests as:<[character]>_CompletedQuestMenu
             - flag player <[character]>_QuestJournal
-            # - flag player <[character]>_ActiveQuestItems:null
-            # - flag player <[character]>_CompletedQuestItems:null
         - flag player <[character]>_QuestJournalMenu:1
 
 # =================================================================================

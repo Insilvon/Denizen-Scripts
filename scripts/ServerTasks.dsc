@@ -10,41 +10,91 @@
 Kernel:
     type: world
     events:
+        on server start:
+            - yaml "load:Utilities/DiscordBot.yml" id:DiscordBot
+            - ~discord id:mybot connect code:<yaml[DiscordBot].read[info.code]>
+            # Load all the Town Files
+            - foreach <server.flag[TownList]> as:Town:
+                - if <server.has_file[/Towns/<[Town]>.yml]>:
+                    - ~yaml "load:/Towns/<[name]>.yml" id:<[Town]>
+
+        on NPC dies:
+            - if <npc.has_flag[Follower]>:
+                - remove <npc>
+            - if <npc.has_flag[Town]>:
+                - define town:<proc[TownFindNPC].context[<npc>]||null>
+                - if <[town]> != null:
+                    - run TownRemoveNPC instantly def:<npc>|<[town]>
         on player logs in:
+            - wait 1s
             - inject QuestOnPlayerLogin
-        on player clicks in inventory priority:1:
-            - inject QuestOnPlayerClicksInInventory
-            - inject SkillOnPlayerClicksInInventory
-        on player drop clicks in inventory priority:1:
-            - inject QuestOnPlayerDropClicksInInventory
-            - inject SkillOnPlayerDropClicksInInventory
-        on player control_drop clicks in inventory priority:1:
-            - inject QuestOnPlayerControlClicksInInventory
-            - inject SkillOnPlayerControlClicksInInventory
-        # on player exits SkyworldZone:
+        on player joins:
+            - inject SkinSave
+            - inject PlayerControllerOnJoin
+            - inject LetterOnJoin
+            #= - inject LoadCharacterSheet
+        on player clicks item in inventory priority:1:
+            - if <context.inventory> == <player.inventory>:
+                - stop
+            - define character:<proc[GetCharacterName].context[<player>]>
+            
+            - if <context.inventory.notable_name> == <[character]>_Mailbox:
+                - if <context.cursor_item.script.name> != LETTERBASE && <context.item.script.name> != LETTERBASE:
+                    - determine cancelled
+            # Check notable inventory Names
+            - if <context.inventory.notable_name> == <[character]>_ProfessionMenu:
+                - inject ClicksItemInCharacterProfessionMenu
+                - stop
+            # Check The Item Clicked
+            - choose <context.item.script.name>:
+                - case ConfirmItem:
+                    - inject ClicksConfirmItemInInventory
+                - case RejectItem:
+                    - inject RejectMenu
+                - case ActiveQuestItem:
+                    - run QuestMenuHandler def:ActiveQuest instantly
+                - case CompletedQuestItem:
+                    - run QuestMenuHandler def:CompletedQuest instantly
+                - case NextPageActiveQuestItem:
+                    - run QuestPageHandler def:ActiveQuest|next instantly
+                - case NextPageCompletedQuestItem:
+                    - run QuestPageHandler def:CompletedQuest|next instantly
+                - case LastPageActiveQuestItem:
+                    - run QuestPageHandler def:ActiveQuest|back instantly
+                - case LastPageCompletedQuestItem:
+                    - run QuestPageHandler def:CompletedQuest|back instantly
+                - default:
+                    - inject QuestOnPlayerClicksInInventory
+                    - inject SkillOnPlayerClicksInInventory
         on player enters SkyworldZone:
             - if <player.inventory.list_contents.contains_text[Elytra]>:
-                - teleport <[player]> l@227,240,229,eventworld
-        # - if !<player.has_flag[Diving]>:
-            #     - narrate "Got you!"
-            #     - run TPCheck def:<player>
-            #     - flag player Diving duration:10s
+                - teleport <[player]> l@1194,197,-877,aetheria
+        on item recipe formed:
+            - if <context.item.material.name.contains[diamond]>:
+                - determine cancelled
+        on player changes world from skyworld_v2 to aetheria:
+            - flag player Below
+        on player changes world from aetheria to skyworld_v2:
+            - flag player Below:!
+        on item enchanted:
+            - determine cancelled
+        on player prepares anvil craft item:
+            - determine cancelled
+        on player places block:
+            - inject OnPlayerPlacesCustomTree
+            - inject LockpickOnPlayerPlacesBlock
+        on player right clicks block:
+            - inject LockpickCheckIfLocked
+        on player breaks block:
+            - inject LockpickBreakCheckIfLocked
+        on player fishes item:
+            - define acceptable:li@pufferfish,tropical_fish,cod,salmon
+            - if !<[acceptable].contains[<context.item>]>:
+                - determine cancelled
 # =================================================================================
 # ===========================Custom Block YAML Add/Edit============================
 # =================================================================================
-# SkyworldTPScript:
-#     type: task
-#     script:
-#         - narrate "Got you"
-#         - teleport <player> l@227,240,229,eventworld
-# TPCheck:
-#     type: task
-#     definitions: player
-#     speed: instant
-#     script:
-#         # - execute as_op "warp eventworld"
-#         # - execute as_op "tp 227 255 229"
-#         - teleport <[player]> l@227,240,229,eventworld
+
 CreateChunkFile:
     type: task
     definitions: chunkID|locale|theItem
@@ -144,25 +194,111 @@ TestRecipe3:
     type: item
     material: diamond_block
     display name: Test Recipe 3
-# AddToFile:
-#   type: task
-#   script:
-#     - yaml create id:test
-#     - yaml "savefile:/ChunkData/test.yml" id:test
-#     - yaml "load:/ChunkData/test.yml" id:test
-#     # Set data here
-#     - yaml id:test set info.username:<player.name>
-#     - yaml id:test set permissions.character_limit:2
-#     - yaml "savefile:/ChunkData/test.yml" id:test
-#     - yaml unload id:test
-#
-# AddToFile2:
-#   type: task
-#   speed: 3t
-#   script:
-#     - yaml "load:/ChunkData/test.yml" id:test
-#     # Set data here
-#     - yaml id:test set re.rere:hello
-#     - yaml "savefile:/ChunkData/test.yml" id:test
-#     - yaml unload id:test
-#     - narrate "complete"
+
+SetCharacterYAML:
+    type: task
+    definitions: player|key|value
+    script:
+        - define id:<[player].flag[CurrentCharacter]>
+        - ~yaml "load:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
+        - yaml id:<[player]> set <[key]>:<[value]>
+        - ~yaml "savefile:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
+        - yaml unload id:<[player]>
+
+SetBaseYAML:
+    type: task
+    definitions: player|key|value
+    script:
+        - define id:<[player]>
+        - ~yaml "load:/CharacterSheets/<[player].uuid>/base.yml" id:<[player]>
+        - yaml id:<[player]> set <[key]>:<[value]>
+        - ~yaml "savefile:/CharacterSheets/<[player].uuid>/base.yml" id:<[player]>
+        - yaml unload id:<[player]>
+ReadBaseYAML:
+    type: procedure
+    definitions: player|key
+    script:
+        - yaml load:/CharacterSheets/<[player].uuid>/base.yml id:<[player]>
+        - define result:<yaml[<[player]>].read[<[key]>]>
+        - yaml unload id:<[player]>
+        - determine <[result]>
+ModifyCharacterYAML:
+    type: task
+    definitions: player|key|value
+    script:
+        - define id:<[player].flag[CurrentCharacter]>
+        - ~yaml "load:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
+        - define newValue:<yaml[<[player]>].read[<[key]>].add_int[<[value]>]>
+        - yaml id:<[player]> set <[key]>:<[newValue]>
+        - ~yaml "savefile:/CharacterSheets/<[player].uuid>/<[id]>.yml" id:<[player]>
+        - yaml unload id:<[player]>
+# This expects that all queries are of acceptable length
+GetCharacterFromQuery:
+    type: procedure
+    definitions: player|query
+    script:
+        - define id:<[player]>_base>
+        - yaml "load:/CharacterSheets/<[player].uuid>/base.yml" id:<[id]>
+        - define characters:<yaml[<[id]>].read[characters]>
+        - define index:<[characters].find_partial[<[query]>]>
+        - if <[index]> == -1:
+            - define result:false
+        - else:
+            - define result:<[characters].get[<[index]>]>
+        - yaml unload id:<[id]>
+        - determine <[result]>
+# Gets this character's base name
+# Could be replaced, purely here for accessibility
+GetCharacterName:
+    type: procedure
+    definitions: player
+    script:
+        - define name:<proc[GetCharacterYAML].context[<[player]>|Info.Character_Name]>
+        - if <[name]> == yaml[<&lt>[character]<&gt>].read[<&lt>[key]<&gt>]:
+            - determine <[player].name>
+        - else:
+            - determine <[name]>
+GetCharacterDisplayName:
+    type: procedure
+    definitions: player
+    script:
+        - determine <proc[GetCharacterYAML].context[<[player]>|Info.Character_Display_Name]>
+# Gets the last known location of this player
+GetCharacterLocation:
+    type: procedure
+    definitions: player
+    script:
+        - determine <proc[GetCharacterYAML].context[<[player]>|Info.Character_Location]>
+# Gets the name of the town the player is currently a member of
+GetCharacterTown:
+    type: procedure
+    definitions: player
+    script:
+        - determine <proc[GetCharacterYAML].context[<[player]>|Town.Name]>
+# General utility to access character sheet info
+GetCharacterYAML:
+    type: procedure
+    definitions: player|key
+    script:
+        - define character:<[player].flag[CurrentCharacter]>
+        - yaml load:/CharacterSheets/<[player].uuid>/<[character]>.yml id:<[character]>
+        - define result:<yaml[<[character]>].read[<[key]>]>
+        - yaml unload id:<[character]>
+        - determine <[result]>
+GetOtherCharacterYAML:
+    type: procedure
+    definitions: player|id|key
+    script:
+        - yaml load:/CharacterSheets/<[player].uuid>/<[id]>.yml id:<[id]>
+        - define result:<yaml[<[id]>].read[<[key]>]>
+        - yaml unload id:<[id]>
+        - determine <[result]>
+CharacterHasTown:
+    type: procedure
+    definitions: player
+    script:
+        - define town:<proc[GetCharacterTown].context[<player>]>
+        - if <[town]> == none:
+            - determine false
+        - else:
+            - determine true

@@ -14,8 +14,8 @@ AvengersAssemble:
         on player logs in:
             - inject AssembleOnPlayerLogsIn
         # they didn't reconnect fast enough
-        on flag expires:
-            - inject AssembleOnFlagExpires
+        # on flag expires:
+        #     - inject AssembleOnFlagExpires
 Assemble:
     type: command
     name: assemble
@@ -82,6 +82,8 @@ AssembleInvite:
                     - narrate "<&c>[Assemble] - An invitation to <&a><[targetName].name><&c> has been sent. They have 5 minutes to accept."
                     - narrate "<&c>[Assemble] - You have received a group invite from <&a><player.name><&c>. Use <&a>/assemble accept <&c> or <&4>/assemble decline<&c>." targets:<[targetName]>
                     - flag server <[targetName].name>_assembleInvite:<player.name> duration:5m
+            
+
 AssembleLeave:
     type: task
     script:
@@ -137,7 +139,8 @@ AssembleDisband:
         - define host:<player.flag[assemble]>
         - define group:<[host]>_assembleGroup
         - foreach <server.flag[<[group]>].as_list> as:character:
-            - flag <server.match_player[<[character]>]> assemble:!
+            - if <server.match_player[<[character]>].is_online>:
+                - flag <server.match_player[<[character]>]> assemble:!
         - flag server <[host]>_assembleGroup:!
 AssembleList:
     type: task
@@ -156,18 +159,9 @@ AssembleOnPlayerQuits:
     script:
         - if <player.has_flag[assemble]>:
             - flag server <player.name>_assembleTimeout duration:2m
-AssembleOnPlayerLogsIn:
-    type: task
-    script:
-        # If we have a countdown for that player's party, then cancel it and do nothing
-        - if <server.has_flag[<player.name>_assembleTimeout]>:
-            - flag server <player.name>_assembleTimeout:!
-AssembleOnFlagExpires:
-    type: task
-    script:
-        - if <context.name.contains_text[_assembleTimeout]>:
-            - define player:<context.name.exclude[_assembleTimeout]>
-            - define host <[player].flag[assemble]>
+
+            - wait 2m
+            - define host:<player.flag[assemble]>
             # If the original party is still active, remove this player from it
             - if !<server.has_flag[<[host]>_assembleGroup]>:
                 - flag player assemble:!
@@ -178,6 +172,30 @@ AssembleOnFlagExpires:
             # If not, just remove them from the party
             - else:
                 - flag server <[host]>_assembleGroup:<server.flag[<[host_assembleGroup]>].as_list.exclude[<player.name>]>
+
+            
+AssembleOnPlayerLogsIn:
+    type: task
+    script:
+        # If we have a countdown for that player's party, then cancel it and do nothing
+        - if <server.has_flag[<player.name>_assembleTimeout]>:
+            - flag server <player.name>_assembleTimeout:!
+# AssembleOnFlagExpires:
+#     type: task
+#     script:
+#         - if <context.name.contains_text[_assembleTimeout]>:
+#             - define player:<context.name.exclude[_assembleTimeout]>
+#             - define host <[player].flag[assemble]>
+#             # If the original party is still active, remove this player from it
+#             - if !<server.has_flag[<[host]>_assembleGroup]>:
+#                 - flag player assemble:!
+#                 - stop
+#             # Are they the leader of the original party? If so, disband
+#             - if <[host]> == <player.name>:
+#                 - inject AssembleDisband
+#             # If not, just remove them from the party
+#             - else:
+#                 - flag server <[host]>_assembleGroup:<server.flag[<[host_assembleGroup]>].as_list.exclude[<player.name>]>
 
 #=====================================================================#
 #============================Sample Quests============================#

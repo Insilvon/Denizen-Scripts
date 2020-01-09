@@ -45,10 +45,7 @@ PlacedTownFarmerInteract:
             proximity trigger:
                 exit:
                     script:
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
+                        - inject RandomWalk
                         - zap 1
             chat trigger:
                 1:
@@ -84,10 +81,7 @@ PlacedTownFarmerInteract:
                 exit:
                     script:
                         - chat "See you around."
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
+                        - inject RandomWalk
                         - zap 1
 
             chat trigger:
@@ -168,21 +162,89 @@ PlacedTownTrainerInteract:
     type: interact
     steps:
         1:
+            proximity trigger:
+                exit:
+                    script:
+                        - inject RandomWalk
+                        - inject ClearTrainingFlag
+                        - zap 1
             chat trigger:
                 1:
                     trigger: /Regex:Hello/
                     script:
-                        - chat "Hello! Want to train some militia?"
+                        - random:
+                            - chat "Ah! Welcome welcome! Are you from the Firstborne? I am at your service!"
+                            - chat "Welcome! I'm <npc.name>. Are you ready to do some training?"
+                            - chat "Good of you to show - I've got several candidates chomping at the bit to train."
+                        - wait 1s
+                        - chat "How can I assist you today?"
+                        - wait 1s
+                        - narrate "<&hover[Click Me!]><&click[Can we train some units?]>Ask to train some units.<&end_click><&end_hover>"
                 2:
-                    trigger: /Regex:Yes/
+                    trigger: Can we train some /units/?
                     script:
-                        - chat "Excellent. What do you want to train?"
+                        - random:
+                            - chat "Yes, we can most certainly get to training."
+                            - chat "Of course."
+                            - chat "It would be my pleasure."
+                        - wait 1s
+                        # Edit this line when more are in
+                        - chat "Currently I have Infantry units available for training."
+                        - wait 1s
+                        - narrate "<&hover[Click Me!]><&click[Let<&sq>s train some infantry.]>Ask to train some Infantry.<&end_click><&end_hover>"
                 3:
-                    trigger: /Regex:Infantry/
+                    trigger: Let<&sq>s train some /infantry/.
                     script:
-                        - if <player.inventory.contains[InfantryVoucher]>:
-                            - chat "Alright! I'll take that voucher and... bam! You've acquired new militia."
-                            - give TownInfantryVoucher
+                        - chat "As always, they demand their payment ahead of time. They'll want one emerald, 16 bread, and a stone sword each."
+                        - wait 2s
+                        - chat "How many would you like to train?"
+                        - narrate "<&hover[Click Me!]><&click[Let<&sq>s train 1.]>Train One Infantry.<&end_click><&end_hover> | <&hover[Click Me!]><&click[Let<&sq>s train 2.]>Train two Infantry.<&end_click><&end_hover> | <&hover[Click Me!]><&click[Let<&sq>s train 3.]>Train three Infantry.<&end_click><&end_hover> | <&hover[Click Me!]><&click[Nevermind, maybe later.]>Change your mind.<&end_click><&end_hover>"
+                        - flag player <npc>_Unit:Infantry
+                        - flag player <npc>_UnitRequirements:i@Emerald
+                        - flag player <npc>_UnitRequirements:->:i@Bread
+                        - flag player <npc>_UnitRequirements:->:i@Stone_Sword
+                        - flag player <npc>_UnitReqQuantity:1
+                        - flag player <npc>_UnitReqQuantity:->:16
+                        - flag player <npc>_UnitReqQuantity:->:1
+                4:
+                    trigger: Regex:/Goodbye|Maybe Later/.
+                    script:
+                        - chat "No worries. I serve at your pleasure."
+                        - wait 1s
+                        - chat "Take care."
+                        - inject ClearTrainingFlag
+                5:
+                    trigger: Give me /Regex:1|2|3/.
+                    script:
+                        - if !<player.has_flag[<npc>_Unit]>:
+                            - wait 1s
+                            - chat "I have no idea what unit you'd like me to train."
+                            - narrate "<&hover[Click Me!]><&click[Let<&sq>s train some infantry.]>Ask to train some Infantry.<&end_click><&end_hover>"
+                            - stop
+                        - define number:<context.keyword>
+                        - define requirements:<player.flag[<npc>_UnitRequirements]>
+                        - define quantities:<player.flag[<npc>_UnitReqQuantity].as_list>
+                        - define pass:true
+                        - foreach <player.flag[<npc>_UnitRequirements]> as:item:
+                            - define amount:<player.flag[<npc>_UnitReqQuantity].get[<[loop_index]>].mul_int[<[number]>]>
+                            - if !<player.inventory.contains[<[item]>].quantity[<[amount]>]>:
+                                - chat "You're missing some supplies for this. Come back when you have them!"
+                                - define pass:false
+                                - foreach stop
+                        - if <[pass]>:
+                            - foreach <player.flag[<npc>_UnitRequirements]> as:item:
+                                - define amount:<player.flag[<npc>_UnitReqQuantity].get[<[loop_index]>].mul_int[<[number]>]>
+                                - narrate "<[item]>"
+                                - take <[item]> quantity:<[amount]>
+                            - give <player.flag[<npc>_Unit]>Voucher quantity:<[number]>
+                            - chat "And there you go."
+                            - narrate "You have received a follower. After using this ticket, the Follower will be at your side for 15 minutes."
+                            - narrate "At any time, you can request your follower to wait or follower by right-clicking them."
+                            - wait 1s
+                        - chat "See you around."
+                        - inject ClearTrainingFlag
+                        - zap 1
+
 # TownShopController:
 #     type: world
 #     events:
@@ -217,10 +279,8 @@ PlacedTownBlacksmithInteract:
             proximity trigger:
                 exit:
                     script:
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
+                        - inject RandomWalk
+                        - inject ClearRepairFlag
                         - zap 1
             chat trigger:
                 1:
@@ -235,7 +295,7 @@ PlacedTownBlacksmithInteract:
                     trigger: Can you /repair/ this?
                     script:
                         - define item:<player.item_in_hand>
-                        - if <[item].material.name> != air:
+                        - if <[item].material.name> != air && <[item].durability> != 0:
                             - chat "So let's see, you've got this <[item].material.name> here..."
                             - wait 1s
                             - if <[item].script.name> == SkyborneParafoil:
@@ -243,86 +303,66 @@ PlacedTownBlacksmithInteract:
                                 - wait 1s
                                 - chat "I'll need 16 diamonds, 8 iron ingots, and 4 emeralds for now."
                                 - wait 1s
-                                - if <[item].durability> == 0:
-                                    - chat "Wait... this is already fully repaired! Is there something else you could need repaired?"
-                                    - stop
-                                - if <player.inventory.contains[diamond].quantity[16]> && <player.inventory.contains[iron_ingot].quantity[8]> && <player.inventory.contains[emerald].quantity[4]>:
-                                    - chat "Does this sound fair to you?"
-                                    - wait 1s
-                                    - narrate "<&hover[Click Me!]><&click[Yes, that sounds good.]><&a>Agree and trade the items.<&f><&end_click><&end_hover> | <&hover[Click Me!]><&click[No thanks.]><&c>Decline and leave.<&end_click><&end_hover>"
-                                    - zap 2
-                                - else:
-                                    - chat "Come on back when you've got those materials!"
+                                - flag player <npc>_RepairItem:<[item]>
+                                - flag player <npc>_RepairRequirements:i@Diamond
+                                - flag player <npc>_RepairRequirements:->:i@Iron_Ingot
+                                - flag player <npc>_RepairRequirements:->:i@Emerald
+                                - flag player <npc>_RepairQuantities:16
+                                - flag player <npc>_RepairQuantities:->:8
+                                - flag player <npc>_RepairQuantities:->:4
+                                - chat "Does this sound fair to you?"
+                                - wait 1s
+                                - narrate "<&hover[Click Me!]><&click[Yes, that sounds good.]><&a>Agree and trade the items.<&f><&end_click><&end_hover> | <&hover[Click Me!]><&click[No thanks.]><&c>Decline and leave.<&end_click><&end_hover>"
+                                - zap 3
                             - else:
                                 - if <[item].material.name.contains[iron]>:
                                     - chat "I can repair this for two iron ingots and an emerald."
                                     - wait 1s
                                     - chat "Does this sound good to you?"
+                                    - flag player <npc>_RepairItem:<[item]>
+                                    - flag player <npc>_RepairRequirements:i@iron_ingot
+                                    - flag player <npc>_RepairRequirements:->:i@Emerald
+                                    - flag player <npc>_RepairQuantities:2
+                                    - flag player <npc>_RepairQuantities:->:1
                                     - narrate "<&hover[Click Me!]><&click[Yes, that sounds good.]><&a>Agree and trade the items.<&f><&end_click><&end_hover> | <&hover[Click Me!]><&click[No thanks.]><&c>Decline and leave.<&end_click><&end_hover>"
                                     - zap 3
                                 - else:
                                     - chat "I'm not sure I can repair this yet. Come back later."
                                     - chat "((If you think I should repair this, tell Sil!))"
-        2:
-            proximity trigger:
-                exit:
-                    script:
-                        - chat "See you around."
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
-                        - zap 1
-            chat trigger:
-                1:
-                    trigger: /Regex:Yes|Yeah|Okay/, that sounds good.
-                    script:
-                        - define item:<player.item_in_hand>
-                        - if <player.inventory.contains[diamond].quantity[16]> && <player.inventory.contains[iron_ingot].quantity[8]> && <player.inventory.contains[emerald].quantity[4]>:
-                            - if <player.item_in_hand> == <[item]>:
-                                - take diamond quantity:16
-                                - take iron_ingot quantity:8
-                                - take emerald quantity:4
-                                - execute as_op "repair"
-                            - else:
-                                - chat "You're swapping items on me. Choose one. Flat rate."
-                        - chat "See you around."
-                        - zap 1
-                2:
-                    trigger: /Regex:No|Nope|Nah/, but thanks.
-                    script:
-                        - chat "No worries. See you around."
-                        - zap 1
         3:
             proximity trigger:
                 exit:
                     script:
                         - chat "See you around."
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
+                        - inject ClearRepairFlag
+                        - inject RandomWalk
                         - zap 1
             chat trigger:
                 1:
                     trigger: /Regex:Yes|Yeah|Okay/, that sounds good.
                     script:
-                        - define item:<player.item_in_hand>
-                        - if <player.inventory.contains[iron_ingot].quantity[2]> && <player.inventory.contains[emerald].quantity[1]>:
-                            - if <player.item_in_hand> == <[item]>:
-                                - take iron_ingot quantity:2
-                                - take emerald quantity:1
-                                - execute as_op "repair"
-                            - else:
-                                - chat "You're swapping items on me. Choose one. Flat rate."
-                        - else:
-                            - chat "You don't have the materials. Come back when you've got them."
+                        - define pass:true
+                        - foreach <player.flag[<npc>_RepairRequirements]> as:item:
+                            - define amount:<player.flag[<npc>_RepairQuantities].get[<[loop_index]>]>
+                            - if !<player.inventory.contains[<[item]>].quantity[<[amount]>]>:
+                                - chat "You're missing some supplies for this. Come back when you have them!"
+                                - define pass:false
+                                - foreach stop
+                        - if <[pass]>:
+                            - foreach <player.flag[<npc>_RepairRequirements]> as:item:
+                                - define amount:<player.flag[<npc>_RepairQuantities].get[<[loop_index]>]>
+                                - take <[item]> quantity:<[amount]>
+                            - execute as_op "repair"
+                            - chat "And there you go."
+                            - wait 1s
                         - chat "See you around."
+                        - inject ClearRepairFlag
                         - zap 1
                 2:
                     trigger: /Regex:No|Nope|Nah/, but thanks.
                     script:
                         - chat "No worries. See you around."
+                        - inject ClearRepairFlag
                         - zap 1
     
 # TownShopController:
@@ -373,12 +413,6 @@ TownBuilderInventory:
 TownNPCController:
     type: world
     events:
-        on entity death:
-            - define entity:<context.entity>
-            - if <[entity].contains_text[n@]>:
-                - define town:<proc[TownFindNPC].context[<[entity]>]||null>
-                - if <[town]> != null:
-                    - run TownRemoveNPC instantly def:<[entity]>|<[town]>
         on player right clicks with TownFarmerVoucher|TownBlacksmithVoucher|TownAlchemistVoucher|TownWoodcutterVoucher|TownMinerVoucher|TownTrainerVoucher:
             # permission check
             - define locale:<player.location.cursor_on.relative[0,1,0]>
@@ -392,32 +426,8 @@ TownNPCController:
             - create player <proc[GetRandomName]> <[locale]> save:temp
             - adjust <entry[temp].created_npc> lookclose:TRUE
             - adjust <entry[temp].created_npc> set_assignment:PlacedTown<[npcType]>Assignment
+            - flag <entry[temp].created_npc> Town
             - run SetVulnerable npc:<entry[temp].created_npc>
-            
-            # set skin of DNPC
-            - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
-            - define counter:0
-            - define success:false
-            - while <[success].matches[false]> && <[counter].as_int> <= 10:
-                - define counter:<[counter].add_int[1]>
-                - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
-                - inject SetNPCURLSkin
-
-            - run TownAddNPC instantly def:<[townID]>|<entry[temp].created_npc>/<[npcType]>|<[npcType]>
-        on player right clicks with TownInfantryVoucher:
-            - define locale:<player.location.cursor_on.relative[0,1,0]>
-            - define scriptname:<context.item.script>
-            - define npcType:<proc[GetNPCType].context[<[scriptname]>]>
-            - define townID:<proc[GetCharacterTown].context[<player>]>
-
-            - inject TownPermissionHelper
-
-            # create DNPC
-            - create player <proc[GetRandomName]> <[locale]> traits:Sentinel save:temp
-            - adjust <entry[temp].created_npc> lookclose:TRUE
-            - adjust <entry[temp].created_npc> set_assignment:PlacedTown<[npcType]>Assignment
-
-            - run InfantrySetup npc:<entry[temp].created_npc>
             
             # set skin of DNPC
             - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
@@ -460,82 +470,8 @@ GetNPCType:
         - foreach Farmer|Blacksmith|Alchemist|Woodcutter|Trainer|Miner as:type:
             - if <[name].contains_text[<[type]>]>:
                 - determine <[type]>
-# =================================================================================
-# =================================== SKINS =======================================
-# =================================================================================
-# Using the provided keyword, returns a random URL for a skin
-# To use for that NPC
-GetTownNPCSkin:
-    type: procedure
-    definitions: type
-    script:
-        - if <[type]> == farmer:
-            - random:
-                - determine https://i.imgur.com/MGvfad2.png
-                - determine https://i.imgur.com/vC27pzA.png
-                - determine https://i.imgur.com/FEKIxq9.png
-                - determine https://i.imgur.com/PlWEXxe.png
-        - if <[type]> == blacksmith:
-            - random:
-                - determine https://i.imgur.com/6xVVUEZ.png
-                - determine https://i.imgur.com/Tpj5ZYR.png
-                - determine https://i.imgur.com/DcHXhoD.png
-        - if <[type]> == woodcutter:
-            - random:
-                - determine https://i.imgur.com/nwLYKhd.png
-                - determine https://i.imgur.com/eWP6rOu.png
-                - determine https://i.imgur.com/lWBukOp.png
-        - if <[type]> == alchemist:
-            - random:
-                - determine https://i.imgur.com/lyYfGkS.png
-                - determine https://i.imgur.com/4P1o5Tj.png
-                - determine https://i.imgur.com/SuC8B29.png
-        - if <[type]> == trainer:
-            - random:
-                - determine https://i.imgur.com/t0LvBI6.png
-                - determine https://i.imgur.com/zNPkKhp.png
-                - determine https://i.imgur.com/LombOzu.png
-        - if <[type]> == miner:
-            - random:
-                - determine https://i.imgur.com/BjpGsf6.png
-                - determine https://i.imgur.com/nO1AsGv.png
-                - determine https://i.imgur.com/K61pPMU.png
-        - if <[type]> == automata:
-            - random:
-                - determine https://i.imgur.com/xY3LOqf.png
-                - determine https://i.imgur.com/ZioUK54.png
-                - determine https://i.imgur.com/veIFOmY.png
-                - determine https://i.imgur.com/pr6OEID.png
-                - determine https://i.imgur.com/viCeTLf.png
-                - determine https://i.imgur.com/yIrM2d7.png
-                - determine https://i.imgur.com/OAS66Rt.png
-                - determine https://i.imgur.com/L2xqwtc.png
-                - determine https://i.imgur.com/0WAaBk6.png
-        - random:
-            - determine https://i.imgur.com/8m9UiRb.png
-            - determine https://i.imgur.com/fX5LM0i.png
-SetNPCURLSKin:
-    type: task
-    script:
-        - define key <util.random.uuid>
-        - run skin_url_task def:<def[key]>|<def[url]>|empty id:<def[key]> instantly
-        - while <queue.exists[<def[key]>]>:
-            - if <def[loop_index]> > 20:
-                - queue q@<def[key]> clear
-                - queue clear
-            - wait 5t
-        # Quick sanity check - ideally this should never be true
-        - if !<server.has_flag[<def[key]>]>:
-            - queue clear
-        - if <server.flag[<def[key]>]> == null:
-            - flag server <def[key]>:!
-        - yaml loadtext:<server.flag[<def[key]>]> id:response
-        - if <yaml[response].contains[data.texture]>:
-            - adjust <entry[temp].created_npc> skin_blob:<yaml[response].read[data.texture.value]>;<yaml[response].read[data.texture.signature]>
-            - define success:true
-        - flag server <def[key]>:!
-        - yaml unload id:response
 
+#======================MISC===================#
 RandomTownAssignment:
     type: assignment
     actions:
@@ -556,18 +492,9 @@ RandomTownInteract:
     steps:
         1:
             proximity trigger:
-                # entry:
-                #     script:
-                #         - random:
-                #             - anchor walkto i:A1
-                #             - anchor walkto i:A2
-                #             - anchor walkto i:A3
                 exit:
                     script:
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
+                        - inject RandomWalk
             chat trigger:
                 1:
                     trigger: /Regex:Hello/
@@ -589,10 +516,7 @@ PlacedTownLeaderInteract:
             proximity trigger:
                 exit:
                     script:
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
+                        - inject RandomWalk
             chat trigger:
                 1:
                     trigger: /Regex:Hello/
@@ -615,10 +539,7 @@ PlacedTownLeaderInteract:
                         - chat "But now I am here, a commander of my own Sky-Town, the Crimson Delta. Now, if you'll excuse me, I have some business to attend to."
                         - wait 8s
                         - chat "Please speak with some of the current residents - there are others coming, however they are out on missions of their own."
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
+                        - inject RandomWalk
                 3:
                     trigger: Tell me about /the town/.
                     script:
@@ -629,12 +550,28 @@ PlacedTownLeaderInteract:
                         - chat "So now we roam, floating from island to island diving and collecting goods for ourselves. Although, I believe now many of us simply wish to settle down and lay low for a while."
                         - wait 8s
                         - chat "Please speak with some of the current residents - there are others coming, however they are out on missions of their own."
-                        - random:
-                            - anchor walkto i:A1
-                            - anchor walkto i:A2
-                            - anchor walkto i:A3
+                        - inject RandomWalk
 ElytraCheck:
     type: world
     events:
         on player prepares anvil craft item:
             - determine cancelled
+RandomWalk:
+    type: task
+    script:
+        - random:
+            - anchor walkto i:A1
+            - anchor walkto i:A2
+            - anchor walkto i:A3
+ClearRepairFlag:
+    type: task
+    script:
+        - flag player <npc>_RepairItem:!
+        - flag player <npc>_RepairRequirements:!
+        - flag player <npc>_RepairQuantities:!
+ClearTrainingFlag:
+    type: task
+    script:
+        - flag player <npc>_Unit:!
+        - flag player <npc>_UnitRequirements:!
+        - flag player <npc>_UnitReqQuantity:!

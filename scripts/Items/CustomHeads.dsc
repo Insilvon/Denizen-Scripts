@@ -397,7 +397,12 @@ OrangeOil:
 PeppermintOil:
     type: Item
     material: player_head[skull_skin=ddb410b0-c0c3-4661-b53e-91606e036fdb|eyJ0aW1lc3RhbXAiOjE1NjM2NDYxNjIxNDksInByb2ZpbGVJZCI6IjkxZjA0ZmU5MGYzNjQzYjU4ZjIwZTMzNzVmODZkMzllIiwicHJvZmlsZU5hbWUiOiJTdG9ybVN0b3JteSIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjM0ZmVhNmUyNDljN2JhZGY3NjNmYjgxNjBmOWZhNmE5MWJkYmM4NWEwOWE2ZWU1MWJmZjE3MGVhZWQxMGYzOCJ9fX0=]
-    display name: Oil
+    display name: <&c>Peppermint Oil
+    lore:
+    - A small bottle of potent
+    - peppermint extract. A small
+    - drip can fill a whole
+    - room with the smell of peppermint.
 PufferfishPoisonOil:
     type: Item
     material: player_head[skull_skin=4b80e623-2ed8-46af-a5a0-126cdded9560|eyJ0aW1lc3RhbXAiOjE1NjM2NDYxOTIyMzMsInByb2ZpbGVJZCI6ImIwZDRiMjhiYzFkNzQ4ODlhZjBlODY2MWNlZTk2YWFiIiwicHJvZmlsZU5hbWUiOiJ4RmFpaUxlUiIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODNiMzBlMTZlMTU2NjZlZTgyZmU2OGFmN2YxYjE3M2QwN2UwYzZkMTM4YmJlMzRjZjEwYjUxOTE5NDFkNjFiNSJ9fX0=]
@@ -744,3 +749,10 @@ WheatCandle:
         - <&dq>cow hot<&dq>
 # Telegraph/Radio Items are in Telegraph.dsc
 
+OutsiderRunecube:
+    type: item
+    material: player_head[skull_skin=cdde0eb0-680d-4b55-824c-9a0d35838049|eyJ0aW1lc3RhbXAiOjE1NjM2NDc0MDg5MjEsInByb2ZpbGVJZCI6IjkxZjA0ZmU5MGYzNjQzYjU4ZjIwZTMzNzVmODZkMzllIiwicHJvZmlsZU5hbWUiOiJTdG9ybVN0b3JteSIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTJkYjlmOWEzNjRmZTQzOGMwZGU1ZjQ5ODQwN2E5ODc2ZDRiOGIxM2ViM2E1YTQwNWZhZTJiNDI1YzRkNWMwMiJ9fX0=]
+    display name: <&e>Mysterious Gem
+    lore:
+    - A strange gemstone with foreign runes
+    - engraved on all sides.
