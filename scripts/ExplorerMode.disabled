@@ -1,0 +1,48 @@
+ExplorerWand:
+    type: item
+    material: blaze_rod
+    display name: <&a>Explorer Mode Wand
+    lore:
+    - DEV TOOL
+
+ExplorerMode:
+    type: command
+    name: explorermode
+    desc: sh
+    usage: /explorermode
+    aliases:
+    - em
+    permission: aetheria.explorermode
+    script:
+        - define command:<context.args.get[1]||null>
+        - if <[command]> == set:
+            - define name:<context.args.get[2]||null>
+            - if <[name]> != null && <player.has_flag[Explorermode_Pos1]> && <player.has_flag[Explorermode_Pos2]>:
+                - define cuboid:cu@<player.location.world.name>,<player.flag[Explorermode_Pos1].xyz>,<player.flag[Explorermode_Pos2].xyz> 
+                - if <[cuboid].size> < 100:
+                    - note <[cuboid]> as:ExplorerMode_<[name]>
+                - else:
+                    - narrate "Selection is too large!"
+        - if <[command]> == remove:
+            - define cuboid:<context.args.get[2]||null>
+            - if <player.location.cuboids.contains[cuboid]>:
+                - note remove as:<[cuboid]>
+        - if <[command]> == list:
+            - foreach <player.location.cuboids> as:cuboid:
+                - if <[cuboid].contains_text[ExplorerMode]>:
+                    - narrate <[cuboid]>
+        - give ExplorerWand
+        
+
+ExplorerModeController:
+    type: world
+    event:
+        on player enters cuboid:
+            - if <player.has_flag[ExplorerMode]>:
+                - 
+        on player right clicks with ExplorerWand:
+            - flag <player> ExplorerMode_Pos2
+            - narrate "Pos2 Set!"
+        on player left clicks with ExplorerWand:
+            - flag <player> ExplorerMode_Pos1
+            - narrate "Pos1 Set!"

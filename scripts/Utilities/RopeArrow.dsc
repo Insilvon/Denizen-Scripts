@@ -1,4 +1,4 @@
-wwwwRopeArrowBow:
+RopeArrowBow:
     type: item
     material: bow
     display name: Rope Arrow Bow

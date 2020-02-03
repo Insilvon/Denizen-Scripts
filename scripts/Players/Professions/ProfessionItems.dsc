@@ -38,7 +38,7 @@ PilotWatch:
 # General Items
 ClockworkBag:
     type: item
-    material: stone
+    material: player_head[skull_skin=914e68b0-4550-4c2c-bbee-dc903e8485f5|eyJ0aW1lc3RhbXAiOjE1NjM2MzE3NTA0ODksInByb2ZpbGVJZCI6ImIwZDRiMjhiYzFkNzQ4ODlhZjBlODY2MWNlZTk2YWFiIiwicHJvZmlsZU5hbWUiOiJ4RmFpaUxlUiIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzYwYTA4ZGE4ZDNlNzNjNWFkZGNjMTAzODk1NjU2YWM0MDRmZjQyZjJkNWI1Yjc0NmNjZGU2MDdjZTkwNDQzYyJ9fX0=]
     display name: <&3>Bag of Clockwork Parts
     lore:
     - A small bag, no larger than a coinpurse,
@@ -48,7 +48,7 @@ ClockworkBag:
     - bushings, and more.
 ClockworkArithmeticUnit:
     type: item
-    material: stone
+    material: clock
     display name: <&3>Clockwork Arithmetic Unit
     lore:
     - A complex clockwork component which

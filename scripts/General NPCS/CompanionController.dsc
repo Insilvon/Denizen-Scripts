@@ -9,3 +9,5 @@ CompanionController:
             - inject InfantryTask
         on player right clicks with BodyGuardVoucher:
             - inject BodyGuardTask
+        on player right clicks with PirateVoucher:
+            - inject PirateTask

@@ -14,7 +14,7 @@ TelegraphHandler:
         # Left Click
         - if <[click]> == left:
             # Transmitter
-            - if <player.item_in_hand.script.name> == TelegraphTransmitter:
+            - if <player.item_in_hand.script.name||null> == TelegraphTransmitter:
                 - inject SendScript
             # Shift Left
             - if <player.is_sneaking>:
@@ -25,7 +25,7 @@ TelegraphHandler:
         # Right Click
         - else:
             # Transmitter
-            - if <player.item_in_hand.script.name> == TelegraphTransmitter:
+            - if <player.item_in_hand.script.name||null> == TelegraphTransmitter:
                 - inject SendScript
             # Shift Right
             - if <player.is_sneaking>:
@@ -75,13 +75,15 @@ TelegraphBroadcast:
         - foreach <server.flag[Telegraph_List]> as:station:
             - if <server.flag[Telegraph_<[station]>_Channel]> == <[channel]>:
                 - define locale:l@<[station]>
-                - random:
-                    - narrate "<&a>*The Telegraph Line whirrs to life.*" targets:<[locale].find.players.within[<5.5>]>
-                    - narrate "<&a>*--Whirr--*" targets:<[locale].find.players.within[<5.5>]>
-                    - narrate "<&a>*--Bzzt!--*" targets:<[locale].find.players.within[<5.5>]>
-                    - narrate "<&a>*The box begins to hum: a transmission?*" targets:<[locale].find.players.within[<5.5>]>
-                    - narrate "<&a>*The red light on the Telegraph box begins to blink!*" targets:<[locale].find.players.within[<5.5>]>
-            - narrate <[message]> targets:<[locale].find.players.within[<5.5>]>
+                - define players:<[locale].find.players.within[5.5]>
+                - if !<[players].is_empty>:
+                    - random:
+                        - narrate "<&a>*The Telegraph Line whirrs to life.*" targets:<[players]>
+                        - narrate "<&a>*--Whirr--*" targets:<[players]>
+                        - narrate "<&a>*--Bzzt!--*" targets:<[players]>
+                        - narrate "<&a>*The box begins to hum: a transmission?*" targets:<[players]>
+                        - narrate "<&a>*The red light on the Telegraph box begins to blink!*" targets:<[players]>
+                    - narrate <[message]> targets:<[players]>
   # Telegraph_Location
   # Telegraph_Location_Channel
   # Telegraph_List: location|location|location
@@ -92,7 +94,7 @@ TelegraphSetup:
         - flag server Telegraph_<[location]>:<&gt>
         - flag server Telegraph_<[location]>_Channel:1
         - flag server Telegraph_List:->:<[location]>
-        - narrate "<&a>*The Telegraph Line whirrs to life.*" target:<[location].find.players.within[<5.5>]>
+        - narrate "<&a>*The Telegraph Line whirrs to life.*" target:<[location].find.players.within[5.5]>
         - narrate "<&a>Usage: Left Click to send a dot, Right Click to send a dash. Shift-Right Click to add a space, Shift-Left Click to Change Current Channel."
         - narrate "<&a>To broadcast, click the Junction with your Transmitter!"
 

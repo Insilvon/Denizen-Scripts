@@ -1,6 +1,12 @@
 DiscordBot:
     type: world
     events:
+        on discord message received channel:284524968841314304:
+            - if <context.message.starts_with[~]>:
+                - define command:<context.message.substring[<2>]>:
+                - if <[command].starts_with[whitelist]>:
+                    - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[⚙clockworks⚙]> "<[command].substring[<11>]> has been whitelisted."
+                    - execute as_server "whitelist add <[command].substring[<11>]>"
         on discord message received channel:658679433795862537:
             - if <context.author> == discorduser@mybot,418842777720193037:
                 - ~discord id:mybot message channel:<discord[mybot].group[Aetheria].channel[application-log]> "@everyone"

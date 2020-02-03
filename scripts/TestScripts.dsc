@@ -19,9 +19,13 @@ CrystalPuzzleWorld:
     type: world
     events:
         on player right clicks oak_button:
-            - if <context.location> == l@-39,81,-410,eventworld:
+            # - if <context.location> == l@-39,81,-410,eventworld:
+            - if <context.location> == l@1056,55,-1489,aetheria:
                 - if <server.has_flag[EventOne]>:
                     - teleport <player.location.find.players.within[<30.30>]> l@-339,10,-390,new_buildworld
+            - if <context.location> == l@-341,11,-390,new_buildworld:
+                - if <server.has_flag[EventOne]>:
+                    - teleport <player.location.find.players.within[<30.30>]> l@-7810,116,1840,skyworld_v2
         on player left clicks block with crystalswitch:
             - foreach li@l@-23,85,-447,eventworld|l@-23,85,-449,eventworld|l@-23,85,-451,eventworld|l@-23,83,-447,eventworld|l@-23,83,-449,eventworld|l@-23,83,-451,eventworld|l@-23,81,-447,eventworld|l@-23,81,-449,eventworld|l@-23,81,-451,eventworld as:position:
                 - modifyblock red_stained_glass <[position]>

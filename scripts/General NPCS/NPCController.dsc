@@ -33,8 +33,9 @@ DynamicNPC:
     script:
         - define args:<context.args>
         - if <[args].size> == 1:
-            - create player <proc[GetRandomName]> <player.location.cursor_on.add[0,1,0]> save:temp
+            - create player <proc[RandomColor]><proc[GetRandomName]> <player.location.cursor_on.add[0,1,0]> save:temp
             - adjust <entry[temp].created_npc> lookclose:TRUE
+            - adjust <entry[temp].created_npc> name_visible:FALSE
             - run SetVulnerable npc:<entry[temp].created_npc>
             
             # set skin of DNPC
@@ -46,6 +47,7 @@ DynamicNPC:
                 - define counter:<[counter].add_int[1]>
                 - define url:<proc[GetTownNPCSkin].context[<[npcType]>]>
                 - inject SetNPCURLSkin
+            
         - else:
             - define name:<proc[GetRandomName]>
             - execute as_op "npc create <[name]>"
@@ -130,27 +132,79 @@ GetTownNPCSkin:
             - random:
                 - determine https://i.imgur.com/iA8GusH.png
                 - determine https://i.imgur.com/28HBsGs.png
+        - if <[type]> == centrecrestwoodcutter:
+            - determine https://i.imgur.com/DUJdH2G.png
+        - if <[type]> == centrecrestbarmaid:
+            - determine https://i.imgur.com/AtoB10m.png
+        - if <[type]> == centrecrestblacksmith:
+            - determine https://i.imgur.com/XTWAMDe.png
+        - if <[type]> == centrecrestdockworker:
+            - determine https://i.imgur.com/AM4E7Mv.png
+        - if <[type]> == centrecrestbuilder:
+            - determine https://i.imgur.com/420CQyZ.png
+        - if <[type]> == centrecrestfarmer:
+            - determine https://i.imgur.com/SsuPxby.png
+        - if <[type]> == centrecrestglassmerchant:
+            - determine https://i.imgur.com/b9N3MVn.png
+        - if <[type]> == centrecrestminer:
+            - determine https://i.imgur.com/IsnhOOQ.png
+        - if <[type]> == pirate:
+            - random:
+                - determine https://i.imgur.com/5HLpBCO.png
+                - determine https://i.imgur.com/78N1eDO.png
+                - determine https://i.imgur.com/3wIV02H.png
+                - determine https://i.imgur.com/26tJTB2.png
+                - determine https://i.imgur.com/DJLm0cJ.png
         - random:
             - determine https://i.imgur.com/8m9UiRb.png
             - determine https://i.imgur.com/fX5LM0i.png
-SetNPCURLSKin:
+# SetNPCURLSkin:
+#     type: task
+#     script:
+#         - define key <util.random.uuid>
+#         - run skin_url_task def:<def[url]>|empty instantly
+#         - while <queue.exists[<def[key]>]>:
+#             - if <def[loop_index]> > 20:
+#                 - queue q@<def[key]> clear
+#                 - queue clear
+#             - wait 5t
+#         # Quick sanity check - ideally this should never be true
+#         - if !<server.has_flag[<def[key]>]>:
+#             - queue clear
+#         - if <server.flag[<def[key]>]> == null:
+#             - flag server <def[key]>:!
+#         - yaml loadtext:<server.flag[<def[key]>]> id:response
+#         - if <yaml[response].contains[data.texture]>:
+#             - adjust <entry[temp].created_npc> skin_blob:<yaml[response].read[data.texture.value]>;<yaml[response].read[data.texture.signature]>
+#             - define success:true
+#         - flag server <def[key]>:!
+#         - yaml unload id:response
+
+SetNPCURLSkin:
     type: task
     script:
-        - define key <util.random.uuid>
-        - run skin_url_task def:<def[key]>|<def[url]>|empty id:<def[key]> instantly
-        - while <queue.exists[<def[key]>]>:
-            - if <def[loop_index]> > 20:
-                - queue q@<def[key]> clear
-                - queue clear
+        - if <[url]> == null:
+            - narrate "<&c>You must specify a valid skin URL."
+            - stop
+        - if !<[url].ends_with[.png]>:
+            - narrate "<&c>That URL isn't likely to be valid. Make sure you have a direct image URL, ending with '.png'."
+        - narrate "<&a>Retrieving the requested skin..."
+        - run skin_url_task def:<[url]> save:newQueue
+        - while <entry[newQueue].created_queue.state> == running:
+            - if <[loop_index]> > 20:
+                - queue <entry[newQueue].created_queue> clear
+                - narrate "<&c>The request timed out. Is the url valid?"
+                - stop
             - wait 5t
-        # Quick sanity check - ideally this should never be true
-        - if !<server.has_flag[<def[key]>]>:
-            - queue clear
-        - if <server.flag[<def[key]>]> == null:
-            - flag server <def[key]>:!
-        - yaml loadtext:<server.flag[<def[key]>]> id:response
-        - if <yaml[response].contains[data.texture]>:
-            - adjust <entry[temp].created_npc> skin_blob:<yaml[response].read[data.texture.value]>;<yaml[response].read[data.texture.signature]>
+        - if <entry[newQueue].created_queue.determination.first||null> == null:
+            - narrate "<&c>Failed to retrieve the skin from the provided link. Is the url valid?"
+            - stop
+        - define yamlid <entry[temp].created_npc.uuid>_skin_from_url
+        - yaml loadtext:<entry[newQueue].created_queue.determination[result].first> id:<[yamlid]>
+        - if !<yaml[<[yamlid]>].contains[data.texture]>:
+            - narrate "<&c>An unexpected error occurred while retrieving the skin data. Please try again."
+        - else:
+            - adjust <entry[temp].created_npc> skin_blob:<yaml[<[yamlid]>].read[data.texture.value]>;<yaml[<[yamlid]>].read[data.texture.signature]>
             - define success:true
-        - flag server <def[key]>:!
-        - yaml unload id:response
+            - narrate "<&e><entry[temp].created_npc.name><&a>'s skin set to <&e><[url]><&a>."
+        - yaml unload id:<[yamlid]>

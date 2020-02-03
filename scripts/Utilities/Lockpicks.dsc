@@ -72,22 +72,20 @@ LockpickController:
                 - if <server.has_flag[<[other]>_Key]>:
                     - determine cancelled passively
                     - narrate "You are not permitted to hack into locked chests." format:LockpickFormat
-        on piston extends:
-            - define blocks:<context.blocks>
-            - define list:li@iron_door|oak_door|spruce_door|birch_door|acacia_door|jungle_door|dark_oak_door
-            - foreach <[blocks]> as:block:
-                - if <[block].material.name> == observer:
-                    - determine cancelled
-                - define direction:li@forward|left|right|backward
-                - foreach <[direction]> as:point:
-                - if <[list].contains[<[block].forward.block.material.name>]> && <server.has_flag[<[block].forward.block>_Key]> && !<server.has_flag[<[block].forward.block>_Key].contains_text[<proc[GetCharacterName].context[<player>]>]>:
-                    - determine cancelled
-                - if <[list].contains[<[block].left.block.material.name>]> && <server.has_flag[<[block].left.block>_Key]> && !<server.has_flag[<[block].forward.block>_Key].contains_text[<proc[GetCharacterName].context[<player>]>]>:
-                    - determine cancelled
-                - if <[list].contains[<[block].right.block.material.name>]> && <server.has_flag[<[block].right.block>_Key]> && !<server.has_flag[<[block].forward.block>_Key].contains_text[<proc[GetCharacterName].context[<player>]>]>:
-                    - determine cancelled
-                - if <[list].contains[<[block].backward.block.material.name>]> && <server.has_flag[<[block].backward.block>_Key]> && !<server.has_flag[<[block].forward.block>_Key].contains_text[<proc[GetCharacterName].context[<player>]>]>:
-                    - determine cancelled
+        # on piston extends:
+        #     - define blocks:<context.blocks>
+        #     - define list:li@iron_door|oak_door|spruce_door|birch_door|acacia_door|jungle_door|dark_oak_door
+        #     - foreach <[blocks]> as:block:
+        #         - if <[block].material.name> == observer:
+        #             - determine cancelled
+        #         - if <[list].contains[<[block].forward.block.material.name>]> && <server.has_flag[<[block].forward.block>_Key]> && !<server.has_flag[<[block].forward.block>_Key].contains_text[<proc[GetCharacterName].context[<player>]>]>:
+        #             - determine cancelled
+        #         - if <[list].contains[<[block].left.block.material.name>]> && <server.has_flag[<[block].left.block>_Key]> && !<server.has_flag[<[block].forward.block>_Key].contains_text[<proc[GetCharacterName].context[<player>]>]>:
+        #             - determine cancelled
+        #         - if <[list].contains[<[block].right.block.material.name>]> && <server.has_flag[<[block].right.block>_Key]> && !<server.has_flag[<[block].forward.block>_Key].contains_text[<proc[GetCharacterName].context[<player>]>]>:
+        #             - determine cancelled
+        #         - if <[list].contains[<[block].backward.block.material.name>]> && <server.has_flag[<[block].backward.block>_Key]> && !<server.has_flag[<[block].forward.block>_Key].contains_text[<proc[GetCharacterName].context[<player>]>]>:
+        #             - determine cancelled
         on player right clicks with LockpickKeyring:
             - define character <proc[GetCharacterName].context[<player>]>
             - if !<context.item.has_lore>:
@@ -241,16 +239,6 @@ LockpickKeyringGUI:
         - "[] [] [] [] [] [] [] [] []"
         - "[] [] [] [] [] [] [] [] []"
         - "[] [] [] [] [] [] [] [] []"
-
-TownCommand:
-    type: command
-    debug: false
-    name: town
-    description: (DEV) Creates a town using active flags
-    usage: /town
-    aliases:
-    - t
-    script:
 
 LockpickRename:
     type: task

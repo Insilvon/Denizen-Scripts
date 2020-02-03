@@ -53,6 +53,7 @@ CyanLootbag:
     display name: Lootbag
     lore:
         - This is a test!
+
 BrownLootbag:
     type: Item
     material: player_head[skull_skin=d0a7b4a9-2edc-4d9d-8ad3-4e7974c92e5d|eyJ0aW1lc3RhbXAiOjE1NjM2MzIyNjA1MDksInByb2ZpbGVJZCI6IjkxZjA0ZmU5MGYzNjQzYjU4ZjIwZTMzNzVmODZkMzllIiwicHJvZmlsZU5hbWUiOiJTdG9ybVN0b3JteSIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODc1ZTc5NDg4ODQ3YmEwMmQ1ZTEyZTcwNDJkNzYyZTg3Y2UwOGZhODRmYjg5YzM1ZDZiNWNjY2I4YjlmNGJlZCJ9fX0=]
@@ -756,3 +757,8 @@ OutsiderRunecube:
     lore:
     - A strange gemstone with foreign runes
     - engraved on all sides.
+
+LinkPlushie:
+    type: item
+    material: player_head[skull_skin=47900507-de58-4a97-8295-0dafdbbf14af|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzRmNmYxMDg2OGRlZGRhYjBlYTRkYjkzMTQ4MzQ0MmJiYWU5ZTFmZDlhM2IzMWUxNjk0MjFmM2UwZDdiMTEyZSJ9fX0=]
+    display name: <&a>The Hero of Time

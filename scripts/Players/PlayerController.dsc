@@ -59,10 +59,38 @@ PlayerController:
             - if <context.inventory.notable_name> == <player.uuid>_GUI:
                 - define arg:<context.item.lore.get[1]>
                 - inject CharacterSwap
+        on player clicks player_head in CharacterSkinMenu:
+            - determine cancelled passively
+            - define character:<proc[GetCharacterName].context[<player>]>
+            - if <context.click> == left:
+                - define id:<context.item.lore.get[1]>
+                - define skin:<player.flag[<[character]>_Skin_<[id]>]>
+                - flag player <[character]>_skin:<[skin]>
+                - define skinTexture:true
+                - inject SkinHandler
+                # - narrate "<[skinTexture]>"
+                # - define inv:in@<[character]>_SkinMenu
+                # - narrate "<[inv]>"
+                # - define target:<[inv].list_contents.with_lore[<[character]>].get[1].get[1]>
+                # - narrate "<[target]>"
+                # - define slot:<[inv].find[<[target]>]>
+                # - narrate "<[slot]>"
+                # - inventory adjust "skull_skin:<player.uuid>|<[skinTexture]>" d:<[inv]> slot:<[slot]>
+            - if <context.click> == DROP:
+                - take <context.item> from:<[character]>_SkinMenu
 
 CharacterGUIMenu:
     type: inventory
     title: Character Select
+    size: 27
+    slots:
+        - "[] [] [] [] [] [] [] [] []"
+        - "[] [] [] [] [] [] [] [] []"
+        - "[] [] [] [] [] [] [] [] []"
+
+CharacterSkinMenu:
+    type: inventory
+    title: Skin Select
     size: 9
     slots:
         - "[] [] [] [] [] [] [] [] []"
@@ -106,21 +134,54 @@ CharacterCommand:
                     - case help:
                         - narrate "To use this feature, you must upload your character's skin to <&a>http://imgur.com<&f> and get the .png link from the image." format:CharacterFormat
                         - narrate "Then run /c skin i.imgur.com/yourskinlink.png to set this character's skin." format:CharacterFormat
+                        - narrate "<&b>/c skin <url> <&f>- sets your character's main skin." format:CharacterFormat
+                        - narrate "<&b>/c skin add <url> <&f>- adds a skin to your character's wardrobe." format:CharacterFormat
+                        - narrate "<&b>/c skin view <&f>- view all skins in your character's wardrobe." format:CharacterFormat
                     - case reset:
                         - adjust <player> skin_blob:<server.flag[<player.uuid>_DefaultSkin]>
+                    - case view:
+                        - define character:<proc[GetCharacterName].context[<player>]>
+                        - inventory open d:<[character]>_SkinMenu
+                    - case add:
+                        - if <context.args.get[3]||null> != null:
+                            - narrate "Changing skin to <context.args.get[3]>!" format:CharacterFormat
+                            - define character:<proc[GetCharacterName].context[<player>]>
+                            - if !<player.has_flag[<[character]>_SkinMenu]>:
+                                - note in@CharacterSkinMenu as:<[Character]>_SkinMenu
+                                - flag player <[character]>_SkinMenu
+                                - flag player <[character]>_Skin_ID:1
+                            - define character:<player.flag[CurrentCharacter]>
+                            - flag player <[character]>_skin:<context.args.get[3]>
+                            - define skinTexture:true
+                            - inject SkinHandler
+                            # - narrate "<[skinTexture]>"
+                            - define inv:in@<player.uuid>_GUI
+                            # - narrate "<[inv]>"
+                            - define target:<[inv].list_contents.with_lore[<[character]>].get[1].get[1]>
+                            # - narrate "<[target]>"
+                            - define slot:<[inv].find[<[target]>]>
+                            # - narrate "<[slot]>"
+                            - define character:<proc[GetCharacterName].context[<player>]>
+                            - give player_head[skull_skin=<player.uuid>|<[skinTexture]>;lore=<player.flag[<[character]>_Skin_ID]>] to:<[character]>_skinmenu
+                            - flag player <[character]>_Skin_<player.flag[<[character]>_Skin_ID]>:<context.args.get[3]>
+                            - flag player <[character]>_Skin_ID:++
+                            # - inventory adjust "skull_skin:<player.uuid>|<[skinTexture]>" d:<[inv]> slot:<[slot]>
                     - default:
                         - narrate "Changing skin to <context.args.get[2]>!" format:CharacterFormat
+                        - if !<player.has_flag[<[character]>_SkinMenu]>:
+                            - note in@CharacterSkinMenu as:<[Character]>_SkinMenu
+                            - flag player <[character]>_SkinMenu
                         - define character:<player.flag[CurrentCharacter]>
                         - flag player <[character]>_skin:<context.args.get[2]>
                         - define skinTexture:true
                         - inject SkinHandler
-                        - narrate "<[skinTexture]>"
+                        # - narrate "<[skinTexture]>"
                         - define inv:in@<player.uuid>_GUI
-                        - narrate "<[inv]>"
+                        # - narrate "<[inv]>"
                         - define target:<[inv].list_contents.with_lore[<[character]>].get[1].get[1]>
-                        - narrate "<[target]>"
+                        # - narrate "<[target]>"
                         - define slot:<[inv].find[<[target]>]>
-                        - narrate "<[slot]>"
+                        # - narrate "<[slot]>"
                         - inventory adjust "skull_skin:<player.uuid>|<[skinTexture]>" d:<[inv]> slot:<[slot]>
 
                 - stop
@@ -181,6 +242,7 @@ CharacterHelp:
         - narrate "<&b>/c desc set <&lt>Text<&gt><&f> - Sets your character's description, clearing anything present."
         - narrate "<&b>/c desc add <&lt>Text<&gt><&f> - Adds onto your current description."
         - narrate "<&b>/c desc read<&f> - Shows you your current description as someone else would see it."
+        - narrate "<&b>/c skin help<&f> - view the skin help!"
         - stop
 # Script to open the character select screen
 CharacterSelect:
@@ -302,6 +364,15 @@ CharacterCreate:
                 - narrate "You have reached your maximum amount of characters." format:CharacterFormat
                 - narrate "Is this an error?" format:CharacterFormat
         - stop
+CoronerCharacterFix:
+    type: task
+    script:
+        - give <player.uuid>_head13 to:in@<player.uuid>_GUI
+        - give <player.uuid>_head3 to:in@<player.uuid>_GUI
+        - give <player.uuid>_head2 to:in@<player.uuid>_GUI
+        - give <player.uuid>_head14 to:in@<player.uuid>_GUI
+        - give <player.uuid>_head6 to:in@<player.uuid>_GUI
+        - give <player.uuid>_head8 to:in@<player.uuid>_GUI
 
 # Swaps to the other character
 # == MAKE THIS LOAD THE YAML ONCE, RATHER THAN UNLOAD AND RELOAD 800 TIMES

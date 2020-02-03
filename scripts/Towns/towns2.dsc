@@ -6,9 +6,11 @@
 #- Town_<Town>_Members
 #- Town_<Town>_Members_ID
 #- Town_List
+#- Town_<Town>_Corners: <x> <y> <z> <world>
 # = Player Flags: 
 #- <character>_Town:<Town>
 #- <character>_Town_Leader
+
 TownFormat:
     type: format
     format: "<&3>[Towns]<&co><&f> <text>"
@@ -25,6 +27,8 @@ TownWorld:
                 - narrate "To use this item you must be both a member of a town as well as placing them in it!" format:TownFormat
                 - stop
             #== Add spawning in/redirect of various vouchers
+        #what voucher it is
+        #== Add spawning in/redirect of various vouchers
         on player enters notable cuboid:
             - foreach <server.flag[Town_List]> as:Town:
                 # Is your new cuboid in a town?
@@ -34,10 +38,11 @@ TownWorld:
                     - if !<[from].contains_text[<[Town]>]>:
                         - define message:<proc[GetTownYAML].context[<[Town]>|Town.WelcomeMessage]||<&lt><&gt>>
                         - title "title:<green><[Town]>" "subtitle:<gold><[message]>"
-
+        # on player clicks in TownInventoryObject:
+        #     - determine cancelled
 TownCommand:
     type: command
-    debug: false
+    debug: true
     name: town
     description: (DEV) Creates a town using active flags
     usage: /town
@@ -46,7 +51,7 @@ TownCommand:
     script:
         - define args:<context.args>
         - define arg:<context.args.get[1]||null>
-        - define easy:li@Info|Create|Claim|Expand|recede|Invite|Kick|Promote|Demote|Join|Store|Welcome|members
+        - define easy:li@Info|Create|Claim|Expand|recede|Invite|Kick|Promote|Demote|Join|Store|Welcome|members|inventory|stats|rename
         - if <[easy].contains[<[arg]>]>:
             - inject Town<[arg]>
             - stop
@@ -86,6 +91,68 @@ TownCommand:
             - default:
                 - inject TownHelp
                 - stop
+TownRename:
+    type: task
+    script:
+        - define character:<proc[GetCharacterName].context[<player>]>
+        - define Town:<player.flag[<[character]>_Town]||null>
+        - if <[town]> == null:
+            - narrate "You must be a member of a town to view this!" format:TownFormat
+            - stop
+        - define target:<player.target||null>
+        - if <[target]> == null:
+            - narrate "You must be looking at a worker or manager to do this!" format:TownFormat
+            - stop
+        - if !<[target].has_flag[Town]>:
+            - narrate "This person is not a member of a town!"
+            - stop
+        - if <[town]> != <[target].flag[Town]>:
+            - narrate "This person is not a member of your town!"
+            - stop
+        - define arg:<context.args.get[2]||null>
+        - if <[arg]> == null:
+            - adjust <[target]> name:<proc[RandomColor]><proc[GetRandomName]>
+        - else:
+            - adjust <[target]> name:<proc[RandomColor]><context.args.get[2].to[<context.args.size>].space_separated>
+        
+TownInventory:
+    type: task
+    script:
+        - define character:<proc[GetCharacterName].context[<player>]>
+        - define Town:<player.flag[<[character]>_Town]||null>
+        - if <[town]> == null:
+            - narrate "You must be a member of a town to view this!" format:TownFormat
+            - stop
+        - inventory open d:<[town]>_inventory
+TownStats:
+    type: task
+    debug: true
+    script:
+        - define character:<proc[GetCharacterName].context[<player>]>
+        - define Town:<player.flag[<[character]>_Town]||null>
+        - if <[town]> == null:
+            - narrate "You must be a member of a town to view this!" format:TownFormat
+            - stop
+        #- Can we place this npc? How many farmers do we have?
+        - yaml "load:/Towns/<[town]>.yml" id:<[town]>
+        - define townFarmers:<yaml[<[town]>].read[NPCs.Farmer]>
+        #- Okay. So they each produce 3 food.
+        - define production:<[townFarmers].mul_int[3]>
+        #- How many NPCS do we have to feed?
+        - define totalNPCs:<yaml[<[town]>].read[NPCs.Total]>
+        - if <[production]> <= <[totalNPCs]>:
+            - narrate "You can't add another worker! Your town does not produce enough food to feed them." format:TownFormat
+        - else:
+            - narrate "You produce enough food for a new worker." format:TownFormat
+        - define land:<server.flag[Town_<[Town]>_Total_Plots]>
+        - define totalNPCs:<yaml[<[town]>].read[NPCs.Total]>
+        - define max:<[land].mul_int[3]>
+        - if <[totalNPCs]> >= <[max].sub_int[1]>:
+            - narrate "You don't have enough space! Expand your town!" format:TownFormat
+            - stop
+        - else:
+            - narrate "You have enough land to hire more workers." format:TownFormat
+
 TownInfo:
     type: task
     debug: true
@@ -99,12 +166,14 @@ TownInfo:
         - ~yaml "load:/Towns/<[town]>.yml" id:<[town]>
         - narrate "Showing info for <[town]><&co>" format:TownFormat
         - narrate "Satisfaction - <yaml[<[town]>].read[Town.Satisfaction]>" format:TownFormat
+        - wait 2s
         - narrate "<&b>RESOURCES"
         - narrate "<&b>   Building Materials: <&f><yaml[<[town]>].read[Resources.BuildingMaterials]>"
         - narrate "<&b>   Crafting Materials: <&f><yaml[<[town]>].read[Resources.CraftingMaterials]>"
         - narrate "<&b>   Food: <&f><yaml[<[town]>].read[Resources.Food]>"
         - narrate "<&b>   Minerals: <&f><yaml[<[town]>].read[Resources.Minerals]>"
         - narrate "<&b>   Weapons: <&f><yaml[<[town]>].read[Resources.Weapons]>"
+        - wait 2s
         - narrate "<&e>VILLAGERS"
         - narrate "<&e>   Farmers: <&f><yaml[<[town]>].read[NPCs.Farmer]>"
         - narrate "<&e>   Blacksmiths: <&f><yaml[<[town]>].read[NPCs.Blacksmith]>"
@@ -112,6 +181,7 @@ TownInfo:
         - narrate "<&e>   Woodcutters: <&f><yaml[<[town]>].read[NPCs.Woodcutter]>"
         - narrate "<&e>   Trainers <&f><yaml[<[town]>].read[NPCs.Trainer]>"
         - narrate "<&e>   Alchemists: <&f><yaml[<[town]>].read[NPCs.Alchemist]>"
+        - wait 2s
         - narrate "<&a>MILITIA"
         - narrate "<&a>   Infantry: <&f><yaml[<[town]>].read[Militia.Infantry]>"
         - narrate "<&a>   Sentry: <&f><yaml[<[town]>].read[Militia.Sentry]>"
@@ -119,6 +189,20 @@ TownInfo:
         - narrate "<&a>   Mage: <&f><yaml[<[town]>].read[Militia.Mage]>"
         - narrate "<&a>   Miniboss: <&f><yaml[<[town]>].read[Militia.Miniboss]>"
         - narrate "<&a>   Boss: <&f><yaml[<[town]>].read[Militia.Boss]>"
+        - wait 2s
+        - narrate "<&3>SPACE"
+
+        - define townFarmers:<yaml[<[town]>].read[NPCs.Farmer]>
+        - define production:<[townFarmers].mul_int[3]>
+        - define totalNPCs:<yaml[<[town]>].read[NPCs.Total]>
+        - define land:<server.flag[Town_<[Town]>_Total_Plots]>
+        - define totalNPCs:<yaml[<[town]>].read[NPCs.Total]>
+        - define max:<[land].mul_int[3]>
+        
+        - narrate "<&3>   Food Production: <&f><[production]>"
+        - narrate "<&3>   Food Consumption: <&f><[totalNPCs]>"
+        - narrate "<&3>   Total Villagers: <&f><[totalNPCs]>"
+        - narrate "<&3>   Max Villagers: <&f><[max]>"
         - ~yaml unload id:<[town]>
 TownCreate:
     type: task
@@ -155,8 +239,10 @@ TownCreate:
         - flag server Town_List:->:<[name]>
         - flag server <[name]>:<[character]>
         - note <[cuboid]> as:<[name]>_1
+        - note in@TownInventoryObject as:<[name]>_Inventory
         - flag player <[character]>_Town:<[name]>
         - narrate "The town of <[name]> has been created." format:TownFormat
+        - run TownAddToDynmap def:<player.location.chunk>|<[name]>|1
 
 # Helper for TownCreate
 # TODO: Generalize this and fit it into /town claim
@@ -175,9 +261,6 @@ TownCreateYAML:
         - ~yaml id:<[name]> set Town.OriginChunk:<[chunk]>
         - ~yaml id:<[name]> set Town.WelcomeMessage:"Welcome to <[name]>."
         
-
-        - ~yaml id:<[name]> set Inhabitants.list:null
-
         - ~yaml id:<[name]> set NPCs.Farmer:0
         - ~yaml id:<[name]> set NPCs.Blacksmith:0
         - ~yaml id:<[name]> set NPCs.Trainer:0
@@ -200,7 +283,7 @@ TownCreateYAML:
         - ~yaml id:<[name]> set Resources.CraftingMaterials:0
 
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - yaml unload id:<[name]>
+        #- yaml unload id:<[name]>
 
 TownWelcome:
     type: task
@@ -241,7 +324,7 @@ TownClaim:
         - if <[PlayerTown]> != null:
             - narrate "You cannot claim a town while a member of another!" format:TownFormat
             - stop
-        - if <server.flag[<[Town]>]> == None:
+        - if <server.flag[<[Town]>]> == None && !<server.has_flag[Town_<[Town]>_Unclaimable]>:
             # set new owner
             - flag server <[Town]>:<[character]>
             # set character town
@@ -272,15 +355,79 @@ TownExpand:
         - if <player.location.cuboids.size> != 0:
             - narrate "There is currently a zone in your area. You cannot claim this area." format:TownFormat
             - stop
-        # How are the resources?
+        # Are we adjacent?
+        - define chunk:<player.location.chunk>
+        - define north:<[chunk].add[1,0].cuboid.center>
+        - define south:<[chunk].add[-1,0].cuboid.center>
+        - define west:<[chunk].add[0,-1].cuboid.center>
+        - define east:<[chunk].add[0,1].cuboid.center>
+        - define pass:false
+        - foreach li@<[north]>|<[south]>|<[west]>|<[east]> as:direction:
+            - if <[direction].cuboids.contains_text[<[Town]>]>:
+                - define pass:true
+        - if <[pass]> == false:
+            - narrate "You can only expand adjacent to your town! Claims must be connected!"
+            - stop
+        # Run the expand and take the juice
+        - if !<player.inventory.contains[emerald].quantity[100]>:
+            - narrate "You do not have enough emeralds to do this!"
+            - stop
+        - else:
+            - take emerald quantity:100
+            - define plot:<server.flag[Town_<[Town]>_Plots]>
+            - flag server Town_<[Town]>_Plots:++
+            - flag server Town_<[Town]>_Total_Plots:++
+            - note <player.location.chunk.cuboid> as:<[Town]>_<[plot]>
+            - narrate "This chunk has been claimed for <[Town]>." format:TownFormat
+        # - run TownAddToDynmap def:<player.location.chunk>|<[Town]>|<[Plot]>
 
-        # Run the expand
-        - define plot:<server.flag[Town_<[Town]>_Plots]>
-        - flag server Town_<[Town]>_Plots:++
-        - flag server Town_<[name]>_Total_Plots:++
-        - note <player.location.chunk.cuboid> as:<[Town]>_<[plot]>
-        - narrate "This chunk has been claimed." format:TownFormat
+GetChunkCorners:
+    type: procedure
+    definitions: chunk
+    debug: true
+    script:
+        - define cube:<[chunk].cuboid>
+        - define max:<[cube].max>
+        - define maxX:<[max].x>
+        - define maxZ:<[max].z>
+        # - narrate <[max]>
+        - define min:<[cube].min>
+        - define minX:<[min].x>
+        - define minZ:<[min].z>
+        # - narrate <[min]>
+        - define world:<[max].world.name>
+        - define "list:li@<[maxX]> 255 <[maxZ]> <[world]>|<[minX]> 255 <[maxZ]> <[world]>|<[minX]> 255 <[minZ]> <[world]>|<[maxX]> 255 <[minZ]> <[world]>"
+        - determine <[list]>
+TownAddToDynmap:
+    type: task
+    definitions: chunk|Town|ID
+    debug: true
+    speed: instant
+    script:
+        - define data:<proc[GetChunkCorners].context[<[chunk]>]>
+        - define c1:<[data].get[1]>
+        - define c2:<[data].get[2]>
+        - define c3:<[data].get[3]>
+        - define c4:<[data].get[4]>
+        
+        - foreach li@<[c1]>|<[c2]>|<[c3]>|<[c4]> as:corner:
+            - execute as_server "dmarker addcorner <[corner]>"
+        - execute as_server "dmarker addarea id:<[town]>_<[ID]> <[Town]>_<[ID]>"
 
+TownRemoveFromDynmap:
+    type: task
+    definitions: chunk|Town|ID
+    debug: true
+    speed: instant
+    script:
+        - define data:<proc[GetChunkCorners].context[<[chunk]>]>
+        - define c1:<[data].get[1]>
+        - define c2:<[data].get[2]>
+        - define c3:<[data].get[3]>
+        - define c4:<[data].get[4]>
+        # - foreach li@<[c1]>|<[c2]>|<[c3]>|<[c4]> as:corner:
+        #     - flag server Town_<[Town]>_Corners:<-:<[corner]>
+        - execute as_server "dmarker deletearea <[Town]>_<[ID]>"
 # Removes the current chunk from your control
 #== TOOD: MAKE IT RETURN RESOURCES
 Townrecede:
@@ -305,7 +452,7 @@ Townrecede:
                 - note remove as:<[cube].notable_name>
         - flag server Town_<[name]>_Total_Plots:--
         - narrate "You have receded this chunk." format:TownFormat
-       
+        - run TownRemoveFromDynmap def:<player.location.chunk>|<[Town]>
 # Invite another Character to your town.
 TownInvite:
     type: task
@@ -331,10 +478,10 @@ TownInvite:
             - narrate "Error! You cannot invite someone from another town!" format:TownFormat
             - stop
         # All checks passed, invite them
-        - flag <[target]> <[targetCharacter]>_Town_Leader
+        # - flag <[target]> <[targetCharacter]>_Town_Leader
         - narrate "<proc[GetCharacterDisplayName].context[<[target]>]> Has been invited to join the town." format:TownFormat
         - narrate "You have been invited to join <[town]>." format:TownFormat target:<[target]>
-        - flag <[target]> Town_Invite:<[Town]> 5m
+        - flag <[target]> Town_Invite:<[Town]> d:5m
 TownJoin:
     type: task
     debug: true
@@ -518,12 +665,22 @@ TownDisbandConfirm:
             - define characters:<server.flag[Town_<[Town]>_Members].get[<[loop_index]>]>
             - flag <[member]> <[characters]>_Town:!
             - narrate "Your town has been disbanded." format:TownFormat target:<[member]>
+        - foreach <server.list_notables[cuboids]> as:cuboid:
+            - if <[cuboid].contains_text[<[Town]>]>:
+                - note remove as:<[cuboid]>
+        - foreach <server.list_flags> as:flag:
+            - if <[flag].contains_text[<[Town]>]>:
+                - flag server <[flag]>:!
         - flag server Town_List:<-:<[Town]>
         - flag server <[Town]>:!
         - flag server Town_<[Town]>_Total_Plots:!
         - flag server Town_<[Town]>_Plots:!
         - flag server Town_<[Town]>_Members:!
         - flag server Town_<[Town]>_Members_Users:!
+        - note remove as:<[Town]>_Inventory
+        # NPC HANDLING
+        - flag server Town_<[Town]>_Farmer_Manager:!
+        - note remove as:<[Town]>_Farmer_Manager:
         - adjust server delete_file:/Towns/<[Town]>.yml
         
 TownRaid:
@@ -627,6 +784,102 @@ TownHelp3:
 #         - determine <yaml[<[name]>].read[Town.OriginChunk]||null>
 #         - yaml unload id:<[name]>
 
+TownFoodCheck:
+    type: task
+    script:
+        #- Can we place this npc? How many farmers do we have?
+        - yaml "load:/Towns/<[town]>.yml" id:<[town]>
+        - define townFarmers:<yaml[<[town]>].read[NPCs.Farmer]>
+        #- Okay. So they each produce 3 food.
+        - define production:<[townFarmers].mul_int[3]>
+        #- How many NPCS do we have to feed?
+        - define totalNPCs:<yaml[<[town]>].read[NPCs.Total]>
+        - if <[production]> <= <[totalNPCs]>:
+            - narrate "You can't add another worker! Your town does not produce enough food to feed them." format:TownFormat
+            - determine cancelled
+TownSpaceCheck:
+    type: task
+    script:
+        - define land:<server.flag[Town_<[Town]>_Total_Plots]>
+        - yaml "load:/Towns/<[town]>.yml" id:<[town]>
+        - define totalNPCs:<yaml[<[town]>].read[NPCs.Total]>
+        - define max:<[land].mul_int[3]>
+        - if <[totalNPCs]> >= <[max].sub_int[1]>:
+            - narrate "You don't have enough space! Expand your town!" format:TownFormat
+            - stop
+
+# TownCalcResources:
+#     type: world
+#     events:
+#         on system time hourly every:12:
+#             - run TownResourceLoop
+
+TownResourceLoop:
+    type: task
+    speed: instant
+    script:
+        - foreach <server.flag[Town_List]> as:town:
+            - narrate "Checking <[town]>"
+            - ~yaml load:Towns/<[town]>.yml id:<[town]>
+            - define type:li@Farmer|Blacksmith|Trainer|Builder|Miner|Woodcutter|Alchemist
+            - foreach <[type]> as:npcType:
+                #- Farmers and food management
+                - define bonus:<server.flag[Town_<[town]>_<[npcType]>_Bonus]||0>
+                - if <[npcType]> == Farmer:
+                    - define townFarmers:<yaml[<[town]>].read[NPCs.<[npcType]>]>
+                    - define addition:<[townFarmers].mul_int[3]>
+                    - define townFood:<yaml[<[town]>].read[Resources.Food].add_int[<[addition]>].add_int[<[bonus]>]>
+                    - define totalNPCs:<yaml[<[town]>].read[NPCs.Total]>
+                    - define hunger:<[totalNPCs]>
+                    - define townFood:<[townFood].sub_int[<[hunger]>]>
+                    - if <[townFood]> < 0:
+                        - yaml id:<[town]> set Town.Satisfaction:-:1
+                    - else:
+                        - yaml id:<[town]> set Town.Satisfaction:+:1
+                    - yaml id:<[town]> set Resources.Food:<[townFood]>
+                - inject TownRewardHandler
+                    
+            #- Blacksmiths
+            - ~yaml "savefile:/Towns/<[town]>.yml" id:<[town]>
+            # - yaml unload id:<[town]>
+
+TownRewardHandler:
+    type: task
+    speed: instant
+    script:
+        - if <[town]> == MysticTown:
+            - execute as_op "denizen debug -r"
+        - define base:<server.flag[Town_<[Town]>_<[npcType]>_Resources]||0>
+        - define amount:<[base].add_int[<[bonus]>]>
+        - repeat 7 as:no:
+            - define level:lvl<[no]>
+            - define <[level]>_goods:<script[Town<[npcType]>Rewards].yaml_key[lvl<[no]>]>
+            - define <[level]>_amount:0
+            - define target:<[no].mul_int[5]>
+            - if <[amount]> >= <[target]>:
+                - define <[level]>_amount:<[amount].div_int[<[target]>]>
+            - if <[no]> == 1:
+                - define <[level]>_amount:<[amount]>
+            - define list:<[<[level]>_goods]>
+            - define slot:<util.random.int[1].to[<[list].size>]>
+            - if <[<[level]>_amount]> != 0:
+                - give <[list].get[<[slot]>]> quantity:<[<[level]>_amount]> to:<[Town]>_Inventory
+        - if <[town]> == MysticTown:
+            - execute as_op "denizen submit"
+
+TownInventoryObject:
+    type: inventory
+    inventory: chest
+    title: Town Treasury
+    size: 54
+    slots:
+        - "[] [] [] [] [] [] [] [] []"
+        - "[] [] [] [] [] [] [] [] []"
+        - "[] [] [] [] [] [] [] [] []"
+        - "[] [] [] [] [] [] [] [] []"
+        - "[] [] [] [] [] [] [] [] []"
+        - "[] [] [] [] [] [] [] [] []"
+
 GetTownYAML:
     type: procedure
     debug: true
@@ -634,16 +887,34 @@ GetTownYAML:
     script:
         - yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - define result:<yaml[<[name]>].read[<[key]>]||null>
-        - yaml unload id:<[name]>
+        # - yaml unload id:<[name]>
         - determine <[result]>
 
 SetTownYAML:
     type: task
-    debug: false
+    debug: true
     definitions: name|key|value
     speed: instant
     script:
         - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
         - yaml id:<[name]> set <[key]>:<[value]>
         - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
-        - yaml unload id:<[name]>
+        #- yaml unload id:<[name]>
+
+TownAddNPC:
+    type: task
+    debug: true
+    definitions: name|npcType
+    script:
+        - ~yaml "load:/Towns/<[name]>.yml" id:<[name]>
+        - yaml id:<[name]> set NPCs.<[npcType]>:++
+        - yaml id:<[name]> set NPCs.Total:++
+        - ~yaml "savefile:/Towns/<[name]>.yml" id:<[name]>
+
+TownResetWorkers:
+    type: task
+    debug: false
+    script:
+        - run SetTownYaml def:SilVille|NPCs.Farmer|0
+        - run SetTownYaml def:SilVille|NPCs.Blacksmith|0
+        - run SetTownYaml def:SilVille|NPCs.Total|0

@@ -64,6 +64,8 @@ CustomBlocksController:
             - inject CustomItemPlaced
         on player places SweetCandle|FoulCandle:
             - inject CustomItemPlaced
+        on player places ClockworkBag:
+            - inject CustomItemPlaced
         on player places Sphteven:
             - modifyblock <context.location> potted_birch_sapling
             - inject CustomItemPlaced

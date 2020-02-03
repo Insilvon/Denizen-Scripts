@@ -7,17 +7,33 @@
 # =================================================================================
 # ==========================="Kernal Core Setup Script"============================
 # =================================================================================
+CreeperCheck:
+    type: world
+    debug: false
+    events:
+        on entity spawns:
+        - if <context.entity.entity_type> == CREEPER:
+            - determine cancelled
 Kernel:
     type: world
+    debug: false
     events:
         on server start:
             - yaml "load:Utilities/DiscordBot.yml" id:DiscordBot
+            
+            - wait 5s
             - ~discord id:mybot connect code:<yaml[DiscordBot].read[info.code]>
+            - define channel:<discord[mybot].group[Aetheria].channel[big-sister]>
+            - define "message:<&co>white_check_mark<&co> **Server has started.**"
+            - ~discord id:mybot message channel:<[channel]> <[message]>
             # Load all the Town Files
-            - foreach <server.flag[TownList]> as:Town:
+            - foreach <server.flag[Town_List]> as:Town:
                 - if <server.has_file[/Towns/<[Town]>.yml]>:
-                    - ~yaml "load:/Towns/<[name]>.yml" id:<[Town]>
-
+                    - ~yaml "load:/Towns/<[Town]>.yml" id:<[Town]>
+        on shutdown:
+            - define channel:<discord[mybot].group[Aetheria].channel[big-sister]>
+            - define "message:<&co>octagonal_sign<&co> **Server has stopped.**"
+            - ~discord id:mybot message channel:<[channel]> <[message]>
         on NPC dies:
             - if <npc.has_flag[Follower]>:
                 - remove <npc>
@@ -29,24 +45,40 @@ Kernel:
             - wait 1s
             - inject QuestOnPlayerLogin
         on player joins:
+            - if !<player.has_flag[notnew]>:
+                - define channel:<discord[mybot].group[Aetheria].channel[⚙clockworks⚙]>
+                - define "message:@everyone - <player.name> has joined the server for the first time!"
+                - ~discord id:mybot message channel:<[channel]> <[message]>
+                - flag player notnew
             - inject SkinSave
             - inject PlayerControllerOnJoin
             - inject LetterOnJoin
+            - define channel:<discord[mybot].group[Aetheria].channel[big-sister]>
+            - define "message:**<player.name> joined the server**"
+            - ~discord id:mybot message channel:<[channel]> <[message]>
+        on player quits:
+            - define channel:<discord[mybot].group[Aetheria].channel[big-sister]>
+            - define "message:**<player.name> left the server**"
+            - ~discord id:mybot message channel:<[channel]> <[message]>
+        on player dies:
+            - define channel:<discord[mybot].group[Aetheria].channel[big-sister]>
+            - define "message:**<&co>skull<&co> <player.name><&co> <context.message>**"
+            - ~discord id:mybot message channel:<[channel]> <[message]>
             #= - inject LoadCharacterSheet
         on player clicks item in inventory priority:1:
             - if <context.inventory> == <player.inventory>:
                 - stop
             - define character:<proc[GetCharacterName].context[<player>]>
             
-            - if <context.inventory.notable_name> == <[character]>_Mailbox:
-                - if <context.cursor_item.script.name> != LETTERBASE && <context.item.script.name> != LETTERBASE:
+            - if <context.inventory.notable_name||null> == <[character]>_Mailbox:
+                - if <context.cursor_item.script.name||null> != LETTERBASE && <context.item.script.name||null> != LETTERBASE:
                     - determine cancelled
             # Check notable inventory Names
-            - if <context.inventory.notable_name> == <[character]>_ProfessionMenu:
+            - if <context.inventory.notable_name||null> == <[character]>_ProfessionMenu:
                 - inject ClicksItemInCharacterProfessionMenu
                 - stop
             # Check The Item Clicked
-            - choose <context.item.script.name>:
+            - choose <context.item.script.name||null>:
                 - case ConfirmItem:
                     - inject ClicksConfirmItemInInventory
                 - case RejectItem:
@@ -88,15 +120,125 @@ Kernel:
         on player breaks block:
             - inject LockpickBreakCheckIfLocked
         on player fishes item:
-            - define acceptable:li@pufferfish,tropical_fish,cod,salmon
-            - if !<[acceptable].contains[<context.item>]>:
+            - define acceptable:li@pufferfish|tropical_fish|cod|salmon
+            - if !<[acceptable].contains[<context.item.material.name>]>:
                 - determine cancelled
+        on player right clicks with firework_rocket:
+            - if <player.equipment.contains_text[elytra]> && <context.item.script.name||null> != ParafoilBoostCanister:
+                - determine cancelled
+            - else:
+                - narrate "<&e>*You unleash a canister and feel the force of the wind on your face.*"
+                - take ParafoilBoostCanister
+        on player right clicks with COTSSkyStone:
+             - if <player.equipment.contains_text[elytra]>:
+                - define slot:<player.item_in_hand.slot>
+                - define uses:<context.item.lore.get[2]||null>:
+                - if <[uses]> == 1:
+                    - narrate "<&a>Your stone has broke!"
+                    - take <player.item_in_hand>
+                    - give COTSSkyStoneBroken
+                - else:
+                    - narrate "<&a>Your skystone has <[uses].sub_int[1]> charges left."
+                    - inventory adjust s:<[slot]> "lore:Use to give yourself a short boost|<[uses].sub_int[1]>|charges remaining."
+                - shoot <player> origin:<player> speed:2
+        on player enters Portal1:
+            - if !<player.has_flag[Teleporting]> && <server.has_flag[Portal]> && <l@-5082,169,568,skyworld_v2.material.name> == player_head:
+                - flag player Teleporting d:5s
+                - teleport <player> l@-7467,178,1765,skyworld_v2
+        on player enters Portal2:
+            - if !<player.has_flag[Teleporting]> && <server.has_flag[Portal]> && <l@-7452,174,1781,skyworld_v2.material.name> == player_head:
+                - flag player Teleporting d:5s
+                - teleport <player> l@-5049,176,600,skyworld_v2
+
+        on sit command:
+            - determine cancelled
+        on gsit command:
+            - determine cancelled
+        on player places torch:
+            - if <player.flag[mode]||null> != builder:
+                - if !<player.has_flag[TorchNotified]>:
+                    - narrate "<&e>Your torches will burn out in 15 minutes."
+                    - flag player TorchNotified d:15m
+                - wait 15m
+                - if <context.location.material.name> == torch:
+                    - modifyblock <context.location> air
+                    - drop BurntOutTorch <context.location>
+                    - playsound location:<context.location> sound:block.fire.extinguish volume:0.5 custom
+        #     # - if <player.flag[mode]||null> != RP:
+        #     #     - determine FORMAT:BuildFormat
+        on player left clicks skeleton_skull:
+            - playsound <player.location> sound:BLOCK_NOTE_BLOCK_XYLOPHONE volume:10 pitch:<util.random.decimal[0.6].to[1.4]>
+
+ModeToggle:
+    type: command
+    debug: false
+    name: rp
+    description: no
+    usage: /rp
+    permission: aetheria.rp
+    script:
+        - if !<player.has_flag[mode]>:
+            - flag player mode:RP
+            - narrate "You are now in RP mode."
+            - flag player chat_channel:casual
+            - stop
+        - if <player.flag[mode]> == RP:
+            - flag player mode:Builder
+            - narrate "You are now in Build mode."
+        - else:
+            - flag player mode:RP
+            - narrate "You are now in RP mode."
+            - flag player chat_channel:casual
+
+
+BurntOutTorch:
+    type: item
+    material: stick
+    display name: <&e>Burnt Out Torch
+    lore:
+    - A torch that has lost
+    - its burnable material.
+RemadeTorch:
+    type: item
+    material: torch
+    recipes:
+        1:
+            type: shapeless
+            input: BurntOutTorch|coal
+        2:
+            type: shapeless
+            input: BurntOutTorch|charcoal
+
+ParafoilBoostCanister:
+    type: item
+    material: firework_rocket
+    display name: <&e>Skyborne Boost Canister
+    lore:
+    - A boost canister for the parafoil
+    - used to grant the user instant
+    - lift while airborne.
+COTSSkyStone:
+    type: item
+    material: prismarine_shard
+    display name: <&a>Skystone
+    lore:
+    - Use to give yourself a short boost.
+    - 5
+    - charges remaining.
+COTSSkyStoneBroken:
+    type: item
+    material: prismarine_crystals
+    display name: <&a>Shattered Skystone
+    lore:
+    - A broken skystone.
+    - Needs to be recharged.
 # =================================================================================
 # ===========================Custom Block YAML Add/Edit============================
 # =================================================================================
 
 CreateChunkFile:
     type: task
+    debug: false
     definitions: chunkID|locale|theItem
     script:
         - yaml create id:<[chunkID]>
@@ -107,6 +249,7 @@ CreateChunkFile:
         - yaml unload id:<[chunkID]>
 AddToChunkFile:
     type: task
+    debug: false
     definitions: chunkID|locale|theItem
     speed: 3t
     script:
@@ -120,6 +263,7 @@ AddToChunkFile:
 # =================================================================================
 AlchemyDevMode:
     type: command
+    debug: false
     name: dev
     description: What
     usage: /dev
@@ -130,6 +274,7 @@ AlchemyDevMode:
             - flag player dev
 CreateAlchemyFile:
     type: task
+    debug: false
     script:
         - yaml create id:recipes
         - yaml "savefile:/Recipes/recipes.yml" id:recipes
@@ -142,6 +287,7 @@ CreateAlchemyFile:
         - yaml unload id:recipes
 AddToAlchemyFile:
     type: task
+    debug: false
     definitions: RecipeName|GoldNode|LapisNode|IronNode|EmeraldNode|DiamondNode|GoldQuantity|LapisQuantity|IronQuantity|EmeraldQuantity|DiamondQuantity
     script:
         - yaml "load:/Recipes/recipes.yml" id:recipes
@@ -158,6 +304,7 @@ AddToAlchemyFile:
         - yaml "savefile:/Recipes/recipes.yml" id:recipes
 ReadAlchemyFile:
     type: task
+    debug: false
     definitions: GoldNode|LapisNode|IronNode|EmeraldNode|DiamondNode|GoldQuantity|LapisQuantity|IronQuantity|EmeraldQuantity|DiamondQuantity
     script:
         - yaml "load:/Recipes/recipes.yml" id:recipes
@@ -197,6 +344,7 @@ TestRecipe3:
 
 SetCharacterYAML:
     type: task
+    debug: false
     definitions: player|key|value
     script:
         - define id:<[player].flag[CurrentCharacter]>
@@ -207,6 +355,7 @@ SetCharacterYAML:
 
 SetBaseYAML:
     type: task
+    debug: false
     definitions: player|key|value
     script:
         - define id:<[player]>
@@ -216,6 +365,7 @@ SetBaseYAML:
         - yaml unload id:<[player]>
 ReadBaseYAML:
     type: procedure
+    debug: false
     definitions: player|key
     script:
         - yaml load:/CharacterSheets/<[player].uuid>/base.yml id:<[player]>
@@ -224,6 +374,7 @@ ReadBaseYAML:
         - determine <[result]>
 ModifyCharacterYAML:
     type: task
+    debug: false
     definitions: player|key|value
     script:
         - define id:<[player].flag[CurrentCharacter]>
@@ -235,6 +386,7 @@ ModifyCharacterYAML:
 # This expects that all queries are of acceptable length
 GetCharacterFromQuery:
     type: procedure
+    debug: false
     definitions: player|query
     script:
         - define id:<[player]>_base>
@@ -251,6 +403,7 @@ GetCharacterFromQuery:
 # Could be replaced, purely here for accessibility
 GetCharacterName:
     type: procedure
+    debug: false
     definitions: player
     script:
         - define name:<proc[GetCharacterYAML].context[<[player]>|Info.Character_Name]>
@@ -260,24 +413,32 @@ GetCharacterName:
             - determine <[name]>
 GetCharacterDisplayName:
     type: procedure
+    debug: false
     definitions: player
     script:
-        - determine <proc[GetCharacterYAML].context[<[player]>|Info.Character_Display_Name]>
+        - define name:<proc[GetCharacterYAML].context[<[player]>|Info.Character_Display_Name]>
+        - if <[name]> == yaml[<&lt>[character]<&gt>].read[<&lt>[key]<&gt>]:
+            - determine  <[player].name>
+        - else:
+            - determine <[name]>
 # Gets the last known location of this player
 GetCharacterLocation:
     type: procedure
+    debug: false
     definitions: player
     script:
         - determine <proc[GetCharacterYAML].context[<[player]>|Info.Character_Location]>
 # Gets the name of the town the player is currently a member of
 GetCharacterTown:
     type: procedure
+    debug: false
     definitions: player
     script:
         - determine <proc[GetCharacterYAML].context[<[player]>|Town.Name]>
 # General utility to access character sheet info
 GetCharacterYAML:
     type: procedure
+    debug: false
     definitions: player|key
     script:
         - define character:<[player].flag[CurrentCharacter]>
@@ -287,6 +448,7 @@ GetCharacterYAML:
         - determine <[result]>
 GetOtherCharacterYAML:
     type: procedure
+    debug: false
     definitions: player|id|key
     script:
         - yaml load:/CharacterSheets/<[player].uuid>/<[id]>.yml id:<[id]>
@@ -295,6 +457,7 @@ GetOtherCharacterYAML:
         - determine <[result]>
 CharacterHasTown:
     type: procedure
+    debug: false
     definitions: player
     script:
         - define town:<proc[GetCharacterTown].context[<player>]>
