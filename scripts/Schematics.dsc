@@ -18,10 +18,10 @@ TBCController:
             - narrate "pos1 selected"
             - flag player pos1:<c.location>
             - determine cancelled
-        on player drops locationtool:
-            - schematic create name:test cu@<player.flag[pos1]>|<player.flag[pos2]> <player.location>
-            - schematic save name:test
-            - schematic load name:test
+        # on player drops locationtool:
+        #     - schematic create name:test cu@<player.flag[pos1]>|<player.flag[pos2]> <player.location>
+        #     - schematic save name:test
+        #     - schematic load name:test
 
 SchematicCommand:
     type: command

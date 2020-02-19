@@ -16,12 +16,60 @@ ScrapMetal:
         - and parts. Frequently called
         - <&dq>Scrap<&dq> for short.
 
+Sphteven:
+    type: item
+    material: flower_pot
+    display name: <&a>Sphteven
+    lore:
+        - Collect them all!
+    
 SimpleKineticOre:
     type: item
     material: i@stone
     display name: Simple Kinetic Ore
     lore:
         - PLACEHOLDER
+BurntOutTorch:
+    type: item
+    material: stick
+    display name: <&e>Burnt Out Torch
+    lore:
+    - A torch that has lost
+    - its burnable material.
+RemadeTorch:
+    type: item
+    material: torch
+    recipes:
+        1:
+            type: shapeless
+            input: BurntOutTorch|coal
+        2:
+            type: shapeless
+            input: BurntOutTorch|charcoal
+
+ParafoilBoostCanister:
+    type: item
+    material: firework_rocket
+    display name: <&e>Skyborne Boost Canister
+    lore:
+    - A boost canister for the parafoil
+    - used to grant the user instant
+    - lift while airborne.
+COTSSkyStone:
+    type: item
+    material: prismarine_shard
+    display name: <&a>Skystone
+    lore:
+    - Use to give yourself a short boost.
+    - 5
+    - charges remaining.
+COTSSkyStoneBroken:
+    type: item
+    material: prismarine_crystals
+    display name: <&a>Shattered Skystone
+    lore:
+    - A broken skystone.
+    - Needs to be recharged.
 # Skyforged Items
 
 # Eldergleam:

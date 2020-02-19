@@ -14,6 +14,8 @@ CreeperCheck:
         on entity spawns:
         - if <context.entity.entity_type> == CREEPER:
             - determine cancelled
+        - if <context.entity.entity_type> == PHANTOM:
+            - determine cancelled
 Kernel:
     type: world
     debug: false
@@ -41,9 +43,9 @@ Kernel:
                 - define town:<proc[TownFindNPC].context[<npc>]||null>
                 - if <[town]> != null:
                     - run TownRemoveNPC instantly def:<npc>|<[town]>
-        on player logs in:
-            - wait 1s
-            - inject QuestOnPlayerLogin
+        # on player logs in:
+        #     - wait 1s
+            
         on player joins:
             - if !<player.has_flag[notnew]>:
                 - define channel:<discord[mybot].group[Aetheria].channel[⚙clockworks⚙]>
@@ -53,6 +55,8 @@ Kernel:
             - inject SkinSave
             - inject PlayerControllerOnJoin
             - inject LetterOnJoin
+            - if <player.has_flag[CurrentCharacter]>:
+                - inject QuestOnPlayerLogin
             - define channel:<discord[mybot].group[Aetheria].channel[big-sister]>
             - define "message:**<player.name> joined the server**"
             - ~discord id:mybot message channel:<[channel]> <[message]>
@@ -100,7 +104,7 @@ Kernel:
                     - inject SkillOnPlayerClicksInInventory
         on player enters SkyworldZone:
             - if <player.inventory.list_contents.contains_text[Elytra]>:
-                - teleport <[player]> l@1194,197,-877,aetheria
+                - teleport <player> l@1194,197,-877,aetheria
         on item recipe formed:
             - if <context.item.material.name.contains[diamond]>:
                 - determine cancelled
@@ -191,47 +195,7 @@ ModeToggle:
             - flag player chat_channel:casual
 
 
-BurntOutTorch:
-    type: item
-    material: stick
-    display name: <&e>Burnt Out Torch
-    lore:
-    - A torch that has lost
-    - its burnable material.
-RemadeTorch:
-    type: item
-    material: torch
-    recipes:
-        1:
-            type: shapeless
-            input: BurntOutTorch|coal
-        2:
-            type: shapeless
-            input: BurntOutTorch|charcoal
 
-ParafoilBoostCanister:
-    type: item
-    material: firework_rocket
-    display name: <&e>Skyborne Boost Canister
-    lore:
-    - A boost canister for the parafoil
-    - used to grant the user instant
-    - lift while airborne.
-COTSSkyStone:
-    type: item
-    material: prismarine_shard
-    display name: <&a>Skystone
-    lore:
-    - Use to give yourself a short boost.
-    - 5
-    - charges remaining.
-COTSSkyStoneBroken:
-    type: item
-    material: prismarine_crystals
-    display name: <&a>Shattered Skystone
-    lore:
-    - A broken skystone.
-    - Needs to be recharged.
 # =================================================================================
 # ===========================Custom Block YAML Add/Edit============================
 # =================================================================================
@@ -258,6 +222,19 @@ AddToChunkFile:
         - yaml "savefile:/ChunkData/<[chunkID]>.yml" id:<[chunkID]>
         - yaml unload id:<[chunkID]>
 
+# NPCS Save character steps
+SaveNPCStep:
+    type: task
+    script:
+        - define "script:s@<npc.script.yaml_key[interact scripts].get[1].after[1 ]>"
+        - define character:<proc[GetCharacterName].context[<player>]>
+        - flag player <[character]>_<npc>:<[script].step>
+LoadNPCStep:
+    type: task
+    script:
+        - define step:<player.flag[<proc[GetCharacterName].context[<player>]>_<npc>]||1>
+        - define "script:s@<npc.script.yaml_key[interact scripts].get[1].after[1 ]>"
+        - zap step:<[step]> <[script]> player:<player>
 # =================================================================================
 # ============================Custom File YAML Add/Edit============================
 # =================================================================================

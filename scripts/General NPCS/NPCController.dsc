@@ -51,19 +51,7 @@ DynamicNPC:
         - else:
             - define name:<proc[GetRandomName]>
             - execute as_op "npc create <[name]>"
-DNPCAssignment:
-    type: assignment
-    interact scripts:
-        - 1 DNPCInteract
-DNPCInteract:
-    type: interact
-    steps:
-        1:
-            chat trigger:
-                1:
-                    trigger: /Regex:Hello/
-                    script:
-                        - chat "Hello, my name is <npc.name>"
+
 # =================================================================================
 # =================================== SKINS =======================================
 # =================================================================================

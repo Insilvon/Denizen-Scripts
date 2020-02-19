@@ -120,17 +120,22 @@ ChatCommand:
             - case help:
                 - inject ChatHelp
             - default:
-                - flag player chat_channel:Casual
-                - narrate "You are now speaking in Casual"
+                - run ChatHelp
 ChatHelp:
     type: task
     debug: false
+    speed: instant
     script:
-        - narrate "<&e>Help Menu - Page One-----------<&gt>" format:ChatFormat
-        - narrate "/ch w | whisper - range of 2 blocks."
-        - narrate "/ch h | hush - range of 6 blocks."
-        - narrate "/ch c | casual - range of 20 blocks."
-        - narrate "/ch s | shout - range of 35 blocks."
-        - narrate "/ch sr | shriek - range of 45 blocks."
-        - narrate "/ch o | ooc - unlimited range."
-        - narrate "/ch g | global - unlimited range"
+        - narrate "<&e>Chat Menu - Page One-----------<&gt>"
+        - narrate "<&7>/ch w | whisper - <&f>range of 2 blocks."
+        - narrate "<&3>/ch h | hush - <&f>range of 6 blocks."
+        - narrate "<&a>/ch c | casual - <&f>range of 20 blocks."
+        - narrate "<&c>/ch s | shout - <&f>range of 35 blocks."
+        - narrate "<&4>/ch sr | shriek - <&f>range of 45 blocks."
+        - narrate "<&8>/ch o | ooc - <&f>unlimited range."
+        - narrate "<&2>/ch g | global - <&f>unlimited range"
+ChatList:
+    type: task
+    debug: false
+    script:
+        - run ChatHelp

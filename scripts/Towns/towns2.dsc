@@ -86,6 +86,9 @@ TownCommand:
                 - if <[temp]> == 3:
                     - inject TownHelp3
                     - stop
+                - if <[temp]> == 4:
+                    - inject TownHelp4
+                    - stop
                 - inject TownHelp
                 - stop
             - default:
@@ -215,7 +218,7 @@ TownCreate:
             - narrate "You cannot create a town while a member of another!" format:TownFormat
             - stop
         # Now create the town - claim the chunk.
-        - define name:<[args].get[2]||null>
+        - define name:<[args].get[2].to[<[args].size>].space_separated||null>
         - if <[name]> == null:
             - narrate "You must specify a name to create a town!" format:TownFormat
             - stop
@@ -242,7 +245,7 @@ TownCreate:
         - note in@TownInventoryObject as:<[name]>_Inventory
         - flag player <[character]>_Town:<[name]>
         - narrate "The town of <[name]> has been created." format:TownFormat
-        - run TownAddToDynmap def:<player.location.chunk>|<[name]>|1
+        # - run TownAddToDynmap def:<player.location.chunk>|<[name]>|1
 
 # Helper for TownCreate
 # TODO: Generalize this and fit it into /town claim
@@ -259,7 +262,7 @@ TownCreateYAML:
         - ~yaml id:<[name]> set Town.Ownername:none
         - ~yaml id:<[name]> set Town.Satisfaction:none
         - ~yaml id:<[name]> set Town.OriginChunk:<[chunk]>
-        - ~yaml id:<[name]> set Town.WelcomeMessage:"Welcome to <[name]>."
+        - ~yaml id:<[name]> set "Town.WelcomeMessage:Welcome to <[name]>."
         
         - ~yaml id:<[name]> set NPCs.Farmer:0
         - ~yaml id:<[name]> set NPCs.Blacksmith:0
@@ -772,7 +775,15 @@ TownHelp3:
         - narrate "<&3><&hover[Click Me!]><&click[/town store]>/town Store<&end_click><&end_hover>: <&f>Will store a Militia Voucher (must be holding to work) in the town militia."
         - narrate "<&3>/town Surrender <&lt>Player Name<&gt> <&lt>Character Name<&gt>: <&f>Gives another player ownership of your town."
         - narrate "     If you do not know the full Character's name, a partial match is fine. Works offline."
+        - narrate "<&hover[Click Me!]><&click[/town help 4]><&e>Page 4<&f><&end_click><&end_hover>"
 
+TownHelp4:
+    type: task
+    debug: false
+    script:
+        - narrate "<&e>Help Menu - Page Four-----------<&gt>" format:TownFormat
+        - narrate "<&3>/town welcome <&lt>Your welcome message<&gt>: <&f>Sets the welcome message players see when they walk into your town."
+        - narrate "<&3>/town rename <&lt>First Last<&gt>: <&f>Sets the display name of the NPC you're looking at. If blank, a random name is added."
 # Helper Scripts =====================================
 # Checks if the player is the owner of their town
 # GetTownOriginChunk:

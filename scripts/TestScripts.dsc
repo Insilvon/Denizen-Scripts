@@ -5,12 +5,7 @@ MCLTest:
         - narrate "<&hover[Click Me!]><&click[Tell me about yourself.]>Ask about their history.<&end_click><&end_hover> | <&hover[Click Me!]><&click[I think you should leave.]>Ask them to stop following you.<&end_click><&end_hover>"
 
 
-Sphteven:
-    type: item
-    material: flower_pot
-    display name: <&a>Sphteven
-    lore:
-        - Collect them all!
+
 CrystalSwitch:
     type: item
     material: diamond
@@ -29,7 +24,7 @@ CrystalPuzzleWorld:
         on player left clicks block with crystalswitch:
             - foreach li@l@-23,85,-447,eventworld|l@-23,85,-449,eventworld|l@-23,85,-451,eventworld|l@-23,83,-447,eventworld|l@-23,83,-449,eventworld|l@-23,83,-451,eventworld|l@-23,81,-447,eventworld|l@-23,81,-449,eventworld|l@-23,81,-451,eventworld as:position:
                 - modifyblock red_stained_glass <[position]>
-        on player right clicks block with crystalswitch:
+        on player right clicks block with crystalswitch:boost
             - if <cu@CrystalPuzzle.contains_location[<context.location>]>:
                 - define pos1:l@-23,85,-447,eventworld
                 - define pos2:l@-23,85,-449,eventworld

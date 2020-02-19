@@ -49,6 +49,10 @@ FarmerNPCAssignment:
     actions:
         on assignment:
             - narrate "Assignment Set!"
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
         - 1 FarmerNPCInteract
 
@@ -73,6 +77,10 @@ PlacedTownFarmerAssignment:
     actions:
         on click:
             - inventory open d:TownFarmerInventory
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
         - 1 PlacedTownFarmerInteract
 
@@ -313,6 +321,10 @@ PlacedTownTrainerAssignment:
     actions:
         on assignment:
             - narrate "Assignment Set!"
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
         - 1 PlacedTownTrainerInteract
 PlacedTownTrainerInteract:
@@ -426,6 +438,11 @@ TownTrainerInventory:
 # =================================================================================
 PlacedTownBlacksmithAssignment:
     type: assignment
+    actions:
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
         - 1 PlacedTownBlacksmithInteract
 
@@ -637,6 +654,10 @@ RandomTownAssignment:
         on assignment:
             - narrate "Assignment Set"
             - trigger name:proximity state:true
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
         on click:
             - random:
                 - chat "Are you one of the sky-settlers? I wonder why you've decided to come here."
@@ -666,6 +687,11 @@ RandomTownInteract:
                             - chat "Look at this ground. Completely charred. I don't know why we can't find new fuel for the sky."
 PlacedTownLeaderAssignment:
     type: assignment
+    actions:
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
         - 1 PlacedTownLeaderInteract
 PlacedTownLeaderInteract:

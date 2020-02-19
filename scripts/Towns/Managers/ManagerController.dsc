@@ -2,7 +2,7 @@
 TownManagerController:
     type: world
     events:
-        on player clicks in TownManagerInventory:
+        on player clicks in NewTownManagerInventory:
             - determine cancelled passively
             - define npcType:unknown
             - foreach li@Farmer|Blacksmith|Trainer|Builder|Miner|Woodcutter|Alchemist as:Trade:
@@ -12,15 +12,16 @@ TownManagerController:
             - define Town:<player.flag[<proc[GetCharacterName].context[<player>]>_Town]>
             - if <context.item.material.name||null> == player_head:
                 - choose <context.click>:
-                    #= Spawn the NPC (MAKE THIS FOLLOWABLE!)
-                    - case RIGHT:
-                        - define name:<context.item.display>
-                        - create player <[name]> <player.location.right.forward.above> save:temp
-                        - adjust <entry[temp].created_npc> lookclose:TRUE
-                        - adjust <entry[temp].created_npc> set_assignment:<[npcType]>WorkersAssignment
-                        - flag <entry[temp].created_npc> Town:<[town]>
-                        - run SetVulnerable npc:<entry[temp].created_npc>
-                        - determine cancelled passively
+                    # #= Spawn the NPC (MAKE THIS FOLLOWABLE!)
+                    #= This is a problem for future me to figure out if people want it
+                    # - case RIGHT:
+                    #     - define name:<context.item.display>
+                    #     - create player <[name]> <player.location.right.forward.above> save:temp
+                    #     - adjust <entry[temp].created_npc> lookclose:TRUE
+                    #     - adjust <entry[temp].created_npc> set_assignment:<[npcType]>WorkersAssignment
+                    #     - flag <entry[temp].created_npc> Town:<[town]>
+                    #     - run SetVulnerable npc:<entry[temp].created_npc>
+                    #     - determine cancelled passively
                     #= Show the Stats for this worker!
                     - case LEFT:
                         - define name:<context.item.display>
@@ -29,6 +30,9 @@ TownManagerController:
                     #= Fire the worker.
                     - case DROP:
                         - define NPC:<context.item>
+                        - define sItem:<context.item.script.name||null>
+                        - if <[sItem]> != null:
+                            - determine cancelled
                         - define name:<context.item.display>
                         - take <context.item> from:<context.inventory>
                         - flag server Town_<[Town]>_Worker_<[npcType]>_<[name]>:!
@@ -67,40 +71,27 @@ TownManagerInventory:
         - "[] [] [] [] [] [] [] [] []"
         - "[] [] [] [] [] [] [] [] []"
         - "[] [] [] [] [] [] [] [] [TownInventoryHelpItem]"
-
-TownWorkerStats:
+NewTownManagerInventory:
     type: inventory
     inventory: chest
-    title: Worker Stats
+    title: WIP
     size: 9
     slots:
-        - "[] [TownWorkerStatHead] [] [] [] [] [TownWorkerUpgradeItem] [] []"
+    - "[] [] [] [] [] [] [] [] [TownInventoryHelpItem]"
 
-TownWorkerStatHead:
-    type: item
-    material: player_head[skull_skin=7e6ca713-93c6-474a-bec6-94f04e138d6f|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2VkNTE5OGRkY2RkODliZTkxYzY5ZmU5YWJmZTJjYTRjMTk0N2M3ZTJlYWMxMWYxODQ2YmQzMTIyY2E1YjhjNiJ9fX0=]
-    display name: <&e>Worker Stats
-    lore:
-    # - Produces Food Every day.|Current Amount<&co>|3
-        - Error
-        - <&e>Generates material every day.
-        - <&e>Current Rate<&co>
-        - 5
-    
-TownWorkerUpgradeItem:
-    type: item
-    material: green_stained_glass
-    display name: <&a>Upgrade Worker
-    lore:
-        - Upgrades this worker.
-        - <&e>Current cost to upgrade<&co>
-        - 100 emerald.
 
 
 #= Helper Scripts
 ManagerClickEvent:
     type: task
     script:
+        - if <player.has_flag[Town_NPC_Cooldown]>:
+            - narrate "You must wait 5 seconds before adding another NPC!" format:TownFormat
+            - stop
+        - else:
+            - flag player Town_NPC_Cooldown d:5s
+        - define npcType:<npc.flag[Type]>
+        # - define npcType:<npc.flag[Type]||null>
         - if <player.item_in_hand.script.name||null> == <[npcType]>WorkerVoucher:
             - define character:<proc[GetCharacterName].context[<player>]>
             - if <npc.flag[Town]||null> != <player.flag[<[character]>_Town]||none>:
@@ -126,7 +117,6 @@ ManagerClickEvent:
                 - narrate "This manager cannot hold any more workers!" format:TownFormat
         - inventory open d:<npc.flag[Inventory]>
 
-
 ManagerSpawnTask:
     type: task
     script:
@@ -149,18 +139,19 @@ ManagerSpawnTask:
         - flag <entry[temp].created_npc> Town:<[town]>
         - run SetVulnerable npc:<entry[temp].created_npc>
         
-        # Notable Inventory Setup
-        - define inv:<[town]>_<[npcType]>_Manager
+        # Notable Inventory/Flag Setup
         - if !<server.has_flag[Town_<[Town]>_<[npcType]>_Manager]>:
-            - note in@TownManagerInventory as:<[inv]>
-            - flag server Town_<[Town]>_<[npcType]>_Manager
-        
+            - flag server Town_<[Town]>_<[npcType]>_Manager:0
+        - flag server Town_<[Town]>_<[npcType]>_Manager:++
+        - define ID:<server.flag[Town_<[Town]>_<[npcType]>_Manager]>
+        - define inv:<[town]>_<[npcType]>_Manager_<[ID]>
+        - note in@NewTownManagerInventory as:<[inv]>
+                    
         # Run your flags
         - flag <entry[temp].created_npc> Inventory:<[inv]>
         - flag <entry[temp].created_npc> Manager
-        
-        # Each manager could have different inventories, but I'm lazy!
-        - flag server Town_<[Town]>_<[npcType]>_Manager:++
+        - flag <entry[temp].created_npc> ID:<[ID]>
+        - flag <entry[temp].created_npc> Type:<[npcType]>
 
         #YAML Town Stats
         - run TownAddNPC def:<[Town]>|<[npcType]>
@@ -177,6 +168,32 @@ ManagerSpawnTask:
             - inject SetNPCURLSkin
         # - run TownAddNewNPC instantly def:<[town]>|<entry[temp].created_npc>/<[npcType]>|<[npcType]>
 
+TownWorkerStats:
+    type: inventory
+    inventory: chest
+    title: Worker Stats
+    size: 9
+    slots:
+        - "[] [TownWorkerStatHead] [] [] [] [] [TownWorkerUpgradeItem] [] []"
+TownWorkerStatHead:
+    type: item
+    material: player_head[skull_skin=7e6ca713-93c6-474a-bec6-94f04e138d6f|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2VkNTE5OGRkY2RkODliZTkxYzY5ZmU5YWJmZTJjYTRjMTk0N2M3ZTJlYWMxMWYxODQ2YmQzMTIyY2E1YjhjNiJ9fX0=]
+    display name: <&e>Worker Stats
+    lore:
+    # - Produces Food Every day.|Current Amount<&co>|3
+        - Error
+        - <&e>Generates material every day.
+        - <&e>Current Rate<&co>
+        - 5
+    
+TownWorkerUpgradeItem:
+    type: item
+    material: green_stained_glass
+    display name: <&a>Upgrade Worker
+    lore:
+        - Upgrades this worker.
+        - <&e>Current cost to upgrade<&co>
+        - 100 emerald.
 TownInventoryHelpItem:
     type: Item
     material: player_head[skull_skin=945906b4-6fdc-4b99-9a26-30906befb63a|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjM4YzUzZTY2ZjI4Y2YyYzdmYjE1MjNjOWU1ZGUxYWUwY2Y0ZDdhMWZhZjU1M2U3NTI0OTRhOGQ2ZDJlMzIifX19]

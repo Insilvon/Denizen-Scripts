@@ -80,7 +80,7 @@ RopeArrowWorld:
                 - cast levitation remove <player>
         on player clicks block:
             - if <player.is_sneaking>:
-                - if <player.has_flag[ropearrow]> && <context.location.block.material.name> == IRON_BARS && <player.location.cuboids.contains_text[<player.flag[ropearrow]>]>:
+                - if <player.has_flag[ropearrow]> && <context.location.block.material.name||null> == IRON_BARS && <player.location.cuboids.contains_text[<player.flag[ropearrow]>]>:
                     - define theCuboid:cu@<player.flag[ropearrow]>
                     - define highY:<[theCuboid].max.y>
                     - define lowY:<[theCuboid].min.y>

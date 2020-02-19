@@ -39,6 +39,10 @@ NPCVoucherAssignment:
     actions:
       on assignment:
         - narrate "Assignment Set!"
+      on exit proximity:
+        - inject SaveNPCStep
+      on enter proximity:
+        - inject LoadNPCStep
     interact scripts:
       - 1 NPCVoucherInteract
 

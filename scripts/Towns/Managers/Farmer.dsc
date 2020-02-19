@@ -5,7 +5,7 @@ FarmerManagerAssignment:
         on assignment:
             - narrate "Assignment set!"
         on click:
-            - define npcType:Farmer
+            - narrate <npc.flag[Type]>
             - inject ManagerClickEvent
 FarmerManagerVoucher:
     type: item

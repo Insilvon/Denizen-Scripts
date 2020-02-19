@@ -1,3 +1,33 @@
+# mobskin:
+#     type: command
+#     name: mobskin
+#     desc: sh
+#     usage: sh
+#     permission: aetheria.mobskin
+#     aliases:
+#     - mobs
+#     script:
+#         - define mobName:<context.args.get[1]||null>
+#         - define number:<context.args.get[2]||null>
+#         - if <[mobName]> == null || <[number]> == null:
+#             - narrate "INVALID FORMAT: /mob <name> <amount>"
+#             - stop
+#         - repeat <[number]>:
+#             - define val:<util.random.int[1].to[10]>
+#             - execute as_op "mm mobs spawn <[mobname]><[val]>"
+
+givemevines:
+    type: command
+    name: givemevines
+    desc: sh
+    usage: sh
+    permission: aetheria.givemevines
+    aliases:
+    - gmv
+    script:
+        - adjust <player.location.find.blocks[bedrock].within[30]> block_type:sunflower[half=BOTTOM]
+        - narrate "Done!"
+
 dEnchant:
     type: command
     name: dEnchant

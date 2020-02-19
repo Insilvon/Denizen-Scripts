@@ -37,6 +37,10 @@ CentrecrestDockWorker:
         on click:
             - flag player NPCInventory:CentrecrestDockworkerInventory
             - inventory open d:NewMerchantInventory
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
         - 1 CentrecrestDockWorkerInteract
 
@@ -74,6 +78,10 @@ CentrecrestBlacksmith:
     actions:
         on assignment:
             - narrate "Assignment set."
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
         on click:
             - inject CentrecrestRandomTalk
     interact scripts:
@@ -154,6 +162,10 @@ CentrecrestWoodcutter:
     actions:
         on assignment:
             - narrate "Assignment Set!"
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
         on click:
             - flag player NPCInventory:CentrecrestWoodcutterInventory
             - inventory open d:NewMerchantInventory
@@ -197,6 +209,10 @@ CentrecrestFarmer:
         on click:
             - flag player NPCInventory:CentrecrestFarmerInventory
             - inventory open d:NewMerchantInventory
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
         - 1 CentrecrestFarmerInteract
 
@@ -232,6 +248,10 @@ CentrecrestBuilder:
     actions:
         on assignment:
             - narrate "assignment set."
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
         - 1 CentrecrestBuilderInteract
 
@@ -256,6 +276,10 @@ CentrecrestGlassMerchant:
     actions:
         on assignment:
             - narrate "Assignment set."
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
         on click:
             - flag player NPCInventory:CentrecrestGlassMerchantInventory
             - inventory open d:NewMerchantInventory
@@ -295,6 +319,10 @@ CentrecrestMiner:
     actions:
         on assignment:
             - narrate "Assignment Set!"
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
         on click:
             - flag player NpcInventory:CentrecrestMinerInventory
             - inventory open d:NewMerchantInventory

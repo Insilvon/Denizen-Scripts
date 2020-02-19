@@ -30,6 +30,10 @@ ChandlerVIIAssignment:
     actions:
         on assignment:
             - narrate "assignment set"
+        on exit proximity:
+            - inject SaveNPCStep
+        on enter proximity:
+            - inject LoadNPCStep
     interact scripts:
     - 1 ChandlerVIIInteract
 
