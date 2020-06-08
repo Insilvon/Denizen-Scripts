@@ -37,8 +37,6 @@ CustomBlocksController:
             - define chunkID:<context.location.chunk>
             - define locale:<context.location.block>
             - define itemDrop:<proc[CustomItemCheck].context[<[chunkID]>|<[locale]>]||null>
-            - if <[itemDrop]> == null:
-                - stop
             
             # Check if it has a custom region
             - inject CustomRegionOnPlayerBreaksBlock
