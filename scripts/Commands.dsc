@@ -1,20 +1,27 @@
-# mobskin:
-#     type: command
-#     name: mobskin
-#     desc: sh
-#     usage: sh
-#     permission: aetheria.mobskin
-#     aliases:
-#     - mobs
-#     script:
-#         - define mobName:<context.args.get[1]||null>
-#         - define number:<context.args.get[2]||null>
-#         - if <[mobName]> == null || <[number]> == null:
-#             - narrate "INVALID FORMAT: /mob <name> <amount>"
-#             - stop
-#         - repeat <[number]>:
-#             - define val:<util.random.int[1].to[10]>
-#             - execute as_op "mm mobs spawn <[mobname]><[val]>"
+GetPilotTool:
+    type: command
+    name: stopdying
+    desc: stopdying
+    usage: stop
+    script:
+        - give player Overboarditem
+
+HideEnchant:
+    type: command
+    name: hideenchant
+    desc: sh
+    usage: hideenchant
+    permission: aetheria.hideenchants
+    script:
+        - inventory adjust d:<player.inventory> s:<player.item_in_hand.slot> FLAGS:li@HIDE_ENCHANTS
+
+shrug:
+    type: command
+    name: shrug
+    desc: sh
+    usage: sh
+    script:
+        - execute as_server "sudo <player.name> c:(( ¯\_(ツ)_/¯ ))"
 
 givemevines:
     type: command
@@ -105,4 +112,8 @@ RescueRing:
             - wait 15s
             - narrate "<&c>[RescueRing]:<&f> *The line appears! Going up!*"
             - wait 2s
-            - teleport <player> l@-7810,116,1840,skyworld_v2
+            # - teleport <player> l@-7810,116,1840,skyworld_v2
+            - if <player.has_flag[ShipRescueRing]>:
+                - teleport <player> <player.flag[ShipRescueRing]>
+            - else:
+                - teleport <player> l@-1156,154,-474,skyworld_v2

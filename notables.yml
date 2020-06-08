@@ -1,37 +1,843 @@
-Items:
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_head1: i@player_head,0[display_name=Player1;lore=$*&at*$]
-  newspaper4: i@written_book,0[book=author|Writer|title|TestTitle|pages;display_name=Test]
-  newspaper3: i@written_book,0[book=author|Writer|title|TestTitle|pages;display_name=Test]
-  newspaper5: i@written_book,0[book=author|Writer|title|TestTitle|pages;display_name=Test]
-  testpaper: i@written_book,0[book=author|Writer|title|TestTitle|pages;display_name=Test]
+Cuboids:
+  miasmyyn cove_158: skyworld_v2,5904,0,5008,5919,255,5023
+  miasmyyn cove_157: skyworld_v2,5920,0,5008,5935,255,5023
+  hambone_coal_company_1: skyworld_v2,-1472,0,-1600,-1457,255,-1585
+  miasmyyn cove_159: skyworld_v2,5888,0,5008,5903,255,5023
+  mystictown_1: new_buildworld,-240,0,-112,-225,255,-97
+  crimsonsundiscovery: skyworld_v2,-7787,71,1803,-7722,139,1874
+  primnee: aetheria,-1036,1,961,-919,222,1150
+  miasmyyn cove_161: skyworld_v2,5856,0,5008,5871,255,5023
+  miasmyyn cove_160: skyworld_v2,5872,0,5008,5887,255,5023
+  farm: aetheria,-2100,0,-724,-1646,179,-455
+  miasmyyn cove_163: skyworld_v2,5824,0,5008,5839,255,5023
+  miasmyyn cove_162: skyworld_v2,5840,0,5008,5855,255,5023
+  miasmyyn cove_165: skyworld_v2,5792,0,5008,5807,255,5023
+  miasmyyn cove_164: skyworld_v2,5808,0,5008,5823,255,5023
+  miasmyyn cove_167: skyworld_v2,5760,0,5008,5775,255,5023
+  miasmyyn cove_166: skyworld_v2,5776,0,5008,5791,255,5023
+  miasmyyn cove_147: skyworld_v2,5808,0,5024,5823,255,5039
+  miasmyyn cove_146: skyworld_v2,5792,0,5024,5807,255,5039
+  arkenisle: aetheria,3010,0,-3220,5774,251,-113
+  miasmyyn cove_149: skyworld_v2,5840,0,5024,5855,255,5039
+  miasmyyn cove_148: skyworld_v2,5824,0,5024,5839,255,5039
+  miasmyyn cove_150: skyworld_v2,5856,0,5024,5871,255,5039
+  miasmyyn cove_152: skyworld_v2,5888,0,5024,5903,255,5039
+  node_centrecrestmine: skyworld_v2,-5341,97,-340,-5337,114,-326
+  miasmyyn cove_151: skyworld_v2,5872,0,5024,5887,255,5039
+  miasmyyn cove_154: skyworld_v2,5920,0,5024,5935,255,5039
+  miasmyyn cove_153: skyworld_v2,5904,0,5024,5919,255,5039
+  miasmyyn cove_156: skyworld_v2,5936,0,5008,5951,255,5023
+  miasmyyn cove_155: skyworld_v2,5936,0,5024,5951,255,5039
+  miasmyyn cove_136: skyworld_v2,5632,0,5040,5647,255,5055
+  miasmyyn cove_135: skyworld_v2,5648,0,5040,5663,255,5055
+  miasmyyn cove_138: skyworld_v2,5664,0,5024,5679,255,5039
+  miasmyyn cove_137: skyworld_v2,5632,0,5024,5647,255,5039
+  miasmyyn cove_139: skyworld_v2,5680,0,5024,5695,255,5039
+  node_cardinalforest1: skyworld_v2,-6532,66,892,-6488,103,933
+  centrecrest_190: skyworld_v2,-5408,0,-496,-5393,255,-481
+  centrecrest_192: skyworld_v2,-5232,0,-320,-5217,255,-305
+  centrecrest_191: skyworld_v2,-5232,0,-336,-5217,255,-321
+  centrecrest_198: skyworld_v2,-5216,0,-368,-5201,255,-353
+  centrecrest_197: skyworld_v2,-5216,0,-352,-5201,255,-337
+  miasmyyn cove_141: skyworld_v2,5712,0,5024,5727,255,5039
+  centrecrest_199: skyworld_v2,-5200,0,-480,-5185,255,-465
+  miasmyyn cove_140: skyworld_v2,5696,0,5024,5711,255,5039
+  centrecrest_194: skyworld_v2,-5216,0,-304,-5201,255,-289
+  miasmyyn cove_143: skyworld_v2,5744,0,5024,5759,255,5039
+  centrecrest_193: skyworld_v2,-5232,0,-304,-5217,255,-289
+  miasmyyn cove_142: skyworld_v2,5728,0,5024,5743,255,5039
+  centrecrest_196: skyworld_v2,-5216,0,-336,-5201,255,-321
+  miasmyyn cove_145: skyworld_v2,5776,0,5024,5791,255,5039
+  centrecrest_195: skyworld_v2,-5216,0,-320,-5201,255,-305
+  miasmyyn cove_144: skyworld_v2,5760,0,5024,5775,255,5039
+  miasmyyn cove_125: skyworld_v2,5808,0,5040,5823,255,5055
+  miasmyyn cove_124: skyworld_v2,5824,0,5040,5839,255,5055
+  miasmyyn cove_127: skyworld_v2,5776,0,5040,5791,255,5055
+  miasmyyn cove_126: skyworld_v2,5792,0,5040,5807,255,5055
+  miasmyyn cove_129: skyworld_v2,5744,0,5040,5759,255,5055
+  miasmyyn cove_128: skyworld_v2,5760,0,5040,5775,255,5055
+  miasmyyn cove_130: skyworld_v2,5728,0,5040,5743,255,5055
+  miasmyyn cove_132: skyworld_v2,5696,0,5040,5711,255,5055
+  miasmyyn cove_131: skyworld_v2,5712,0,5040,5727,255,5055
+  miasmyyn cove_134: skyworld_v2,5664,0,5040,5679,255,5055
+  miasmyyn cove_133: skyworld_v2,5680,0,5040,5695,255,5055
+  miasmyyn cove_114: skyworld_v2,5936,0,5056,5951,255,5071
+  miasmyyn cove_113: skyworld_v2,5920,0,5056,5935,255,5071
+  miasmyyn cove_116: skyworld_v2,5952,0,5040,5967,255,5055
+  miasmyyn cove_115: skyworld_v2,5952,0,5056,5967,255,5071
+  miasmyyn cove_118: skyworld_v2,5920,0,5040,5935,255,5055
+  miasmyyn cove_117: skyworld_v2,5936,0,5040,5951,255,5055
+  miasmyyn cove_119: skyworld_v2,5904,0,5040,5919,255,5055
+  miasmyyn cove_121: skyworld_v2,5872,0,5040,5887,255,5055
+  miasmyyn cove_120: skyworld_v2,5888,0,5040,5903,255,5055
+  miasmyyn cove_123: skyworld_v2,5840,0,5040,5855,255,5055
+  miasmyyn cove_122: skyworld_v2,5856,0,5040,5871,255,5055
+  miasmyyn cove_103: skyworld_v2,5744,0,5056,5759,255,5071
+  miasmyyn cove_102: skyworld_v2,5760,0,5056,5775,255,5071
+  miasmyyn cove_105: skyworld_v2,5792,0,5056,5807,255,5071
+  miasmyyn cove_104: skyworld_v2,5776,0,5056,5791,255,5071
+  nativecamp_shrine: aetheria,-523,57,236,-509,67,245
+  miasmyyn cove_107: skyworld_v2,5824,0,5056,5839,255,5071
+  miasmyyn cove_106: skyworld_v2,5808,0,5056,5823,255,5071
+  miasmyyn cove_109: skyworld_v2,5856,0,5056,5871,255,5071
+  miasmyyn cove_108: skyworld_v2,5840,0,5056,5855,255,5071
+  miasmyyn cove_110: skyworld_v2,5872,0,5056,5887,255,5071
+  miasmyyn cove_112: skyworld_v2,5904,0,5056,5919,255,5071
+  miasmyyn cove_111: skyworld_v2,5888,0,5056,5903,255,5071
+  node_lapidasmine1: skyworld_v2,-206,70,-2671,-196,72,-2663
+  miasmyyn cove_101: skyworld_v2,5728,0,5056,5743,255,5071
+  miasmyyn cove_100: skyworld_v2,5712,0,5056,5727,255,5071
+  shaun_shiplock: skyworld_v2,-1118,152,-410,-1116,153,-408
+  miasmyyn cove_312: skyworld_v2,5712,0,4864,5727,255,4879
+  miasmyyn cove_311: skyworld_v2,5696,0,4864,5711,255,4879
+  miasmyyn cove_314: skyworld_v2,5744,0,4864,5759,255,4879
+  miasmyyn cove_313: skyworld_v2,5728,0,4864,5743,255,4879
+  miasmyyn cove_316: skyworld_v2,5632,0,5120,5647,255,5135
+  miasmyyn cove_315: skyworld_v2,5632,0,5104,5647,255,5119
+  miasmyyn cove_318: skyworld_v2,5632,0,5152,5647,255,5167
+  miasmyyn cove_317: skyworld_v2,5632,0,5136,5647,255,5151
+  miasmyyn cove_319: skyworld_v2,5632,0,5168,5647,255,5183
+  crimsondeltadiscovery: skyworld_v2,-7896,97,1801,-7802,160,1872
+  centrecrest_99: skyworld_v2,-5456,0,-400,-5441,255,-385
+  centrecrest_98: skyworld_v2,-5440,0,-400,-5425,255,-385
+  centrecrest_97: skyworld_v2,-5424,0,-400,-5409,255,-385
+  centrecrest_96: skyworld_v2,-5408,0,-400,-5393,255,-385
+  miasmyyn cove_320: skyworld_v2,5632,0,5184,5647,255,5199
+  miasmyyn cove_301: skyworld_v2,5728,0,4880,5743,255,4895
+  miasmyyn cove_300: skyworld_v2,5728,0,4896,5743,255,4911
+  miasmyyn cove_303: skyworld_v2,5696,0,4880,5711,255,4895
+  miasmyyn cove_302: skyworld_v2,5712,0,4880,5727,255,4895
+  miasmyyn cove_305: skyworld_v2,5664,0,4880,5679,255,4895
+  miasmyyn cove_304: skyworld_v2,5680,0,4880,5695,255,4895
+  miasmyyn cove_307: skyworld_v2,5632,0,4880,5647,255,4895
+  miasmyyn cove_306: skyworld_v2,5648,0,4880,5663,255,4895
+  miasmyyn cove_309: skyworld_v2,5664,0,4864,5679,255,4879
+  miasmyyn cove_308: skyworld_v2,5632,0,4864,5647,255,4879
+  douglass: aetheria,-2097,38,-742,-1784,176,-501
+  miasmyyn cove_310: skyworld_v2,5680,0,4864,5695,255,4879
+  sunteahouse: skyworld_v2,-100,72,-2679,-68,104,-2657
+  cryptmaze: aetheria,-1243,1,107,-1105,86,229
+  centrecrest_62: skyworld_v2,-5392,0,-368,-5377,255,-353
+  centrecrest_61: skyworld_v2,-5376,0,-368,-5361,255,-353
+  limuria: aetheria,-102,0,-2159,49,230,-2032
+  centrecrest_60: skyworld_v2,-5360,0,-368,-5345,255,-353
+  centrecrest_59: skyworld_v2,-5344,0,-368,-5329,255,-353
+  centrecrest_58: skyworld_v2,-5328,0,-368,-5313,255,-353
+  centrecrest_57: skyworld_v2,-5312,0,-368,-5297,255,-353
+  centrecrest_56: skyworld_v2,-5296,0,-368,-5281,255,-353
+  centrecrest_55: skyworld_v2,-5280,0,-368,-5265,255,-353
+  centrecrest_54: skyworld_v2,-5264,0,-368,-5249,255,-353
+  centrecrest_53: skyworld_v2,-5248,0,-368,-5233,255,-353
+  centrecrest_52: skyworld_v2,-5232,0,-368,-5217,255,-353
+  centrecrest_73: skyworld_v2,-5344,0,-384,-5329,255,-369
+  centrecrest_72: skyworld_v2,-5360,0,-384,-5345,255,-369
+  centrecrest_71: skyworld_v2,-5376,0,-384,-5361,255,-369
+  centrecrest_70: skyworld_v2,-5392,0,-384,-5377,255,-369
+  centrecrest_69: skyworld_v2,-5408,0,-384,-5393,255,-369
+  centrecrest_68: skyworld_v2,-5424,0,-384,-5409,255,-369
+  centrecrest_67: skyworld_v2,-5440,0,-384,-5425,255,-369
+  centrecrest_66: skyworld_v2,-5456,0,-384,-5441,255,-369
+  centrecrest_65: skyworld_v2,-5440,0,-368,-5425,255,-353
+  centrecrest_64: skyworld_v2,-5424,0,-368,-5409,255,-353
+  centrecrest_63: skyworld_v2,-5408,0,-368,-5393,255,-353
+  centrecrest_84: skyworld_v2,-5216,0,-400,-5201,255,-385
+  centrecrest_83: skyworld_v2,-5200,0,-400,-5185,255,-385
+  centrecrest_82: skyworld_v2,-5200,0,-384,-5185,255,-369
+  centrecrest_81: skyworld_v2,-5216,0,-384,-5201,255,-369
+  centrecrest_80: skyworld_v2,-5232,0,-384,-5217,255,-369
+  centrecrest_79: skyworld_v2,-5248,0,-384,-5233,255,-369
+  centrecrest_78: skyworld_v2,-5264,0,-384,-5249,255,-369
+  centrecrest_77: skyworld_v2,-5280,0,-384,-5265,255,-369
+  centrecrest_76: skyworld_v2,-5296,0,-384,-5281,255,-369
+  centrecrest_75: skyworld_v2,-5312,0,-384,-5297,255,-369
+  centrecrest_74: skyworld_v2,-5328,0,-384,-5313,255,-369
+  centrecrest_95: skyworld_v2,-5392,0,-400,-5377,255,-385
+  centrecrest_94: skyworld_v2,-5376,0,-400,-5361,255,-385
+  centrecrest_93: skyworld_v2,-5360,0,-400,-5345,255,-385
+  centrecrest_92: skyworld_v2,-5344,0,-400,-5329,255,-385
+  centrecrest_91: skyworld_v2,-5328,0,-400,-5313,255,-385
+  centrecrest_90: skyworld_v2,-5312,0,-400,-5297,255,-385
+  centrecrest_89: skyworld_v2,-5296,0,-400,-5281,255,-385
+  centrecrest_88: skyworld_v2,-5280,0,-400,-5265,255,-385
+  centrecrest_87: skyworld_v2,-5264,0,-400,-5249,255,-385
+  centrecrest_86: skyworld_v2,-5248,0,-400,-5233,255,-385
+  centrecrest_85: skyworld_v2,-5232,0,-400,-5217,255,-385
+  lapidas_90: skyworld_v2,-128,0,-2592,-113,255,-2577
+  lapidas_91: skyworld_v2,-128,0,-2624,-113,255,-2609
+  lapidas_96: skyworld_v2,-144,0,-2560,-129,255,-2545
+  lapidas_97: skyworld_v2,-144,0,-2544,-129,255,-2529
+  lapidas_98: skyworld_v2,-144,0,-2528,-129,255,-2513
+  lapidas_99: skyworld_v2,-144,0,-2512,-129,255,-2497
+  lapidas_92: skyworld_v2,-144,0,-2624,-129,255,-2609
+  lapidas_93: skyworld_v2,-144,0,-2608,-129,255,-2593
+  lapidas_94: skyworld_v2,-144,0,-2592,-129,255,-2577
+  lapidas_95: skyworld_v2,-144,0,-2576,-129,255,-2561
+  crimson sun_1: skyworld_v2,-7680,0,1904,-7665,255,1919
+  crimson sun_3: skyworld_v2,-7680,0,1888,-7665,255,1903
+  crimson sun_2: skyworld_v2,-7664,0,1904,-7649,255,1919
+  cishrine6: aetheria,-2740,65,2242,-2717,90,2265
+  cishrine3: aetheria,-1808,92,1859,-1793,117,1872
+  cishrine4: aetheria,-348,57,2174,-322,81,2198
+  cishrine1: aetheria,-1331,82,1690,-1312,108,1703
+  cishrine2: aetheria,-1212,70,1851,-1185,109,1879
+  miserytown: aetheria,-1185,2,1976,-907,209,2301
+  centrecrest_7: skyworld_v2,-5280,0,-304,-5265,255,-289
+  centrecrest_8: skyworld_v2,-5296,0,-304,-5281,255,-289
+  centrecrest_9: skyworld_v2,-5312,0,-304,-5297,255,-289
+  centrecrest_3: skyworld_v2,-5248,0,-304,-5233,255,-289
+  centrecrest_4: skyworld_v2,-5248,0,-288,-5233,255,-273
+  centrecrest_5: skyworld_v2,-5232,0,-288,-5217,255,-273
+  centrecrest_6: skyworld_v2,-5264,0,-304,-5249,255,-289
+  node_testnode: new_buildworld,-68,2,-216,-56,12,-200
+  node_deltafarm1: skyworld_v2,-7694,61,1865,-7674,77,1905
+  node_deltafarm2: skyworld_v2,-7669,60,1867,-7650,69,1881
+  lapidas_5: skyworld_v2,-128,0,-2640,-113,255,-2625
+  lapidas_6: skyworld_v2,-112,0,-2640,-97,255,-2625
+  centrecrest_1: skyworld_v2,-5248,0,-336,-5233,255,-321
+  lapidas_3: skyworld_v2,-160,0,-2640,-145,255,-2625
+  centrecrest_2: skyworld_v2,-5248,0,-320,-5233,255,-305
+  lapidas_4: skyworld_v2,-144,0,-2640,-129,255,-2625
+  lapidas_1: skyworld_v2,-176,0,-2640,-161,255,-2625
+  lapidas_2: skyworld_v2,-192,0,-2640,-177,255,-2625
+  centrecrest_107: skyworld_v2,-5344,0,-416,-5329,255,-401
+  centrecrest_106: skyworld_v2,-5360,0,-416,-5345,255,-401
+  centrecrest_109: skyworld_v2,-5312,0,-416,-5297,255,-401
+  centrecrest_108: skyworld_v2,-5328,0,-416,-5313,255,-401
+  centrecrest_103: skyworld_v2,-5408,0,-416,-5393,255,-401
+  lapidas_9: skyworld_v2,-64,0,-2640,-49,255,-2625
+  centrecrest_102: skyworld_v2,-5424,0,-416,-5409,255,-401
+  centrecrest_105: skyworld_v2,-5376,0,-416,-5361,255,-401
+  lapidas_7: skyworld_v2,-96,0,-2640,-81,255,-2625
+  centrecrest_104: skyworld_v2,-5392,0,-416,-5377,255,-401
+  lapidas_8: skyworld_v2,-80,0,-2640,-65,255,-2625
+  firetribe: aetheria,-270,0,2376,-146,203,2606
+  centrecrest_101: skyworld_v2,-5440,0,-416,-5425,255,-401
+  centrecrest_100: skyworld_v2,-5456,0,-416,-5441,255,-401
+  pimple: aetheria,-3475,4,2304,-2962,248,2678
+  crimson sun_5: skyworld_v2,-7680,0,1920,-7665,255,1935
+  crimson sun_4: skyworld_v2,-7664,0,1888,-7649,255,1903
+  crimson sun_6: skyworld_v2,-7664,0,1872,-7649,255,1887
+  vyssini_fehikso: aetheria,-2032,0,-1671,-1963,145,-1552
+  centrecrest_139: skyworld_v2,-5344,0,-448,-5329,255,-433
+  centrecrest_136: skyworld_v2,-5392,0,-448,-5377,255,-433
+  centrecrest_135: skyworld_v2,-5408,0,-448,-5393,255,-433
+  centrecrest_138: skyworld_v2,-5360,0,-448,-5345,255,-433
+  centrecrest_137: skyworld_v2,-5376,0,-448,-5361,255,-433
+  miasmyyn cove_10: skyworld_v2,5920,0,5136,5935,255,5151
+  miasmyyn cove_11: skyworld_v2,5936,0,5136,5951,255,5151
+  miasmyyn cove_12: skyworld_v2,5952,0,5136,5967,255,5151
+  miasmyyn cove_13: skyworld_v2,5952,0,5120,5967,255,5135
+  miasmyyn cove_14: skyworld_v2,5936,0,5120,5951,255,5135
+  miasmyyn cove_15: skyworld_v2,5920,0,5120,5935,255,5135
+  centrecrest_132: skyworld_v2,-5440,0,-432,-5425,255,-417
+  miasmyyn cove_16: skyworld_v2,5904,0,5120,5919,255,5135
+  centrecrest_131: skyworld_v2,-5424,0,-432,-5409,255,-417
+  miasmyyn cove_17: skyworld_v2,5888,0,5120,5903,255,5135
+  centrecrest_134: skyworld_v2,-5424,0,-448,-5409,255,-433
+  miasmyyn cove_18: skyworld_v2,5872,0,5120,5887,255,5135
+  centrecrest_133: skyworld_v2,-5440,0,-448,-5425,255,-433
+  miasmyyn cove_19: skyworld_v2,5856,0,5120,5871,255,5135
+  centrecrest_130: skyworld_v2,-5408,0,-432,-5393,255,-417
+  centrecrest_147: skyworld_v2,-5216,0,-448,-5201,255,-433
+  centrecrest_146: skyworld_v2,-5232,0,-448,-5217,255,-433
+  centrecrest_149: skyworld_v2,-5184,0,-448,-5169,255,-433
+  centrecrest_148: skyworld_v2,-5200,0,-448,-5185,255,-433
+  mesadungeon: aetheria,-3913,0,4434,-3775,184,4597
+  centrecrest_143: skyworld_v2,-5280,0,-448,-5265,255,-433
+  centrecrest_142: skyworld_v2,-5296,0,-448,-5281,255,-433
+  centrecrest_145: skyworld_v2,-5248,0,-448,-5233,255,-433
+  centrecrest_144: skyworld_v2,-5264,0,-448,-5249,255,-433
+  centrecrest_141: skyworld_v2,-5312,0,-448,-5297,255,-433
+  centrecrest_140: skyworld_v2,-5328,0,-448,-5313,255,-433
+  centrecrest_118: skyworld_v2,-5216,0,-432,-5201,255,-417
+  centrecrest_117: skyworld_v2,-5200,0,-432,-5185,255,-417
+  centrecrest_119: skyworld_v2,-5232,0,-432,-5217,255,-417
+  centrecrest_114: skyworld_v2,-5232,0,-416,-5217,255,-401
+  centrecrest_113: skyworld_v2,-5248,0,-416,-5233,255,-401
+  centrecrest_116: skyworld_v2,-5200,0,-416,-5185,255,-401
+  centrecrest_115: skyworld_v2,-5216,0,-416,-5201,255,-401
+  miasmyyn cove_30: skyworld_v2,5824,0,5104,5839,255,5119
+  miasmyyn cove_31: skyworld_v2,5840,0,5104,5855,255,5119
+  brewhaveninn: skyworld_v2,-1216,174,-686,-1167,231,-628
+  miasmyyn cove_32: skyworld_v2,5856,0,5104,5871,255,5119
+  miasmyyn cove_33: skyworld_v2,5872,0,5104,5887,255,5119
+  miasmyyn cove_34: skyworld_v2,5888,0,5104,5903,255,5119
+  miasmyyn cove_35: skyworld_v2,5904,0,5104,5919,255,5119
+  miasmyyn cove_36: skyworld_v2,5920,0,5104,5935,255,5119
+  miasmyyn cove_37: skyworld_v2,5936,0,5104,5951,255,5119
+  centrecrest_110: skyworld_v2,-5296,0,-416,-5281,255,-401
+  miasmyyn cove_38: skyworld_v2,5952,0,5104,5967,255,5119
+  miasmyyn cove_39: skyworld_v2,5968,0,5104,5983,255,5119
+  centrecrest_112: skyworld_v2,-5264,0,-416,-5249,255,-401
+  centrecrest_111: skyworld_v2,-5280,0,-416,-5265,255,-401
+  centrecrest_129: skyworld_v2,-5392,0,-432,-5377,255,-417
+  centrecrest_128: skyworld_v2,-5376,0,-432,-5361,255,-417
+  centrecrest_125: skyworld_v2,-5328,0,-432,-5313,255,-417
+  darknesstown: aetheria,-1986,138,379,-1909,210,502
+  centrecrest_124: skyworld_v2,-5312,0,-432,-5297,255,-417
+  centrecrest_127: skyworld_v2,-5360,0,-432,-5345,255,-417
+  centrecrest_126: skyworld_v2,-5344,0,-432,-5329,255,-417
+  miasmyyn cove_20: skyworld_v2,5840,0,5120,5855,255,5135
+  miasmyyn cove_21: skyworld_v2,5824,0,5120,5839,255,5135
+  miasmyyn cove_22: skyworld_v2,5808,0,5120,5823,255,5135
+  miasmyyn cove_23: skyworld_v2,5792,0,5120,5807,255,5135
+  miasmyyn cove_24: skyworld_v2,5776,0,5120,5791,255,5135
+  miasmyyn cove_25: skyworld_v2,5760,0,5120,5775,255,5135
+  miasmyyn cove_26: skyworld_v2,5760,0,5104,5775,255,5119
+  centrecrest_121: skyworld_v2,-5264,0,-432,-5249,255,-417
+  miasmyyn cove_27: skyworld_v2,5776,0,5104,5791,255,5119
+  centrecrest_120: skyworld_v2,-5248,0,-432,-5233,255,-417
+  miasmyyn cove_28: skyworld_v2,5792,0,5104,5807,255,5119
+  centrecrest_123: skyworld_v2,-5296,0,-432,-5281,255,-417
+  miasmyyn cove_29: skyworld_v2,5808,0,5104,5823,255,5119
+  centrecrest_122: skyworld_v2,-5280,0,-432,-5265,255,-417
+  centrecrest_179: skyworld_v2,-5232,0,-496,-5217,255,-481
+  miasmyyn cove_50: skyworld_v2,5840,0,5088,5855,255,5103
+  miasmyyn cove_51: skyworld_v2,5824,0,5088,5839,255,5103
+  miasmyyn cove_52: skyworld_v2,5808,0,5088,5823,255,5103
+  miasmyyn cove_53: skyworld_v2,5792,0,5088,5807,255,5103
+  centrecrest_170: skyworld_v2,-5328,0,-480,-5313,255,-465
+  miasmyyn cove_54: skyworld_v2,5776,0,5088,5791,255,5103
+  miasmyyn cove_55: skyworld_v2,5760,0,5088,5775,255,5103
+  miasmyyn cove_56: skyworld_v2,5744,0,5088,5759,255,5103
+  miasmyyn cove_57: skyworld_v2,5728,0,5088,5743,255,5103
+  miasmyyn cove_58: skyworld_v2,5712,0,5088,5727,255,5103
+  miasmyyn cove_59: skyworld_v2,5696,0,5088,5711,255,5103
+  centrecrest_176: skyworld_v2,-5232,0,-480,-5217,255,-465
+  coldplace: aetheria,4120,0,-7750,8060,251,-4400
+  centrecrest_175: skyworld_v2,-5248,0,-480,-5233,255,-465
+  centrecrest_178: skyworld_v2,-5216,0,-496,-5201,255,-481
+  centrecrest_177: skyworld_v2,-5216,0,-480,-5201,255,-465
+  centrecrest_172: skyworld_v2,-5296,0,-480,-5281,255,-465
+  centrecrest_171: skyworld_v2,-5312,0,-480,-5297,255,-465
+  centrecrest_174: skyworld_v2,-5264,0,-480,-5249,255,-465
+  centrecrest_173: skyworld_v2,-5280,0,-480,-5265,255,-465
+  genevahdiscovery: skyworld_v2,647,61,-2126,725,124,-2000
+  miasmyyn cove_40: skyworld_v2,5984,0,5104,5999,255,5119
+  miasmyyn cove_41: skyworld_v2,5984,0,5088,5999,255,5103
+  miasmyyn cove_42: skyworld_v2,5968,0,5088,5983,255,5103
+  centrecrest_181: skyworld_v2,-5264,0,-496,-5249,255,-481
+  miasmyyn cove_43: skyworld_v2,5952,0,5088,5967,255,5103
+  centrecrest_180: skyworld_v2,-5248,0,-496,-5233,255,-481
+  miasmyyn cove_44: skyworld_v2,5936,0,5088,5951,255,5103
+  miasmyyn cove_45: skyworld_v2,5920,0,5088,5935,255,5103
+  miasmyyn cove_46: skyworld_v2,5904,0,5088,5919,255,5103
+  miasmyyn cove_47: skyworld_v2,5888,0,5088,5903,255,5103
+  miasmyyn cove_48: skyworld_v2,5872,0,5088,5887,255,5103
+  centrecrest_187: skyworld_v2,-5360,0,-496,-5345,255,-481
+  miasmyyn cove_49: skyworld_v2,5856,0,5088,5871,255,5103
+  centrecrest_186: skyworld_v2,-5344,0,-496,-5329,255,-481
+  centrecrest_189: skyworld_v2,-5392,0,-496,-5377,255,-481
+  centrecrest_188: skyworld_v2,-5376,0,-496,-5361,255,-481
+  fusapath: aetheria,2407,0,-2412,2633,135,-2241
+  centrecrest_183: skyworld_v2,-5296,0,-496,-5281,255,-481
+  centrecrest_182: skyworld_v2,-5280,0,-496,-5265,255,-481
+  centrecrest_185: skyworld_v2,-5328,0,-496,-5313,255,-481
+  centrecrest_184: skyworld_v2,-5312,0,-496,-5297,255,-481
+  airtribe: aetheria,1317,1,-4850,1452,152,-4767
+  centrecrest_158: skyworld_v2,-5312,0,-464,-5297,255,-449
+  centrecrest_157: skyworld_v2,-5296,0,-464,-5281,255,-449
+  centrecrest_159: skyworld_v2,-5328,0,-464,-5313,255,-449
+  roxinia_szliard_shiplock: skyworld_v2,-1,70,-2603,1,72,-2601
+  miasmyyn cove_70: skyworld_v2,5664,0,5168,5679,255,5183
+  miasmyyn cove_71: skyworld_v2,5664,0,5152,5679,255,5167
+  miasmyyn cove_72: skyworld_v2,5664,0,5136,5679,255,5151
+  airdungeon: aetheria,491,0,-2329,713,231,-2093
+  miasmyyn cove_73: skyworld_v2,5664,0,5120,5679,255,5135
+  miasmyyn cove_74: skyworld_v2,5680,0,5120,5695,255,5135
+  miasmyyn cove_75: skyworld_v2,5696,0,5120,5711,255,5135
+  miasmyyn cove_76: skyworld_v2,5712,0,5120,5727,255,5135
+  miasmyyn cove_77: skyworld_v2,5728,0,5120,5743,255,5135
+  miasmyyn cove_78: skyworld_v2,5744,0,5120,5759,255,5135
+  miasmyyn cove_79: skyworld_v2,5936,0,5072,5951,255,5087
+  centrecrest_154: skyworld_v2,-5248,0,-464,-5233,255,-449
+  centrecrest_153: skyworld_v2,-5232,0,-464,-5217,255,-449
+  centrecrest_156: skyworld_v2,-5280,0,-464,-5265,255,-449
+  centrecrest_155: skyworld_v2,-5264,0,-464,-5249,255,-449
+  centrecrest_150: skyworld_v2,-5184,0,-464,-5169,255,-449
+  centrecrest_152: skyworld_v2,-5216,0,-464,-5201,255,-449
+  centrecrest_151: skyworld_v2,-5200,0,-464,-5185,255,-449
+  miasmyyn cove_289: skyworld_v2,5696,0,4912,5711,255,4927
+  centrecrest_169: skyworld_v2,-5344,0,-480,-5329,255,-465
+  centrecrest_168: skyworld_v2,-5360,0,-480,-5345,255,-465
+  miasmyyn cove_60: skyworld_v2,5680,0,5088,5695,255,5103
+  miasmyyn cove_61: skyworld_v2,5664,0,5088,5679,255,5103
+  miasmyyn cove_62: skyworld_v2,5648,0,5088,5663,255,5103
+  crystalpuzzle: eventworld,-23,81,-453,-22,86,-445
+  miasmyyn cove_63: skyworld_v2,5648,0,5104,5663,255,5119
+  miasmyyn cove_64: skyworld_v2,5648,0,5120,5663,255,5135
+  miasmyyn cove_65: skyworld_v2,5648,0,5136,5663,255,5151
+  miasmyyn cove_66: skyworld_v2,5648,0,5152,5663,255,5167
+  miasmyyn cove_67: skyworld_v2,5648,0,5168,5663,255,5183
+  miasmyyn cove_68: skyworld_v2,5648,0,5184,5663,255,5199
+  miasmyyn cove_69: skyworld_v2,5664,0,5184,5679,255,5199
+  miasmyyn cove_291: skyworld_v2,5664,0,4912,5679,255,4927
+  miasmyyn cove_290: skyworld_v2,5680,0,4912,5695,255,4927
+  centrecrest_165: skyworld_v2,-5408,0,-480,-5393,255,-465
+  miasmyyn cove_293: skyworld_v2,5632,0,4912,5647,255,4927
+  centrecrest_164: skyworld_v2,-5408,0,-464,-5393,255,-449
+  miasmyyn cove_292: skyworld_v2,5648,0,4912,5663,255,4927
+  centrecrest_167: skyworld_v2,-5376,0,-480,-5361,255,-465
+  miasmyyn cove_295: skyworld_v2,5648,0,4896,5663,255,4911
+  centrecrest_166: skyworld_v2,-5392,0,-480,-5377,255,-465
+  miasmyyn cove_294: skyworld_v2,5632,0,4896,5647,255,4911
+  centrecrest_161: skyworld_v2,-5360,0,-464,-5345,255,-449
+  miasmyyn cove_297: skyworld_v2,5680,0,4896,5695,255,4911
+  centrecrest_160: skyworld_v2,-5344,0,-464,-5329,255,-449
+  miasmyyn cove_296: skyworld_v2,5664,0,4896,5679,255,4911
+  centrecrest_163: skyworld_v2,-5392,0,-464,-5377,255,-449
+  miasmyyn cove_299: skyworld_v2,5696,0,4896,5711,255,4911
+  centrecrest_162: skyworld_v2,-5376,0,-464,-5361,255,-449
+  miasmyyn cove_298: skyworld_v2,5712,0,4896,5727,255,4911
+  miasmyyn cove_279: skyworld_v2,5856,0,4912,5871,255,4927
+  miasmyyn cove_278: skyworld_v2,5872,0,4912,5887,255,4927
+  brewhaven: skyworld_v2,-1312,-5,-965,-581,268,-410
+  miasmyyn cove_90: skyworld_v2,5760,0,5072,5775,255,5087
+  miasmyyn cove_91: skyworld_v2,5744,0,5072,5759,255,5087
+  miasmyyn cove_92: skyworld_v2,5728,0,5072,5743,255,5087
+  miasmyyn cove_93: skyworld_v2,5712,0,5072,5727,255,5087
+  miasmyyn cove_94: skyworld_v2,5680,0,5072,5695,255,5087
+  miasmyyn cove_95: skyworld_v2,5664,0,5072,5679,255,5087
+  miasmyyn cove_96: skyworld_v2,5648,0,5072,5663,255,5087
+  miasmyyn cove_97: skyworld_v2,5664,0,5056,5679,255,5071
+  miasmyyn cove_98: skyworld_v2,5680,0,5056,5695,255,5071
+  miasmyyn cove_99: skyworld_v2,5696,0,5056,5711,255,5071
+  miasmyyn cove_280: skyworld_v2,5840,0,4912,5855,255,4927
+  miasmyyn cove_282: skyworld_v2,5808,0,4912,5823,255,4927
+  miasmyyn cove_281: skyworld_v2,5824,0,4912,5839,255,4927
+  miasmyyn cove_284: skyworld_v2,5776,0,4912,5791,255,4927
+  miasmyyn cove_283: skyworld_v2,5792,0,4912,5807,255,4927
+  miasmyyn cove_286: skyworld_v2,5744,0,4912,5759,255,4927
+  miasmyyn cove_285: skyworld_v2,5760,0,4912,5775,255,4927
+  miasmyyn cove_288: skyworld_v2,5712,0,4912,5727,255,4927
+  miasmyyn cove_287: skyworld_v2,5728,0,4912,5743,255,4927
+  miasmyyn cove_268: skyworld_v2,5824,0,4928,5839,255,4943
+  miasmyyn cove_267: skyworld_v2,5808,0,4928,5823,255,4943
+  rottentent1: aetheria,-2215,62,1393,-2194,77,1412
+  miasmyyn cove_269: skyworld_v2,5840,0,4928,5855,255,4943
+  skyworldzone: skyworld_v2,-8900,0,-8900,8900,5,8900
+  miasmyyn cove_80: skyworld_v2,5920,0,5072,5935,255,5087
+  miasmyyn cove_81: skyworld_v2,5904,0,5072,5919,255,5087
+  miasmyyn cove_82: skyworld_v2,5888,0,5072,5903,255,5087
+  miasmyyn cove_83: skyworld_v2,5872,0,5072,5887,255,5087
+  miasmyyn cove_84: skyworld_v2,5856,0,5072,5871,255,5087
+  miasmyyn cove_85: skyworld_v2,5840,0,5072,5855,255,5087
+  miasmyyn cove_86: skyworld_v2,5824,0,5072,5839,255,5087
+  miasmyyn cove_87: skyworld_v2,5808,0,5072,5823,255,5087
+  miasmyyn cove_88: skyworld_v2,5792,0,5072,5807,255,5087
+  miasmyyn cove_89: skyworld_v2,5776,0,5072,5791,255,5087
+  miasmyyn cove_271: skyworld_v2,5872,0,4928,5887,255,4943
+  miasmyyn cove_270: skyworld_v2,5856,0,4928,5871,255,4943
+  miasmyyn cove_273: skyworld_v2,5904,0,4928,5919,255,4943
+  miasmyyn cove_272: skyworld_v2,5888,0,4928,5903,255,4943
+  miasmyyn cove_275: skyworld_v2,5920,0,4912,5935,255,4927
+  miasmyyn cove_274: skyworld_v2,5920,0,4928,5935,255,4943
+  miasmyyn cove_277: skyworld_v2,5888,0,4912,5903,255,4927
+  miasmyyn cove_276: skyworld_v2,5904,0,4912,5919,255,4927
+  miasmyyn cove_257: skyworld_v2,5648,0,4928,5663,255,4943
+  miasmyyn cove_256: skyworld_v2,5632,0,4928,5647,255,4943
+  miasmyyn cove_259: skyworld_v2,5680,0,4928,5695,255,4943
+  miasmyyn cove_258: skyworld_v2,5664,0,4928,5679,255,4943
+  lapidas_100: skyworld_v2,-160,0,-2512,-145,255,-2497
+  lapidas_101: skyworld_v2,-160,0,-2528,-145,255,-2513
+  lapidasdiscovery: skyworld_v2,-308,44,-2772,92,199,-2468
+  lapidas_102: skyworld_v2,-160,0,-2544,-145,255,-2529
+  d1: aetheria,-806,10,2420,-707,107,2508
+  lapidas_103: skyworld_v2,-160,0,-2560,-145,255,-2545
+  lapidas_104: skyworld_v2,-160,0,-2576,-145,255,-2561
+  lapidas_105: skyworld_v2,-160,0,-2592,-145,255,-2577
+  miasmyyn cove_260: skyworld_v2,5696,0,4928,5711,255,4943
+  miasmyyn cove_262: skyworld_v2,5728,0,4928,5743,255,4943
+  miasmyyn cove_261: skyworld_v2,5712,0,4928,5727,255,4943
+  miasmyyn cove_264: skyworld_v2,5760,0,4928,5775,255,4943
+  miasmyyn cove_263: skyworld_v2,5744,0,4928,5759,255,4943
+  miasmyyn cove_266: skyworld_v2,5792,0,4928,5807,255,4943
+  node_miremine1: skyworld_v2,399,63,-3525,400,64,-3518
+  miasmyyn cove_265: skyworld_v2,5776,0,4928,5791,255,4943
+  miasmyyn cove_246: skyworld_v2,5744,0,4944,5759,255,4959
+  miasmyyn cove_245: skyworld_v2,5760,0,4944,5775,255,4959
+  miasmyyn cove_248: skyworld_v2,5712,0,4944,5727,255,4959
+  miasmyyn cove_247: skyworld_v2,5728,0,4944,5743,255,4959
+  miasmyyn cove_249: skyworld_v2,5696,0,4944,5711,255,4959
+  lapidas_110: skyworld_v2,-176,0,-2592,-161,255,-2577
+  lapidas_111: skyworld_v2,-192,0,-2592,-177,255,-2577
+  lapidas_112: skyworld_v2,-192,0,-2624,-177,255,-2609
+  lapidas_113: skyworld_v2,-192,0,-2608,-177,255,-2593
+  lapidas_106: skyworld_v2,-160,0,-2608,-145,255,-2593
+  lapidas_107: skyworld_v2,-160,0,-2624,-145,255,-2609
+  lapidas_108: skyworld_v2,-176,0,-2624,-161,255,-2609
+  lapidas_109: skyworld_v2,-176,0,-2608,-161,255,-2593
+  firegodtree: aetheria,-339,57,1787,-219,181,1877
+  miasmyyn cove_251: skyworld_v2,5664,0,4944,5679,255,4959
+  miasmyyn cove_250: skyworld_v2,5680,0,4944,5695,255,4959
+  miasmyyn cove_253: skyworld_v2,5632,0,4944,5647,255,4959
+  miasmyyn cove_252: skyworld_v2,5648,0,4944,5663,255,4959
+  miasmyyn cove_255: skyworld_v2,5616,0,4928,5631,255,4943
+  miasmyyn cove_254: skyworld_v2,5616,0,4944,5631,255,4959
+  miasmyyn cove_235: skyworld_v2,5920,0,4944,5935,255,4959
+  mnestb: aetheria,-2719,37,972,-2697,87,1000
+  miasmyyn cove_234: skyworld_v2,5936,0,4944,5951,255,4959
+  miasmyyn cove_237: skyworld_v2,5888,0,4944,5903,255,4959
+  mnestd: aetheria,-1891,23,1661,-1853,113,1708
+  miasmyyn cove_236: skyworld_v2,5904,0,4944,5919,255,4959
+  mnestc: aetheria,-1477,44,-486,-1446,77,-453
+  miasmyyn cove_239: skyworld_v2,5856,0,4944,5871,255,4959
+  miasmyyn cove_238: skyworld_v2,5872,0,4944,5887,255,4959
+  fishycompound: aetheria,-94,35,-76,103,144,76
+  miasmyyn cove_240: skyworld_v2,5840,0,4944,5855,255,4959
+  miasmyyn cove_242: skyworld_v2,5808,0,4944,5823,255,4959
+  miasmyyn cove_241: skyworld_v2,5824,0,4944,5839,255,4959
+  miasmyyn cove_244: skyworld_v2,5776,0,4944,5791,255,4959
+  miasmyyn cove_243: skyworld_v2,5792,0,4944,5807,255,4959
+  miasmyyn cove_224: skyworld_v2,5792,0,4960,5807,255,4975
+  miasmyyn cove_223: skyworld_v2,5776,0,4960,5791,255,4975
+  miasmyyn cove_226: skyworld_v2,5824,0,4960,5839,255,4975
+  miasmyyn cove_225: skyworld_v2,5808,0,4960,5823,255,4975
+  miasmyyn cove_228: skyworld_v2,5856,0,4960,5871,255,4975
+  miasmyyn cove_227: skyworld_v2,5840,0,4960,5855,255,4975
+  miasmyyn cove_229: skyworld_v2,5872,0,4960,5887,255,4975
+  mnest1: aetheria,-699,40,695,-663,90,728
+  arkendungeon: aetheria,3900,0,-2200,4230,255,-1950
+  miasmyyn cove_231: skyworld_v2,5904,0,4960,5919,255,4975
+  miasmyyn cove_230: skyworld_v2,5888,0,4960,5903,255,4975
+  miasmyyn cove_233: skyworld_v2,5936,0,4960,5951,255,4975
+  miasmyyn cove_232: skyworld_v2,5920,0,4960,5935,255,4975
+  miasmyyn cove_213: skyworld_v2,5632,0,4976,5647,255,4991
+  miasmyyn cove_212: skyworld_v2,5648,0,4976,5663,255,4991
+  miasmyyn cove_215: skyworld_v2,5648,0,4960,5663,255,4975
+  miasmyyn cove_214: skyworld_v2,5632,0,4960,5647,255,4975
+  miasmyyn cove_217: skyworld_v2,5680,0,4960,5695,255,4975
+  miasmyyn cove_216: skyworld_v2,5664,0,4960,5679,255,4975
+  miasmyyn cove_219: skyworld_v2,5712,0,4960,5727,255,4975
+  miasmyyn cove_218: skyworld_v2,5696,0,4960,5711,255,4975
+  miasmyyn cove_220: skyworld_v2,5728,0,4960,5743,255,4975
+  miasmyyn cove_222: skyworld_v2,5760,0,4960,5775,255,4975
+  miasmyyn cove_221: skyworld_v2,5744,0,4960,5759,255,4975
+  miasmyyn cove_202: skyworld_v2,5808,0,4976,5823,255,4991
+  miasmyyn cove_201: skyworld_v2,5824,0,4976,5839,255,4991
+  miasmyyn cove_204: skyworld_v2,5776,0,4976,5791,255,4991
+  miasmyyn cove_203: skyworld_v2,5792,0,4976,5807,255,4991
+  miasmyyn cove_206: skyworld_v2,5744,0,4976,5759,255,4991
+  miasmyyn cove_205: skyworld_v2,5760,0,4976,5775,255,4991
+  miasmyyn cove_208: skyworld_v2,5712,0,4976,5727,255,4991
+  miasmyyn cove_207: skyworld_v2,5728,0,4976,5743,255,4991
+  miasmyyn cove_209: skyworld_v2,5696,0,4976,5711,255,4991
+  spidercave: aetheria,-737,46,321,-673,81,397
+  miasmyyn cove_211: skyworld_v2,5664,0,4976,5679,255,4991
+  miasmyyn cove_210: skyworld_v2,5680,0,4976,5695,255,4991
+  pacube: buildworld,-466,1,-928,-186,256,-534
+  lapidas_16: skyworld_v2,-32,0,-2560,-17,255,-2545
+  lapidas_17: skyworld_v2,-32,0,-2576,-17,255,-2561
+  lapidas_18: skyworld_v2,-32,0,-2592,-17,255,-2577
+  lapidas_19: skyworld_v2,-32,0,-2608,-17,255,-2593
+  lapidas_12: skyworld_v2,-48,0,-2608,-33,255,-2593
+  lapidas_13: skyworld_v2,-48,0,-2592,-33,255,-2577
+  lapidas_14: skyworld_v2,-48,0,-2576,-33,255,-2561
+  lapidas_15: skyworld_v2,-48,0,-2560,-33,255,-2545
+  lapidas_10: skyworld_v2,-48,0,-2640,-33,255,-2625
+  lapidas_11: skyworld_v2,-48,0,-2624,-33,255,-2609
+  miasmyyn cove_200: skyworld_v2,5840,0,4976,5855,255,4991
+  sonn: aetheria,-2424,3,718,-2192,160,947
+  lapidas_27: skyworld_v2,-112,0,-2656,-97,255,-2641
+  lapidas_28: skyworld_v2,-128,0,-2656,-113,255,-2641
+  lapidas_29: skyworld_v2,-144,0,-2656,-129,255,-2641
+  lapidas_23: skyworld_v2,-48,0,-2656,-33,255,-2641
+  lapidas_24: skyworld_v2,-64,0,-2656,-49,255,-2641
+  lapidas_25: skyworld_v2,-80,0,-2656,-65,255,-2641
+  lapidas_26: skyworld_v2,-96,0,-2656,-81,255,-2641
+  lapidas_20: skyworld_v2,-32,0,-2624,-17,255,-2609
+  lapidas_21: skyworld_v2,-32,0,-2640,-17,255,-2625
+  lapidas_22: skyworld_v2,-32,0,-2656,-17,255,-2641
+  easternforest_shrine: aetheria,-487,59,880,-476,69,890
+  lapidas_38: skyworld_v2,-176,0,-2672,-161,255,-2657
+  lapidas_39: skyworld_v2,-160,0,-2672,-145,255,-2657
+  merchanttown: aetheria,-2141,0,1787,-2013,132,1858
+  lapidas_34: skyworld_v2,-224,0,-2656,-209,255,-2641
+  lapidas_35: skyworld_v2,-224,0,-2672,-209,255,-2657
+  lapidas_36: skyworld_v2,-208,0,-2672,-193,255,-2657
+  lapidas_37: skyworld_v2,-192,0,-2672,-177,255,-2657
+  lapidas_30: skyworld_v2,-160,0,-2656,-145,255,-2641
+  lapidas_31: skyworld_v2,-176,0,-2656,-161,255,-2641
+  lapidas_32: skyworld_v2,-192,0,-2656,-177,255,-2641
+  lapidas_33: skyworld_v2,-208,0,-2656,-193,255,-2641
+  lapidas_49: skyworld_v2,-160,0,-2688,-145,255,-2673
+  lapidas_45: skyworld_v2,-96,0,-2688,-81,255,-2673
+  lapidas_46: skyworld_v2,-112,0,-2688,-97,255,-2673
+  lapidas_47: skyworld_v2,-128,0,-2688,-113,255,-2673
+  lapidas_48: skyworld_v2,-144,0,-2688,-129,255,-2673
+  lapidas_41: skyworld_v2,-128,0,-2672,-113,255,-2657
+  lapidas_42: skyworld_v2,-112,0,-2672,-97,255,-2657
+  lapidas_43: skyworld_v2,-80,0,-2672,-65,255,-2657
+  lapidas_44: skyworld_v2,-96,0,-2672,-81,255,-2657
+  miasmyyncovediscovery: skyworld_v2,6035,70,4933,6035,70,4933
+  lapidas_40: skyworld_v2,-144,0,-2672,-129,255,-2657
+  coldregion: buildworld,1670,4,-1362,1684,11,-1352
+  lapidas_56: skyworld_v2,-192,0,-2704,-177,255,-2689
+  lapidas_57: skyworld_v2,-176,0,-2704,-161,255,-2689
+  lapidas_58: skyworld_v2,-160,0,-2704,-145,255,-2689
+  lapidas_59: skyworld_v2,-144,0,-2704,-129,255,-2689
+  lapidas_52: skyworld_v2,-208,0,-2688,-193,255,-2673
+  lapidas_53: skyworld_v2,-224,0,-2688,-209,255,-2673
+  lapidas_54: skyworld_v2,-224,0,-2704,-209,255,-2689
+  lapidas_55: skyworld_v2,-208,0,-2704,-193,255,-2689
+  lapidas_50: skyworld_v2,-176,0,-2688,-161,255,-2673
+  lapidas_51: skyworld_v2,-192,0,-2688,-177,255,-2673
+  alisha_shiplock: skyworld_v2,-7671,132,1934,-7669,133,1937
+  lapidas_67: skyworld_v2,-112,0,-2608,-97,255,-2593
+  lapidas_68: skyworld_v2,-96,0,-2592,-81,255,-2577
+  lapidas_69: skyworld_v2,-112,0,-2592,-97,255,-2577
+  lapidas_63: skyworld_v2,-80,0,-2704,-65,255,-2689
+  lapidas_64: skyworld_v2,-80,0,-2624,-65,255,-2609
+  lapidas_65: skyworld_v2,-96,0,-2624,-81,255,-2609
+  lapidas_66: skyworld_v2,-96,0,-2608,-81,255,-2593
+  lapidas_60: skyworld_v2,-128,0,-2704,-113,255,-2689
+  lapidas_61: skyworld_v2,-112,0,-2704,-97,255,-2689
+  lapidas_62: skyworld_v2,-96,0,-2704,-81,255,-2689
+  pitasinn: aetheria,28,48,-31,59,88,-3
+  shipwreckcove: aetheria,-2292,42,-242,-2229,92,-178
+  lapidas_78: skyworld_v2,-96,0,-2512,-81,255,-2497
+  lapidas_79: skyworld_v2,-112,0,-2512,-97,255,-2497
+  lapidas_74: skyworld_v2,-96,0,-2544,-81,255,-2529
+  lapidas_75: skyworld_v2,-112,0,-2544,-97,255,-2529
+  lapidas_76: skyworld_v2,-112,0,-2528,-97,255,-2513
+  lapidas_77: skyworld_v2,-96,0,-2528,-81,255,-2513
+  hobart_valentine_shiplock: skyworld_v2,-1198,190,-691,-1195,191,-690
+  lapidas_70: skyworld_v2,-112,0,-2576,-97,255,-2561
+  lapidas_71: skyworld_v2,-96,0,-2576,-81,255,-2561
+  lapidas_72: skyworld_v2,-96,0,-2560,-81,255,-2545
+  lapidas_73: skyworld_v2,-112,0,-2560,-97,255,-2545
+  eagledungeon: aetheria,491,0,-2329,713,231,-2093
+  lapidas_80: skyworld_v2,-112,0,-2496,-97,255,-2481
+  portal1: skyworld_v2,-5050,176,600,-5049,180,601
+  portal2: skyworld_v2,-7469,178,1764,-7468,180,1765
+  kamishrine: skyworld_v2,-770,194,-745,-753,211,-714
+  lapidas_89: skyworld_v2,-128,0,-2608,-113,255,-2593
+  lapidas_85: skyworld_v2,-128,0,-2528,-113,255,-2513
+  lapidas_86: skyworld_v2,-128,0,-2544,-113,255,-2529
+  lapidas_87: skyworld_v2,-128,0,-2560,-113,255,-2545
+  lapidas_88: skyworld_v2,-128,0,-2576,-113,255,-2561
+  lapidas_81: skyworld_v2,-128,0,-2496,-113,255,-2481
+  lapidas_82: skyworld_v2,-144,0,-2496,-129,255,-2481
+  lapidas_83: skyworld_v2,-160,0,-2496,-145,255,-2481
+  lapidas_84: skyworld_v2,-128,0,-2512,-113,255,-2497
+  centrecrest_19: skyworld_v2,-5424,0,-320,-5409,255,-305
+  centrecrest_18: skyworld_v2,-5440,0,-320,-5425,255,-305
+  centrecrest_17: skyworld_v2,-5440,0,-304,-5425,255,-289
+  flowerglade_shrine: aetheria,-3262,69,819,-3244,78,840
+  centrecrest_16: skyworld_v2,-5424,0,-304,-5409,255,-289
+  centrecrest_15: skyworld_v2,-5408,0,-304,-5393,255,-289
+  centrecrest_14: skyworld_v2,-5392,0,-304,-5377,255,-289
+  centrecrest_13: skyworld_v2,-5376,0,-304,-5361,255,-289
+  centrecrest_12: skyworld_v2,-5360,0,-304,-5345,255,-289
+  centrecrest_11: skyworld_v2,-5344,0,-304,-5329,255,-289
+  centrecrest_10: skyworld_v2,-5328,0,-304,-5313,255,-289
+  tora_novak_shiplock: skyworld_v2,-7307,84,1851,-7304,85,1852
+  centrecrest_29: skyworld_v2,-5264,0,-320,-5249,255,-305
+  centrecrest_28: skyworld_v2,-5280,0,-320,-5265,255,-305
+  centrecrest_27: skyworld_v2,-5296,0,-320,-5281,255,-305
+  centrecrest_26: skyworld_v2,-5312,0,-320,-5297,255,-305
+  centrecrest_25: skyworld_v2,-5328,0,-320,-5313,255,-305
+  centrecrest_24: skyworld_v2,-5344,0,-320,-5329,255,-305
+  centrecrest_23: skyworld_v2,-5360,0,-320,-5345,255,-305
+  centrecrest_22: skyworld_v2,-5376,0,-320,-5361,255,-305
+  centrecrest_21: skyworld_v2,-5392,0,-320,-5377,255,-305
+  centrecrest_20: skyworld_v2,-5408,0,-320,-5393,255,-305
+  centrecrest_40: skyworld_v2,-5408,0,-352,-5393,255,-337
+  centrecrest_39: skyworld_v2,-5408,0,-336,-5393,255,-321
+  centrecrest_38: skyworld_v2,-5392,0,-336,-5377,255,-321
+  centrecrest_37: skyworld_v2,-5376,0,-336,-5361,255,-321
+  centrecrest_36: skyworld_v2,-5360,0,-336,-5345,255,-321
+  centrecrest_35: skyworld_v2,-5344,0,-336,-5329,255,-321
+  centrecrest_34: skyworld_v2,-5328,0,-336,-5313,255,-321
+  centrecrest_33: skyworld_v2,-5312,0,-336,-5297,255,-321
+  centrecrest_32: skyworld_v2,-5296,0,-336,-5281,255,-321
+  centrecrest_31: skyworld_v2,-5280,0,-336,-5265,255,-321
+  grandsonn: aetheria,-1758,0,-1104,-1291,221,-758
+  centrecrest_30: skyworld_v2,-5264,0,-336,-5249,255,-321
+  centrecrest_51: skyworld_v2,-5232,0,-352,-5217,255,-337
+  centrecrest_50: skyworld_v2,-5248,0,-352,-5233,255,-337
+  gladehaven: aetheria,-3329,1,1471,-3173,144,1687
+  watertribetown: aetheria,2407,0,-2542,2633,135,-2413
+  centrecrest_49: skyworld_v2,-5264,0,-352,-5249,255,-337
+  watertribe: aetheria,2407,0,-2542,2633,135,-2241
+  centrecrest_48: skyworld_v2,-5280,0,-352,-5265,255,-337
+  centrecrest_47: skyworld_v2,-5296,0,-352,-5281,255,-337
+  centrecrest_46: skyworld_v2,-5312,0,-352,-5297,255,-337
+  centrecrest_45: skyworld_v2,-5328,0,-352,-5313,255,-337
+  centrecrest_44: skyworld_v2,-5344,0,-352,-5329,255,-337
+  centrecrest_43: skyworld_v2,-5360,0,-352,-5345,255,-337
+  node_testtown: new_buildworld,-144,3,-104,-140,7,-98
+  centrecrest_42: skyworld_v2,-5376,0,-352,-5361,255,-337
+  centrecrest_41: skyworld_v2,-5392,0,-352,-5377,255,-337
+  centrecrest_217: skyworld_v2,-5168,0,-496,-5153,255,-481
+  centrecrest_216: skyworld_v2,-5184,0,-480,-5169,255,-465
+  centrecrest_219: skyworld_v2,-5168,0,-464,-5153,255,-449
+  centrecrest_218: skyworld_v2,-5168,0,-480,-5153,255,-465
+  centrecrest_213: skyworld_v2,-5184,0,-400,-5169,255,-385
+  centrecrest_212: skyworld_v2,-5184,0,-384,-5169,255,-369
+  centrecrest_215: skyworld_v2,-5184,0,-432,-5169,255,-417
+  centrecrest_214: skyworld_v2,-5184,0,-416,-5169,255,-401
+  tavern: aetheria,-1559,85,-955,-1543,115,-929
+  centrecrest_211: skyworld_v2,-5184,0,-368,-5169,255,-353
+  centrecrest_210: skyworld_v2,-5184,0,-352,-5169,255,-337
+  centrecrest_228: skyworld_v2,-5168,0,-304,-5153,255,-289
+  centrecrest_227: skyworld_v2,-5168,0,-320,-5153,255,-305
+  centrecrest_229: skyworld_v2,-5168,0,-288,-5153,255,-273
+  centrecrest_224: skyworld_v2,-5168,0,-384,-5153,255,-369
+  centrecrest_223: skyworld_v2,-5168,0,-400,-5153,255,-385
+  centrecrest_226: skyworld_v2,-5168,0,-336,-5153,255,-321
+  centrecrest_225: skyworld_v2,-5168,0,-352,-5153,255,-337
+  miasmyyn cove_2: skyworld_v2,5824,0,5136,5839,255,5151
+  miasmyyn cove_1: skyworld_v2,5808,0,5136,5823,255,5151
+  centrecrest_220: skyworld_v2,-5168,0,-448,-5153,255,-433
+  centrecrest_222: skyworld_v2,-5168,0,-416,-5153,255,-401
+  centrecrest_221: skyworld_v2,-5168,0,-432,-5153,255,-417
+  geezergarage: skyworld_v2,-961,65,-859,-858,174,-749
+  miasmyyn cove_4: skyworld_v2,5840,0,5152,5855,255,5167
+  miasmyyn cove_3: skyworld_v2,5824,0,5152,5839,255,5167
+  miasmyyn cove_6: skyworld_v2,5856,0,5136,5871,255,5151
+  miasmyyn cove_5: skyworld_v2,5840,0,5136,5855,255,5151
+  miasmyyn cove_8: skyworld_v2,5888,0,5136,5903,255,5151
+  miasmyyn cove_7: skyworld_v2,5872,0,5136,5887,255,5151
+  miasmyyn cove_9: skyworld_v2,5904,0,5136,5919,255,5151
+  node_miasmyyncovefarm1: skyworld_v2,5736,86,4943,5751,107,4956
+  centrecrest_206: skyworld_v2,-5184,0,-288,-5169,255,-273
+  centrecrest_205: skyworld_v2,-5200,0,-288,-5185,255,-273
+  centrecrest_208: skyworld_v2,-5184,0,-320,-5169,255,-305
+  centrecrest_207: skyworld_v2,-5184,0,-304,-5169,255,-289
+  centrecrest_202: skyworld_v2,-5200,0,-336,-5185,255,-321
+  centrecrest_201: skyworld_v2,-5200,0,-352,-5185,255,-337
+  centrecrest_204: skyworld_v2,-5200,0,-304,-5185,255,-289
+  centrecrest_203: skyworld_v2,-5200,0,-320,-5185,255,-305
+  centrecrest_209: skyworld_v2,-5184,0,-336,-5169,255,-321
+  centrecrest_200: skyworld_v2,-5200,0,-368,-5185,255,-353
+  centrecrest_253: skyworld_v2,-5184,0,-272,-5169,255,-257
+  centrecrest_252: skyworld_v2,-5200,0,-272,-5185,255,-257
+  centrecrest_254: skyworld_v2,-5168,0,-272,-5153,255,-257
+  centrecrest_251: skyworld_v2,-5216,0,-272,-5201,255,-257
+  centrecrest_250: skyworld_v2,-5232,0,-272,-5217,255,-257
+  node_hythefarm1: skyworld_v2,-2953,110,1716,-2929,131,1744
+  node_hythefarm2: skyworld_v2,-2976,102,1736,-2957,124,1772
+  node_lapidasfarm1: skyworld_v2,-124,70,-2639,-102,83,-2603
+  centrecrest_239: skyworld_v2,-5392,0,-288,-5377,255,-273
+  centrecrest_238: skyworld_v2,-5376,0,-288,-5361,255,-273
+  centrecrest_235: skyworld_v2,-5328,0,-288,-5313,255,-273
+  centrecrest_234: skyworld_v2,-5312,0,-288,-5297,255,-273
+  centrecrest_237: skyworld_v2,-5360,0,-288,-5345,255,-273
+  centrecrest_236: skyworld_v2,-5344,0,-288,-5329,255,-273
+  centrecrest_231: skyworld_v2,-5264,0,-288,-5249,255,-273
+  centrecrest_230: skyworld_v2,-5216,0,-288,-5201,255,-273
+  centrecrest_233: skyworld_v2,-5296,0,-288,-5281,255,-273
+  centrecrest_232: skyworld_v2,-5280,0,-288,-5265,255,-273
+  centrecrest_249: skyworld_v2,-5248,0,-272,-5233,255,-257
+  centrecrest_246: skyworld_v2,-5296,0,-272,-5281,255,-257
+  centrecrest_245: skyworld_v2,-5312,0,-272,-5297,255,-257
+  centrecrest_248: skyworld_v2,-5264,0,-272,-5249,255,-257
+  centrecrest_247: skyworld_v2,-5280,0,-272,-5265,255,-257
+  centrecrest_242: skyworld_v2,-5360,0,-272,-5345,255,-257
+  centrecrest_241: skyworld_v2,-5376,0,-272,-5361,255,-257
+  centrecrest_244: skyworld_v2,-5328,0,-272,-5313,255,-257
+  centrecrest_243: skyworld_v2,-5344,0,-272,-5329,255,-257
+  centrecrest_240: skyworld_v2,-5392,0,-272,-5377,255,-257
+  forestmaze: aetheria,-1483,0,2793,-1384,121,2909
+  miasmyyn cove_190: skyworld_v2,5888,0,4992,5903,255,5007
+  miasmyyn cove_192: skyworld_v2,5920,0,4992,5935,255,5007
+  miasmyyn cove_191: skyworld_v2,5904,0,4992,5919,255,5007
+  miasmyyn cove_194: skyworld_v2,5936,0,4976,5951,255,4991
+  miasmyyn cove_193: skyworld_v2,5936,0,4992,5951,255,5007
+  miasmyyn cove_196: skyworld_v2,5904,0,4976,5919,255,4991
+  miasmyyn cove_195: skyworld_v2,5920,0,4976,5935,255,4991
+  miasmyyn cove_198: skyworld_v2,5872,0,4976,5887,255,4991
+  miasmyyn cove_197: skyworld_v2,5888,0,4976,5903,255,4991
+  miasmyyn cove_199: skyworld_v2,5856,0,4976,5871,255,4991
+  miasmyyn cove_179: skyworld_v2,5712,0,4992,5727,255,5007
+  miasmyyn cove_181: skyworld_v2,5744,0,4992,5759,255,5007
+  miasmyyn cove_180: skyworld_v2,5728,0,4992,5743,255,5007
+  miasmyyn cove_183: skyworld_v2,5776,0,4992,5791,255,5007
+  miasmyyn cove_182: skyworld_v2,5760,0,4992,5775,255,5007
+  miasmyyn cove_185: skyworld_v2,5808,0,4992,5823,255,5007
+  miasmyyn cove_184: skyworld_v2,5792,0,4992,5807,255,5007
+  miasmyyn cove_187: skyworld_v2,5840,0,4992,5855,255,5007
+  miasmyyn cove_186: skyworld_v2,5824,0,4992,5839,255,5007
+  miasmyyn cove_189: skyworld_v2,5872,0,4992,5887,255,5007
+  miasmyyn cove_188: skyworld_v2,5856,0,4992,5871,255,5007
+  miasmyyn cove_169: skyworld_v2,5728,0,5008,5743,255,5023
+  miasmyyn cove_168: skyworld_v2,5744,0,5008,5759,255,5023
+  gaimdungeon: aetheria,-2576,8,2501,-2498,129,2569
+  miasmyyn cove_170: skyworld_v2,5712,0,5008,5727,255,5023
+  miasmyyn cove_172: skyworld_v2,5680,0,5008,5695,255,5023
+  miasmyyn cove_171: skyworld_v2,5696,0,5008,5711,255,5023
+  miasmyyn cove_174: skyworld_v2,5648,0,5008,5663,255,5023
+  miasmyyn cove_173: skyworld_v2,5664,0,5008,5679,255,5023
+  miasmyyn cove_176: skyworld_v2,5664,0,4992,5679,255,5007
+  miasmyyn cove_175: skyworld_v2,5648,0,4992,5663,255,5007
+  miasmyyn cove_178: skyworld_v2,5696,0,4992,5711,255,5007
+  miasmyyn cove_177: skyworld_v2,5680,0,4992,5695,255,5007
 Inventories:
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_null_completedquestmenu: in@generic[size=45;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@book[display_name=Active
-    Quests‑lore=Show Active Quests‑script=ACTIVEQUESTITEM]|i@player_head[display_name=Back‑script=LASTPAGECOMPLETEDQUESTITEM‑skull_skin=1226610a-b7f8-47e5-a15d-126c4ef18635|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=]|i@player_head[display_name=Next
-    Page‑script=NEXTPAGECOMPLETEDQUESTITEM‑skull_skin=23b3f9dc-f02c-4ea8-a949-dbd56b03602c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVmMzU2YWQyYWE3YjE2NzhhZWNiODgyOTBlNWZhNWEzNDI3ZTVlNDU2ZmY0MmZiNTE1NjkwYzY3NTE3YjgifX19];contents=QUESTJOURNALCOMPLETEDQUESTS;title=Completed
-    Quests]
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_1: in@generic[holder=PLAYER;contents=li@i@book[display_name=Your
-    NPC&sqs Quest‑lore=Click to see information‑script=EXAMPLE1MENUITEM];title=Inventory]
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_1_activequestmenu: in@generic[size=45;contents=li@i@written_book[book=author|Active
-    Quest|title|Your Quest Title|pages|This is what you were asked to do&ssr|Should
-    be the same as your quest remind&ssr]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@book[display_name=Completed
-    Quests‑lore=Show Completed Quests‑script=COMPLETEDQUESTITEM]|i@player_head[display_name=Back‑script=LASTPAGEACTIVEQUESTITEM‑skull_skin=1226610a-b7f8-47e5-a15d-126c4ef18635|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=]|i@player_head[display_name=Next
-    Page‑script=NEXTPAGEACTIVEQUESTITEM‑skull_skin=23b3f9dc-f02c-4ea8-a949-dbd56b03602c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVmMzU2YWQyYWE3YjE2NzhhZWNiODgyOTBlNWZhNWEzNDI3ZTVlNDU2ZmY0MmZiNTE1NjkwYzY3NTE3YjgifX19];contents=QUESTJOURNALACTIVEQUESTS;title=Active
-    Quests]
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_null_activequestmenu: in@generic[size=45;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@book[display_name=Completed
-    Quests‑lore=Show Completed Quests‑script=COMPLETEDQUESTITEM]|i@player_head[display_name=Back‑script=LASTPAGEACTIVEQUESTITEM‑skull_skin=1226610a-b7f8-47e5-a15d-126c4ef18635|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=]|i@player_head[display_name=Next
-    Page‑script=NEXTPAGEACTIVEQUESTITEM‑skull_skin=23b3f9dc-f02c-4ea8-a949-dbd56b03602c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVmMzU2YWQyYWE3YjE2NzhhZWNiODgyOTBlNWZhNWEzNDI3ZTVlNDU2ZmY0MmZiNTE1NjkwYzY3NTE3YjgifX19];contents=QUESTJOURNALACTIVEQUESTS;title=Active
-    Quests]
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_gui: in@generic[size=9;contents=li@i@player_head[display_name=Player1‑lore=$*&at*$];title=Character
-    Select]
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_1_completedquestmenu: in@generic[size=45;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@book[display_name=Active
-    Quests‑lore=Show Active Quests‑script=ACTIVEQUESTITEM]|i@player_head[display_name=Back‑script=LASTPAGECOMPLETEDQUESTITEM‑skull_skin=1226610a-b7f8-47e5-a15d-126c4ef18635|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=]|i@player_head[display_name=Next
-    Page‑script=NEXTPAGECOMPLETEDQUESTITEM‑skull_skin=23b3f9dc-f02c-4ea8-a949-dbd56b03602c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVmMzU2YWQyYWE3YjE2NzhhZWNiODgyOTBlNWZhNWEzNDI3ZTVlNDU2ZmY0MmZiNTE1NjkwYzY3NTE3YjgifX19];contents=QUESTJOURNALCOMPLETEDQUESTS;title=Completed
-    Quests]
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_player&dotflag&lbcurrentcharacter&rb_activequestmenu: in@generic[size=45;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@book[display_name=Completed
-    Quests‑lore=Show Completed Quests‑script=COMPLETEDQUESTITEM]|i@player_head[display_name=Back‑script=LASTPAGEACTIVEQUESTITEM‑skull_skin=1226610a-b7f8-47e5-a15d-126c4ef18635|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=]|i@player_head[display_name=Next
-    Page‑script=NEXTPAGEACTIVEQUESTITEM‑skull_skin=23b3f9dc-f02c-4ea8-a949-dbd56b03602c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVmMzU2YWQyYWE3YjE2NzhhZWNiODgyOTBlNWZhNWEzNDI3ZTVlNDU2ZmY0MmZiNTE1NjkwYzY3NTE3YjgifX19];contents=QUESTJOURNALACTIVEQUESTS;title=Active
-    Quests]
-  1ab1ee9b-873a-4545-bb5b-254e7b23b0e0_player&dotflag&lbcurrentcharacter&rb_completedquestmenu: in@generic[size=45;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@book[display_name=Active
-    Quests‑lore=Show Active Quests‑script=ACTIVEQUESTITEM]|i@player_head[display_name=Back‑script=LASTPAGECOMPLETEDQUESTITEM‑skull_skin=1226610a-b7f8-47e5-a15d-126c4ef18635|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=]|i@player_head[display_name=Next
-    Page‑script=NEXTPAGECOMPLETEDQUESTITEM‑skull_skin=23b3f9dc-f02c-4ea8-a949-dbd56b03602c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVmMzU2YWQyYWE3YjE2NzhhZWNiODgyOTBlNWZhNWEzNDI3ZTVlNDU2ZmY0MmZiNTE1NjkwYzY3NTE3YjgifX19];contents=QUESTJOURNALCOMPLETEDQUESTS;title=Completed
-    Quests]
+  drakkon_steele_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=92]
+  reynard_scarborough_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Placeholder&sclore=1&scskull_skin=93c8af26-14cb-4174-a6b0-df341944230e&amppipeeyJ0aW1lc3RhbXAiOjE1ODc4NDg4OTA0ODEsInByb2ZpbGVJZCI6ImVkNTNkZDgxNGY5ZDRhM2NiNGViNjUxZGNiYTc3ZTY2IiwicHJvZmlsZU5hbWUiOiJGbGF3Q3JhQm90MDAiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzFmZTZhYmNjMzdiOWFlYmIzZGIyMDE2ZDAyODVmYzFlMmI4ZDVkNzdmZjY4ZmMxMTNmYWQyNjg4YTQxZThmMTAifX19&amppipeTrue_Jay]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=157]
+  valerian_lovell_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=17]
+  victor_zaz_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Zaz&sclore=1&scskull_skin=76849015-7844-471c-916e-2f6bdcb71510&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDgwMTE5MzEwNSwKICAicHJvZmlsZUlkIiA6ICJhNzdkNmQ2YmFjOWE0NzY3YTFhNzU1NjYxOTllYmY5MiIsCiAgInByb2ZpbGVOYW1lIiA6ICIwOEJFRDUiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjhhZGZjM2FkYWFhOGM3M2RlZjE2MzE2ZjA1MjljNTFhMDFkYmM0MDBhNmYwZjExZTE0YzE2YzgwYjdiMzA2ZSIKICAgIH0KICB9Cn0=&amppipeMystic_Fennec]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=24]
+  the_poet_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Poet&sclore=1&scskull_skin=1ab1ee9b-873a-4545-bb5b-254e7b23b0e0&amppipeeyJ0aW1lc3RhbXAiOjE1NzcyODA4Mjk0ODAsInByb2ZpbGVJZCI6ImZkNjBmMzZmNTg2MTRmMTJiM2NkNDdjMmQ4NTUyOTlhIiwicHJvZmlsZU5hbWUiOiJSZWFkIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS85YmVmNjBlOGFmZGUyN2U3ZjU1MDg5NGJmYmI5NTY3ZThjZjUzZGUxODYyYTZkNjI4YjkzNTJiODgzNGQ1ZTMxIn19fQ==&amppipeInsilvon]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=66]
+  hobart_valentine_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=119]
+  myra_syskaton_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=ObscuredMasked&sclore=1&scskull_skin=1ab1ee9b-873a-4545-bb5b-254e7b23b0e0&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDEyNzc0NzU1MiwKICAicHJvZmlsZUlkIiA6ICIyYzEwNjRmY2Q5MTc0MjgyODRlM2JmN2ZhYTdlM2UxYSIsCiAgInByb2ZpbGVOYW1lIiA6ICJOYWVtZSIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS83MTc5YzhhNzU1YzdkYTEwNWRhNDBlNjAwZWMyZmM3ZGI0YTU0ZjQzZDU3ZTYzMWQ3ZDFjMzk0N2IxMzlhMWUzIgogICAgfQogIH0KfQ==&amppipeInsilvon]|i@player_head[display_name=Unmasked&sclore=2&scskull_skin=1ab1ee9b-873a-4545-bb5b-254e7b23b0e0&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDEyNzgyMjQ1MSwKICAicHJvZmlsZUlkIiA6ICI4MmM2MDZjNWM2NTI0Yjc5OGI5MWExMmQzYTYxNjk3NyIsCiAgInByb2ZpbGVOYW1lIiA6ICJOb3ROb3RvcmlvdXNOZW1vIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2FmZGNiMGFlMmZlM2EwYzAwN2U0YTRiYzMzMzFmMDJhMWFlN2IzZTg1ZmZjNjU0MWYwNjNiYmVkZTM2OTI3MGMiCiAgICB9CiAgfQp9&amppipeInsilvon]|i@player_head[display_name=UnobscuredMask&sclore=3&scskull_skin=1ab1ee9b-873a-4545-bb5b-254e7b23b0e0&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDEyNzg4Nzc5OCwKICAicHJvZmlsZUlkIiA6ICJmNzBkMGJiZWM2OGE0Y2Q4OTEzY2E5ZjJhMTU0ZjY3NyIsCiAgInByb2ZpbGVOYW1lIiA6ICJUZWZhbnQiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzJlN2FmYTUxZjdiNzE5YmM3NmVmNDEwNTNhMDg4YzUyODkwMTAyYWUzMzAwYWY5MjgzMGZiZDUxMzJlN2VkMiIKICAgIH0KICB9Cn0=&amppipeInsilvon]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=193]
+  dominique_gravestone_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Gravestone&sclore=1&scskull_skin=76849015-7844-471c-916e-2f6bdcb71510&amppipeeyJ0aW1lc3RhbXAiOjE1NzMzNTk2MTMxMDQsInByb2ZpbGVJZCI6ImIwZDczMmZlMDBmNzQwN2U5ZTdmNzQ2MzAxY2Q5OGNhIiwicHJvZmlsZU5hbWUiOiJPUHBscyIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzg1OWY5NWUwMDFkYjhkNjJjNDVkNjFmZGRjMzFmMzliOGQzOWViZmI3ZTkzZGZhOWZiMWQ0NzMzZDkxMmFmOSJ9fX0=&amppipeMystic_Fennec]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=41]
+  epator_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=19]
+  master_crankshaft_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Crankshaft&sclore=1&scskull_skin=1ab1ee9b-873a-4545-bb5b-254e7b23b0e0&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDEyNzY2MTUxMiwKICAicHJvZmlsZUlkIiA6ICJlNzkzYjJjYTdhMmY0MTI2YTA5ODA5MmQ3Yzk5NDE3YiIsCiAgInByb2ZpbGVOYW1lIiA6ICJUaGVfSG9zdGVyX01hbiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9hMjE2YTI5ZGZlMzNjZGYwZjhiYmFhNTFkNzNhODRiNzAxZTY4MGQzNTBlNmI1M2YzOTE0ZDhjYjg5YmVhY2IyIiwKICAgICAgIm1ldGFkYXRhIiA6IHsKICAgICAgICAibW9kZWwiIDogInNsaW0iCiAgICAgIH0KICAgIH0KICB9Cn0=&amppipeInsilvon]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=188]
+  kira_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=18]
+  roxinia_szliard_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Roxinia_Arena&sclore=1&scskull_skin=258692d5-ad6f-4955-ac1a-ef71e3844b03&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDEyNDYxOTM4MCwKICAicHJvZmlsZUlkIiA6ICJlM2I0NDVjODQ3ZjU0OGZiOGM4ZmEzZjFmN2VmYmE4ZSIsCiAgInByb2ZpbGVOYW1lIiA6ICJNaW5pRGlnZ2VyVGVzdCIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS80OWNkYWE1MzE2NmRhYWI4OTE5OTU2NjAzZWE1OWZjNWE1YWJlOWJkMDE5ZjViMzYzNWJmOWRkNWViM2EwODRjIiwKICAgICAgIm1ldGFkYXRhIiA6IHsKICAgICAgICAibW9kZWwiIDogInNsaW0iCiAgICAgIH0KICAgIH0KICB9Cn0=&amppipeUnkn0wn50u1]|i@player_head[display_name=Roxinia_Warrior&sclore=2&scskull_skin=258692d5-ad6f-4955-ac1a-ef71e3844b03&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDE2ODczMjg1NywKICAicHJvZmlsZUlkIiA6ICJkNjBmMzQ3MzZhMTI0N2EyOWI4MmNjNzE1YjAwNDhkYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJCSl9EYW5pZWwiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2ViOTcyNzNiNDgwOWY5ZDI0YTkxNGYxZDczNzkwOGNkYzFlNTJmMWRkY2EzZjA4Njc3YjY4YjUzNTQyMDZhZCIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9&amppipeUnkn0wn50u1]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=178]
+  valentine_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=163]
+  edmend_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=154]
+  zakaro_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=15]
+  noella_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=NoellaArmTattoo&sclore=1&scskull_skin=75a8e12a-6765-4ac0-a02b-d1220ffb5817&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDE2NzE3NDc2NCwKICAicHJvZmlsZUlkIiA6ICI3NTE0NDQ4MTkxZTY0NTQ2OGM5NzM5YTZlMzk1N2JlYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJUaGFua3NNb2phbmciLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTc5NDIzYzNiZDQxMjFhNzI0YmU1OWU4YzJkNDQ5ZGVkZWQ1MzQ1NDE1NjBiNWIwYTcwN2QzYjNmZTFkNjI1NyIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9&amppipeKaTeaDew]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=120]
+  harken_baptiste_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Harken_Baptiste&sclore=1&scskull_skin=1ab1ee9b-873a-4545-bb5b-254e7b23b0e0&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDEyNzk5NjkwNCwKICAicHJvZmlsZUlkIiA6ICI3NTE0NDQ4MTkxZTY0NTQ2OGM5NzM5YTZlMzk1N2JlYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJUaGFua3NNb2phbmciLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGQxNDE3OWU1ZmFmNjYwNzFlMWU4NTdhZTJlYTg2NThiYWUxYWU1NmMzNmE0MmNkZThlOWMyZDcwZWRjYmE5YyIKICAgIH0KICB9Cn0=&amppipeInsilvon]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=198]
+  insilvon_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Insilvon&sclore=5&scskull_skin=1ab1ee9b-873a-4545-bb5b-254e7b23b0e0&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDEyNzIwMjU3MSwKICAicHJvZmlsZUlkIiA6ICJlNzkzYjJjYTdhMmY0MTI2YTA5ODA5MmQ3Yzk5NDE3YiIsCiAgInByb2ZpbGVOYW1lIiA6ICJUaGVfSG9zdGVyX01hbiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8yYzllYWZjZmYyZmM2MDgxYjMzMjkyMjdjOTg4ZTVjNDg0NDlkNjM3ZjBkMzYwNTgxYjYxYzE5OTAxODMzNDljIgogICAgfQogIH0KfQ==&amppipeInsilvon]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet§4.§0.§4.;uniquifier=29]
+  tora_novak_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=218]
+  sai_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Insilvon&sclore=5&scskull_skin=1ab1ee9b-873a-4545-bb5b-254e7b23b0e0&amppipeewogICJ0aW1lc3RhbXAiIDogMTU5MDEyNzIwMjU3MSwKICAicHJvZmlsZUlkIiA6ICJlNzkzYjJjYTdhMmY0MTI2YTA5ODA5MmQ3Yzk5NDE3YiIsCiAgInByb2ZpbGVOYW1lIiA6ICJUaGVfSG9zdGVyX01hbiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8yYzllYWZjZmYyZmM2MDgxYjMzMjkyMjdjOTg4ZTVjNDg0NDlkNjM3ZjBkMzYwNTgxYjYxYzE5OTAxODMzNDljIgogICAgfQogIH0KfQ==&amppipeInsilvon]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet§4.§0.§4.;uniquifier=29]
+  alisha_skinmenu: in@generic[size=27;contents=li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=182]
+  pita_the_wanderer_skinmenu: in@generic[size=27;contents=li@i@player_head[display_name=Greenhood&sclore=1&scskull_skin=5b395e51-05ac-401e-8b46-7f438d394ef7&amppipetrue&amppipeLord_Pita]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampampss4Go
+    Back&scscript=CHARACTERSHEETBACKITEM]|;script_name=CHARACTERSKINMENU;title=§dSkin
+    Closet;uniquifier=28]
+  bookshelf_-6459,73,848,skyworld_v2: in@generic[size=9;script_name=CUSTOMBOOKSHELFINVENTORY;title=Bookshelf;uniquifier=23]

@@ -1,10 +1,53 @@
+CrankshaftHead:
+    type: item
+    material: player_head[skull_skin=e3974081-9956-4aef-a45d-6e6337da7d69|ewogICJ0aW1lc3RhbXAiIDogMTU4OTUxMjExMzU3MywKICAicHJvZmlsZUlkIiA6ICIzM2ViZDMyYmIzMzk0YWQ5YWM2NzBjOTZjNTQ5YmE3ZSIsCiAgInByb2ZpbGVOYW1lIiA6ICJEYW5ub0JhbmFubm9YRCIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9hMjE2YTI5ZGZlMzNjZGYwZjhiYmFhNTFkNzNhODRiNzAxZTY4MGQzNTBlNmI1M2YzOTE0ZDhjYjg5YmVhY2IyIgogICAgfQogIH0KfQ==]
+    display name: <&b>Master Crankshaft<&sq>s Head
+    lore:
+        - The head of the
+        - afflicted Robonoid
+        - Master Crankshaft.
+GiveCustomMap:
+    type: task
+    script:
+        - map new:skyworld_v2 image:lucky.png resize save:map
+        - give filled_map[map=<entry[map].created_map>]
+
+
+FixCandles:
+    type: task
+    script:
+        - foreach <server.list_notables> as:theNote:
+            - if <[theNote].contains_text[Candle]>:
+                - note remove as:<[theNote]>
+        - foreach <server.list_flags> as:theFlag:
+            - if <[theFlag].contains_text[Candle]>:
+                - flag server <[theFlag]>:!
+
+
+Bloop:
+    type: command
+    name: bloop
+    usage: /bloop
+    script:
+        - if <player.has_flag[Bloop]>:
+            - flag player Bloop:!
+            - teleport <player> l@-4316,155,897,skyworld_v2
+        - else:
+            - flag player Bloop
+            - teleport <player> l@-7804,116,1840,skyworld_v2
+
+FlagCleanup:
+    type: task
+    script:
+        - foreach <server.list_flags> as:flag:
+            - if <[flag].contains_text[Grapple_Arrow]> || <[flag].contains_text[Rope_Arrow]>:
+                - flag server <[flag]>:!
+
 MCLTest:
     type: task
     script:
         - narrate "<&hover[Press This]><&click[https://denizenscript.com].type[open_url]>Option One<&end_click><&end_hover> | <&hover[Or This]><&click[/dnpc]>Option Two<&end_click><&end_hover>"
         - narrate "<&hover[Click Me!]><&click[Tell me about yourself.]>Ask about their history.<&end_click><&end_hover> | <&hover[Click Me!]><&click[I think you should leave.]>Ask them to stop following you.<&end_click><&end_hover>"
-
-
 
 CrystalSwitch:
     type: item
@@ -24,7 +67,7 @@ CrystalPuzzleWorld:
         on player left clicks block with crystalswitch:
             - foreach li@l@-23,85,-447,eventworld|l@-23,85,-449,eventworld|l@-23,85,-451,eventworld|l@-23,83,-447,eventworld|l@-23,83,-449,eventworld|l@-23,83,-451,eventworld|l@-23,81,-447,eventworld|l@-23,81,-449,eventworld|l@-23,81,-451,eventworld as:position:
                 - modifyblock red_stained_glass <[position]>
-        on player right clicks block with crystalswitch:boost
+        on player right clicks block with crystalswitch:
             - if <cu@CrystalPuzzle.contains_location[<context.location>]>:
                 - define pos1:l@-23,85,-447,eventworld
                 - define pos2:l@-23,85,-449,eventworld

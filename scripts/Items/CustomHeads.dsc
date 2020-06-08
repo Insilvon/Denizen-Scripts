@@ -589,7 +589,7 @@ FoulCandle:
 GetAllCandles:
     type: task
     script:
-        - foreach FreshLinenCandle|CherryBlossomCandle|BonfireCandle|OceanBreezeCandle|VanillaCandle|GingerbreadCandle|PumpkinSpiceCandle|PineCandle|AppleCinnamonCandle|ChocolateChipCookieCandle|LavenderCandle|LemongrassCandle|HoneydewCandle|GardeniaCandle|SugarCookieCandle|RedwoodCandle|PeachCandle|HoneysuckleCandle as:candle:
+        - foreach BourbonCandle|FreshLinenCandle|CherryBlossomCandle|BonfireCandle|OceanBreezeCandle|VanillaCandle|GingerbreadCandle|PumpkinSpiceCandle|PineCandle|AppleCinnamonCandle|ChocolateChipCookieCandle|LavenderCandle|LemongrassCandle|HoneydewCandle|GardeniaCandle|SugarCookieCandle|RedwoodCandle|PeachCandle|HoneysuckleCandle as:candle:
             - give <[candle]>
 
 FreshLinenCandle:
@@ -616,6 +616,15 @@ PeachCandle:
     lore:
         - The perfect gift
         - to give away.
+BourbonCandle:
+    type: item
+    material: player_head[skull_skin=739b4ac6-1609-47d8-ae8c-10813d69e259|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzA2YzdmMzFiNDI5M2U5ZGI2NzU1NTc4ODcwMjExMzgxYjFhNjM2MDc4NGQ4NGRjY2E1ODhjMDM4NmY1MjE2OSJ9fX0=]
+    display name: <&6>Bourbon Candle
+    lore:
+        - A ritzy, sophisticated,
+        - and hardened candle that
+        - smells like all the bad
+        - memories floating away.
 BonfireCandle:
     type: item
     material: player_head[skull_skin=739b4ac6-1609-47d8-ae8c-10813d69e259|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzA2YzdmMzFiNDI5M2U5ZGI2NzU1NTc4ODcwMjExMzgxYjFhNjM2MDc4NGQ4NGRjY2E1ODhjMDM4NmY1MjE2OSJ9fX0=]
@@ -623,7 +632,7 @@ BonfireCandle:
     lore:
         - A seasonal candle which
         - smells like an autumnal campfire,
-        - wood burned with a faunt alcoholic
+        - wood burned with a faint alcoholic
         - background.
 OceanBreezeCandle:
     type: item
@@ -749,14 +758,6 @@ WheatCandle:
         - As a wise woman once described it,
         - <&dq>cow hot<&dq>
 # Telegraph/Radio Items are in Telegraph.dsc
-
-OutsiderRunecube:
-    type: item
-    material: player_head[skull_skin=cdde0eb0-680d-4b55-824c-9a0d35838049|eyJ0aW1lc3RhbXAiOjE1NjM2NDc0MDg5MjEsInByb2ZpbGVJZCI6IjkxZjA0ZmU5MGYzNjQzYjU4ZjIwZTMzNzVmODZkMzllIiwicHJvZmlsZU5hbWUiOiJTdG9ybVN0b3JteSIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTJkYjlmOWEzNjRmZTQzOGMwZGU1ZjQ5ODQwN2E5ODc2ZDRiOGIxM2ViM2E1YTQwNWZhZTJiNDI1YzRkNWMwMiJ9fX0=]
-    display name: <&e>Mysterious Gem
-    lore:
-    - A strange gemstone with foreign runes
-    - engraved on all sides.
 
 LinkPlushie:
     type: item

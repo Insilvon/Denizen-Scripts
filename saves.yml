@@ -1,25 +1,1424 @@
 Players:
+  5B:
+    5B395E5105AC401E8B467F438D394EF7:
+      Flags:
+        CHARACTERSHEET_LIMIT: '2'
+        PROC: ''
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_CHARACTERS:
+        - Pita_the_Wanderer
+        CHARACTERSHEET_CURRENTCHARACTER: Pita_the_Wanderer
+        PITA_THE_WANDERER_SKINMENU: 'true'
+        PITA_THE_WANDERER_SKIN_ID: '2'
+        PITA_THE_WANDERER_SKIN: https://cdn.discordapp.com/attachments/166339208837988353/701608927757992066/download_4.png
+        PITA_THE_WANDERER_SKIN_1: https://cdn.discordapp.com/attachments/166339208837988353/701608927757992066/download_4.png
+        CHARACTERSHEET_PITA_THE_WANDERER_LETTERS: li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+        COMPLETEDQUESTPAGE: '3'
+        PITA_THE_WANDERER_N@1823: '1'
+        PITA_THE_WANDERER_N@1581: '1'
+        PITA_THE_WANDERER_N@1647: '1'
+        PITA_THE_WANDERER_N@1732: '1'
+        PITA_THE_WANDERER_N@1736: '1'
+        DISCOVERIES:
+        - Brewhaven
+        - Lapidas
+        - CrimsonDelta
+        - CrimsonSun
+        - Centrecrest
+        - GeezerGarage
+        PITA_THE_WANDERER_N@1382: '1'
+        PITA_THE_WANDERER_N@887: '1'
+        PITA_THE_WANDERER_N@1256: '1'
+        PITA_THE_WANDERER_N@1149: '1'
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        PLAYER:
+          FLAG:
+          - lapidasfarm1|
+        PITA_THE_WANDERER_N@1920: '1'
   1A:
     1AB1EE9B873A4545BB5B254E7B23B0E0:
       Flags:
-        CHARACTER: '1'
-        CHARACTER_LIST: Player1
-        CURRENTCHARACTER: '1'
-        E_1: li@i@air|i@air|i@air|i@air
-        QUESTBOOKRECEIVED: 'true'
-        QUESTBOOKRECEIVED-expiration: 1570286000384
-        1AB1EE9B-873A-4545-BB5B-254E7B23B0E0_1_ACTIVEQUESTITEMS: li@li@li@null|Example1GuideBook
-        1AB1EE9B-873A-4545-BB5B-254E7B23B0E0_1_QUESTJOURNAL: 'true'
-        1AB1EE9B-873A-4545-BB5B-254E7B23B0E0_1_COMPLETEDQUESTITEMS:
-        - 'null'
-        - Example1QuestCompleted
-        - Example1QuestCompleted
-        - Example1QuestCompleted
-        - Example1QuestCompleted
-        1AB1EE9B-873A-4545-BB5B-254E7B23B0E0_1_QUESTJOURNALMENU: '0'
+        CHARACTERSHEET_LIMIT: '8'
+        PROC: ''
+        CHARACTERSHEET_INSILVON_LETTERS: li@i@writable_book[book=pages;display_name=Letter;lore=A
+          bound letter to&pipebe sent through the&pipeskies&ampampdot;script=LETTERBASE]|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        'NULL': ''
+        CHARACTERSHEET_ONEOFF_LETTERS: li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        BREWHAVEN: ''
+        GEEZERGARAGE: ''
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_CHARACTERS:
+        - Insilvon
+        - Myra_Syskaton
+        - Harken_Baptiste
+        - Master_Crankshaft
+        - The_Poet
+        CENTRECREST: ''
+        PLAYER:
+          FLAG: li@lapidasfarm1|
+        CHARACTERSHEET_CURRENTCHARACTER: The_Poet
+        CRIMSONDELTA: ''
+        LAPIDAS: ''
+        SUNTEAHOUSE: ''
+        CRIMSONSUN: ''
+        LAPIDASFARM1|: ''
+        TWO: ''
+        THREE: ''
+        CHARACTERSHEET_NOTNEW: 'true'
+        CHARACTERSHEET_HIDDENNAMES: 'true'
+        THE_POET_SKINMENU: 'true'
+        THE_POET_SKIN_ID: '2'
+        THE_POET_SKIN: https://minesk.in/1966309550
+        THE_POET_SKIN_1: https://minesk.in/1966309550
+        DISCOVERIES: li@li@li@Lapidas|
+        CHAT_CHANNEL: Casual
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        TESTFLAG: li@One|
+        PIRATE: 'true'
+        FASTTRAVEL: coal
+        COTS: 'true'
+        SKYBORNE: 'true'
+        PROFESSION: 'true'
+        TOTALPROFESSIONS: '1'
+        ACTIVEPROFESSIONS: '0'
+        OPTIONALPROFESSIONS: '1'
+  B5:
+    B551369F21C9415693D41B7096A33846:
+      Flags:
+        DISCOVERIES:
+        - CrimsonDelta
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - John
+        CHARACTERSHEET_CURRENTCHARACTER: John
+        'NULL': ''
+        JOHN_N@568: '1'
+        JOHN_N@512: '1'
+        JOHN_N@511: '1'
+        JOHN_N@510: '1'
+        JOHN_N@737: '1'
+  '78':
+    78F5F7BA24884CAAA752068F5F56E908:
+      Flags:
+        PLAYER:
+          FLAG:
+          - https://minesk.in/1261279482
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Edmend
+        CHARACTERSHEET_CURRENTCHARACTER: Edmend
+        'NULL': ''
+        CHAT_CHANNEL: Whisper
+        HIDDENNAMES: 'true'
+        NOTNEW: 'true'
+        EDMEND_SKINMENU: 'true'
+        EDMEND_SKIN_ID: '1'
+        DISCOVERIES:
+        - Brewhaven
+        - GeezerGarage
+        - CrimsonDelta
+        - CrimsonSun
+        - Lapidas
+        - Centrecrest
+        - SunTeahouse
+        - Genevah
+        EDMEND_N@1581: '1'
+        EDMEND_N@1647: '1'
+        EDMEND_N@1823: '1'
+        EDMEND_N@1736: '1'
+        EDMEND_N@1732: '1'
+        EDMEND_N@1920: '1'
+        EDMEND_N@1382: '1'
+        EDMEND_N@1149: '1'
+        940_MONEY: '1000'
+        940_MONEY-expiration: 1590628067369
+        EDMEND_N@940: '1'
+        880_MONEY: '1000'
+        880_MONEY-expiration: 1590628082019
+        EDMEND_N@880: '1'
+        EDMEND_N@1256: '1'
+        1256_MONEY: '1000'
+        1256_MONEY-expiration: 1590628119119
+        1149_MONEY: '1000'
+        1149_MONEY-expiration: 1590628125969
+        1382_MONEY: '1000'
+        1382_MONEY-expiration: 1590628141569
+        1581_MONEY: '1000'
+        1581_MONEY-expiration: 1590628168244
+        1647_MONEY: '1000'
+        1647_MONEY-expiration: 1590628171869
+        1823_MONEY: '1000'
+        1823_MONEY-expiration: 1590628177969
+        1732_MONEY: '1000'
+        1732_MONEY-expiration: 1590628186870
+        TRAVEL: Brewhaven
+        TRAVEL-expiration: 1590563677619
+        1122_MONEY: '1600'
+        1122_MONEY-expiration: 1590635346919
+        EDMEND_N@1122: '1'
+        NPCINVENTORY: GenevahFarmerInventory
+        NPCINVENTORY-expiration: 1590908194079
+        NPCINVENTORYHOST: '1760'
+        NPCINVENTORYHOST-expiration: 1590908194079
+        1766_MONEY: '1000'
+        1766_MONEY-expiration: 1590979237379
+        EDMEND_N@1766: '1'
+        1765_MONEY: '1000'
+        1765_MONEY-expiration: 1590979241379
+        EDMEND_N@1765: '1'
+        1764_MONEY: '1000'
+        1764_MONEY-expiration: 1590979246329
+        EDMEND_N@1764: '1'
+        EDMEND_N@1762: '1'
+        1763_MONEY: '1000'
+        1763_MONEY-expiration: 1590979274368
+        EDMEND_N@1763: '1'
+        1760_MONEY: '1000'
+        1760_MONEY-expiration: 1590979294079
+        EDMEND_N@1760: '1'
+  '53':
+    537FCC83500940B59D1FD15A30FF2BA0:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '2'
+        CHARACTERSHEET_CHARACTERS:
+        - Hobart_Valentine
+        CHARACTERSHEET_CURRENTCHARACTER: Hobart_Valentine
+        'NULL': ''
+        CHARACTERSHEET_HOBART_VALENTINE_LETTERS:
+        - li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        - i@written_book[book=author|MarkRhett|title|d|pages|Hobart,&ampnl&ampnlI
+          hope you are doing well at the Tavern on Brewhaven&ampdot&ampnlThis is a
+          reminder I haven&ampsqt been paid yet&ampdot I&ampsqm giving you two weeks
+          to give me my severence payment before I contact The Family directly&ampdot
+          &ampnl&ampnlValentine&ampdot &ampssr;display_name=Letter;lore=A bound letter
+          to|be sent through the|skies&ampdot;script=LETTERBASE]
+        DISCOVERIES:
+        - Brewhaven
+        - Lapidas
+        - SunTeahouse
+        HIDDENNAMES: 'true'
+        NOTNEW: 'true'
+        CHAT_CHANNEL: Casual
+        HOBART_VALENTINE_SKINMENU: 'true'
+        HOBART_VALENTINE_SKIN_ID: '1'
+        HOBART_VALENTINE_N@1581: '1'
+        HOBART_VALENTINE_N@1647: '1'
+        HOBART_VALENTINE_N@1736: '1'
+        HOBART_VALENTINE_N@1732: '1'
+        HOBART_VALENTINE_N@1823: '1'
+        PLAYER:
+          FLAG:
+          - lapidasfarm1|
+          - lapidasfarm1|
+        NPCINVENTORY: GunMerchantInventory
+        NPCINVENTORY-expiration: 1590910674729
+        NPCINVENTORYHOST: '1732'
+        NPCINVENTORYHOST-expiration: 1590910674729
+        1732_MONEY: '850'
+        1732_MONEY-expiration: 1590981295979
+        1823_MONEY: '1000'
+        1823_MONEY-expiration: 1590981319379
+        1647_MONEY: '1000'
+        1647_MONEY-expiration: 1590981332285
+        1581_MONEY: '1000'
+        1581_MONEY-expiration: 1590981336729
+  F1:
+    F19C0F1FFE014ED49237259544932DC5:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Deryn_Aldridge
+        CHARACTERSHEET_CURRENTCHARACTER: Deryn_Aldridge
+        'NULL': ''
+        GEEZERGARAGE: ''
+        CENTRECREST: ''
+        PLAYER:
+          FLAG: lapidasfarm1
+        BREWHAVEN: ''
+        LAPIDAS: ''
+        DISCOVERIES: li@li@li@Brewhaven|
+        SUNTEAHOUSE: ''
+        HIDDENNAMES: 'true'
+        NOTNEW: 'true'
+        CHAT_CHANNEL: Whisper
+        DERYN_ALDRIDGE_N@1581: '1'
+        DERYN_ALDRIDGE_N@1382: '1'
+        DERYN_ALDRIDGE_N@888: '1'
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+  2C:
+    2C5B227568404B1C9F18437EC6E9EE32:
+      Flags:
+        HIDDENNAMES: 'true'
+        NOTNEW: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Malcolm_Datchery
+        CHARACTERSHEET_CURRENTCHARACTER: Malcolm_Datchery
+        'NULL': ''
+        DISCOVERIES:
+        - CrimsonSun
+        - CrimsonDelta
+        - Brewhaven
+        MALCOLM_DATCHERY_N@737: '1'
+        MALCOLM_DATCHERY_N@568: '1'
+        MALCOLM_DATCHERY_N@512: '1'
+        CHAT_CHANNEL: Casual
+        TRAVEL: CrimsonSun
+        TRAVEL-expiration: 1590718376732
+  '25':
+    258692D5AD6F4955AC1AEF71E3844B03:
+      Flags:
+        PLAYER:
+          FLAG:
+          - li@li@li@li@https://minesk.in/645925687|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Roxinia_Szliard
+        CHARACTERSHEET_CURRENTCHARACTER: Roxinia_Szliard
+        'NULL': ''
+        LAPIDASFARM1|: ''
+        LAPIDAS: ''
+        CHARACTERSHEET_ROXINIA_SZLIARD_LETTERS: li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        SUNTEAHOUSE: ''
+        LAPIDASMINE1|: ''
+        MIREMINE1|: ''
+        DISCOVERIES:
+        - li@li@li@li@li@li@li@Brewhaven|
+        - SunTeahouse
+        - Brewhaven
+        - Centrecrest
+        - Lapidas
+        GENEVAH: ''
+        BREWHAVEN: ''
+        CENTRECREST: ''
+        HIDDENNAMES: 'true'
+        NOTNEW: 'true'
+        ROXINIA_SZLIARD_SKINMENU: 'true'
+        ROXINIA_SZLIARD_SKIN_ID: '3'
+        ROXINIA_SZLIARD_N@1920: '1'
+        ROXINIA_SZLIARD_SKIN: https://minesk.in/518216643
+        ROXINIA_SZLIARD_SKIN_1: https://minesk.in/1581784552
+        ROXINIA_SZLIARD_SKIN_2: https://minesk.in/518216643
+        CHAT_CHANNEL: Hush
+        ROXINIA_SZLIARD_SHIPLOCK: '1'
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+        ROXINIA_SZLIARD_N@1766: '1'
+        ROXINIA_SZLIARD_N@1765: '1'
+        ROXINIA_SZLIARD_N@1764: '1'
+        ROXINIA_SZLIARD_N@1762: '1'
+        ROXINIA_SZLIARD_N@887: '1'
+        ROXINIA_SZLIARD_N@880: '1'
+        ROXINIA_SZLIARD_N@1149: '1'
+        ROXINIA_SZLIARD_N@883: '1'
+        ROXINIA_SZLIARD_N@1256: '1'
+        ROXINIA_SZLIARD_N@888: '1'
+        ROXINIA_SZLIARD_N@954: '1'
+        ROXINIA_SZLIARD_N@940: '1'
+        ROXINIA_SZLIARD_N@885: '1'
+        ROXINIA_SZLIARD_N@1382: '1'
+        ROXINIA_SZLIARD_N@1760: '1'
+        ROXINIA_SZLIARD_SHIPLOCKED: l@0.4780267384016673,71,-2601.487401092781,90,176.707275390625,skyworld_v2
+        ROXINIA_SZLIARD_DISCOVERED_NODES:
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        GRAPPLEARROWCOOLDOWN: 'true'
+        GRAPPLEARROWCOOLDOWN-expiration: 1590914875429
+        TRAVEL: Brewhaven
+        TRAVEL-expiration: 1590915725129
+        ROXINIA_SZLIARD_N@1581: '1'
       Scripts:
-        EXAMPLE1INTERACT:
-          Current Step: '3'
+        PLACEDTOWNBLACKSMITHINTERACT:
+          Current Step: '1'
+  8B:
+    8B3BE7CFD670470B9D28F9DD70F9A824:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Valentine
+        CHARACTERSHEET_CURRENTCHARACTER: Valentine
+        'NULL': ''
+        CHARACTERSHEET_VALENTINE_LETTERS: li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        PLAYER:
+          FLAG: li@li@lapidasmine1|
+        BREWHAVEN: ''
+        SUNTEAHOUSE: ''
+        GEEZERGARAGE: ''
+        GENEVAH: ''
+        LAPIDASFARM1|: ''
+        MIREMINE1|: ''
+        DISCOVERIES:
+        - li@li@Lapidas|
+        - SunTeahouse
+        - Lapidas
+        LAPIDAS: ''
+        HIDDENNAMES: 'true'
+        NOTNEW: 'true'
+        VALENTINE_SKINMENU: 'true'
+        VALENTINE_SKIN_ID: '1'
+        VALENTINE_N@1920: '1'
+        VALENTINE_N@1647: '1'
+        VALENTINE_N@1581: '1'
+        CHAT_CHANNEL: Casual
+        VALENTINE_N@1823: '1'
+        VALENTINE_N@1732: '1'
+        VALENTINE_N@1736: '1'
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+        COMPLETEDQUESTPAGE: '0'
+        VALENTINE_N@1765: '1'
+        VALENTINE_N@1766: '1'
+  E3:
+    E396A8BAE8E94C3DB7B1510B676803F4:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Euphemia
+        CHARACTERSHEET_CURRENTCHARACTER: Euphemia
+        'NULL': ''
+        CHARACTERSHEET_EUPHEMIA_LETTERS: li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        PLAYER:
+          FLAG:
+          - li@li@lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+          - lapidasfarm1|
+        LAPIDASFARM1|: ''
+        LAPIDASMINE1|: ''
+        MIREMINE1|: ''
+        DISCOVERIES:
+        - li@Lapidas|
+        - Lapidas
+        - SunTeahouse
+        - Brewhaven
+        - Centrecrest
+        BREWHAVEN: ''
+        CENTRECREST: ''
+        SUNTEAHOUSE: ''
+        GENEVAH: ''
+        HIDDENNAMES: 'true'
+        NOTNEW: 'true'
+        EUPHEMIA_N@1920: '1'
+        EUPHEMIA_N@1647: '1'
+        EUPHEMIA_N@1823: '1'
+        EUPHEMIA_N@1581: '1'
+        CHAT_CHANNEL: Hush
+        EUPHEMIA_N@885: '1'
+        EUPHEMIA_N@1256: '1'
+        EUPHEMIA_N@1149: '1'
+        EUPHEMIA_N@1382: '1'
+        EUPHEMIA_N@1760: '1'
+        EUPHEMIA_N@1762: '1'
+        EUPHEMIA_N@1766: '1'
+        EUPHEMIA_N@1765: '1'
+        EUPHEMIA_N@1764: '1'
+        EUPHEMIA_N@1732: '1'
+        EUPHEMIA_DISCOVERED_NODES:
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        - lapidasfarm1|
+        EUPHEMIA_N@887: '1'
+        GRAPPLEARROWCOOLDOWN: 'true'
+        GRAPPLEARROWCOOLDOWN-expiration: 1590916540679
+  0F:
+    0F12D623CC204A2DA608CD2607C15490:
+      Flags:
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Aaron_Backhaus
+        CHARACTERSHEET_CURRENTCHARACTER: Aaron_Backhaus
+        'NULL': ''
+        DISCOVERIES:
+        - Brewhaven
+        NPCINVENTORY: MobMerchantInventory
+        NPCINVENTORY-expiration: 1590132130104
+        NPCINVENTORYHOST: '1581'
+        NPCINVENTORYHOST-expiration: 1590132130104
+        1647_MONEY: '1000'
+        1647_MONEY-expiration: 1590203224599
+        1581_MONEY: '1000'
+        1581_MONEY-expiration: 1590203230104
+        AARON_BACKHAUS_N@1647: '1'
+        AARON_BACKHAUS_N@1581: '1'
+        CHAT_CHANNEL: OOC
+  E9:
+    E9FED642FE5B42EA9193346A40352146:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Tora_Novak
+        CHARACTERSHEET_CURRENTCHARACTER: Tora_Novak
+        'NULL': ''
+        CHARACTERSHEET_TORA_NOVAK_LETTERS: li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        PLAYER:
+          FLAG: li@li@deltafarm2|
+        CRIMSONDELTA: ''
+        CENTRECREST: ''
+        BREWHAVEN: ''
+        GEEZERGARAGE: ''
+        LAPIDAS: ''
+        SUNTEAHOUSE: ''
+        GENEVAH: ''
+        DELTAFARM2|: ''
+        DELTAFARM1|: ''
+        LAPIDASFARM1|: ''
+        LAPIDASMINE1|: ''
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHAT_CHANNEL: Casual
+        TORA_NOVAK_SKINMENU: 'true'
+        TORA_NOVAK_SKIN_ID: '1'
+        DISCOVERIES:
+        - li@li@CrimsonSun|
+        - CrimsonDelta
+        - CrimsonSun
+        TORA_NOVAK_N@568: '1'
+        TORA_NOVAK_N@512: '1'
+        TORA_NOVAK_N@511: '1'
+        TORA_NOVAK_N@510: '1'
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+        COMPLETEDQUESTPAGE: '1'
+        TORA_NOVAK_N@1382: '1'
+        TORA_NOVAK_N@880: '1'
+        TORA_NOVAK_N@1149: '1'
+        TORA_NOVAK_N@883: '1'
+        TORA_NOVAK_N@954: '1'
+        TORA_NOVAK_N@1256: '1'
+        TORA_NOVAK_N@887: '1'
+        TORA_NOVAK_N@1122: '1'
+        TORA_NOVAK_N@885: '1'
+        TORA_NOVAK_SHIPLOCK: '1'
+        TORA_NOVAK_SHIPLOCKED: l@-7304.728150423288,85,1851.699999988079,70.29432678222656,-140.23074340820312,skyworld_v2
+        TORA_NOVAK_N@940: '1'
+        TORA_NOVAK_N@1823: '1'
+        TORA_NOVAK_N@1736: '1'
+        TORA_NOVAK_N@1732: '1'
+        1823_MONEY: '1000'
+        1647_MONEY: '1000'
+        TORA_NOVAK_N@1647: '1'
+        1581_MONEY: '1000'
+        TORA_NOVAK_N@1581: '1'
+        880_MONEY: '0'
+        954_MONEY: '1000'
+        885_MONEY: '1000'
+        TORA_NOVAK_N@1920: '1'
+        1766_MONEY: '1000'
+        TORA_NOVAK_N@1766: '1'
+        1765_MONEY: '1000'
+        TORA_NOVAK_N@1765: '1'
+        1764_MONEY: '1000'
+        TORA_NOVAK_N@1764: '1'
+        TORA_NOVAK_N@1762: '1'
+        1763_MONEY: '1000'
+        TORA_NOVAK_N@1763: '1'
+        1760_MONEY: '1000'
+        TORA_NOVAK_N@1760: '1'
+  '52':
+    52AD965E70A74A24B9F934C4E02CE40C:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Sai
+        'NULL': ''
+        CHARACTERSHEET_SAI_LETTERS: li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        PLAYER:
+          FLAG: li@https://minesk.in/1403012638|
+        DELTAFARM1|: ''
+        CENTRECREST: ''
+        CRIMSONDELTA: ''
+        CRIMSONSUN: ''
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        SAI_SKINMENU: 'true'
+        SAI_SKIN_ID: '2'
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+        SAI_N@887: '1'
+        SAI_N@1149: '1'
+        SAI_N@880: '1'
+        SAI_N@954: '1'
+        SAI_N@883: '1'
+        SAI_N@940: '1'
+        SAI_N@1256: '1'
+        SAI_N@1122: '1'
+        SAI_N@888: '1'
+        DISCORD_USER: discorduser@mybot,454499930472710145
+        COMPLETEDQUESTPAGE: '1'
+        880_MONEY: '0'
+        CHAT_CHANNEL: OOC
+        SAI_SKIN: player.flag[<[character]>_Skin_<[id]>]
+        SAI_SKIN_1: '[Imgur](https://i.imgur.com/eYh76Zg.png)'
+        SAI_N@885: '1'
+        SAI_N@1382: '1'
+        DISCOVERIES: li@Brewhaven|
+        SAI_N@1581: '1'
+        SAI_N@1647: '1'
+        SAI_N@1823: '1'
+        SAI_N@1736: '1'
+        SAI_N@1732: '1'
+        SAI_N@737: '1'
+        SAI_N@568: '1'
+        SAI_N@512: '1'
+        SAI_N@510: '1'
+        CHARACTERSHEET_CURRENTCHARACTER: Sai
+  5E:
+    5E0B377535654F42AF30FF95AE7398A1:
+      Flags:
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Jonathan_Hambone
+        CHARACTERSHEET_CURRENTCHARACTER: Jonathan_Hambone
+        'NULL': ''
+        CHAT_CHANNEL: OOC
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+        DISCOVERIES:
+        - Brewhaven
+        - Centrecrest
+        NPCINVENTORY: CentrecrestMinerInventory
+        NPCINVENTORY-expiration: 1590809698997
+        NPCINVENTORYHOST: '954'
+        NPCINVENTORYHOST-expiration: 1590809698997
+        1581_MONEY: '1000'
+        1581_MONEY-expiration: 1590880566747
+        JONATHAN_HAMBONE_N@1581: '1'
+        1647_MONEY: '1000'
+        1647_MONEY-expiration: 1590880581297
+        JONATHAN_HAMBONE_N@1647: '1'
+        JONATHAN_HAMBONE_N@1823: '1'
+        1732_MONEY: '1000'
+        1732_MONEY-expiration: 1590880602497
+        JONATHAN_HAMBONE_N@1736: '1'
+        JONATHAN_HAMBONE_N@1732: '1'
+        TRAVEL: Centrecrest
+        TRAVEL-expiration: 1590808939047
+        887_MONEY: '1000'
+        887_MONEY-expiration: 1590880669147
+        JONATHAN_HAMBONE_N@887: '1'
+        1149_MONEY: '1000'
+        1149_MONEY-expiration: 1590880684648
+        JONATHAN_HAMBONE_N@1149: '1'
+        JONATHAN_HAMBONE_N@883: '1'
+        940_MONEY: '1000'
+        940_MONEY-expiration: 1590880692247
+        JONATHAN_HAMBONE_N@940: '1'
+        880_MONEY: '1000'
+        880_MONEY-expiration: 1590880756697
+        JONATHAN_HAMBONE_N@880: '1'
+        954_MONEY: '1000'
+        954_MONEY-expiration: 1590880767597
+        JONATHAN_HAMBONE_N@954: '1'
+        1256_MONEY: '1000'
+        1256_MONEY-expiration: 1590880774497
+        JONATHAN_HAMBONE_N@1256: '1'
+        PLAYER:
+          FLAG:
+          - centrecrestmine|
+  '90':
+    90D642A38CD3400D9FE0B795264FB442:
+      Flags:
+        DISCOVERIES:
+        - Brewhaven
+        - CrimsonDelta
+        - CrimsonSun
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Drakkon_Steele
+        CHARACTERSHEET_CURRENTCHARACTER: Drakkon_Steele
+        'NULL': ''
+        DRAKKON_STEELE_SKINMENU: 'true'
+        DRAKKON_STEELE_SKIN_ID: '1'
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '0'
+        NPCINVENTORY: MobMerchantInventory
+        NPCINVENTORY-expiration: 1590165257714
+        NPCINVENTORYHOST: '1581'
+        NPCINVENTORYHOST-expiration: 1590165257714
+        1823_MONEY: '1480'
+        1823_MONEY-expiration: 1590236319663
+        DRAKKON_STEELE_N@1823: '1'
+        1647_MONEY: '1000'
+        1647_MONEY-expiration: 1590236346364
+        DRAKKON_STEELE_N@1647: '1'
+        1581_MONEY: '1000'
+        1581_MONEY-expiration: 1590236357714
+        DRAKKON_STEELE_N@1581: '1'
+        TRAVEL: CrimsonSun
+        TRAVEL-expiration: 1590165861315
+        DRAKKON_STEELE_N@737: '1'
+  '75':
+    75A8E12A67654AC0A02BD1220FFB5817:
+      Flags:
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        'NULL': ''
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_CHARACTERS:
+        - Noella
+        CHARACTERSHEET_CURRENTCHARACTER: Noella
+        NOELLA_SKINMENU: 'true'
+        NOELLA_SKIN_ID: '2'
+        PLAYER:
+          FLAG: https://minesk.in/260938338
+        NOELLA_SKIN: https://minesk.in/260938338
+        NOELLA_SKIN_1: https://minesk.in/260938338
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+        CHAT_CHANNEL: OOC
+  '93':
+    93C8AF2614CB4174A6B0DF341944230E:
+      Flags:
+        DISCOVERIES:
+        - Lapidas
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Reynard_Scarborough
+        CHARACTERSHEET_CURRENTCHARACTER: Reynard_Scarborough
+        'NULL': ''
+        REYNARD_SCARBOROUGH_SKINMENU: 'true'
+        REYNARD_SCARBOROUGH_SKIN_ID: '2'
+        REYNARD_SCARBOROUGH_SKIN: https://i.imgur.com/J1ESXa7.png
+        REYNARD_SCARBOROUGH_SKIN_1: https://i.imgur.com/J1ESXa7.png
+        CHARACTERSHEET_REYNARD_SCARBOROUGH_LETTERS: li@i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@barrier[display_name=&ampampss4Go
+          Back;script=CHARACTERSHEETBACKITEM]|
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '0'
+        COMPLETEDQUESTPAGE: '1'
+  '59':
+    590565465673420A9E8750CCDF048BFE:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Alisha
+        'NULL': ''
+        CHARACTERSHEET_CURRENTCHARACTER: Alisha
+        DISCOVERIES:
+        - Brewhaven
+        - CrimsonSun
+        - CrimsonDelta
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        ALISHA_N@1581: '1'
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '0'
+        ALISHA_SKINMENU: 'true'
+        ALISHA_SKIN_ID: '1'
+        PLAYER:
+          FLAG:
+          - deltafarm2|
+          - deltafarm2|
+          - deltafarm1|
+          - deltafarm2|
+          - deltafarm2|
+          - deltafarm1|
+          - deltafarm1|
+          - deltafarm2|
+          - deltafarm1|
+          - deltafarm2|
+        ALISHA_N@568: '1'
+        ALISHA_N@512: '1'
+        ALISHA_N@737: '1'
+        CHAT_CHANNEL: Whisper
+        COMPLETEDQUESTPAGE: '1'
+        ALISHA_SHIPLOCK: '1'
+        ALISHA_SHIPLOCKED: l@-7669.606713867437,133,1935.699999988079,42.02172088623047,351.2716979980469,skyworld_v2
+  6F:
+    6F60AA48F39140F38C4B51E85EB3D768:
+      Flags:
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Shaun
+        CHARACTERSHEET_CURRENTCHARACTER: Shaun
+        'NULL': ''
+        SHAUN_N@1406: '1'
+        SHAUN_N@1434: '1'
+        DISCOVERIES:
+        - Brewhaven
+        SHAUN_N@1823: '1'
+        SHAUN_N@1647: '1'
+        SHAUN_N@1581: '1'
+        SHAUN_N@1419: '1'
+        GRAPPLEARROWCOOLDOWN: 'true'
+        GRAPPLEARROWCOOLDOWN-expiration: 1590280705892
+        SHAUN_SHIPLOCK: '1'
+        CHAT_CHANNEL: Casual
+        SHAUN_N@1732: '1'
+        SHAUN_N@1736: '1'
+        SHAUN_SHIPLOCKED: l@-1116.492355335088,153,-408.67820344846353,29.39997673034668,2.866180419921875,skyworld_v2
+  '91':
+    91931D4B9984423891C669301D683C5F:
+      Flags:
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        DISCOVERIES:
+        - Brewhaven
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - zakaro
+        CHARACTERSHEET_CURRENTCHARACTER: zakaro
+        'NULL': ''
+        ZAKARO_SKINMENU: 'true'
+        ZAKARO_SKIN_ID: '1'
+  AC:
+    AC58D8CCF76948F3A4330A9D640D3D36:
+      Flags:
+        DISCOVERIES:
+        - Brewhaven
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Declan_Thomas
+        CHARACTERSHEET_CURRENTCHARACTER: Declan_Thomas
+        'NULL': ''
+        DECLAN_THOMAS_N@1767: '1'
+        CHAT_CHANNEL: OOC
+  '79':
+    79B6C06149C54F628DF4C1DEE86997BC:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Epator
+        CHARACTERSHEET_CURRENTCHARACTER: Epator
+        'NULL': ''
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHAT_CHANNEL: Casual
+        EPATOR_SKINMENU: 'true'
+        EPATOR_SKIN_ID: '1'
+        QUESTJOURNAL: 'true'
+        QUESTJOURNALPAGE: '1'
+        ACTIVEQUESTPAGE: '1'
+        COMPLETEDQUESTPAGE: '1'
+        EPATOR_N@888: '1'
+        EPATOR_N@1256: '1'
+        EPATOR_N@1149: '1'
+        EPATOR_N@1382: '1'
+        DISCOVERIES:
+        - Centrecrest
+        - Brewhaven
+        - Lapidas
+        EPATOR_N@1581: '1'
+        NPCINVENTORY: MonetaCropInventory
+        NPCINVENTORYHOST: '1823'
+        NPCINVENTORYHOST-expiration: 1590686075298
+        1647_MONEY: '1000'
+        1647_MONEY-expiration: 1590757127542
+        EPATOR_N@1647: '1'
+        1581_MONEY: '1000'
+        1581_MONEY-expiration: 1590757140392
+        1823_MONEY: '1555'
+        1823_MONEY-expiration: 1590757162442
+        EPATOR_N@1823: '1'
+        TRAVEL: Centrecrest
+        TRAVEL-expiration: 1590685623064
+        EPATOR_N@1920: '1'
+        EPATOR_N@887: '1'
+  '19':
+    190B3FF1236A4E33B9BBFE75A8FCD311:
+      Flags:
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        DISCOVERIES:
+        - Brewhaven
+        - GeezerGarage
+        - Centrecrest
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Valerian_Lovell
+        CHARACTERSHEET_CURRENTCHARACTER: Valerian_Lovell
+        'NULL': ''
+        VALERIAN_LOVELL_SKINMENU: 'true'
+        VALERIAN_LOVELL_SKIN_ID: '1'
+        CHAT_CHANNEL: Casual
+        PLAYER:
+          FLAG: https://i.imgur.com/SfkhhUZ.png
+        VALERIAN_LOVELL_N@1581: '1'
+        VALERIAN_LOVELL_N@1732: '1'
+        VALERIAN_LOVELL_N@1736: '1'
+        VALERIAN_LOVELL_N@1823: '1'
+        TRAVEL: Centrecrest
+        TRAVEL-expiration: 1590719824932
+        VALERIAN_LOVELL_N@1382: '1'
+        VALERIAN_LOVELL_N@887: '1'
+  AD:
+    AD28EBFA7B49425BB5C6813A47BC9CE8:
+      Flags:
+        DISCOVERIES:
+        - Brewhaven
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '1'
+        CHARACTERSHEET_CHARACTERS:
+        - Kira
+        CHARACTERSHEET_CURRENTCHARACTER: Kira
+        'NULL': ''
+        KIRA_SKINMENU: 'true'
+        KIRA_SKIN_ID: '1'
+        NPCINVENTORY: MobMerchantInventory
+        NPCINVENTORY-expiration: 1590719625082
+        NPCINVENTORYHOST: '1581'
+        NPCINVENTORYHOST-expiration: 1590719625082
+        1647_MONEY: '1000'
+        1647_MONEY-expiration: 1590790690940
+        KIRA_N@1647: '1'
+        1581_MONEY: '1000'
+        1581_MONEY-expiration: 1590790718032
+        KIRA_N@1581: '1'
+        CHAT_CHANNEL: casual
+  '76':
+    768490157844471C916E2F6BDCB71510:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '9'
+        CHARACTERSHEET_CHARACTERS:
+        - Eva
+        - Dominique_Gravestone
+        - Victor_Zaz
+        CHARACTERSHEET_CURRENTCHARACTER: Dominique_Gravestone
+        'NULL': ''
+        NOTNEW: 'true'
+        HIDDENNAMES: 'true'
+        DOMINIQUE_GRAVESTONE_SKINMENU: 'true'
+        DOMINIQUE_GRAVESTONE_SKIN_ID: '2'
+        DOMINIQUE_GRAVESTONE_SKIN: https://minesk.in/1183818191
+        DOMINIQUE_GRAVESTONE_SKIN_1: https://minesk.in/1183818191
+        DISCOVERIES:
+        - Lapidas
+        CHAT_CHANNEL: Casual
+        PLAYER:
+          FLAG:
+          - lapidasfarm1|
+  C2:
+    C217A64AB2834A6387DF816CB9AF850C:
+      Flags:
+        CHARACTERSHEET: 'true'
+        CHARACTERSHEET_LIMIT: '9'
+        CHARACTERSHEET_CHARACTERS:
+        - TheEntertainer
+        - OneOff
+        CHARACTERSHEET_CURRENTCHARACTER: OneOff
+        'NULL': ''
+Entities:
+  DA:
+    DA7C2E0BFE884728A01180AFF2592D29:
+      Flags:
+        GUN: flintlockpistol
+    DAE4F806C61E41259F71B311135C43A2:
+      Flags: {}
+    DA5BD23243CD4CA8B31E8B79988146DC:
+      Flags: {}
+  '74':
+    7447E90190CC483E8CDBE54E727A03C5:
+      Flags:
+        GUN: flintlockpistol
+    74A1043FD44342EE850E58BC5DED9218:
+      Flags: {}
+  8C:
+    8CA1746D409240819EB1FD27554692DC:
+      Flags: {}
+  BF:
+    BFF6A21B4724455EB25B7A2150FE03DF:
+      Flags: {}
+  B7:
+    B7E9C0C21A914AFE887179DFD172E32C:
+      Flags: {}
+  B3:
+    B37D27AD81DE4DE5BD27FE4A1C6DF9D9:
+      Flags: {}
+    B36CC12DD8264D429BC9EFA2C39BC817:
+      Flags: {}
+    B31CD4FDFFB64B28B11C125A6B224E70:
+      Flags: {}
+  D3:
+    D3025CFC583C46A68A3C28C133F808AC:
+      Flags: {}
+    D3F88F69EBB34DF7BD2F4FAAD813C484:
+      Flags: {}
+  '96':
+    967387D49D1241C9B40CB027440DA860:
+      Flags: {}
+  F2:
+    F25D971DB6B94DBFA1E8D057EA5598FD:
+      Flags: {}
+    F29EF4B8117547A39D355C9E4333DC20:
+      Flags: {}
+  '78':
+    78AC58E917BB4994AACF7E57FEDDFA8E:
+      Flags: {}
+    78CB8679248F4DF68F66326E4BDE1E5B:
+      Flags: {}
+  CD:
+    CDC3B160B7C84A0AAF53159DA4F4079B:
+      Flags: {}
+  7B:
+    7B5CEBD5221040BAAD93B912EC4807C7:
+      Flags: {}
+  '80':
+    80FBC552F4A74D2D8D1D66E014277229:
+      Flags: {}
+  '22':
+    224CB3E2FDB64875848645476F5684E1:
+      Flags: {}
+  3E:
+    3EDBB099C3A24B47B076F32F9B933067:
+      Flags: {}
+  9A:
+    9A3E9FCD1FB5414DAAFD596C70A743F9:
+      Flags: {}
+  F1:
+    F1228926A38E4E96B9AFE88E74A26F67:
+      Flags: {}
+  E1:
+    E1B65A9F69744BB18F1E8A9945DB440A:
+      Flags: {}
+    E1AB2DFD44E44300B1A120CCDBAB44F2:
+      Flags: {}
+  D0:
+    D0FD682CC542481999050E0D9CBD4B02:
+      Flags: {}
+  ED:
+    ED2FEBE5C7244964891AF025815654B4:
+      Flags: {}
+  E8:
+    E8428E0D8AF940C0B9D7BB0ED366395A:
+      Flags: {}
+  '20':
+    202BC359AFA04CBB917D0500935F6496:
+      Flags: {}
+  '63':
+    630082C408AA4429948D01F0C31556A9:
+      Flags: {}
+  6B:
+    6BA0DC658C5B4D69A6F1CB09EA18CD9E:
+      Flags: {}
+  D6:
+    D6BC3F0438404453A28A9E772C4BC4B2:
+      Flags: {}
+  F7:
+    F747D8B216A2485F8B14249FB7B4E295:
+      Flags: {}
+    F7CEF54E3E7048ECB83A9E48FE86083F:
+      Flags: {}
+  1F:
+    1FB59B9ADAC34F159AE3FE6D5815E4C1:
+      Flags: {}
+  2E:
+    2E241114BA2F449BA9CE476F0E97CDB0:
+      Flags: {}
+    2E39E49E13754916B44478A6961087F5:
+      Flags: {}
+  4B:
+    4B6556345DFF4A3381403B519871FAA2:
+      Flags: {}
+  B0:
+    B0B30DB9683C41329F08415F98AAAD02:
+      Flags: {}
+  '19':
+    19EBA9C3A2E5492C96B22B6555D9716B:
+      Flags: {}
+  8A:
+    8A3E084AEC1E44E3BB0F4DFAA0CBB0C1:
+      Flags: {}
+  A6:
+    A6B966A638D545AB80A1A3CE3804DE17:
+      Flags: {}
+  '10':
+    1011A6AC89E24282BF8F73A8DE06BCE3:
+      Flags: {}
+  1E:
+    1E036024298F4759B34509E1774120B0:
+      Flags: {}
+    1EF13EBC7B384662B57664AC236349CD:
+      Flags: {}
+  '29':
+    29DC5C0E3EA54BE684927191B3D15906:
+      Flags: {}
+  '01':
+    01F1DBA2F47C401EACC2EE879B354B09:
+      Flags: {}
+    014212E5EEE44E7DA074B7122847453B:
+      Flags: {}
+  A5:
+    A5495580B015430C9918C96A3B6F491F:
+      Flags: {}
+    A5819E5306BF47658020E65E6F425192:
+      Flags: {}
+  '66':
+    66FD51FBC21C4EBF9986E37DFFA0F5A0:
+      Flags: {}
+  '43':
+    43AB30E13F2C4C93BFAAD343C27DBC10:
+      Flags: {}
+  B1:
+    B131ED842F2A4A0D9847C1BBCAB88CE6:
+      Flags: {}
+  '35':
+    356B3D7342B84B9B9620C0381A2D71E9:
+      Flags: {}
+  D2:
+    D2E5590365F84C47B408972E01C6B28D:
+      Flags: {}
+  '86':
+    86D08A9F08BC4EC8BA5DB93EBBE19C28:
+      Flags: {}
+  '37':
+    37FD0575182E44E39A63762FAD51D388:
+      Flags: {}
+    37C236D92F924C2DA98C757AEA4C8BEC:
+      Flags: {}
+  '73':
+    73E27958B4CC49BE9F9CE5C62D8C5B38:
+      Flags: {}
+  '88':
+    885EEF82901441F4BAE823C687C7A0EC:
+      Flags: {}
+    883D0E08AD0A41F4985E5C8492178580:
+      Flags: {}
+  '94':
+    94C691970EB64B24A096A1604E37A60F:
+      Flags: {}
+  CF:
+    CF33A1D03D8C4D809AB194C14F2FC580:
+      Flags: {}
+  '91':
+    91977D94F2CD4F929411DE36606488E4:
+      Flags: {}
+  9F:
+    9FFE241BC6A547D594E1FBB1B4D3C421:
+      Flags: {}
+  0A:
+    0A093FB2B0394CF2BEB6E99ED5AEBD4E:
+      Flags: {}
+  7C:
+    7C6989712D5449618D1154ABACA4C182:
+      Flags: {}
+  5F:
+    5F3C800CEAD94F2D9AD0779A1FC0B213:
+      Flags: {}
+  '42':
+    4273A31C79D64EB69C9D3172B3B81AED:
+      Flags: {}
+    42B5C7FD3884458BB20F67C5E7FE1EF7:
+      Flags: {}
+  5D:
+    5D88B84FEBEC4D0BB3E7B4433CD44964:
+      Flags: {}
+  '62':
+    62E10DD1B65A46A5A03DCF417F3F5E8D:
+      Flags: {}
+  5C:
+    5C8AF508DDA24F3C8F37C3CCE0E315B6:
+      Flags: {}
+  '34':
+    349F5C0396D14D4A8A7ED8B29A1807E4:
+      Flags: {}
+    34FE6B6B9F6648F78D75EC128D1B7DB2:
+      Flags: {}
+  '05':
+    0597C1CC6D6D467AAE7D577065652726:
+      Flags: {}
+  CB:
+    CB58BA707D744E439A0B50D59E617E11:
+      Flags: {}
+  E4:
+    E4C7D1063442483F9D061B652F0F7B9E:
+      Flags: {}
+    E44955C1DA8B41F7AB2D2AE88F9E5DE1:
+      Flags: {}
+  DC:
+    DCF8DCA8F8BF48E88E5930F6DC0B501F:
+      Flags: {}
+  FF:
+    FF1A37481EC14FF0898DDFA629078B43:
+      Flags: {}
+  9C:
+    9C96FDC36CF84EE0A2AEFF14FD6B933E:
+      Flags: {}
+  5B:
+    5B08146757FC4B03B9842642AAFEA023:
+      Flags: {}
+  '45':
+    45AD7DB48533424385FCB1FED817F4DE:
+      Flags: {}
+  3A:
+    3A49AF5E564E4C58AA309D84FA75D492:
+      Flags: {}
+  '24':
+    24C11C73C25E44A29697EE52942DF24F:
+      Flags: {}
+  3C:
+    3C9A647629CD4BFA81B92591A2555497:
+      Flags: {}
+  '64':
+    648D199A8747455C8687449747BF57DB:
+      Flags: {}
+    64160A0F1FC5469D81D9C9ADE7FAD00D:
+      Flags: {}
+  B8:
+    B8E66CB8ABD3429D8EA809D82DA1E395:
+      Flags: {}
+  AC:
+    AC5DC4B55DD64DAE80487CE5D6F6B7E4:
+      Flags: {}
+  '25':
+    259248FEA783460F87191D7CACA122C8:
+      Flags: {}
+  D5:
+    D5C4D5C7E8584C31B75230DC9C03DBC0:
+      Flags: {}
+  '76':
+    761B1160B69F40ACBA9A14BFBA617393:
+      Flags: {}
+  '79':
+    7958D5C6625E45CABE5D34FBA0648D8C:
+      Flags: {}
+  '87':
+    87BA08E104D24D5286466E00B0E14304:
+      Flags: {}
+  '16':
+    16FEBE16508D41A589875A9FB615C62C:
+      Flags: {}
+    161E4C53A9CE4792B5274FA59F3CE98A:
+      Flags: {}
+  DD:
+    DD09B230544D4DE2AA61F310825AA1B8:
+      Flags: {}
+    DD700658C2FB41BCBF719684EA0BB085:
+      Flags: {}
+    DDEA969916C047D68D4C78F4096F2B5C:
+      Flags: {}
+  '75':
+    75612E1E81954F098D3102C8AB15939D:
+      Flags: {}
+  F6:
+    F6FE408F39E64FF2950AAF7D471443AD:
+      Flags: {}
+  '83':
+    8394EA48DEB343759A0FE0592FE3F22B:
+      Flags: {}
+  5A:
+    5AA485BD5B34453DA320EE9E09AB02DD:
+      Flags: {}
+  8E:
+    8E1E23A17D9B4199B7A2A4B4C25F8073:
+      Flags: {}
+  '03':
+    039AEEC6C41645EAA3B472E51127F1A6:
+      Flags: {}
+  '18':
+    18FEAD0AE94A43B4ADEAC7B62B79237A:
+      Flags: {}
+    1848314FA0074093ADB613C0D44F9085:
+      Flags: {}
+  '48':
+    4847DA93B07D46F8934A7AFBF9A5F110:
+      Flags: {}
+    48E52D80DAD645639468104E9E4C7A53:
+      Flags: {}
+  7F:
+    7FD753C58D9540219ED1CCE6EEA433BD:
+      Flags: {}
+  '39':
+    390DE8C5794F4BECA5E4A197C8B46A3D:
+      Flags: {}
+  CE:
+    CEBFD4AD474A48159D19FCAD0EB8E451:
+      Flags: {}
+  F9:
+    F9DEEF7EA880440094E983560C6D7EA1:
+      Flags: {}
+  F4:
+    F46B1CDEAFE444BFA1442558C6243AB4:
+      Flags: {}
+  EC:
+    EC8F2555802B49BBAA65B65A1BD245C9:
+      Flags: {}
+  AB:
+    ABD3D355608B43DA9D479018D29E2A72:
+      Flags: {}
+  '84':
+    8426C7919BEE466BA89AFB4D481ACDDE:
+      Flags: {}
+  '90':
+    9080C80F659F4B8F93AE2EEC49DA7771:
+      Flags: {}
+  2D:
+    2D13D480A6134161985F8F8D432EE049:
+      Flags: {}
+  FB:
+    FBFF49164CF040A8813A00491EE3D819:
+      Flags: {}
+  3D:
+    3DCCE1AB5DF642CEB6BB3E8A9F4F0BD4:
+      Flags: {}
+  C9:
+    C930045DA48040C393D1397AB1532C4A:
+      Flags: {}
+  '40':
+    40D92EBA1FFF469DB72424BC049C8E1A:
+      Flags: {}
+  E6:
+    E66B429591604584A5AA0723C482E177:
+      Flags: {}
+  '44':
+    449B046CB4314987ADC28305810579CF:
+      Flags: {}
+    440AB116CBBE400AA57D886B7F03B416:
+      Flags: {}
+    443153A003B14C68A374E4C04423748A:
+      Flags: {}
+  2B:
+    2BAD23B7D01340A490F8F05ED4774191:
+      Flags: {}
+  EF:
+    EFCF0CA6CCD04887B6174900621F1DDA:
+      Flags: {}
+  '04':
+    04DA1A78563B44DDA29EE54FA6B6DD56:
+      Flags: {}
+  7D:
+    7D4B48484B86453BBA108DD9933010A3:
+      Flags: {}
+  '27':
+    276F8C0EBDE9460FB717381A74612A4A:
+      Flags: {}
+  1B:
+    1B0FB26C776843D38A1F14D828FBCB92:
+      Flags: {}
+  '15':
+    15D56784206741A6AF459D73662C794D:
+      Flags: {}
+  '57':
+    573D265E31E744939C0F2D13A6F5A25D:
+      Flags: {}
+  4A:
+    4A760F7D849047AC819AF025883CC031:
+      Flags: {}
+  2A:
+    2A6EB96245D642EFA6015369BF7FBD89:
+      Flags: {}
+  '12':
+    12070066A02140D6A594F68FB13B63D6:
+      Flags: {}
+  '51':
+    5190B838DD574C4AAD98AA644FDB1A5E:
+      Flags: {}
+  '99':
+    99A5DA4D687A496A98C5DBDB91D51410:
+      Flags: {}
+  0C:
+    0C6042D71524422FA4A40ECD50D9CE1C:
+      Flags: {}
 Global:
   Flags:
-    NEWSPAPERID: '6'
+    DISCORDINFO:
+    - SaiPlaysGames/discorduser@mybot,454499930472710145
+    PINGDELAY: 'true'
+    PINGDELAY-expiration: 1590886582129
+NPCs: {}

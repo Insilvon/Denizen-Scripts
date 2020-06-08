@@ -8,6 +8,7 @@
 
 MachineController:
     type: world
+    debug: off
     events:
         on player places TestMachine:
             # - narrate "<&c>[Machines]<&co> You are placing a machine."
@@ -80,6 +81,7 @@ TransmutationAxe:
         - all things are possible.
 MachineOnPlayerBreaksBlock:
     type: task
+    debug: off
     script:
         - define cubes:<context.location.cuboids>
         - define theCuboid <context.location.cuboids.filter[notable_name.starts_with[testmachine]].get[1]||null>

@@ -28,6 +28,12 @@ Debug:
   # This is available as a backup safety feature to prevent debug output from crashing a server.
   # Set the value lower to better protect this, set the value higher to willfully debug a very very long script.
   Limit per tick: 5000
+  # Whether to show extra 'verbose' info output (will FLOOD your console!).
+  Verbose: false
+  # Optional text to prefix all debug output.
+  Prefix: ""
+  # Whether to show full information about scripts being loaded (at startup and "/ex reload" usage).
+  Show loading info: false
 
 Scripts:
   World:
@@ -77,8 +83,8 @@ Triggers:
       Must be looking in direction of NPC: true
       Must be able to see NPC: true
     Formats:
-      Player to NPC: "You -> <npc.nickname>: <text>"
-      Player to NPC overheard: "<player.name> -> <npc.nickname>: <text>"
+      Player to NPC: "<&6>[P] <&f><player.name.display>: <text>"
+      Player to NPC overheard: "<&6>[P] <&f><player.name.display>: <text>"
     Appears globally:
       If triggers missing: true
       If triggers failed: false
@@ -90,7 +96,7 @@ Triggers:
     Enabled: false
     Cooldown: 0.5s
   Proximity:
-    Enabled: false
+    Enabled: true
     Cooldown: 1s
     Range: 10
 
